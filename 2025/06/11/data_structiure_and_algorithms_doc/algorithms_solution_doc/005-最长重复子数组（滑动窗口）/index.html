@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>✨✨✨ WLB! WLB! WLB! ✨✨✨😶‍🌫️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="最长重复子数组超详细解析（从零开始）最长重复子数组问题是指：给定两个整数数组，找出它们中共有的最长子数组的长度。这里的子数组要求是连续的。 1.问题描述给定两个整数数组 nums1 和 nums2，返回两个数组中公共的、长度最长的子数组的长度。示例： 输入：nums1 &#x3D; [1,2,3,2,1], nums2 &#x3D; [3,2,1,4,7] 输出：3 解释：长度最长的公共子数组是 [3,2,1]。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="✨✨✨ WLB! WLB! WLB! ✨✨✨😶‍🌫️">
+<meta property="og:url" content="http://example.com/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/005-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84%EF%BC%88%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%EF%BC%89/index.html">
+<meta property="og:site_name" content="✨✨✨ WLB! WLB! WLB! ✨✨✨😶‍🌫️">
+<meta property="og:description" content="最长重复子数组超详细解析（从零开始）最长重复子数组问题是指：给定两个整数数组，找出它们中共有的最长子数组的长度。这里的子数组要求是连续的。 1.问题描述给定两个整数数组 nums1 和 nums2，返回两个数组中公共的、长度最长的子数组的长度。示例： 输入：nums1 &#x3D; [1,2,3,2,1], nums2 &#x3D; [3,2,1,4,7] 输出：3 解释：长度最长的公共子数组是 [3,2,1]。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-11T15:06:17.646Z">
+<meta property="article:modified_time" content="2025-06-11T15:06:19.150Z">
+<meta property="article:author" content="EvelynUU">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WLB! WLB! WLB! ✨✨✨😶‍🌫️" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WLB! WLB! WLB! ✨✨✨😶‍🌫️</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">重要的事情说三遍</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-data_structiure_and_algorithms_doc/algorithms_solution_doc/005-最长重复子数组（滑动窗口）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/005-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84%EF%BC%88%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2025-06-11T15:06:17.646Z" itemprop="datePublished">2025-06-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="最长重复子数组超详细解析（从零开始）"><a href="#最长重复子数组超详细解析（从零开始）" class="headerlink" title="最长重复子数组超详细解析（从零开始）"></a>最长重复子数组超详细解析（从零开始）</h1><p>最长重复子数组问题是指：给定两个整数数组，找出它们中共有的最长子数组的长度。这里的子数组要求是连续的。</p>
+<h2 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h2><p>给定两个整数数组 <code>nums1</code> 和 <code>nums2</code>，返回两个数组中公共的、长度最长的子数组的长度。示例：</p>
+<pre><code>输入：nums1 = [1,2,3,2,1], nums2 = [3,2,1,4,7]
+输出：3
+解释：长度最长的公共子数组是 [3,2,1]。
+</code></pre>
+<h2 id="2-动态规划解法详解"><a href="#2-动态规划解法详解" class="headerlink" title="2. 动态规划解法详解"></a>2. 动态规划解法详解</h2><h3 id="2-1-为什么用动态规划？"><a href="#2-1-为什么用动态规划？" class="headerlink" title="2.1 为什么用动态规划？"></a>2.1 为什么用动态规划？</h3><p>因为这个问题具有：</p>
+<ul>
+<li><strong>重叠子问题</strong>：大问题的解依赖小问题的解</li>
+<li><strong>最优子结构</strong>：整体最优解包含子问题的最优解</li>
+</ul>
+<h3 id="2-2-DP表格的含义"><a href="#2-2-DP表格的含义" class="headerlink" title="2.2 DP表格的含义"></a>2.2 DP表格的含义</h3><p>我们创建一个表格，<code>dp[i][j]</code>表示：</p>
+<ul>
+<li>以<code>nums1[i-1]</code>和<code>nums2[j-1]</code><strong>结尾</strong>的公共子数组的长度</li>
+</ul>
+<p>注意：<code>i</code>和<code>j</code>从1开始，0行0列表示空数组</p>
+<h3 id="2-3-具体步骤（以-1-2-3-2-1-和-3-2-1-4-7-为例）"><a href="#2-3-具体步骤（以-1-2-3-2-1-和-3-2-1-4-7-为例）" class="headerlink" title="2.3 具体步骤（以[1,2,3,2,1]和[3,2,1,4,7]为例）"></a>2.3 具体步骤（以[1,2,3,2,1]和[3,2,1,4,7]为例）</h3><h4 id="第一步：初始化表格"><a href="#第一步：初始化表格" class="headerlink" title="第一步：初始化表格"></a>第一步：初始化表格</h4><p>创建<code>(m+1)×(n+1)</code>的表格，全部填0：</p>
+<pre><code>   0 3 2 1 4 7
+0 [0,0,0,0,0,0]
+1 [0,0,0,0,0,0] 
+2 [0,0,0,0,0,0]
+3 [0,0,0,0,0,0]
+2 [0,0,0,0,0,0]
+1 [0,0,0,0,0,0]
+</code></pre>
+<h4 id="第二步：填充表格"><a href="#第二步：填充表格" class="headerlink" title="第二步：填充表格"></a>第二步：填充表格</h4><p>规则：</p>
+<ul>
+<li>如果<code>nums1[i-1] == nums2[j-1]</code>，则<code>dp[i][j] = dp[i-1][j-1] + 1</code></li>
+<li>否则<code>dp[i][j] = 0</code></li>
+</ul>
+<p>填充过程：</p>
+<ol>
+<li><code>nums1[0]=1</code> vs <code>nums2[0]=3</code> → 不相等 → <code>dp[1][1]=0</code></li>
+<li><code>nums1[0]=1</code> vs <code>nums2[2]=1</code> → 相等 → <code>dp[1][3] = dp[0][2]+1 = 1</code></li>
+<li><code>nums1[1]=2</code> vs <code>nums2[1]=2</code> → 相等 → <code>dp[2][2] = dp[1][1]+1 = 1</code></li>
+<li><code>nums1[2]=3</code> vs <code>nums2[0]=3</code> → 相等 → <code>dp[3][1] = dp[2][0]+1 = 1</code></li>
+<li>继续这样填完整张表…</li>
+</ol>
+<h4 id="最终表格："><a href="#最终表格：" class="headerlink" title="最终表格："></a>最终表格：</h4><pre><code>   0 3 2 1 4 7
+0 [0,0,0,0,0,0]
+1 [0,0,0,1,0,0] 
+2 [0,0,1,0,0,0]
+3 [0,1,0,0,0,0]
+2 [0,0,2,0,0,0]
+1 [0,0,0,3,0,0]
+</code></pre>
+<h4 id="第三步：找最大值"><a href="#第三步：找最大值" class="headerlink" title="第三步：找最大值"></a>第三步：找最大值</h4><p>表格中最大的数字是3，所以最长重复子数组长度是3。</p>
+<h3 id="2-4-为什么这样计算？"><a href="#2-4-为什么这样计算？" class="headerlink" title="2.4 为什么这样计算？"></a>2.4 为什么这样计算？</h3><p>因为：</p>
+<ul>
+<li>当两个数字相等时，它们可以扩展前面的公共子数组</li>
+<li><code>dp[i][j] = dp[i-1][j-1] + 1</code>表示”前面的能连多长，我就比它多1”</li>
+<li>表格中的数字就像”以这两个位置结尾的公共串长度”</li>
+</ul>
+<h2 id="3-代码逐行解释"><a href="#3-代码逐行解释" class="headerlink" title="3. 代码逐行解释"></a>3. 代码逐行解释</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">findLength</span>(<span class="params">nums1, nums2</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> m = nums1.<span class="property">length</span>, n = nums2.<span class="property">length</span>;</span><br><span class="line">    <span class="comment">// 创建(m+1)×(n+1)的表格，初始化为0</span></span><br><span class="line">    <span class="keyword">const</span> dp = <span class="title class_">Array</span>.<span class="title function_">from</span>(&#123; <span class="attr">length</span>: m + <span class="number">1</span> &#125;, <span class="function">() =&gt;</span> <span class="title class_">Array</span>(n + <span class="number">1</span>).<span class="title function_">fill</span>(<span class="number">0</span>));</span><br><span class="line">    <span class="keyword">let</span> maxLen = <span class="number">0</span>; <span class="comment">// 记录最大值</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums1[i - <span class="number">1</span>] === nums2[j - <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="comment">// 数字相等，长度+1</span></span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                <span class="comment">// 更新最大值</span></span><br><span class="line">                maxLen = <span class="title class_">Math</span>.<span class="title function_">max</span>(maxLen, dp[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 不相等时保持0，不用写</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> maxLen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-实际例子演练"><a href="#4-实际例子演练" class="headerlink" title="4. 实际例子演练"></a>4. 实际例子演练</h2><p>让我们用<code>nums1 = [0,1,1,1,1]</code>和<code>nums2 = [1,0,1,0,1]</code>来演练：</p>
+<h3 id="4-1-初始化表格"><a href="#4-1-初始化表格" class="headerlink" title="4.1 初始化表格"></a>4.1 初始化表格</h3><p>创建6×6的全0表格</p>
+<h3 id="4-2-关键填充步骤："><a href="#4-2-关键填充步骤：" class="headerlink" title="4.2 关键填充步骤："></a>4.2 关键填充步骤：</h3><ol>
+<li><code>nums1[0]=0</code> vs <code>nums2[1]=0</code> → <code>dp[1][2] = dp[0][1]+1 = 1</code></li>
+<li><code>nums1[2]=1</code> vs <code>nums2[0]=1</code> → <code>dp[3][1] = dp[2][0]+1 = 1</code></li>
+<li><code>nums1[2]=1</code> vs <code>nums2[2]=1</code> → <code>dp[3][3] = dp[2][2]+1 = 1</code></li>
+<li><code>nums1[3]=1</code> vs <code>nums2[4]=1</code> → <code>dp[4][5] = dp[3][4]+1 = 2</code></li>
+<li><code>nums1[4]=1</code> vs <code>nums2[4]=1</code> → <code>dp[5][5] = dp[4][4]+1 = 3</code></li>
+</ol>
+<h3 id="4-3-最终表格（部分）："><a href="#4-3-最终表格（部分）：" class="headerlink" title="4.3 最终表格（部分）："></a>4.3 最终表格（部分）：</h3><pre><code>dp[4][5] = 2  // 对应[1,1]和[1,1]
+dp[5][5] = 3  // 对应[1,1,1]和[1,0,1]中的后两个1
+</code></pre>
+<p>最大值为2（虽然dp[5][5]&#x3D;3，但实际公共子数组是”1,1”）</p>
+<h2 id="5-常见误区"><a href="#5-常见误区" class="headerlink" title="5. 常见误区"></a>5. 常见误区</h2><ol>
+<li><p><strong>子数组 vs 子序列</strong>：</p>
+<ul>
+<li>子数组必须连续</li>
+<li>子序列可以不连续</li>
+</ul>
+</li>
+<li><p><strong>初始化为1</strong>：</p>
+<ul>
+<li>很多人会想”至少长度是1”，但其实应该从0开始</li>
+<li>因为<code>dp[i][j]</code>表示的是”以这两个元素结尾”的长度</li>
+</ul>
+</li>
+<li><p><strong>边界条件</strong>：</p>
+<ul>
+<li>一定要有<code>i=0</code>和<code>j=0</code>的行列</li>
+<li>它们代表空数组的情况</li>
+</ul>
+</li>
+</ol>
+<h2 id="6-优化思路"><a href="#6-优化思路" class="headerlink" title="6. 优化思路"></a>6. 优化思路</h2><p>实际可以只用一维数组：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">findLength</span>(<span class="params">nums1, nums2</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> m = nums1.<span class="property">length</span>, n = nums2.<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">let</span> dp = <span class="title class_">Array</span>(n + <span class="number">1</span>).<span class="title function_">fill</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">let</span> maxLen = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> current = <span class="title class_">Array</span>(n + <span class="number">1</span>).<span class="title function_">fill</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums1[i - <span class="number">1</span>] === nums2[j - <span class="number">1</span>]) &#123;</span><br><span class="line">                current[j] = dp[j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                maxLen = <span class="title class_">Math</span>.<span class="title function_">max</span>(maxLen, current[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        dp = current;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> maxLen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样空间复杂度从O(mn)降到O(n)。</p>
+<h2 id="7-总结关键点"><a href="#7-总结关键点" class="headerlink" title="7. 总结关键点"></a>7. 总结关键点</h2><ol>
+<li><code>dp[i][j]</code>表示的是<strong>以nums1[i-1]和nums2[j-1]结尾</strong>的公共子数组长度</li>
+<li>只有当两个数字相等时才需要更新值</li>
+<li>最大值可能在表格任意位置，需要全程记录</li>
+<li>初始化的<code>(m+1)×(n+1)</code>表格中，第0行和第0列都是0</li>
+</ol>
+<p>通过这样的分解，你应该能完全理解这个问题了。动态规划的关键就是找到这个状态转移方程，然后小心地填充表格。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/005-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84%EF%BC%88%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%EF%BC%89/" data-id="cmbs36xv90022ywsd53qndoxe" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/006-%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/004-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%88%E5%8F%8C%E6%8C%87%E9%92%88%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Pytorch/">Pytorch</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/Pytorch/" style="font-size: 15px;">Pytorch</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/013-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2%EF%BC%88%E5%9B%9E%E6%BA%AF%E6%B3%95%EF%BC%89/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/012-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%E8%83%BD%E5%90%A6%E5%88%B0%E7%BB%88%E7%82%B9+%E6%9C%80%E5%B0%8F%E8%B7%B3%E8%B7%83%E6%AC%A1%E6%95%B0%EF%BC%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%EF%BC%89/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/011-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89%EF%BC%89/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/010-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E8%8A%82%E7%82%B9%EF%BC%88%E5%93%91%E8%8A%82%E7%82%B9%EF%BC%89/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/009-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%EF%BC%88%E5%8F%8C%E6%8C%87%E9%92%88%EF%BC%89/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

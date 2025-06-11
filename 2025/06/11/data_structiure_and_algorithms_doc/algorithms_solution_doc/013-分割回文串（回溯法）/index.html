@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>✨✨✨ WLB! WLB! WLB! ✨✨✨😶‍🌫️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="分割回文串详解及图解问题描述给定一个字符串 s，将 s 分割成若干子串，使每个子串都是回文串。返回所有可能的分割方案。 示例输入：&quot;aab&quot;输出： [   [&quot;a&quot;,&quot;a&quot;,&quot;b&quot;],   [&quot;aa&quot;,&quot;b&quot;] ]  算法思路：回溯法核心思想 逐步构建：从左到右逐步构建回文子串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="✨✨✨ WLB! WLB! WLB! ✨✨✨😶‍🌫️">
+<meta property="og:url" content="http://example.com/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/013-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2%EF%BC%88%E5%9B%9E%E6%BA%AF%E6%B3%95%EF%BC%89/index.html">
+<meta property="og:site_name" content="✨✨✨ WLB! WLB! WLB! ✨✨✨😶‍🌫️">
+<meta property="og:description" content="分割回文串详解及图解问题描述给定一个字符串 s，将 s 分割成若干子串，使每个子串都是回文串。返回所有可能的分割方案。 示例输入：&quot;aab&quot;输出： [   [&quot;a&quot;,&quot;a&quot;,&quot;b&quot;],   [&quot;aa&quot;,&quot;b&quot;] ]  算法思路：回溯法核心思想 逐步构建：从左到右逐步构建回文子串">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-11T15:06:59.953Z">
+<meta property="article:modified_time" content="2025-06-11T15:10:11.353Z">
+<meta property="article:author" content="EvelynUU">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WLB! WLB! WLB! ✨✨✨😶‍🌫️" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WLB! WLB! WLB! ✨✨✨😶‍🌫️</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">重要的事情说三遍</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-data_structiure_and_algorithms_doc/algorithms_solution_doc/013-分割回文串（回溯法）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/013-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2%EF%BC%88%E5%9B%9E%E6%BA%AF%E6%B3%95%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2025-06-11T15:06:59.953Z" itemprop="datePublished">2025-06-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="分割回文串详解及图解"><a href="#分割回文串详解及图解" class="headerlink" title="分割回文串详解及图解"></a>分割回文串详解及图解</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个字符串 <code>s</code>，将 <code>s</code> 分割成若干子串，使每个子串都是回文串。返回所有可能的分割方案。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>输入：<code>&quot;aab&quot;</code><br>输出：</p>
+<pre><code>[
+  [&quot;a&quot;,&quot;a&quot;,&quot;b&quot;],
+  [&quot;aa&quot;,&quot;b&quot;]
+]
+</code></pre>
+<h2 id="算法思路：回溯法"><a href="#算法思路：回溯法" class="headerlink" title="算法思路：回溯法"></a>算法思路：回溯法</h2><h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><ol>
+<li><strong>逐步构建</strong>：从左到右逐步构建回文子串</li>
+<li><strong>回溯尝试</strong>：对每个位置尝试所有可能的回文分割</li>
+<li><strong>剪枝优化</strong>：提前终止不可能产生回文的分支</li>
+</ol>
+<h3 id="关键步骤"><a href="#关键步骤" class="headerlink" title="关键步骤"></a>关键步骤</h3><ol>
+<li>从字符串起始位置开始</li>
+<li>寻找所有以当前位置开头的回文子串</li>
+<li>对每个回文子串，递归处理剩余部分</li>
+<li>到达字符串末尾时保存有效分割</li>
+</ol>
+<h2 id="JavaScript实现"><a href="#JavaScript实现" class="headerlink" title="JavaScript实现"></a>JavaScript实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">partition</span>(<span class="params">s</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> result = [];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 判断是否是回文</span></span><br><span class="line">	<span class="comment">// str: s字符串, left:左index, right:右index</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">isPalindrome</span>(<span class="params">str, left, right</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">            <span class="keyword">if</span> (str[left++] !== str[right--]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 回溯函数	</span></span><br><span class="line">	<span class="comment">//start：当前处理位置的起始索引, path：当前已选择的回文子串列表</span></span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">backtrack</span>(<span class="params">start, path</span>) &#123;</span><br><span class="line">    	<span class="comment">// 终止条件：已经处理完整个字符串</span></span><br><span class="line">    	<span class="keyword">if</span> (start === s.<span class="property">length</span>) &#123;</span><br><span class="line">        	result.<span class="title function_">push</span>([...path]);</span><br><span class="line">        	<span class="keyword">return</span>;</span><br><span class="line">    	&#125;	</span><br><span class="line">    </span><br><span class="line">    	<span class="comment">// 尝试所有可能的分割点</span></span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">let</span> end = start; end &lt; s.<span class="property">length</span>; end++) &#123;</span><br><span class="line">        	<span class="comment">// 检查当前子串是否是回文</span></span><br><span class="line">        	<span class="keyword">if</span> (<span class="title function_">isPalindrome</span>(s, start, end)) &#123;</span><br><span class="line">            	<span class="comment">// 如果是回文，加入当前路径</span></span><br><span class="line">            	path.<span class="title function_">push</span>(s.<span class="title function_">substring</span>(start, end + <span class="number">1</span>));</span><br><span class="line">            	<span class="comment">// 递归处理剩余部分</span></span><br><span class="line">            	<span class="title function_">backtrack</span>(end + <span class="number">1</span>, path);</span><br><span class="line">            	<span class="comment">// 回溯，移除最后的选择</span></span><br><span class="line">            	path.<span class="title function_">pop</span>();</span><br><span class="line">        	&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="title function_">backtrack</span>(<span class="number">0</span>, []);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="我将用更直观的图解方式，配合分步拆解，帮助你完全理解这个回溯过程。让我们以-s-aab-为例，用动画式的图解来说明。"><a href="#我将用更直观的图解方式，配合分步拆解，帮助你完全理解这个回溯过程。让我们以-s-aab-为例，用动画式的图解来说明。" class="headerlink" title="我将用更直观的图解方式，配合分步拆解，帮助你完全理解这个回溯过程。让我们以 s = &quot;aab&quot; 为例，用动画式的图解来说明。"></a>我将用更直观的图解方式，配合分步拆解，帮助你完全理解这个回溯过程。让我们以 <code>s = &quot;aab&quot;</code> 为例，用动画式的图解来说明。</h2><hr>
+<h3 id="初始状态"><a href="#初始状态" class="headerlink" title="初始状态"></a><strong>初始状态</strong></h3><pre><code>字符串: a a b
+索引:  0 1 2
+当前路径: []
+待处理: 全部(0-2)
+</code></pre>
+<hr>
+<h3 id="第一步：处理位置0"><a href="#第一步：处理位置0" class="headerlink" title="第一步：处理位置0"></a><strong>第一步：处理位置0</strong></h3><p><strong>尝试所有以位置0开头的子串</strong></p>
+<h4 id="选择1：取”a”-0-0"><a href="#选择1：取”a”-0-0" class="headerlink" title="选择1：取”a” (0-0)"></a>选择1：取”a” (0-0)</h4><ol>
+<li><strong>检查回文</strong>：”a”是回文</li>
+<li><strong>更新路径</strong>：<code>[&quot;a&quot;]</code></li>
+<li><strong>递归处理剩余</strong>：”ab” (从位置1开始)</li>
+</ol>
+<!---->
+
+<pre><code>当前路径: [&quot;a&quot;]
+剩余字符串: a b (索引1-2)
+</code></pre>
+<h5 id="子递归：处理位置1"><a href="#子递归：处理位置1" class="headerlink" title="子递归：处理位置1"></a>子递归：处理位置1</h5><p><strong>尝试所有以位置1开头的子串</strong></p>
+<h6 id="选择1-1：取”a”-1-1"><a href="#选择1-1：取”a”-1-1" class="headerlink" title="选择1.1：取”a” (1-1)"></a>选择1.1：取”a” (1-1)</h6><ol>
+<li>检查回文：”a”是回文</li>
+<li>更新路径：<code>[&quot;a&quot;, &quot;a&quot;]</code></li>
+<li>递归处理剩余：”b” (从位置2开始)</li>
+</ol>
+<!---->
+
+<pre><code>当前路径: [&quot;a&quot;, &quot;a&quot;]
+剩余字符串: b (索引2)
+</code></pre>
+<h6 id="子子递归：处理位置2"><a href="#子子递归：处理位置2" class="headerlink" title="子子递归：处理位置2"></a>子子递归：处理位置2</h6><p><strong>尝试所有以位置2开头的子串</strong></p>
+<p>选择1.1.1：取”b” (2-2)</p>
+<ol>
+<li>检查回文：”b”是回文</li>
+<li>更新路径：<code>[&quot;a&quot;, &quot;a&quot;, &quot;b&quot;]</code></li>
+<li>到达字符串末尾 → <strong>保存结果</strong> <code>[&quot;a&quot;,&quot;a&quot;,&quot;b&quot;]</code></li>
+<li><strong>回溯</strong>：移除”b” → 路径回退到 <code>[&quot;a&quot;,&quot;a&quot;]</code></li>
+</ol>
+<hr>
+<h6 id="选择1-2：取”ab”-1-2"><a href="#选择1-2：取”ab”-1-2" class="headerlink" title="选择1.2：取”ab” (1-2)"></a>选择1.2：取”ab” (1-2)</h6><ol>
+<li>检查回文：”ab”不是回文 → <strong>跳过</strong></li>
+</ol>
+<h5 id="子递归结束"><a href="#子递归结束" class="headerlink" title="子递归结束"></a>子递归结束</h5><p><strong>回溯</strong>：移除”a” → 路径回退到 <code>[&quot;a&quot;]</code></p>
+<hr>
+<h4 id="选择2：取”aa”-0-1"><a href="#选择2：取”aa”-0-1" class="headerlink" title="选择2：取”aa” (0-1)"></a>选择2：取”aa” (0-1)</h4><ol>
+<li>检查回文：”aa”是回文</li>
+<li>更新路径：<code>[&quot;aa&quot;]</code></li>
+<li>递归处理剩余：”b” (从位置2开始)</li>
+</ol>
+<!---->
+
+<pre><code>当前路径: [&quot;aa&quot;]
+剩余字符串: b (索引2)
+</code></pre>
+<h5 id="子递归：处理位置2"><a href="#子递归：处理位置2" class="headerlink" title="子递归：处理位置2"></a>子递归：处理位置2</h5><p><strong>尝试所有以位置2开头的子串</strong></p>
+<p>选择2.1：取”b” (2-2)</p>
+<ol>
+<li>检查回文：”b”是回文</li>
+<li>更新路径：<code>[&quot;aa&quot;, &quot;b&quot;]</code></li>
+<li>到达字符串末尾 → <strong>保存结果</strong> <code>[&quot;aa&quot;,&quot;b&quot;]</code></li>
+<li><strong>回溯</strong>：移除”b” → 路径回退到 <code>[&quot;aa&quot;]</code></li>
+</ol>
+<hr>
+<h4 id="选择3：取”aab”-0-2"><a href="#选择3：取”aab”-0-2" class="headerlink" title="选择3：取”aab” (0-2)"></a>选择3：取”aab” (0-2)</h4><ol>
+<li>检查回文：”aab”不是回文 → <strong>跳过</strong></li>
+</ol>
+<hr>
+<h3 id="最终结果"><a href="#最终结果" class="headerlink" title="最终结果"></a><strong>最终结果</strong></h3><pre><code>[
+  [&quot;a&quot;,&quot;a&quot;,&quot;b&quot;],
+  [&quot;aa&quot;,&quot;b&quot;]
+]
+</code></pre>
+<hr>
+<h3 id="关键过程图解"><a href="#关键过程图解" class="headerlink" title="关键过程图解"></a><strong>关键过程图解</strong></h3><pre><code>开始
+│
+├─ 取&quot;a&quot; (0-0)
+│  ├─ 取&quot;a&quot; (1-1)
+│  │  └─ 取&quot;b&quot; (2-2) → 保存 [&quot;a&quot;,&quot;a&quot;,&quot;b&quot;]
+│  └─ 取&quot;ab&quot; (1-2) → 非回文，跳过
+│
+└─ 取&quot;aa&quot; (0-1)
+   └─ 取&quot;b&quot; (2-2) → 保存 [&quot;aa&quot;,&quot;b&quot;]
+</code></pre>
+<hr>
+<h3 id="为什么这样能保证不遗漏？"><a href="#为什么这样能保证不遗漏？" class="headerlink" title="为什么这样能保证不遗漏？"></a><strong>为什么这样能保证不遗漏？</strong></h3><ol>
+<li><strong>系统性尝试</strong>：对每个位置，尝试所有可能的子串长度</li>
+<li><strong>回文剪枝</strong>：只有回文子串才会继续递归</li>
+<li><strong>回溯保证</strong>：每次递归后恢复状态，确保其他分支能正确执行</li>
+</ol>
+<hr>
+<h3 id="常见疑问解答"><a href="#常见疑问解答" class="headerlink" title="常见疑问解答"></a><strong>常见疑问解答</strong></h3><p><strong>Q1：为什么要在<code>path.push</code>后立即<code>pop</code>？</strong><br>A：这是回溯算法的核心——在递归返回后撤销选择，确保：</p>
+<ul>
+<li>上层递归的<code>path</code>不受下层影响</li>
+<li>可以尝试其他分割方式</li>
+</ul>
+<p><strong>Q2：如何避免重复计算回文？</strong><br>A：可以用动态规划预处理回文信息：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dp[i][j]表示s[i..j]是否是回文</span></span><br><span class="line"><span class="keyword">const</span> dp = <span class="title class_">Array</span>(n).<span class="title function_">fill</span>().<span class="title function_">map</span>(<span class="function">() =&gt;</span> <span class="title class_">Array</span>(n).<span class="title function_">fill</span>(<span class="literal">false</span>));</span><br></pre></td></tr></table></figure>
+
+<p><strong>Q3：时间复杂度为什么是O(n*2^n)？</strong></p>
+<ul>
+<li>最坏情况（如”aaaa”）有2^(n-1)种分割方式</li>
+<li>每次判断回文需要O(n)时间</li>
+</ul>
+<hr>
+<p>通过这种”尝试-递归-回溯”的流程，系统性地探索了所有可能的回文分割方案。关键是要理解递归树如何展开，以及回溯如何保证状态重置。</p>
+<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul>
+<li><strong>时间复杂度</strong>：O(n * 2^n)<ul>
+<li>最坏情况下有 2^n 种分割方式</li>
+<li>每次判断回文需要 O(n) 时间</li>
+</ul>
+</li>
+<li><strong>空间复杂度</strong>：O(n)<ul>
+<li>递归栈深度最多为 n</li>
+</ul>
+</li>
+</ul>
+<h2 id="优化方法"><a href="#优化方法" class="headerlink" title="优化方法"></a>优化方法</h2><h3 id="1-动态规划预处理"><a href="#1-动态规划预处理" class="headerlink" title="1. 动态规划预处理"></a>1. 动态规划预处理</h3><p>预先计算所有子串是否为回文，存储为二维数组：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">partition</span>(<span class="params">s</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> n = s.<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">const</span> dp = <span class="title class_">Array</span>(n).<span class="title function_">fill</span>().<span class="title function_">map</span>(<span class="function">() =&gt;</span> <span class="title class_">Array</span>(n).<span class="title function_">fill</span>(<span class="literal">false</span>));</span><br><span class="line">    <span class="keyword">const</span> result = [];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 预处理回文信息</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = i; j &lt; n; j++) &#123;</span><br><span class="line">            dp[i][j] = (s[i] === s[j]) &amp;&amp; (j - i &lt;= <span class="number">2</span> || dp[i+<span class="number">1</span>][j-<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 回溯函数（同上）</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-记忆化搜索"><a href="#2-记忆化搜索" class="headerlink" title="2. 记忆化搜索"></a>2. 记忆化搜索</h3><p>缓存已计算的回文判断结果，避免重复计算。</p>
+<h2 id="常见问题解答"><a href="#常见问题解答" class="headerlink" title="常见问题解答"></a>常见问题解答</h2><p><strong>Q1：为什么需要回溯？</strong><br>A：回溯法可以系统地探索所有可能的分割方式，当某条路径无法继续时回退尝试其他选择。</p>
+<p><strong>Q2：如何处理空字符串？</strong><br>A：空字符串本身被视为有效输入，返回包含空列表的列表 <code>[[]]</code>。</p>
+<p><strong>Q3：如何避免重复计算回文？</strong><br>A：使用动态规划预处理或记忆化技术存储已计算的回文判断结果。</p>
+<h2 id="实际应用场景"><a href="#实际应用场景" class="headerlink" title="实际应用场景"></a>实际应用场景</h2><ol>
+<li>文本分词处理</li>
+<li>DNA序列分析</li>
+<li>数据压缩算法</li>
+<li>密码学中的字符串分解</li>
+</ol>
+<p>通过这种回溯+剪枝的方法，我们可以高效地找出所有可能的回文分割方案。理解递归树的构建过程是掌握此类问题的关键。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/013-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2%EF%BC%88%E5%9B%9E%E6%BA%AF%E6%B3%95%EF%BC%89/" data-id="cmbs36xvb002kywsdbkgn1m5k" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/012-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%E8%83%BD%E5%90%A6%E5%88%B0%E7%BB%88%E7%82%B9+%E6%9C%80%E5%B0%8F%E8%B7%B3%E8%B7%83%E6%AC%A1%E6%95%B0%EF%BC%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Pytorch/">Pytorch</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/Pytorch/" style="font-size: 15px;">Pytorch</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/013-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2%EF%BC%88%E5%9B%9E%E6%BA%AF%E6%B3%95%EF%BC%89/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/012-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%E8%83%BD%E5%90%A6%E5%88%B0%E7%BB%88%E7%82%B9+%E6%9C%80%E5%B0%8F%E8%B7%B3%E8%B7%83%E6%AC%A1%E6%95%B0%EF%BC%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%EF%BC%89/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/011-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89%EF%BC%89/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/010-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E8%8A%82%E7%82%B9%EF%BC%88%E5%93%91%E8%8A%82%E7%82%B9%EF%BC%89/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/11/data_structiure_and_algorithms_doc/algorithms_solution_doc/009-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%EF%BC%88%E5%8F%8C%E6%8C%87%E9%92%88%EF%BC%89/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
