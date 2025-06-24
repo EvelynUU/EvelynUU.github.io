@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:url" content="http://example.com/page/40/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:locale">
+<meta property="article:author" content="EvelynUU">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-algorithms/005-最长重复子数组（滑动窗口）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/16/algorithms/005-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84%EF%BC%88%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2025-06-16T15:59:17.000Z" itemprop="datePublished">2025-06-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/16/algorithms/005-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84%EF%BC%88%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%EF%BC%89/">005-最长重复子数组（滑动窗口）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="最长重复子数组超详细解析（从零开始）"><a href="#最长重复子数组超详细解析（从零开始）" class="headerlink" title="最长重复子数组超详细解析（从零开始）"></a>最长重复子数组超详细解析（从零开始）</h1><p>最长重复子数组问题是指：给定两个整数数组，找出它们中共有的最长子数组的长度。这里的子数组要求是连续的。</p>
+<h2 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h2><p>给定两个整数数组 <code>nums1</code> 和 <code>nums2</code>，返回两个数组中公共的、长度最长的子数组的长度。示例：</p>
+<pre><code>输入：nums1 = [1,2,3,2,1], nums2 = [3,2,1,4,7]
+输出：3
+解释：长度最长的公共子数组是 [3,2,1]。
+</code></pre>
+<h2 id="2-动态规划解法详解"><a href="#2-动态规划解法详解" class="headerlink" title="2. 动态规划解法详解"></a>2. 动态规划解法详解</h2><h3 id="2-1-为什么用动态规划？"><a href="#2-1-为什么用动态规划？" class="headerlink" title="2.1 为什么用动态规划？"></a>2.1 为什么用动态规划？</h3><p>因为这个问题具有：</p>
+<ul>
+<li><strong>重叠子问题</strong>：大问题的解依赖小问题的解</li>
+<li><strong>最优子结构</strong>：整体最优解包含子问题的最优解</li>
+</ul>
+<h3 id="2-2-DP表格的含义"><a href="#2-2-DP表格的含义" class="headerlink" title="2.2 DP表格的含义"></a>2.2 DP表格的含义</h3><p>我们创建一个表格，<code>dp[i][j]</code>表示：</p>
+<ul>
+<li>以<code>nums1[i-1]</code>和<code>nums2[j-1]</code><strong>结尾</strong>的公共子数组的长度</li>
+</ul>
+<p>注意：<code>i</code>和<code>j</code>从1开始，0行0列表示空数组</p>
+<h3 id="2-3-具体步骤（以-1-2-3-2-1-和-3-2-1-4-7-为例）"><a href="#2-3-具体步骤（以-1-2-3-2-1-和-3-2-1-4-7-为例）" class="headerlink" title="2.3 具体步骤（以[1,2,3,2,1]和[3,2,1,4,7]为例）"></a>2.3 具体步骤（以[1,2,3,2,1]和[3,2,1,4,7]为例）</h3><h4 id="第一步：初始化表格"><a href="#第一步：初始化表格" class="headerlink" title="第一步：初始化表格"></a>第一步：初始化表格</h4><p>创建<code>(m+1)×(n+1)</code>的表格，全部填0：</p>
+<pre><code>   0 3 2 1 4 7
+0 [0,0,0,0,0,0]
+1 [0,0,0,0,0,0] 
+2 [0,0,0,0,0,0]
+3 [0,0,0,0,0,0]
+2 [0,0,0,0,0,0]
+1 [0,0,0,0,0,0]
+</code></pre>
+<h4 id="第二步：填充表格"><a href="#第二步：填充表格" class="headerlink" title="第二步：填充表格"></a>第二步：填充表格</h4><p>规则：</p>
+<ul>
+<li>如果<code>nums1[i-1] == nums2[j-1]</code>，则<code>dp[i][j] = dp[i-1][j-1] + 1</code></li>
+<li>否则<code>dp[i][j] = 0</code></li>
+</ul>
+<p>填充过程：</p>
+<ol>
+<li><code>nums1[0]=1</code> vs <code>nums2[0]=3</code> → 不相等 → <code>dp[1][1]=0</code></li>
+<li><code>nums1[0]=1</code> vs <code>nums2[2]=1</code> → 相等 → <code>dp[1][3] = dp[0][2]+1 = 1</code></li>
+<li><code>nums1[1]=2</code> vs <code>nums2[1]=2</code> → 相等 → <code>dp[2][2] = dp[1][1]+1 = 1</code></li>
+<li><code>nums1[2]=3</code> vs <code>nums2[0]=3</code> → 相等 → <code>dp[3][1] = dp[2][0]+1 = 1</code></li>
+<li>继续这样填完整张表…</li>
+</ol>
+<h4 id="最终表格："><a href="#最终表格：" class="headerlink" title="最终表格："></a>最终表格：</h4><pre><code>   0 3 2 1 4 7
+0 [0,0,0,0,0,0]
+1 [0,0,0,1,0,0] 
+2 [0,0,1,0,0,0]
+3 [0,1,0,0,0,0]
+2 [0,0,2,0,0,0]
+1 [0,0,0,3,0,0]
+</code></pre>
+<h4 id="第三步：找最大值"><a href="#第三步：找最大值" class="headerlink" title="第三步：找最大值"></a>第三步：找最大值</h4><p>表格中最大的数字是3，所以最长重复子数组长度是3。</p>
+<h3 id="2-4-为什么这样计算？"><a href="#2-4-为什么这样计算？" class="headerlink" title="2.4 为什么这样计算？"></a>2.4 为什么这样计算？</h3><p>因为：</p>
+<ul>
+<li>当两个数字相等时，它们可以扩展前面的公共子数组</li>
+<li><code>dp[i][j] = dp[i-1][j-1] + 1</code>表示”前面的能连多长，我就比它多1”</li>
+<li>表格中的数字就像”以这两个位置结尾的公共串长度”</li>
+</ul>
+<h2 id="3-代码逐行解释"><a href="#3-代码逐行解释" class="headerlink" title="3. 代码逐行解释"></a>3. 代码逐行解释</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">findLength</span>(<span class="params">nums1, nums2</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> m = nums1.<span class="property">length</span>, n = nums2.<span class="property">length</span>;</span><br><span class="line">    <span class="comment">// 创建(m+1)×(n+1)的表格，初始化为0</span></span><br><span class="line">    <span class="keyword">const</span> dp = <span class="title class_">Array</span>.<span class="title function_">from</span>(&#123; <span class="attr">length</span>: m + <span class="number">1</span> &#125;, <span class="function">() =&gt;</span> <span class="title class_">Array</span>(n + <span class="number">1</span>).<span class="title function_">fill</span>(<span class="number">0</span>));</span><br><span class="line">    <span class="keyword">let</span> maxLen = <span class="number">0</span>; <span class="comment">// 记录最大值</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums1[i - <span class="number">1</span>] === nums2[j - <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="comment">// 数字相等，长度+1</span></span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                <span class="comment">// 更新最大值</span></span><br><span class="line">                maxLen = <span class="title class_">Math</span>.<span class="title function_">max</span>(maxLen, dp[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 不相等时保持0，不用写</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> maxLen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-实际例子演练"><a href="#4-实际例子演练" class="headerlink" title="4. 实际例子演练"></a>4. 实际例子演练</h2><p>让我们用<code>nums1 = [0,1,1,1,1]</code>和<code>nums2 = [1,0,1,0,1]</code>来演练：</p>
+<h3 id="4-1-初始化表格"><a href="#4-1-初始化表格" class="headerlink" title="4.1 初始化表格"></a>4.1 初始化表格</h3><p>创建6×6的全0表格</p>
+<h3 id="4-2-关键填充步骤："><a href="#4-2-关键填充步骤：" class="headerlink" title="4.2 关键填充步骤："></a>4.2 关键填充步骤：</h3><ol>
+<li><code>nums1[0]=0</code> vs <code>nums2[1]=0</code> → <code>dp[1][2] = dp[0][1]+1 = 1</code></li>
+<li><code>nums1[2]=1</code> vs <code>nums2[0]=1</code> → <code>dp[3][1] = dp[2][0]+1 = 1</code></li>
+<li><code>nums1[2]=1</code> vs <code>nums2[2]=1</code> → <code>dp[3][3] = dp[2][2]+1 = 1</code></li>
+<li><code>nums1[3]=1</code> vs <code>nums2[4]=1</code> → <code>dp[4][5] = dp[3][4]+1 = 2</code></li>
+<li><code>nums1[4]=1</code> vs <code>nums2[4]=1</code> → <code>dp[5][5] = dp[4][4]+1 = 3</code></li>
+</ol>
+<h3 id="4-3-最终表格（部分）："><a href="#4-3-最终表格（部分）：" class="headerlink" title="4.3 最终表格（部分）："></a>4.3 最终表格（部分）：</h3><pre><code>dp[4][5] = 2  // 对应[1,1]和[1,1]
+dp[5][5] = 3  // 对应[1,1,1]和[1,0,1]中的后两个1
+</code></pre>
+<p>最大值为2（虽然dp[5][5]&#x3D;3，但实际公共子数组是”1,1”）</p>
+<h2 id="5-常见误区"><a href="#5-常见误区" class="headerlink" title="5. 常见误区"></a>5. 常见误区</h2><ol>
+<li><p><strong>子数组 vs 子序列</strong>：</p>
+<ul>
+<li>子数组必须连续</li>
+<li>子序列可以不连续</li>
+</ul>
+</li>
+<li><p><strong>初始化为1</strong>：</p>
+<ul>
+<li>很多人会想”至少长度是1”，但其实应该从0开始</li>
+<li>因为<code>dp[i][j]</code>表示的是”以这两个元素结尾”的长度</li>
+</ul>
+</li>
+<li><p><strong>边界条件</strong>：</p>
+<ul>
+<li>一定要有<code>i=0</code>和<code>j=0</code>的行列</li>
+<li>它们代表空数组的情况</li>
+</ul>
+</li>
+</ol>
+<h2 id="6-优化思路"><a href="#6-优化思路" class="headerlink" title="6. 优化思路"></a>6. 优化思路</h2><p>实际可以只用一维数组：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">findLength</span>(<span class="params">nums1, nums2</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> m = nums1.<span class="property">length</span>, n = nums2.<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">let</span> dp = <span class="title class_">Array</span>(n + <span class="number">1</span>).<span class="title function_">fill</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">let</span> maxLen = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> current = <span class="title class_">Array</span>(n + <span class="number">1</span>).<span class="title function_">fill</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums1[i - <span class="number">1</span>] === nums2[j - <span class="number">1</span>]) &#123;</span><br><span class="line">                current[j] = dp[j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                maxLen = <span class="title class_">Math</span>.<span class="title function_">max</span>(maxLen, current[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        dp = current;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> maxLen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样空间复杂度从O(mn)降到O(n)。</p>
+<h2 id="7-总结关键点"><a href="#7-总结关键点" class="headerlink" title="7. 总结关键点"></a>7. 总结关键点</h2><ol>
+<li><code>dp[i][j]</code>表示的是<strong>以nums1[i-1]和nums2[j-1]结尾</strong>的公共子数组长度</li>
+<li>只有当两个数字相等时才需要更新值</li>
+<li>最大值可能在表格任意位置，需要全程记录</li>
+<li>初始化的<code>(m+1)×(n+1)</code>表格中，第0行和第0列都是0</li>
+</ol>
+<p>通过这样的分解，你应该能完全理解这个问题了。动态规划的关键就是找到这个状态转移方程，然后小心地填充表格。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/16/algorithms/005-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84%EF%BC%88%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%EF%BC%89/" data-id="cmcae1sj60008sssd7t840lio" data-title="005-最长重复子数组（滑动窗口）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-algorithms/006-字母异位词分组" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/16/algorithms/006-%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/" class="article-date">
+  <time class="dt-published" datetime="2025-06-16T15:59:18.000Z" itemprop="datePublished">2025-06-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/16/algorithms/006-%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/">006-字母异位词分组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="字母异位词分组"><a href="#字母异位词分组" class="headerlink" title="字母异位词分组"></a>字母异位词分组</h1><ol>
+<li>新建Map()</li>
+<li>给词按字母顺序排序；</li>
+<li>将排序后的字符作为键，map根据键向里面放数据；</li>
+<li>最后返回map的值</li>
+</ol>
+<h2 id="方法一：排序-哈希表"><a href="#方法一：排序-哈希表" class="headerlink" title="方法一：排序 + 哈希表"></a>方法一：排序 + 哈希表</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">groupAnagrams</span>(<span class="params">strs</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> map = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> str <span class="keyword">of</span> strs) &#123;</span><br><span class="line">        <span class="comment">// 将字符串排序后作为键</span></span><br><span class="line">        <span class="keyword">const</span> key = [...str].<span class="title function_">sort</span>().<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">        <span class="keyword">if</span> (!map.<span class="title function_">has</span>(key)) &#123;</span><br><span class="line">            map.<span class="title function_">set</span>(key, []);</span><br><span class="line">        &#125;</span><br><span class="line">        map.<span class="title function_">get</span>(key).<span class="title function_">push</span>(str);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Array</span>.<span class="title function_">from</span>(map.<span class="title function_">values</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法二：计数-哈希表"><a href="#方法二：计数-哈希表" class="headerlink" title="方法二：计数 + 哈希表"></a>方法二：计数 + 哈希表</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">groupAnagrams</span>(<span class="params">strs</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> map = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> str <span class="keyword">of</span> strs) &#123;</span><br><span class="line">        <span class="keyword">const</span> count = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">26</span>).<span class="title function_">fill</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> char <span class="keyword">of</span> str) &#123;</span><br><span class="line">            count[char.<span class="title function_">charCodeAt</span>() - <span class="string">&#x27;a&#x27;</span>.<span class="title function_">charCodeAt</span>()]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 将计数数组转换为字符串作为键</span></span><br><span class="line">        <span class="keyword">const</span> key = count.<span class="title function_">join</span>(<span class="string">&#x27;#&#x27;</span>);</span><br><span class="line">        <span class="keyword">if</span> (!map.<span class="title function_">has</span>(key)) &#123;</span><br><span class="line">            map.<span class="title function_">set</span>(key, []);</span><br><span class="line">        &#125;</span><br><span class="line">        map.<span class="title function_">get</span>(key).<span class="title function_">push</span>(str);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Array</span>.<span class="title function_">from</span>(map.<span class="title function_">values</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> strs = [<span class="string">&quot;eat&quot;</span>, <span class="string">&quot;tea&quot;</span>, <span class="string">&quot;tan&quot;</span>, <span class="string">&quot;ate&quot;</span>, <span class="string">&quot;nat&quot;</span>, <span class="string">&quot;bat&quot;</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">groupAnagrams</span>(strs));</span><br><span class="line"><span class="comment">// 输出: [ [ &#x27;eat&#x27;, &#x27;tea&#x27;, &#x27;ate&#x27; ], [ &#x27;tan&#x27;, &#x27;nat&#x27; ], [ &#x27;bat&#x27; ] ]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="方法比较"><a href="#方法比较" class="headerlink" title="方法比较"></a>方法比较</h2><ol>
+<li><p><strong>排序法</strong>：</p>
+<ul>
+<li>更直观，代码更简洁</li>
+<li>时间复杂度：O(n * k log k)，其中n是字符串数量，k是字符串最大长度</li>
+</ul>
+</li>
+<li><p><strong>计数法</strong>：</p>
+<ul>
+<li>更高效，特别是对于长字符串</li>
+<li>时间复杂度：O(n * k)</li>
+<li>需要处理字符计数字符串化的方式（这里使用#分隔）</li>
+</ul>
+</li>
+</ol>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>在JavaScript中，对象不能直接作为Map的键（会被转为字符串”[object Object]”），所以计数法需要将数组转换为特定格式的字符串</li>
+<li>字符计数时使用<code>charCodeAt()</code>方法获取ASCII码</li>
+<li><code>Array.from(map.values())</code>将Map的值转换为数组</li>
+</ul>
+<p>两种方法都能有效解决问题，根据实际场景选择合适的方法。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/16/algorithms/006-%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/" data-id="cmcae1sj50007sssd7k7305ns" data-title="006-字母异位词分组" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/39/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="page-number" href="/page/39/">39</a><span class="page-number current">40</span><a class="page-number" href="/page/41/">41</a><a class="page-number" href="/page/42/">42</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" href="/page/41/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

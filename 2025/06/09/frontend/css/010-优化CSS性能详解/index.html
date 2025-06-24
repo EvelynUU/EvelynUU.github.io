@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>010-优化CSS性能 | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="优化CSS性能详解CSS性能优化是提升网页加载速度和渲染效率的重要环节。以下是全面的CSS性能优化策略： 1. 减少CSS文件大小压缩CSS 使用工具如CSSNano、CleanCSS、UglifyCSS或在线工具压缩CSS Webpack等构建工具中配置css-minimizer-webpack-plugin 移除注释、空白和不必要的分号  精简CSS代码 删除未使用的CSS（使用PurgeCS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="010-优化CSS性能">
+<meta property="og:url" content="http://example.com/2025/06/09/frontend/css/010-%E4%BC%98%E5%8C%96CSS%E6%80%A7%E8%83%BD%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="优化CSS性能详解CSS性能优化是提升网页加载速度和渲染效率的重要环节。以下是全面的CSS性能优化策略： 1. 减少CSS文件大小压缩CSS 使用工具如CSSNano、CleanCSS、UglifyCSS或在线工具压缩CSS Webpack等构建工具中配置css-minimizer-webpack-plugin 移除注释、空白和不必要的分号  精简CSS代码 删除未使用的CSS（使用PurgeCS">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-09T15:59:22.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:43:55.315Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-frontend/css/010-优化CSS性能详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/09/frontend/css/010-%E4%BC%98%E5%8C%96CSS%E6%80%A7%E8%83%BD%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2025-06-09T15:59:22.000Z" itemprop="datePublished">2025-06-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Frontend/">Frontend</a>►<a class="article-category-link" href="/categories/Frontend/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      010-优化CSS性能
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="优化CSS性能详解"><a href="#优化CSS性能详解" class="headerlink" title="优化CSS性能详解"></a>优化CSS性能详解</h1><p>CSS性能优化是提升网页加载速度和渲染效率的重要环节。以下是全面的CSS性能优化策略：</p>
+<h2 id="1-减少CSS文件大小"><a href="#1-减少CSS文件大小" class="headerlink" title="1. 减少CSS文件大小"></a>1. 减少CSS文件大小</h2><h3 id="压缩CSS"><a href="#压缩CSS" class="headerlink" title="压缩CSS"></a>压缩CSS</h3><ul>
+<li>使用工具如CSSNano、CleanCSS、UglifyCSS或在线工具压缩CSS</li>
+<li>Webpack等构建工具中配置<code>css-minimizer-webpack-plugin</code></li>
+<li>移除注释、空白和不必要的分号</li>
+</ul>
+<h3 id="精简CSS代码"><a href="#精简CSS代码" class="headerlink" title="精简CSS代码"></a>精简CSS代码</h3><ul>
+<li>删除未使用的CSS（使用PurgeCSS、UnCSS等工具）</li>
+<li>合并重复的样式规则</li>
+<li>使用简写属性（如<code>margin: 10px 20px</code>代替分开设置）</li>
+</ul>
+<h2 id="2-优化CSS交付方式"><a href="#2-优化CSS交付方式" class="headerlink" title="2. 优化CSS交付方式"></a>2. 优化CSS交付方式</h2><h3 id="关键CSS内联"><a href="#关键CSS内联" class="headerlink" title="关键CSS内联"></a>关键CSS内联</h3><ul>
+<li>提取首屏关键CSS内联到HTML中</li>
+<li>使用工具如Critical、Penthouse提取关键CSS</li>
+</ul>
+<h3 id="异步加载非关键CSS"><a href="#异步加载非关键CSS" class="headerlink" title="异步加载非关键CSS"></a>异步加载非关键CSS</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;preload&quot;</span> <span class="attr">href</span>=<span class="string">&quot;styles.css&quot;</span> <span class="attr">as</span>=<span class="string">&quot;style&quot;</span> <span class="attr">onload</span>=<span class="string">&quot;this.rel=&#x27;stylesheet&#x27;&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">noscript</span>&gt;</span><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;styles.css&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">noscript</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="媒体查询优化"><a href="#媒体查询优化" class="headerlink" title="媒体查询优化"></a>媒体查询优化</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;print.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">media</span>=<span class="string">&quot;print&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;mobile.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">media</span>=<span class="string">&quot;screen and (max-width: 600px)&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-选择器性能优化"><a href="#3-选择器性能优化" class="headerlink" title="3. 选择器性能优化"></a>3. 选择器性能优化</h2><h3 id="避免过度复杂的选择器"><a href="#避免过度复杂的选择器" class="headerlink" title="避免过度复杂的选择器"></a>避免过度复杂的选择器</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 差 - 过于复杂 */</span></span><br><span class="line"><span class="selector-tag">body</span><span class="selector-class">.home</span> <span class="selector-tag">div</span><span class="selector-class">.header</span> <span class="selector-tag">ul</span><span class="selector-class">.nav</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 好 */</span></span><br><span class="line"><span class="selector-class">.nav-link</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="避免通用选择器"><a href="#避免通用选择器" class="headerlink" title="避免通用选择器"></a>避免通用选择器</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 差 - 性能低下 */</span></span><br><span class="line"><span class="selector-attr">[hidden=<span class="string">&quot;true&quot;</span>]</span> &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 好 */</span></span><br><span class="line"><span class="selector-class">.hidden</span> &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="避免深层嵌套"><a href="#避免深层嵌套" class="headerlink" title="避免深层嵌套"></a>避免深层嵌套</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 差 */</span></span><br><span class="line"><span class="selector-tag">div</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span> &gt; <span class="selector-tag">a</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 好 */</span></span><br><span class="line"><span class="selector-class">.menu-link</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-布局与绘制优化"><a href="#4-布局与绘制优化" class="headerlink" title="4. 布局与绘制优化"></a>4. 布局与绘制优化</h2><h3 id="减少重排和重绘"><a href="#减少重排和重绘" class="headerlink" title="减少重排和重绘"></a>减少重排和重绘</h3><ul>
+<li>使用<code>transform</code>和<code>opacity</code>实现动画（它们只触发合成阶段）</li>
+<li>避免频繁修改布局属性（如width、height、top等）</li>
+</ul>
+<h3 id="使用will-change提示浏览器"><a href="#使用will-change提示浏览器" class="headerlink" title="使用will-change提示浏览器"></a>使用will-change提示浏览器</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.animated-element</span> &#123;</span><br><span class="line">  <span class="attribute">will-change</span>: transform, opacity;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用contain属性"><a href="#使用contain属性" class="headerlink" title="使用contain属性"></a>使用contain属性</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.widget</span> &#123;</span><br><span class="line">  <span class="attribute">contain</span>: layout style paint;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-现代CSS技术应用"><a href="#5-现代CSS技术应用" class="headerlink" title="5. 现代CSS技术应用"></a>5. 现代CSS技术应用</h2><h3 id="使用CSS变量"><a href="#使用CSS变量" class="headerlink" title="使用CSS变量"></a>使用CSS变量</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attr">--primary-color</span>: <span class="number">#3498db</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--primary-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用Flexbox和Grid布局"><a href="#使用Flexbox和Grid布局" class="headerlink" title="使用Flexbox和Grid布局"></a>使用Flexbox和Grid布局</h3><ul>
+<li>这些现代布局方式比传统浮动布局更高效</li>
+</ul>
+<h3 id="使用CSS精灵图"><a href="#使用CSS精灵图" class="headerlink" title="使用CSS精灵图"></a>使用CSS精灵图</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.icon</span> &#123;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">&#x27;sprites.png&#x27;</span>);</span><br><span class="line">  <span class="attribute">background-position</span>: -<span class="number">20px</span> -<span class="number">30px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-其他优化技巧"><a href="#6-其他优化技巧" class="headerlink" title="6. 其他优化技巧"></a>6. 其他优化技巧</h2><h3 id="减少-import使用"><a href="#减少-import使用" class="headerlink" title="减少@import使用"></a>减少@import使用</h3><ul>
+<li><code>@import</code>会阻止并行加载，改用<code>&lt;link&gt;</code>标签</li>
+</ul>
+<h3 id="合理使用字体"><a href="#合理使用字体" class="headerlink" title="合理使用字体"></a>合理使用字体</h3><ul>
+<li>限制字体变体数量</li>
+<li>使用<code>font-display: swap</code>确保文本可见性</li>
+</ul>
+<h3 id="减少昂贵的CSS属性"><a href="#减少昂贵的CSS属性" class="headerlink" title="减少昂贵的CSS属性"></a>减少昂贵的CSS属性</h3><ul>
+<li>避免过度使用<code>box-shadow</code>、<code>border-radius</code>、<code>filter</code>等</li>
+</ul>
+<h2 id="7-工具与测试"><a href="#7-工具与测试" class="headerlink" title="7. 工具与测试"></a>7. 工具与测试</h2><h3 id="性能分析工具"><a href="#性能分析工具" class="headerlink" title="性能分析工具"></a>性能分析工具</h3><ul>
+<li>Chrome DevTools的Performance面板</li>
+<li>CSS Stats分析CSS复杂度</li>
+<li>Lighthouse性能评分</li>
+</ul>
+<h3 id="自动化优化"><a href="#自动化优化" class="headerlink" title="自动化优化"></a>自动化优化</h3><ul>
+<li>在构建流程中集成PostCSS及其插件</li>
+<li>使用PurgeCSS移除未使用的CSS</li>
+</ul>
+<p>通过综合应用这些优化策略，可以显著提升CSS性能，改善页面加载速度和用户体验。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/09/frontend/css/010-%E4%BC%98%E5%8C%96CSS%E6%80%A7%E8%83%BD%E8%AF%A6%E8%A7%A3/" data-id="cmcae1sjy005xsssdgkej9pz6" data-title="010-优化CSS性能" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/09/frontend/css/011-Flex%E5%B8%83%E5%B1%80%E8%AF%A6%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          011-Flex布局
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/09/frontend/css/009-CSS3%E6%96%B0%E7%89%B9%E6%80%A7%E8%AF%A6%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">009-CSS3新特性详解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

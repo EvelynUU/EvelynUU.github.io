@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>1.6 Kube Scheduler | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Kube Scheduler 工作原理Kube Scheduler 是 Kubernetes 控制平面的核心组件之一，负责将新创建的 Pod 分配到集群中合适的节点上运行。scheduler只决定哪个pod放在哪里，但不执行任何操作。 以下是基于 Kubernetes 官方文档和 Udemy 课程内容的详细解析： 一、核心工作原理1. 调度流程概述 **过滤阶段 (Predicates)**：从所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.6 Kube Scheduler">
+<meta property="og:url" content="http://example.com/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="Kube Scheduler 工作原理Kube Scheduler 是 Kubernetes 控制平面的核心组件之一，负责将新创建的 Pod 分配到集群中合适的节点上运行。scheduler只决定哪个pod放在哪里，但不执行任何操作。 以下是基于 Kubernetes 官方文档和 Udemy 课程内容的详细解析： 一、核心工作原理1. 调度流程概述 **过滤阶段 (Predicates)**：从所">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-20T05:51:35.000Z">
+<meta property="article:modified_time" content="2025-06-24T08:51:48.806Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="k8s">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-devops/kubernetes/1 core concepts/1.6 Kube Scheduler" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/" class="article-date">
+  <time class="dt-published" datetime="2025-06-20T05:51:35.000Z" itemprop="datePublished">2025-06-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/DevOps/">DevOps</a>►<a class="article-category-link" href="/categories/DevOps/kubernetes/">kubernetes</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      1.6 Kube Scheduler
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Kube-Scheduler-工作原理"><a href="#Kube-Scheduler-工作原理" class="headerlink" title="Kube Scheduler 工作原理"></a>Kube Scheduler 工作原理</h2><p>Kube Scheduler 是 Kubernetes 控制平面的核心组件之一，负责将新创建的 Pod 分配到集群中合适的节点上运行。scheduler只决定哪个pod放在哪里，但不执行任何操作。</p>
+<p>以下是基于 Kubernetes 官方文档和 Udemy 课程内容的详细解析：</p>
+<h2 id="一、核心工作原理"><a href="#一、核心工作原理" class="headerlink" title="一、核心工作原理"></a>一、核心工作原理</h2><h3 id="1-调度流程概述"><a href="#1-调度流程概述" class="headerlink" title="1. 调度流程概述"></a>1. 调度流程概述</h3><ol>
+<li>**过滤阶段 (Predicates)**：从所有节点中筛选出符合 Pod 要求的候选节点</li>
+<li>**打分阶段 (Priorities)**：对候选节点进行评分，选择最优节点</li>
+<li>**绑定阶段 (Binding)**：将 Pod 与选定节点绑定</li>
+</ol>
+<h3 id="2-详细工作流程"><a href="#2-详细工作流程" class="headerlink" title="2. 详细工作流程"></a>2. 详细工作流程</h3><ol>
+<li><strong>Pod 创建</strong>：用户通过 kubectl 或 API 创建 Pod</li>
+<li><strong>进入调度队列</strong>：Pod 进入 Scheduler 的待调度队列</li>
+<li><strong>调度周期开始</strong>：<ul>
+<li>从队列中取出一个 Pod</li>
+<li>检查 Pod 是否可调度（如是否有 nodeSelector 等限制）</li>
+</ul>
+</li>
+<li><strong>过滤阶段</strong>：<ul>
+<li>检查节点资源是否足够（CPU、内存）</li>
+<li>检查节点是否满足 Pod 的亲和性&#x2F;反亲和性规则</li>
+<li>检查节点是否有污点而 Pod 是否有相应容忍</li>
+<li>检查端口冲突等</li>
+</ul>
+</li>
+<li><strong>打分阶段</strong>：<ul>
+<li>对通过过滤的节点进行评分（0-10 分）</li>
+<li>考虑因素包括：资源平衡、亲和性得分、数据局部性等</li>
+</ul>
+</li>
+<li><strong>选择节点</strong>：选择得分最高的节点</li>
+<li><strong>绑定</strong>：通过 API Server 更新 Pod 的 nodeName 字段</li>
+</ol>
+<h2 id="二、调度策略详解"><a href="#二、调度策略详解" class="headerlink" title="二、调度策略详解"></a>二、调度策略详解</h2><h3 id="1-预选策略-Predicates"><a href="#1-预选策略-Predicates" class="headerlink" title="1. 预选策略 (Predicates)"></a>1. 预选策略 (Predicates)</h3><ul>
+<li><strong>PodFitsResources</strong>：检查节点资源是否满足</li>
+<li><strong>PodFitsHostPorts</strong>：检查请求的 HostPort 是否可用</li>
+<li><strong>MatchNodeSelector</strong>：检查节点标签匹配</li>
+<li><strong>CheckVolumeBinding</strong>：检查卷绑定情况</li>
+<li><strong>NoDiskConflict</strong>：检查存储卷冲突（已弃用）</li>
+<li><strong>PodToleratesNodeTaints</strong>：检查污点容忍</li>
+</ul>
+<h3 id="2-优选策略-Priorities"><a href="#2-优选策略-Priorities" class="headerlink" title="2. 优选策略 (Priorities)"></a>2. 优选策略 (Priorities)</h3><ul>
+<li><strong>LeastRequestedPriority</strong>：优先选择请求资源少的节点</li>
+<li><strong>BalancedResourceAllocation</strong>：平衡 CPU 和内存使用</li>
+<li><strong>NodeAffinityPriority</strong>：节点亲和性权重</li>
+<li><strong>TaintTolerationPriority</strong>：污点容忍权重</li>
+<li><strong>ImageLocalityPriority</strong>：优先选择已有所需镜像的节点</li>
+</ul>
+<h2 id="三、常用命令"><a href="#三、常用命令" class="headerlink" title="三、常用命令"></a>三、常用命令</h2><h3 id="1-查看-Scheduler-状态"><a href="#1-查看-Scheduler-状态" class="headerlink" title="1. 查看 Scheduler 状态"></a>1. 查看 Scheduler 状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl get componentstatuses scheduler</span><br><span class="line"><span class="comment"># 或缩写</span></span><br><span class="line">kubectl get cs scheduler</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-查看-Scheduler-Pod"><a href="#2-查看-Scheduler-Pod" class="headerlink" title="2. 查看 Scheduler Pod"></a>2. 查看 Scheduler Pod</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pods -n kube-system -l component=kube-scheduler</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-查看调度日志"><a href="#3-查看调度日志" class="headerlink" title="3. 查看调度日志"></a>3. 查看调度日志</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl logs -n kube-system &lt;scheduler-pod-name&gt;</span><br><span class="line"><span class="comment"># 带时间戳查看</span></span><br><span class="line">kubectl logs -n kube-system &lt;scheduler-pod-name&gt; --timestamps=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-查看调度事件"><a href="#4-查看调度事件" class="headerlink" title="4. 查看调度事件"></a>4. 查看调度事件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get events --field-selector involvedObject.kind=Pod</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-查看未调度-Pod"><a href="#5-查看未调度-Pod" class="headerlink" title="5. 查看未调度 Pod"></a>5. 查看未调度 Pod</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pods --all-namespaces --field-selector status.phase=Pending</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-查看-Pod-调度详情"><a href="#6-查看-Pod-调度详情" class="headerlink" title="6. 查看 Pod 调度详情"></a>6. 查看 Pod 调度详情</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl describe pod &lt;pod-name&gt; | grep -A 10 Events</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-检查调度器配置"><a href="#7-检查调度器配置" class="headerlink" title="7. 检查调度器配置"></a>7. 检查调度器配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pod &lt;scheduler-pod-name&gt; -n kube-system -o yaml</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、与其他功能的交互"><a href="#四、与其他功能的交互" class="headerlink" title="四、与其他功能的交互"></a>四、与其他功能的交互</h2><h3 id="1-与-API-Server-交互"><a href="#1-与-API-Server-交互" class="headerlink" title="1. 与 API Server 交互"></a>1. 与 API Server 交互</h3><ul>
+<li>监听未绑定 Pod 的变化</li>
+<li>通过 API Server 更新 Pod 的绑定信息</li>
+<li>使用领导者选举机制实现高可用</li>
+</ul>
+<h3 id="2-与-Controller-Manager-交互"><a href="#2-与-Controller-Manager-交互" class="headerlink" title="2. 与 Controller Manager 交互"></a>2. 与 Controller Manager 交互</h3><ul>
+<li>Controller Manager 创建的 Pod 需要 Scheduler 调度</li>
+<li>某些控制器（如 Deployment）会响应调度失败事件</li>
+</ul>
+<h3 id="3-与-Kubelet-交互"><a href="#3-与-Kubelet-交互" class="headerlink" title="3. 与 Kubelet 交互"></a>3. 与 Kubelet 交互</h3><ul>
+<li>Kubelet 接收调度结果并启动 Pod</li>
+<li>Kubelet 上报节点资源使用情况影响后续调度</li>
+</ul>
+<h3 id="4-与集群自动扩缩容-Cluster-Autoscaler-交互"><a href="#4-与集群自动扩缩容-Cluster-Autoscaler-交互" class="headerlink" title="4. 与集群自动扩缩容 (Cluster Autoscaler) 交互"></a>4. 与集群自动扩缩容 (Cluster Autoscaler) 交互</h3><ul>
+<li>当没有合适节点时，Cluster Autoscaler 可能扩展集群</li>
+<li>Scheduler 会考虑自动扩缩容约束</li>
+</ul>
+<h2 id="五、高级配置"><a href="#五、高级配置" class="headerlink" title="五、高级配置"></a>五、高级配置</h2><h3 id="1-自定义调度策略"><a href="#1-自定义调度策略" class="headerlink" title="1. 自定义调度策略"></a>1. 自定义调度策略</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">kubescheduler.config.k8s.io/v1beta2</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">KubeSchedulerConfiguration</span></span><br><span class="line"><span class="attr">profiles:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">schedulerName:</span> <span class="string">default-scheduler</span></span><br><span class="line">    <span class="attr">plugins:</span></span><br><span class="line">      <span class="attr">preScore:</span></span><br><span class="line">        <span class="attr">enabled:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">InterPodAffinity</span></span><br><span class="line">      <span class="attr">score:</span></span><br><span class="line">        <span class="attr">enabled:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">InterPodAffinity</span></span><br><span class="line">          <span class="attr">weight:</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-多调度器配置"><a href="#2-多调度器配置" class="headerlink" title="2. 多调度器配置"></a>2. 多调度器配置</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">mypod</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">schedulerName:</span> <span class="string">my-custom-scheduler</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-调度器调优参数"><a href="#3-调度器调优参数" class="headerlink" title="3. 调度器调优参数"></a>3. 调度器调优参数</h3><ul>
+<li><code>--percentage-of-nodes-to-score</code>: 设置评分节点的百分比（默认 50%）</li>
+<li><code>--kube-api-qps</code>: 控制 API Server 的 QPS（默认 50）</li>
+<li><code>--kube-api-burst</code>: 控制 API Server 的突发请求量（默认 100）</li>
+</ul>
+<h2 id="六、常见问题排查"><a href="#六、常见问题排查" class="headerlink" title="六、常见问题排查"></a>六、常见问题排查</h2><h3 id="1-Pod-处于-Pending-状态"><a href="#1-Pod-处于-Pending-状态" class="headerlink" title="1. Pod 处于 Pending 状态"></a>1. Pod 处于 Pending 状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看原因</span></span><br><span class="line">kubectl describe pod &lt;pod-name&gt; | grep -i <span class="string">&quot;failed scheduling&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-调度器性能问题"><a href="#2-调度器性能问题" class="headerlink" title="2. 调度器性能问题"></a>2. 调度器性能问题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看调度延迟</span></span><br><span class="line">kubectl get --raw /metrics | grep scheduler_scheduling_algorithm_duration_seconds</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-节点资源不足"><a href="#3-节点资源不足" class="headerlink" title="3. 节点资源不足"></a>3. 节点资源不足</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl describe node &lt;node-name&gt; | grep -A 10 Allocatable</span><br></pre></td></tr></table></figure>
+
+<h2 id="七、最佳实践（来自-Udemy-课程）"><a href="#七、最佳实践（来自-Udemy-课程）" class="headerlink" title="七、最佳实践（来自 Udemy 课程）"></a>七、最佳实践（来自 Udemy 课程）</h2><ol>
+<li><strong>合理设置资源请求和限制</strong>：帮助调度器做出更好决策</li>
+<li><strong>使用亲和性&#x2F;反亲和性规则</strong>：控制 Pod 分布</li>
+<li><strong>使用污点和容忍</strong>：专用节点管理</li>
+<li><strong>监控调度延迟</strong>：确保调度性能</li>
+<li><strong>考虑 Pod 优先级</strong>：重要 Pod 优先调度</li>
+<li><strong>使用 PodTopologySpread</strong>：实现 Pod 拓扑分布</li>
+</ol>
+<h2 id="八、调试技巧"><a href="#八、调试技巧" class="headerlink" title="八、调试技巧"></a>八、调试技巧</h2><ol>
+<li><strong>模拟调度</strong>：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create -f pod.yaml --dry-run=server</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><strong>查看调度器决策</strong>：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get events --sort-by=.metadata.creationTimestamp</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><strong>检查节点容量</strong>：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl describe nodes | grep -A 5 Capacity</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><strong>检查调度器指标</strong>：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl proxy &amp;</span><br><span class="line">curl http://localhost:8001/metrics | grep scheduler</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/" data-id="cmcae1ski00a0sssd1dp0co09" data-title="1.6 Kube Scheduler" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          1.7 Kubelet
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">1.5 Kube Controller Manager</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

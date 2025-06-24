@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>022-单词搜索（回溯法） | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="单词搜索（Word Search）问题给定一个 m x n 的二维字符网格 board 和一个字符串 word，判断 word 是否存在于网格中。单词必须按照字母顺序，通过相邻的单元格（水平或垂直相邻）构成，同一个单元格内的字母不允许被重复使用。 示例12345678910输入：board &#x3D; [  [&#x27;A&#x27;,&#x27;B&#x27;,&#x27;C&#x27;,&#x27;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="022-单词搜索（回溯法）">
+<meta property="og:url" content="http://example.com/2025/06/17/algorithms/022-%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2%EF%BC%88%E5%9B%9E%E6%BA%AF%E6%B3%95%EF%BC%89/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="单词搜索（Word Search）问题给定一个 m x n 的二维字符网格 board 和一个字符串 word，判断 word 是否存在于网格中。单词必须按照字母顺序，通过相邻的单元格（水平或垂直相邻）构成，同一个单元格内的字母不允许被重复使用。 示例12345678910输入：board &#x3D; [  [&#x27;A&#x27;,&#x27;B&#x27;,&#x27;C&#x27;,&#x27;">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-17T15:59:26.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:23:06.837Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="algorithms">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-algorithms/022-单词搜索（回溯法）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/17/algorithms/022-%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2%EF%BC%88%E5%9B%9E%E6%BA%AF%E6%B3%95%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2025-06-17T15:59:26.000Z" itemprop="datePublished">2025-06-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      022-单词搜索（回溯法）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="单词搜索（Word-Search）问题"><a href="#单词搜索（Word-Search）问题" class="headerlink" title="单词搜索（Word Search）问题"></a><strong>单词搜索（Word Search）问题</strong></h3><p>给定一个 <code>m x n</code> 的二维字符网格 <code>board</code> 和一个字符串 <code>word</code>，判断 <code>word</code> 是否存在于网格中。<br>单词必须按照字母顺序，通过相邻的单元格（水平或垂直相邻）构成，<strong>同一个单元格内的字母不允许被重复使用</strong>。</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a><strong>示例</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">board = [</span><br><span class="line">  [<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;E&#x27;</span>],</span><br><span class="line">  [<span class="string">&#x27;S&#x27;</span>,<span class="string">&#x27;F&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;S&#x27;</span>],</span><br><span class="line">  [<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;D&#x27;</span>,<span class="string">&#x27;E&#x27;</span>,<span class="string">&#x27;E&#x27;</span>]</span><br><span class="line">],</span><br><span class="line">word = <span class="string">&quot;ABCCED&quot;</span></span><br><span class="line"></span><br><span class="line">输出：<span class="literal">true</span></span><br><span class="line">解释：路径 A → B → C → C → E → D 可以构成单词 <span class="string">&quot;ABCCED&quot;</span>。</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="方法：回溯法（DFS-剪枝）"><a href="#方法：回溯法（DFS-剪枝）" class="headerlink" title="方法：回溯法（DFS + 剪枝）"></a><strong>方法：回溯法（DFS + 剪枝）</strong></h2><h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a><strong>核心思想</strong></h3><ol>
+<li><strong>遍历网格</strong>：对每个单元格作为起点，尝试匹配 <code>word</code> 的第一个字符。</li>
+<li><strong>DFS 回溯</strong>：<ul>
+<li>从当前单元格出发，向 <strong>上、下、左、右</strong> 四个方向递归搜索。</li>
+<li>如果当前字符匹配，继续搜索下一个字符；否则回溯。</li>
+</ul>
+</li>
+<li><strong>避免重复使用</strong>：用 <code>visited</code> 矩阵或临时修改 <code>board</code> 标记已访问的单元格。</li>
+</ol>
+<h3 id="JavaScript-代码"><a href="#JavaScript-代码" class="headerlink" title="JavaScript 代码"></a><strong>JavaScript 代码</strong></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> exist = <span class="keyword">function</span>(<span class="params">board, word</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> m = board.<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">const</span> n = board[<span class="number">0</span>].<span class="property">length</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">dfs</span> = (<span class="params">i, j, index</span>) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (index === word.<span class="property">length</span>) <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 全部匹配完成</span></span><br><span class="line">        <span class="keyword">if</span> (i &lt; <span class="number">0</span> || i &gt;= m || j &lt; <span class="number">0</span> || j &gt;= n || board[i][j] !== word[index]) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 越界或不匹配</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">const</span> temp = board[i][j]; <span class="comment">// 临时存储当前字符</span></span><br><span class="line">        board[i][j] = <span class="string">&#x27;#&#x27;</span>;        <span class="comment">// 标记为已访问（避免重复使用）</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 向四个方向搜索</span></span><br><span class="line">        <span class="keyword">const</span> found = <span class="title function_">dfs</span>(i + <span class="number">1</span>, j, index + <span class="number">1</span>) ||</span><br><span class="line">                     <span class="title function_">dfs</span>(i - <span class="number">1</span>, j, index + <span class="number">1</span>) ||</span><br><span class="line">                     <span class="title function_">dfs</span>(i, j + <span class="number">1</span>, index + <span class="number">1</span>) ||</span><br><span class="line">                     <span class="title function_">dfs</span>(i, j - <span class="number">1</span>, index + <span class="number">1</span>);</span><br><span class="line">        </span><br><span class="line">        board[i][j] = temp; <span class="comment">// 恢复原始字符（回溯）</span></span><br><span class="line">        <span class="keyword">return</span> found;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="title function_">dfs</span>(i, j, <span class="number">0</span>)) <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 从 (i,j) 开始匹配</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a><strong>时间复杂度</strong></h3><ul>
+<li><strong>最坏情况</strong>：O(m × n × 4^L)，其中 <code>L</code> 是 <code>word</code> 的长度（每个单元格有 4 个方向的选择）。</li>
+<li><strong>剪枝优化</strong>：实际运行时，不匹配的路径会提前终止。</li>
+</ul>
+<hr>
+<h2 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a><strong>关键点</strong></h2><ol>
+<li><strong>递归终止条件</strong>：<ul>
+<li><code>index === word.length</code>：成功匹配整个单词。</li>
+<li>越界或字符不匹配：直接返回 <code>false</code>。</li>
+</ul>
+</li>
+<li><strong>避免重复访问</strong>：<ul>
+<li>临时修改 <code>board[i][j]</code> 为特殊字符（如 <code>#</code>），递归结束后恢复。</li>
+</ul>
+</li>
+<li><strong>方向搜索</strong>：<ul>
+<li>每次递归尝试 <strong>上、下、左、右</strong> 四个方向。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="示例解析"><a href="#示例解析" class="headerlink" title="示例解析"></a><strong>示例解析</strong></h2><p>以输入 <code>board = [[&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;E&quot;],[&quot;S&quot;,&quot;F&quot;,&quot;C&quot;,&quot;S&quot;],[&quot;A&quot;,&quot;D&quot;,&quot;E&quot;,&quot;E&quot;]]</code> 和 <code>word = &quot;ABCCED&quot;</code> 为例：</p>
+<ol>
+<li>从 <code>(0,0)</code> 开始（<code>A</code> 匹配 <code>word[0]</code>）：<ul>
+<li>向下到 <code>(1,0)</code>（<code>S</code> ≠ <code>B</code>）→ 回溯。</li>
+<li>向右到 <code>(0,1)</code>（<code>B</code> 匹配 <code>word[1]</code>）：<ul>
+<li>继续向右到 <code>(0,2)</code>（<code>C</code> 匹配 <code>word[2]</code>）：<ul>
+<li>向下到 <code>(1,2)</code>（<code>C</code> 匹配 <code>word[3]</code>）：<ul>
+<li>向下到 <code>(2,2)</code>（<code>E</code> 匹配 <code>word[4]</code>）：<ul>
+<li>向左到 <code>(2,1)</code>（<code>D</code> 匹配 <code>word[5]</code>）→ 返回 <code>true</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="变种问题"><a href="#变种问题" class="headerlink" title="变种问题"></a><strong>变种问题</strong></h2><h3 id="单词搜索-II（多个单词）"><a href="#单词搜索-II（多个单词）" class="headerlink" title="单词搜索 II（多个单词）"></a><strong>单词搜索 II（多个单词）</strong></h3><p>给定一个 <code>board</code> 和一个单词列表 <code>words</code>，返回所有能在 <code>board</code> 中匹配的单词。<br><strong>优化方法</strong>：使用 <strong>Trie 树（字典树）</strong> 预处理 <code>words</code>，结合回溯法。</p>
+<h3 id="允许重复使用单元格"><a href="#允许重复使用单元格" class="headerlink" title="允许重复使用单元格"></a><strong>允许重复使用单元格</strong></h3><p>若允许重复使用单元格，需调整 <code>visited</code> 逻辑（一般不常见）。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>时间复杂度</th>
+<th>空间复杂度</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>回溯法（DFS）</strong></td>
+<td>O(m × n × 4^L)</td>
+<td>O(L)（递归栈）</td>
+<td>通用</td>
+</tr>
+<tr>
+<td><strong>Trie + 回溯</strong></td>
+<td>O(m × n × 4^L)</td>
+<td>O(T)（Trie 节点数）</td>
+<td>多单词搜索</td>
+</tr>
+</tbody></table>
+<p><strong>推荐</strong>：</p>
+<ul>
+<li>单单词搜索直接用回溯法。</li>
+<li>多单词搜索用 Trie 优化。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/17/algorithms/022-%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2%EF%BC%88%E5%9B%9E%E6%BA%AF%E6%B3%95%EF%BC%89/" data-id="cmcae1sjg001usssd92hnd0i0" data-title="022-单词搜索（回溯法）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/17/algorithms/023-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0%EF%BC%88%E8%99%9A%E6%8B%9F%E5%A4%B4%E8%8A%82%E7%82%B9%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          023-两数相加（虚拟头节点）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/17/algorithms/021-%E5%85%A8%E6%8E%92%E5%88%97%EF%BC%88%E5%9B%9E%E6%BA%AF%E6%B3%95%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">021-全排列（回溯法）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>001-React生命周期 | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="以下是React生命周期的详细解析，包含具体应用场景、变更原因及图示说明，基于React 17&#x2F;18版本（截至2025年6月）。  一、React生命周期全阶段图解与说明新版生命周期流程图（React 16.4+）12345678910111213141516graph TDA[挂载阶段] --&gt; B(constructor)B --&gt; C&#123;static getDe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="001-React生命周期">
+<meta property="og:url" content="http://example.com/2025/06/01/frontend/react/001-react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="以下是React生命周期的详细解析，包含具体应用场景、变更原因及图示说明，基于React 17&#x2F;18版本（截至2025年6月）。  一、React生命周期全阶段图解与说明新版生命周期流程图（React 16.4+）12345678910111213141516graph TDA[挂载阶段] --&gt; B(constructor)B --&gt; C&#123;static getDe">
+<meta property="og:locale">
+<meta property="og:image" content="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/">
+<meta property="article:published_time" content="2025-06-01T05:44:37.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:46:00.110Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-frontend/react/001-react生命周期" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/01/frontend/react/001-react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="article-date">
+  <time class="dt-published" datetime="2025-06-01T05:44:37.000Z" itemprop="datePublished">2025-06-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Frontend/">Frontend</a>►<a class="article-category-link" href="/categories/Frontend/React/">React</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      001-React生命周期
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>以下是React生命周期的详细解析，包含具体应用场景、变更原因及图示说明，基于React 17&#x2F;18版本（截至2025年6月）。</p>
+<hr>
+<h3 id="一、React生命周期全阶段图解与说明"><a href="#一、React生命周期全阶段图解与说明" class="headerlink" title="一、React生命周期全阶段图解与说明"></a>一、React生命周期全阶段图解与说明</h3><h4 id="新版生命周期流程图（React-16-4-）"><a href="#新版生命周期流程图（React-16-4-）" class="headerlink" title="新版生命周期流程图（React 16.4+）"></a>新版生命周期流程图（React 16.4+）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A[挂载阶段] --&gt; B(constructor)</span><br><span class="line">B --&gt; C&#123;static getDerivedStateFromProps&#125;</span><br><span class="line">C --&gt; D(render)</span><br><span class="line">D --&gt; E(componentDidMount)</span><br><span class="line"></span><br><span class="line">F[更新阶段] --&gt; C</span><br><span class="line">C --&gt; G&#123;shouldComponentUpdate&#125;</span><br><span class="line">G --&gt;|true| D</span><br><span class="line">D --&gt; H(getSnapshotBeforeUpdate)</span><br><span class="line">H --&gt; I(componentDidUpdate)</span><br><span class="line"></span><br><span class="line">J[卸载阶段] --&gt; K(componentWillUnmount)</span><br><span class="line"></span><br><span class="line">L[错误处理] --&gt; M(static getDerivedStateFromError)</span><br><span class="line">M --&gt; N(componentDidCatch)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="二、各阶段详解与应用场景"><a href="#二、各阶段详解与应用场景" class="headerlink" title="二、各阶段详解与应用场景"></a>二、各阶段详解与应用场景</h3><h4 id="1-挂载阶段（Mounting）"><a href="#1-挂载阶段（Mounting）" class="headerlink" title="1. 挂载阶段（Mounting）"></a>1. <strong>挂载阶段（Mounting）</strong></h4><ul>
+<li><p><strong><code>constructor()</code></strong></p>
+<ul>
+<li><strong>场景</strong>：初始化state（如表单默认值）、绑定事件方法</li>
+<li><strong>示例</strong>：<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">  <span class="variable language_">super</span>(props);</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">state</span> = &#123; <span class="attr">count</span>: <span class="number">0</span> &#125;;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">handleClick</span> = <span class="variable language_">this</span>.<span class="property">handleClick</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong><code>static getDerivedStateFromProps(props, state)</code></strong></p>
+<ul>
+<li><strong>场景</strong>：props变化时同步state（如分页组件接收外部页码参数）</li>
+<li><strong>限制</strong>：必须是纯函数，无副作用</li>
+<li><strong>示例</strong>：<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="title function_">getDerivedStateFromProps</span>(<span class="params">props</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">page</span>: props.<span class="property">initialPage</span> &#125;; <span class="comment">// 用props初始化state</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong><code>render()</code></strong></p>
+<ul>
+<li><strong>规则</strong>：返回JSX，禁止执行<code>setState</code>或操作DOM</li>
+</ul>
+</li>
+<li><p><strong><code>componentDidMount()</code></strong></p>
+<ul>
+<li><strong>核心场景</strong>：<ol>
+<li><strong>数据请求</strong>（AJAX&#x2F;Fetch）</li>
+<li><strong>DOM操作</strong>（集成D3.js图表）</li>
+<li><strong>订阅事件</strong>（WebSocket监听）</li>
+</ol>
+</li>
+<li><strong>示例</strong>：<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">fetch</span>(<span class="string">&#x27;/api/data&#x27;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123; <span class="attr">data</span>: res.<span class="property">data</span> &#125;));</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">timer</span> = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> <span class="variable language_">this</span>.<span class="title function_">tick</span>(), <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-更新阶段（Updating）"><a href="#2-更新阶段（Updating）" class="headerlink" title="2. 更新阶段（Updating）"></a>2. <strong>更新阶段（Updating）</strong></h4><ul>
+<li><p><strong><code>shouldComponentUpdate(nextProps, nextState)</code></strong></p>
+<ul>
+<li><strong>场景</strong>：性能优化（阻止不必要的渲染）</li>
+<li><strong>示例</strong>：<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">shouldComponentUpdate</span>(<span class="params">nextProps</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> nextProps.<span class="property">userID</span> !== <span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">userID</span>; <span class="comment">// 仅当userID变化时重渲染</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong><code>getSnapshotBeforeUpdate(prevProps, prevState)</code></strong></p>
+<ul>
+<li><strong>场景</strong>：DOM更新前捕获状态（如滚动位置保持）</li>
+<li><strong>经典案例</strong>：聊天窗口新消息插入时保持视图位置<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">getSnapshotBeforeUpdate</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">listRef</span>.<span class="property">scrollHeight</span>; <span class="comment">// 返回更新前容器高度</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">componentDidUpdate</span>(<span class="params">prevProps, prevState, snapshot</span>) &#123;</span><br><span class="line">  <span class="comment">// snapshot为更新前高度，计算差值调整滚动条</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">listRef</span>.<span class="property">scrollTop</span> += <span class="variable language_">this</span>.<span class="property">listRef</span>.<span class="property">scrollHeight</span> - snapshot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong><code>componentDidUpdate(prevProps)</code></strong></p>
+<ul>
+<li><strong>场景</strong>：<ol>
+<li>props变化后重新请求数据（如路由参数变更）</li>
+<li>更新第三方库（如图表数据更新）<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">componentDidUpdate</span>(<span class="params">prevProps</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">productID</span> !== prevProps.<span class="property">productID</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">fetchProductData</span>(); <span class="comment">// ID变化时重新拉取数据</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="3-卸载与错误处理"><a href="#3-卸载与错误处理" class="headerlink" title="3. 卸载与错误处理"></a>3. <strong>卸载与错误处理</strong></h4><ul>
+<li><p><strong><code>componentWillUnmount()</code></strong></p>
+<ul>
+<li><strong>场景</strong>：清理定时器&#x2F;事件监听&#x2F;取消请求<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">componentWillUnmount</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="built_in">clearInterval</span>(<span class="variable language_">this</span>.<span class="property">timer</span>);</span><br><span class="line">  <span class="variable language_">window</span>.<span class="title function_">removeEventListener</span>(<span class="string">&#x27;resize&#x27;</span>, <span class="variable language_">this</span>.<span class="property">handleResize</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>错误边界（Error Boundaries）</strong></p>
+<ul>
+<li>**<code>static getDerivedStateFromError()</code>**：渲染备用UI</li>
+<li>**<code>componentDidCatch()</code>**：记录错误日志</li>
+<li><strong>示例</strong>：<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ErrorBoundary</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Component</span> &#123;</span><br><span class="line">  state = &#123; <span class="attr">hasError</span>: <span class="literal">false</span> &#125;;</span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">getDerivedStateFromError</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">hasError</span>: <span class="literal">true</span> &#125;; <span class="comment">// 触发降级UI</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">componentDidCatch</span>(<span class="params">error, info</span>) &#123;</span><br><span class="line">    <span class="title function_">logErrorToService</span>(error, info); <span class="comment">// 上报错误</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="三、生命周期变更的核心原因"><a href="#三、生命周期变更的核心原因" class="headerlink" title="三、生命周期变更的核心原因"></a>三、生命周期变更的核心原因</h3><h4 id="1-Fiber架构的异步渲染需求"><a href="#1-Fiber架构的异步渲染需求" class="headerlink" title="1. Fiber架构的异步渲染需求"></a>1. <strong>Fiber架构的异步渲染需求</strong></h4><p>React 16引入Fiber架构以实现可中断渲染，旧生命周期（如<code>componentWillMount</code>）可能被多次调用，导致：</p>
+<ul>
+<li><strong>资源泄露</strong>：重复创建订阅&#x2F;请求</li>
+<li><strong>状态不一致</strong>：中断后恢复时props&#x2F;state不同步</li>
+</ul>
+<h4 id="2-副作用规范化"><a href="#2-副作用规范化" class="headerlink" title="2. 副作用规范化"></a>2. <strong>副作用规范化</strong></h4><ul>
+<li><strong>问题</strong>：<code>componentWillMount</code>中的异步操作可能操作未挂载的DOM</li>
+<li><strong>解决</strong>：将副作用（数据请求等）移至<code>componentDidMount</code>，保证DOM就绪</li>
+</ul>
+<h4 id="3-不安全方法的滥用"><a href="#3-不安全方法的滥用" class="headerlink" title="3. 不安全方法的滥用"></a>3. <strong>不安全方法的滥用</strong></h4><ul>
+<li><strong><code>componentWillReceiveProps</code>反模式</strong>：<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 旧版：易错误同步props到state</span></span><br><span class="line"><span class="title function_">componentWillReceiveProps</span>(<span class="params">nextProps</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123; <span class="attr">value</span>: nextProps.<span class="property">value</span> &#125;); <span class="comment">// 破坏单一数据源</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+新版通过**<code>getDerivedStateFromProps</code>**强制纯函数解决</li>
+</ul>
+<hr>
+<h3 id="四、Hooks对生命周期的替代方案"><a href="#四、Hooks对生命周期的替代方案" class="headerlink" title="四、Hooks对生命周期的替代方案"></a>四、Hooks对生命周期的替代方案</h3><p>函数组件+Hooks成为主流范式（React 16.8+）：</p>
+<table>
+<thead>
+<tr>
+<th><strong>类组件生命周期</strong></th>
+<th><strong>Hooks等效方案</strong></th>
+<th><strong>示例</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>componentDidMount</code></td>
+<td><code>useEffect(..., [])</code></td>
+<td>初始化请求数据</td>
+</tr>
+<tr>
+<td><code>componentDidUpdate</code></td>
+<td><code>useEffect(..., [deps])</code></td>
+<td>依赖项更新后执行逻辑</td>
+</tr>
+<tr>
+<td><code>componentWillUnmount</code></td>
+<td><code>useEffect</code>返回清理函数</td>
+<td>清除定时器&#x2F;订阅</td>
+</tr>
+<tr>
+<td><code>shouldComponentUpdate</code></td>
+<td><code>React.memo</code> + <code>useMemo</code></td>
+<td>浅比较props避免重渲染</td>
+</tr>
+<tr>
+<td><code>getDerivedStateFromProps</code></td>
+<td><code>useState</code> + <code>useEffect</code></td>
+<td>根据props更新state</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>✅ <strong>Hooks优势</strong>：逻辑复用（自定义Hook）、无<code>this</code>绑定问题、代码更简洁</p>
+</blockquote>
+<hr>
+<h3 id="五、关键场景对比表"><a href="#五、关键场景对比表" class="headerlink" title="五、关键场景对比表"></a>五、关键场景对比表</h3><table>
+<thead>
+<tr>
+<th><strong>场景</strong></th>
+<th><strong>类组件方案</strong></th>
+<th><strong>函数组件方案</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>数据请求</strong></td>
+<td><code>componentDidMount</code></td>
+<td><code>useEffect</code> + 空依赖数组</td>
+</tr>
+<tr>
+<td><strong>滚动位置保持</strong></td>
+<td><code>getSnapshotBeforeUpdate</code></td>
+<td><code>useLayoutEffect</code> + ref保存位置</td>
+</tr>
+<tr>
+<td><strong>事件订阅&#x2F;清理</strong></td>
+<td><code>componentDidMount</code> + <code>componentWillUnmount</code></td>
+<td><code>useEffect</code>返回清理函数</td>
+</tr>
+<tr>
+<td><strong>props派生state</strong></td>
+<td><code>getDerivedStateFromProps</code></td>
+<td><code>useState</code> + <code>useEffect</code>监视props</td>
+</tr>
+<tr>
+<td><strong>错误捕获</strong></td>
+<td><code>getDerivedStateFromError</code></td>
+<td>暂无直接等效（需类组件错误边界）</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="六、官方变更总结与最佳实践"><a href="#六、官方变更总结与最佳实践" class="headerlink" title="六、官方变更总结与最佳实践"></a>六、官方变更总结与最佳实践</h3><ol>
+<li><p><strong>废弃原因</strong></p>
+<ul>
+<li>🚫 <code>componentWillMount</code>：服务端渲染可能重复调用</li>
+<li>🚫 <code>componentWillReceiveProps</code>：易错误同步props&#x2F;state</li>
+<li>🚫 <code>componentWillUpdate</code>：操作DOM导致状态不一致</li>
+</ul>
+</li>
+<li><p><strong>迁移策略</strong></p>
+<ul>
+<li>新项目：<strong>函数组件 + Hooks</strong></li>
+<li>旧项目改造：<ul>
+<li>用<code>getDerivedStateFromProps</code>替代<code>componentWillReceiveProps</code></li>
+<li>用<code>getSnapshotBeforeUpdate</code>替代<code>componentWillUpdate</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>设计思想演进</strong></p>
+<ul>
+<li><strong>同步 → 异步</strong>：为Concurrent Mode提供中断&#x2F;优先级调度能力</li>
+<li><strong>副作用隔离</strong>：渲染阶段保持纯净，副作用集中到Commit阶段</li>
+<li><strong>函数式优先</strong>：Hooks推动函数式编程，简化组件逻辑</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>附：生命周期完整对比图（新旧版本）<br><img src="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" alt="React生命周期对比图">（来源：React官方社区图表）</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/01/frontend/react/001-react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" data-id="cmcae1sk30073sssdf5gidd43" data-title="001-React生命周期" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/01/frontend/react/002-%E8%99%9A%E6%8B%9FDOM/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          002-虚拟DOM
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/05/20/foundation/protocol_browser/010-WebSocket/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">010-WebSocket</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

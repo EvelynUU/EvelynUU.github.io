@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:url" content="http://example.com/page/52/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:locale">
+<meta property="article:author" content="EvelynUU">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-algorithms/029-判断子序列" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/17/algorithms/029-%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/" class="article-date">
+  <time class="dt-published" datetime="2025-06-17T15:59:34.000Z" itemprop="datePublished">2025-06-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/17/algorithms/029-%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/">029-判断子序列</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="392-判断子序列-简单"><a href="#392-判断子序列-简单" class="headerlink" title="392. 判断子序列-简单"></a>392. 判断子序列-简单</h2><p>给定字符串 <strong>s</strong> 和 <strong>t</strong> ，判断 <strong>s</strong> 是否为 <strong>t</strong> 的子序列。</p>
+<p>字符串的一个子序列是原始字符串删除一些（也可以不删除）字符而不改变剩余字符相对位置形成的新字符串。（例如，<code>&quot;ace&quot;</code>是<code>&quot;abcde&quot;</code>的一个子序列，而<code>&quot;aec&quot;</code>不是）。</p>
+<p><strong>进阶：</strong></p>
+<p>如果有大量输入的 S，称作 S1, S2, … , Sk 其中 k &gt;&#x3D; 10亿，你需要依次检查它们是否为 T 的子序列。在这种情况下，你会怎样改变代码？</p>
+<h3 id="题解1：-执行用时击败100-（indexOf-用法复习）"><a href="#题解1：-执行用时击败100-（indexOf-用法复习）" class="headerlink" title="题解1： 执行用时击败100% （indexOf() 用法复习）"></a>题解1： 执行用时击败100% （indexOf() 用法复习）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; <span class="variable">s</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; <span class="variable">t</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">boolean</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> isSubsequence = <span class="keyword">function</span>(<span class="params">s, t</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> sLen = s.<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">const</span> tLen = t.<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">let</span> prevIndex = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">let</span> matchedCount =<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; sLen; i++) &#123;</span><br><span class="line">        <span class="comment">// 从prevIndex+1开始查找当前字符</span></span><br><span class="line">        <span class="keyword">const</span> currentIndex = t.<span class="title function_">indexOf</span>(s[i], prevIndex + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (currentIndex !== -<span class="number">1</span>) &#123; <span class="comment">//indexOf查不到的情况下返回-1</span></span><br><span class="line">            prevIndex = currentIndex;</span><br><span class="line">            matchedCount++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 如果没找到直接终止</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> matchedCount === sLen;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="题解2：简洁，通用"><a href="#题解2：简洁，通用" class="headerlink" title="题解2：简洁，通用"></a>题解2：简洁，通用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isSubsequence = <span class="keyword">function</span>(<span class="params">s, t</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;s.<span class="property">length</span> &amp;&amp; j&lt;t.<span class="property">length</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] === t[j]) i++;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i===s.<span class="property">length</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="进阶：针对海量输入的-S-检查是否为-T-的子序列的优化方案"><a href="#进阶：针对海量输入的-S-检查是否为-T-的子序列的优化方案" class="headerlink" title="进阶：针对海量输入的 S 检查是否为 T 的子序列的优化方案"></a>进阶：<strong>针对海量输入的 S 检查是否为 T 的子序列的优化方案</strong></h2><p>当需要处理 <strong>10亿级</strong> 的字符串 <code>S1, S2, ..., Sk</code> 并判断它们是否为 <code>T</code> 的子序列时，直接对每个 <code>S</code> 使用双指针法（O(n) 时间复杂度）会导致总时间复杂度达到 **O(k·n)**，这在 <code>k=10^9</code> 时显然不可行。以下是分阶段的优化策略：</p>
+<hr>
+<h3 id="1-预处理阶段：对-T-建立索引"><a href="#1-预处理阶段：对-T-建立索引" class="headerlink" title="1. 预处理阶段：对 T 建立索引"></a><strong>1. 预处理阶段：对 T 建立索引</strong></h3><h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a><strong>目标</strong></h4><p>将 <code>T</code> 转换为一种支持 <strong>快速查询字符位置</strong> 的数据结构，避免每次处理 <code>S</code> 时都重新扫描 <code>T</code>。</p>
+<h4 id="方法：建立字符位置映射表"><a href="#方法：建立字符位置映射表" class="headerlink" title="方法：建立字符位置映射表"></a><strong>方法：建立字符位置映射表</strong></h4><ul>
+<li>使用哈希表记录 <code>T</code> 中每个字符的 <strong>所有出现位置</strong>（按顺序存储）。</li>
+<li>例如 <code>T = &quot;ahbgdc&quot;</code> 的映射表：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&#x27;a&#x27;</span>: [<span class="number">0</span>],</span><br><span class="line">  <span class="string">&#x27;h&#x27;</span>: [<span class="number">1</span>],</span><br><span class="line">  <span class="string">&#x27;b&#x27;</span>: [<span class="number">2</span>],</span><br><span class="line">  <span class="string">&#x27;g&#x27;</span>: [<span class="number">3</span>],</span><br><span class="line">  <span class="string">&#x27;d&#x27;</span>: [<span class="number">4</span>],</span><br><span class="line">  <span class="string">&#x27;c&#x27;</span>: [<span class="number">5</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a><strong>代码实现</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">buildIndex</span>(<span class="params">T</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> index = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; T.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> char = T[i];</span><br><span class="line">        <span class="keyword">if</span> (!index[char]) index[char] = [];</span><br><span class="line">        index[char].<span class="title function_">push</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> index;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> indexT = <span class="title function_">buildIndex</span>(T); <span class="comment">// 预处理 T</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a><strong>复杂度分析</strong></h4><ul>
+<li>时间复杂度：O(n)（仅需一次）</li>
+<li>空间复杂度：O(n)</li>
+</ul>
+<hr>
+<h3 id="2-查询阶段：对每个-S-进行高效匹配"><a href="#2-查询阶段：对每个-S-进行高效匹配" class="headerlink" title="2. 查询阶段：对每个 S 进行高效匹配"></a><strong>2. 查询阶段：对每个 S 进行高效匹配</strong></h3><h4 id="目标-1"><a href="#目标-1" class="headerlink" title="目标"></a><strong>目标</strong></h4><p>利用预处理好的 <code>indexT</code>，快速判断 <code>S</code> 是否为 <code>T</code> 的子序列。</p>
+<h4 id="方法：二分查找下一个匹配位置"><a href="#方法：二分查找下一个匹配位置" class="headerlink" title="方法：二分查找下一个匹配位置"></a><strong>方法：二分查找下一个匹配位置</strong></h4><ol>
+<li>初始化 <code>currentPos = -1</code>（表示从 <code>T</code> 的开头开始匹配）。</li>
+<li>对于 <code>S</code> 中的每个字符 <code>c</code>：<ul>
+<li>如果 <code>c</code> 不在 <code>indexT</code> 中，直接返回 <code>false</code>。</li>
+<li>在 <code>indexT[c]</code> 中 <strong>二分查找</strong> 第一个大于 <code>currentPos</code> 的位置。</li>
+<li>如果找到，更新 <code>currentPos</code>；否则返回 <code>false</code>。</li>
+</ul>
+</li>
+</ol>
+<h4 id="复杂度分析（单次查询）"><a href="#复杂度分析（单次查询）" class="headerlink" title="复杂度分析（单次查询）"></a><strong>复杂度分析（单次查询）</strong></h4><ul>
+<li>时间复杂度：O(m log L)<ul>
+<li><code>m</code> 是 <code>S</code> 的长度，<code>L</code> 是字符在 <code>T</code> 中的平均出现次数。</li>
+<li>例如 <code>T=&quot;aaaabbbb&quot;</code>，<code>L=4</code>。</li>
+</ul>
+</li>
+<li>空间复杂度：O(1)</li>
+</ul>
+<p><strong>实现示例（完整代码）</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 预处理阶段</span></span><br><span class="line"><span class="keyword">const</span> indexT = &#123;&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; T.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> char = T[i];</span><br><span class="line">    <span class="keyword">if</span> (!indexT[char]) indexT[char] = [];</span><br><span class="line">    indexT[char].<span class="title function_">push</span>(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询阶段（处理海量 S）</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">batchCheck</span>(<span class="params">SList, indexT</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">SList</span>.<span class="title function_">map</span>(<span class="function"><span class="params">S</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> currentPos = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> c <span class="keyword">of</span> S) &#123;</span><br><span class="line">            <span class="keyword">const</span> positions = indexT[c];</span><br><span class="line">            <span class="keyword">if</span> (!positions) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="comment">// 二分查找</span></span><br><span class="line">            <span class="keyword">let</span> left = <span class="number">0</span>, right = positions.<span class="property">length</span>;</span><br><span class="line">            <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">                <span class="keyword">const</span> mid = <span class="title class_">Math</span>.<span class="title function_">floor</span>((left + right) / <span class="number">2</span>);</span><br><span class="line">                <span class="keyword">if</span> (positions[mid] &gt; currentPos) &#123;</span><br><span class="line">                    right = mid;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (left === positions.<span class="property">length</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            currentPos = positions[left];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例使用</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">SList</span> = [<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;axc&quot;</span>, <span class="string">&quot;ahc&quot;</span>];</span><br><span class="line"><span class="keyword">const</span> results = <span class="title function_">batchCheck</span>(<span class="title class_">SList</span>, indexT);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(results); <span class="comment">// [true, false, true]</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="3-总复杂度对比"><a href="#3-总复杂度对比" class="headerlink" title="3. 总复杂度对比"></a><strong>3. 总复杂度对比</strong></h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>预处理时间</th>
+<th>单次查询时间</th>
+<th>总时间（k&#x3D;10^9）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原始双指针法</td>
+<td>无</td>
+<td>O(n)</td>
+<td>O(10^9 · n) → 不可行</td>
+</tr>
+<tr>
+<td><strong>预处理+二分查找</strong></td>
+<td>O(n)</td>
+<td>O(m log L)</td>
+<td>O(n + 10^9 · m log L)</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="4-进一步优化（针对特定场景）"><a href="#4-进一步优化（针对特定场景）" class="headerlink" title="4. 进一步优化（针对特定场景）"></a><strong>4. 进一步优化（针对特定场景）</strong></h3><h4 id="1-如果-T-很短（如-n-1000）"><a href="#1-如果-T-很短（如-n-1000）" class="headerlink" title="(1) 如果 T 很短（如 n &lt; 1000）"></a><strong>(1) 如果 T 很短（如 n &lt; 1000）</strong></h4><ul>
+<li>直接使用双指针法，避免预处理开销。</li>
+</ul>
+<h4 id="2-如果-S-的平均长度远小于-T（如-m-n）"><a href="#2-如果-S-的平均长度远小于-T（如-m-n）" class="headerlink" title="(2) 如果 S 的平均长度远小于 T（如 m &lt;&lt; n）"></a><strong>(2) 如果 S 的平均长度远小于 T（如 m &lt;&lt; n）</strong></h4><ul>
+<li>预处理 <code>T</code> 的收益可能不明显，需测试权衡。</li>
+</ul>
+<h4 id="3-并行化处理"><a href="#3-并行化处理" class="headerlink" title="(3) 并行化处理"></a><strong>(3) 并行化处理</strong></h4><h5 id="并行化处理海量字符串检查"><a href="#并行化处理海量字符串检查" class="headerlink" title="并行化处理海量字符串检查"></a><strong>并行化处理海量字符串检查</strong></h5><h6 id="1-预处理阶段（单机）"><a href="#1-预处理阶段（单机）" class="headerlink" title="1. 预处理阶段（单机）"></a><strong>1. 预处理阶段（单机）</strong></h6><ul>
+<li><strong>构建字符位置索引</strong>：对 <code>T</code> 建立哈希表，记录每个字符的所有出现位置（有序数组）。</li>
+</ul>
+<h5 id="2-查询阶段（分布式并行）"><a href="#2-查询阶段（分布式并行）" class="headerlink" title="2. 查询阶段（分布式并行）"></a><strong>2. 查询阶段（分布式并行）</strong></h5><h6 id="方案一：多线程（Node-js-Worker-Threads）"><a href="#方案一：多线程（Node-js-Worker-Threads）" class="headerlink" title="方案一：多线程（Node.js Worker Threads）"></a><strong>方案一：多线程（Node.js Worker Threads）</strong></h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Worker</span>, isMainThread, parentPort, workerData &#125; = <span class="built_in">require</span>(<span class="string">&#x27;worker_threads&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 主线程逻辑</span></span><br><span class="line"><span class="keyword">if</span> (isMainThread) &#123;</span><br><span class="line">    <span class="keyword">const</span> indexT = <span class="title function_">buildIndex</span>(T);</span><br><span class="line">    <span class="keyword">const</span> <span class="title class_">SList</span> = [...]; <span class="comment">// 海量 S 列表</span></span><br><span class="line">    <span class="keyword">const</span> chunkSize = <span class="title class_">Math</span>.<span class="title function_">ceil</span>(<span class="title class_">SList</span>.<span class="property">length</span> / <span class="number">4</span>); <span class="comment">// 分4个线程</span></span><br><span class="line">    <span class="keyword">const</span> workers = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> chunk = <span class="title class_">SList</span>.<span class="title function_">slice</span>(i * chunkSize, (i + <span class="number">1</span>) * chunkSize);</span><br><span class="line">        workers.<span class="title function_">push</span>(<span class="keyword">new</span> <span class="title class_">Worker</span>(__filename, &#123;</span><br><span class="line">            <span class="attr">workerData</span>: &#123; indexT, chunk &#125;</span><br><span class="line">        &#125;));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 收集结果</span></span><br><span class="line">    workers.<span class="title function_">forEach</span>(<span class="function"><span class="params">worker</span> =&gt;</span> &#123;</span><br><span class="line">        worker.<span class="title function_">on</span>(<span class="string">&#x27;message&#x27;</span>, <span class="function">(<span class="params">results</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(results);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 子线程逻辑</span></span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; indexT, chunk &#125; = workerData;</span><br><span class="line">    <span class="keyword">const</span> results = chunk.<span class="title function_">map</span>(<span class="function"><span class="params">S</span> =&gt;</span> <span class="title function_">isSubsequence</span>(S, indexT));</span><br><span class="line">    parentPort.<span class="title function_">postMessage</span>(results);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isSubsequence</span>(<span class="params">S, indexT</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> currentPos = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> c <span class="keyword">of</span> S) &#123;</span><br><span class="line">        <span class="keyword">const</span> positions = indexT[c];</span><br><span class="line">        <span class="keyword">if</span> (!positions) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">// 二分查找第一个大于 currentPos 的位置</span></span><br><span class="line">        <span class="keyword">const</span> idx = <span class="title function_">binarySearch</span>(positions, currentPos);</span><br><span class="line">        <span class="keyword">if</span> (idx === -<span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        currentPos = positions[idx];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="方案二：MapReduce（大规模分布式-离线计算）-Spark-离线-实时计算-流处理-图计算-机器学习…"><a href="#方案二：MapReduce（大规模分布式-离线计算）-Spark-离线-实时计算-流处理-图计算-机器学习…" class="headerlink" title="方案二：MapReduce（大规模分布式, 离线计算）&#x2F; Spark(离线&#x2F;实时计算&#x2F;流处理&#x2F;图计算&#x2F;机器学习…)"></a><strong>方案二：MapReduce（大规模分布式, 离线计算）&#x2F; Spark(离线&#x2F;实时计算&#x2F;流处理&#x2F;图计算&#x2F;机器学习…)</strong></h6><ol>
+<li><strong>Map 阶段</strong>：<ul>
+<li>将海量 <code>S</code> 分片到多台机器。</li>
+<li>每台机器读取 <code>T</code> 的索引（可共享存储如 Redis）。</li>
+</ul>
+</li>
+<li><strong>Reduce 阶段</strong>：<ul>
+<li>汇总各机器的结果。</li>
+</ul>
+</li>
+</ol>
+<h5 id="3-优化点"><a href="#3-优化点" class="headerlink" title="3. 优化点"></a><strong>3. 优化点</strong></h5><ul>
+<li><strong>索引共享</strong>：将 <code>T</code> 的索引存储在分布式缓存（如 Redis）中，避免重复构建。</li>
+<li><strong>动态负载均衡</strong>：根据机器性能动态分配 <code>S</code> 的分片大小。</li>
+</ul>
+<hr>
+<h4 id="三、复杂度对比"><a href="#三、复杂度对比" class="headerlink" title="三、复杂度对比"></a><strong>三、复杂度对比</strong></h4><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>预处理时间</th>
+<th>单次查询时间</th>
+<th>总时间（k&#x3D;10^9, p&#x3D;1000台机器）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单机双指针</td>
+<td>无</td>
+<td>O(n)</td>
+<td>O(10^9 · n) → 不可行</td>
+</tr>
+<tr>
+<td><strong>预处理+并行查询</strong></td>
+<td>O(n)</td>
+<td>O(m log L)</td>
+<td>O(n + (10^9 · m log L)&#x2F;p)</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="四、关键问题解答"><a href="#四、关键问题解答" class="headerlink" title="四、关键问题解答"></a><strong>四、关键问题解答</strong></h4><h5 id="并行化如何保证正确性？"><a href="#并行化如何保证正确性？" class="headerlink" title="并行化如何保证正确性？"></a><strong>并行化如何保证正确性？</strong></h5><ul>
+<li><strong>只读操作</strong>：各线程&#x2F;机器独立处理不同的 <code>S</code>，无需共享可变状态。</li>
+<li><strong>索引一致性</strong>：预处理后的 <code>T</code> 索引是只读的，可安全共享。</li>
+</ul>
+<h5 id="如何处理超长-T-或-S？"><a href="#如何处理超长-T-或-S？" class="headerlink" title="如何处理超长 T 或 S？"></a><strong>如何处理超长 <code>T</code> 或 <code>S</code>？</strong></h5><ul>
+<li><strong>压缩索引</strong>：对 <code>T</code> 的字符位置使用差值编码（如存储相邻位置的差值）。</li>
+<li><strong>分批加载</strong>：将 <code>S</code> 分批次处理，避免内存溢出。</li>
+</ul>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="***总结***"></a><strong>***总结***</strong></h3><ul>
+<li><strong>单机优化</strong>：预处理 <code>T</code> 为字符位置索引，将单次查询时间从 O(n) 降至 O(m log L)。</li>
+<li><strong>并行化</strong>：通过多线程或分布式框架（如 MapReduce）横向扩展，处理海量 <code>S</code>。</li>
+<li><strong>适用场景</strong>：<code>T</code> 较长且稳定，<code>S</code> 数量极大（如日志分析、DNA序列匹配）。</li>
+</ul>
+<hr>
+<h3 id="6-边界情况处理"><a href="#6-边界情况处理" class="headerlink" title="6. 边界情况处理"></a><strong>6. 边界情况处理</strong></h3><table>
+<thead>
+<tr>
+<th>情况</th>
+<th>处理方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>T</code> 为空字符串</td>
+<td>所有 <code>S</code> 若非空则返回 <code>false</code></td>
+</tr>
+<tr>
+<td><code>S</code> 为空字符串</td>
+<td>直接返回 <code>true</code></td>
+</tr>
+<tr>
+<td><code>T</code> 或 <code>S</code> 含 Unicode 字符</td>
+<td>需确保哈希表支持 Unicode</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a><strong>总结</strong></h3><ul>
+<li>**预处理 <code>T</code>**：建立字符位置索引表（O(n) 时间）。</li>
+<li><strong>高效查询</strong>：对每个 <code>S</code> 使用二分查找（O(m log L) 时间）。</li>
+<li><strong>适用场景</strong>：<code>k</code> 极大（如 10^9）、<code>T</code> 较长且 <code>S</code> 长度适中。</li>
+<li><strong>权衡点</strong>：若 <code>T</code> 极短或 <code>S</code> 极长，可能需要调整策略。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/17/algorithms/029-%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/" data-id="cmcae1sjj002gsssd071thiqc" data-title="029-判断子序列" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-algorithms/030-最长公共前缀" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/17/algorithms/030-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/" class="article-date">
+  <time class="dt-published" datetime="2025-06-17T15:59:35.000Z" itemprop="datePublished">2025-06-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/17/algorithms/030-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/">030-最长公共前缀</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="14-最长公共前缀问题-简单"><a href="#14-最长公共前缀问题-简单" class="headerlink" title="14.最长公共前缀问题-简单"></a><strong>14.最长公共前缀问题-简单</strong></h2><h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><strong>问题描述</strong></h4><p>给定一个字符串数组 <code>strs</code>，找出所有字符串的<strong>最长公共前缀</strong>。如果不存在公共前缀，返回空字符串 <code>&quot;&quot;</code>。</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a><strong>示例</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：strs = [<span class="string">&quot;flower&quot;</span>,<span class="string">&quot;flow&quot;</span>,<span class="string">&quot;flight&quot;</span>]</span><br><span class="line">输出：<span class="string">&quot;fl&quot;</span></span><br><span class="line"></span><br><span class="line">输入：strs = [<span class="string">&quot;dog&quot;</span>,<span class="string">&quot;racecar&quot;</span>,<span class="string">&quot;car&quot;</span>]</span><br><span class="line">输出：<span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="方法一：水平扫描法（逐字符比较）"><a href="#方法一：水平扫描法（逐字符比较）" class="headerlink" title="方法一：水平扫描法（逐字符比较）"></a><strong>方法一：水平扫描法（逐字符比较）</strong></h3><h4 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a><strong>核心思想</strong></h4><ol>
+<li>以第一个字符串为基准。</li>
+<li>逐个字符与其他字符串的对应位置比较。</li>
+<li>遇到不匹配时停止，返回当前匹配的前缀。</li>
+</ol>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a><strong>代码实现</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> longestCommonPrefix = <span class="keyword">function</span>(<span class="params">strs</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (strs.<span class="property">length</span> === <span class="number">0</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> prefix = strs[<span class="number">0</span>]; <span class="comment">// 初始化为第一个字符串</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; strs.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="comment">//用startsWith更直观： !strs[i].startsWith(prefix)</span></span><br><span class="line">        <span class="keyword">while</span> (strs[i].<span class="title function_">indexOf</span>(prefix) !== <span class="number">0</span>) &#123; <span class="comment">// 检查当前字符串是否以prefix开头</span></span><br><span class="line">            prefix = prefix.<span class="title function_">slice</span>(<span class="number">0</span>, prefix.<span class="property">length</span> - <span class="number">1</span>); <span class="comment">// 缩短prefix</span></span><br><span class="line">            <span class="keyword">if</span> (prefix === <span class="string">&quot;&quot;</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>; <span class="comment">// 提前终止</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> prefix;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a><strong>复杂度分析</strong></h4><ul>
+<li>时间复杂度：O(S)，其中 S 是所有字符串的字符总数。</li>
+<li>空间复杂度：O(1)。</li>
+</ul>
+<hr>
+<h3 id="方法二：垂直扫描法（逐列比较）"><a href="#方法二：垂直扫描法（逐列比较）" class="headerlink" title="方法二：垂直扫描法（逐列比较）"></a><strong>方法二：垂直扫描法（逐列比较）</strong></h3><h4 id="核心思想-1"><a href="#核心思想-1" class="headerlink" title="核心思想"></a><strong>核心思想</strong></h4><ol>
+<li>按列比较所有字符串的相同位置字符。</li>
+<li>遇到不匹配时停止。</li>
+</ol>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a><strong>代码实现</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> longestCommonPrefix = <span class="keyword">function</span>(<span class="params">strs</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (strs.<span class="property">length</span> === <span class="number">0</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; strs[<span class="number">0</span>].<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> char = strs[<span class="number">0</span>][i]; <span class="comment">// 当前列的基准字符</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt; strs.<span class="property">length</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i === strs[j].<span class="property">length</span> || strs[j][i] !== char) &#123;</span><br><span class="line">                <span class="keyword">return</span> strs[<span class="number">0</span>].<span class="title function_">slice</span>(<span class="number">0</span>, i); <span class="comment">// 返回当前匹配的前缀</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> strs[<span class="number">0</span>]; <span class="comment">// 全部字符匹配</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a><strong>复杂度分析</strong></h4><ul>
+<li>时间复杂度：O(S)，最坏情况下需要比较所有字符。</li>
+<li>空间复杂度：O(1)。</li>
+</ul>
+<hr>
+<h3 id="方法三：分治法"><a href="#方法三：分治法" class="headerlink" title="方法三：分治法"></a><strong>方法三：分治法</strong></h3><h4 id="核心思想-2"><a href="#核心思想-2" class="headerlink" title="核心思想"></a><strong>核心思想</strong></h4><ol>
+<li>将问题分解为子问题：分别求左半部分和右半部分的最长公共前缀。</li>
+<li>合并子问题的解。</li>
+</ol>
+<h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a><strong>代码实现</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> longestCommonPrefix = <span class="keyword">function</span>(<span class="params">strs</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (strs.<span class="property">length</span> === <span class="number">0</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">divideAndConquer</span>(strs, <span class="number">0</span>, strs.<span class="property">length</span> - <span class="number">1</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">divideAndConquer</span>(<span class="params">strs, left, right</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (left === right) <span class="keyword">return</span> strs[left];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> mid = <span class="title class_">Math</span>.<span class="title function_">floor</span>((left + right) / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">const</span> leftPrefix = <span class="title function_">divideAndConquer</span>(strs, left, mid);</span><br><span class="line">    <span class="keyword">const</span> rightPrefix = <span class="title function_">divideAndConquer</span>(strs, mid + <span class="number">1</span>, right);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">commonPrefix</span>(leftPrefix, rightPrefix);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">commonPrefix</span>(<span class="params">str1, str2</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> minLen = <span class="title class_">Math</span>.<span class="title function_">min</span>(str1.<span class="property">length</span>, str2.<span class="property">length</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; minLen; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (str1[i] !== str2[i]) &#123;</span><br><span class="line">            <span class="keyword">return</span> str1.<span class="title function_">slice</span>(<span class="number">0</span>, i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str1.<span class="title function_">slice</span>(<span class="number">0</span>, minLen);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="复杂度分析-2"><a href="#复杂度分析-2" class="headerlink" title="复杂度分析"></a><strong>复杂度分析</strong></h4><ul>
+<li>时间复杂度：O(S)，其中 S 是所有字符串的字符总数。</li>
+<li>空间复杂度：O(m log n)，递归调用栈的深度。</li>
+</ul>
+<hr>
+<h3 id="方法四：二分查找法"><a href="#方法四：二分查找法" class="headerlink" title="方法四：二分查找法"></a><strong>方法四：二分查找法</strong></h3><h4 id="核心思想-3"><a href="#核心思想-3" class="headerlink" title="核心思想"></a><strong>核心思想</strong></h4><ol>
+<li>对最短字符串的长度进行二分查找。</li>
+<li>检查当前长度是否是所有字符串的公共前缀。</li>
+</ol>
+<h4 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a><strong>代码实现</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> longestCommonPrefix = <span class="keyword">function</span>(<span class="params">strs</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (strs.<span class="property">length</span> === <span class="number">0</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> minLen = <span class="title class_">Math</span>.<span class="title function_">min</span>(...strs.<span class="title function_">map</span>(<span class="function"><span class="params">s</span> =&gt;</span> s.<span class="property">length</span>));</span><br><span class="line">    <span class="keyword">let</span> low = <span class="number">1</span>, high = minLen;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">        <span class="keyword">const</span> mid = <span class="title class_">Math</span>.<span class="title function_">floor</span>((low + high) / <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_">isCommonPrefix</span>(strs, mid)) &#123;</span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            high = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> strs[<span class="number">0</span>].<span class="title function_">slice</span>(<span class="number">0</span>, (low + high) / <span class="number">2</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isCommonPrefix</span>(<span class="params">strs, len</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> prefix = strs[<span class="number">0</span>].<span class="title function_">slice</span>(<span class="number">0</span>, len);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; strs.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!strs[i].<span class="title function_">startsWith</span>(prefix)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="复杂度分析-3"><a href="#复杂度分析-3" class="headerlink" title="复杂度分析"></a><strong>复杂度分析</strong></h4><ul>
+<li>时间复杂度：O(S log m)，其中 m 是最短字符串的长度。</li>
+<li>空间复杂度：O(1)。</li>
+</ul>
+<hr>
+<h3 id="方法对比"><a href="#方法对比" class="headerlink" title="方法对比"></a><strong>方法对比</strong></h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>时间复杂度</th>
+<th>空间复杂度</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>水平扫描</td>
+<td>O(S)</td>
+<td>O(1)</td>
+<td>通用</td>
+</tr>
+<tr>
+<td>垂直扫描</td>
+<td>O(S)</td>
+<td>O(1)</td>
+<td>字符较短时</td>
+</tr>
+<tr>
+<td>分治法</td>
+<td>O(S)</td>
+<td>O(m log n)</td>
+<td>大规模数据</td>
+</tr>
+<tr>
+<td>二分查找</td>
+<td>O(S log m)</td>
+<td>O(1)</td>
+<td>字符串较长时</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="边界情况处理"><a href="#边界情况处理" class="headerlink" title="边界情况处理"></a><strong>边界情况处理</strong></h3><ol>
+<li><strong>空数组</strong>：直接返回 <code>&quot;&quot;</code>。</li>
+<li><strong>单字符串</strong>：返回该字符串本身。</li>
+<li><strong>完全匹配</strong>：返回最短字符串。</li>
+</ol>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><ul>
+<li><strong>推荐方法</strong>：垂直扫描法（代码简洁，效率高）。</li>
+<li><strong>优化选择</strong>：如果字符串非常长，考虑二分查找法。</li>
+<li><strong>分治法的优势</strong>：适合分布式计算或超大规模数据。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/17/algorithms/030-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/" data-id="cmcae1sjj002jsssdfbq05sh9" data-title="030-最长公共前缀" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/51/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/50/">50</a><a class="page-number" href="/page/51/">51</a><span class="page-number current">52</span><a class="page-number" href="/page/53/">53</a><a class="page-number" href="/page/54/">54</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" href="/page/53/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

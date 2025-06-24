@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:url" content="http://example.com/page/53/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:locale">
+<meta property="article:author" content="EvelynUU">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-algorithms/031-LRU缓存(hash或双向链表)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/17/algorithms/031-LRU%E7%BC%93%E5%AD%98(hash%E6%88%96%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8)/" class="article-date">
+  <time class="dt-published" datetime="2025-06-17T15:59:36.000Z" itemprop="datePublished">2025-06-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/17/algorithms/031-LRU%E7%BC%93%E5%AD%98(hash%E6%88%96%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8)/">031-LRU缓存(hash或双向链表)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="146-LRU缓存-中等"><a href="#146-LRU缓存-中等" class="headerlink" title="146.LRU缓存-中等"></a>146.LRU缓存-中等</h1><p>实现 <code>LRUCache</code> 类：</p>
+<ul>
+<li><code>LRUCache(int capacity)</code> 以 <strong>正整数</strong> 作为容量 <code>capacity</code> 初始化 LRU 缓存</li>
+<li><code>int get(int key)</code> 如果关键字 <code>key</code> 存在于缓存中，则返回关键字的值，否则返回 <code>-1</code> 。</li>
+<li><code>void put(int key, int value)</code> 如果关键字 <code>key</code> 已经存在，则变更其数据值 <code>value</code> ；如果不存在，则向缓存中插入该组 <code>key-value</code> 。如果插入操作导致关键字数量超过 <code>capacity</code> ，则应该 <strong>逐出</strong> 最久未使用的关键字。</li>
+</ul>
+<p>函数 <code>get</code> 和 <code>put</code> 必须以 <code>O(1)</code> 的平均时间复杂度运行。</p>
+<h3 id="什么是LRU缓存？"><a href="#什么是LRU缓存？" class="headerlink" title="什么是LRU缓存？"></a>什么是LRU缓存？</h3><p>LRU（Least Recently Used，最近最少使用）是一种常见的缓存淘汰算法。当缓存空间不足时，它会优先淘汰那些最近最少使用的数据，保留最近访问过的数据。</p>
+<h3 id="LRU缓存的工作原理"><a href="#LRU缓存的工作原理" class="headerlink" title="LRU缓存的工作原理"></a>LRU缓存的工作原理</h3><ol>
+<li><strong>访问数据</strong>：当访问缓存中的数据时，该数据会被移动到”最近使用”的位置（通常是链表头部或尾部）</li>
+<li><strong>插入数据</strong>：当插入新数据时，它会被放在”最近使用”的位置</li>
+<li><strong>淘汰数据</strong>：当缓存达到容量上限时，会从”最近最少使用”的位置移除数据</li>
+</ol>
+<h3 id="LRU缓存的实现"><a href="#LRU缓存的实现" class="headerlink" title="LRU缓存的实现"></a>LRU缓存的实现</h3><p>通常使用哈希表（快速查找）和双向链表（维护访问顺序）的组合来实现LRU缓存：</p>
+<ul>
+<li><strong>哈希表</strong>：提供O(1)时间复杂度的数据查找</li>
+<li><strong>双向链表</strong>：维护数据的访问顺序，最近访问的在头部，最久未访问的在尾部</li>
+</ul>
+<p>下面是采用Map对象（哈希表）来达到O(1)时间复杂度：</p>
+<h2 id="1-哈希表完整实现"><a href="#1-哈希表完整实现" class="headerlink" title="1.哈希表完整实现"></a>1.哈希表完整实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LRUCache</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">capacity</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">capacity</span> = capacity;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">cache</span> = <span class="keyword">new</span> <span class="title class_">Map</span>(); <span class="comment">// 使用Map来存储键值对</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">get</span>(<span class="params">key</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">cache</span>.<span class="title function_">has</span>(key)) &#123;</span><br><span class="line">      <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 获取值</span></span><br><span class="line">    <span class="keyword">const</span> value = <span class="variable language_">this</span>.<span class="property">cache</span>.<span class="title function_">get</span>(key);</span><br><span class="line">    <span class="comment">// 删除原有位置</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">cache</span>.<span class="title function_">delete</span>(key);</span><br><span class="line">    <span class="comment">// 重新插入到末尾（表示最近使用）</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">cache</span>.<span class="title function_">set</span>(key, value);</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">put</span>(<span class="params">key, value</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果key已存在，先删除</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">cache</span>.<span class="title function_">has</span>(key)) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">cache</span>.<span class="title function_">delete</span>(key);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="comment">// 插入新值</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">cache</span>.<span class="title function_">set</span>(key, value);</span><br><span class="line">    <span class="comment">// 如果超出容量，删除最久未使用的（即Map中的第一个元素）</span></span><br><span class="line">    <span class="comment">//！！！map没有length属性</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">cache</span>.<span class="property">size</span> &gt; <span class="variable language_">this</span>.<span class="property">capacity</span>) &#123;</span><br><span class="line">      <span class="comment">// Map.keys()返回一个迭代器，next()获取iterator的第一个object，object的value属性对应的真正要取的key值</span></span><br><span class="line">      <span class="keyword">const</span> firstKey = <span class="variable language_">this</span>.<span class="property">cache</span>.<span class="title function_">keys</span>().<span class="title function_">next</span>().<span class="property">value</span>;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">cache</span>.<span class="title function_">delete</span>(firstKey);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> lru = <span class="keyword">new</span> <span class="title class_">LRUCache</span>(<span class="number">2</span>); <span class="comment">// 容量为2</span></span><br><span class="line"></span><br><span class="line">lru.<span class="title function_">put</span>(<span class="number">1</span>, <span class="number">1</span>);              <span class="comment">// 缓存是 &#123;1=1&#125;</span></span><br><span class="line">lru.<span class="title function_">put</span>(<span class="number">2</span>, <span class="number">2</span>);              <span class="comment">// 缓存是 &#123;1=1, 2=2&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(lru.<span class="title function_">get</span>(<span class="number">1</span>));    <span class="comment">// 返回 1</span></span><br><span class="line">lru.<span class="title function_">put</span>(<span class="number">3</span>, <span class="number">3</span>);              <span class="comment">// 该操作会使得关键字 2 作废，缓存是 &#123;1=1, 3=3&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(lru.<span class="title function_">get</span>(<span class="number">2</span>));    <span class="comment">// 返回 -1 (未找到)</span></span><br><span class="line">lru.<span class="title function_">put</span>(<span class="number">4</span>, <span class="number">4</span>);              <span class="comment">// 该操作会使得关键字 1 作废，缓存是 &#123;4=4, 3=3&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(lru.<span class="title function_">get</span>(<span class="number">1</span>));    <span class="comment">// 返回 -1 (未找到)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(lru.<span class="title function_">get</span>(<span class="number">3</span>));    <span class="comment">// 返回 3</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(lru.<span class="title function_">get</span>(<span class="number">4</span>));    <span class="comment">// 返回 4</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-使用双向链表的实现（更接近底层原理）"><a href="#2-使用双向链表的实现（更接近底层原理）" class="headerlink" title="2.使用双向链表的实现（更接近底层原理）"></a>2.使用双向链表的实现（更接近底层原理）</h2><h3 id="1-基本结构"><a href="#1-基本结构" class="headerlink" title="1. 基本结构"></a>1. 基本结构</h3><pre><code>[双向链表]：维护访问顺序
+head &lt;-&gt; [最近使用的] &lt;-&gt; ... &lt;-&gt; [最久未使用的] &lt;-&gt; tail
+
+[哈希表]：快速查找
+&#123;key: 链表节点地址&#125;
+</code></pre>
+<h3 id="2-访问数据（get操作）"><a href="#2-访问数据（get操作）" class="headerlink" title="2. 访问数据（get操作）"></a>2. 访问数据（get操作）</h3><pre><code>原始状态：
+head &lt;-&gt; A &lt;-&gt; B &lt;-&gt; C &lt;-&gt; tail
+
+访问B后：
+head &lt;-&gt; B &lt;-&gt; A &lt;-&gt; C &lt;-&gt; tail
+</code></pre>
+<h3 id="3-插入数据（put操作）"><a href="#3-插入数据（put操作）" class="headerlink" title="3. 插入数据（put操作）"></a>3. 插入数据（put操作）</h3><pre><code>容量=3，当前状态：
+head &lt;-&gt; B &lt;-&gt; A &lt;-&gt; C &lt;-&gt; tail
+
+插入D时：
+1. 添加到头部：head &lt;-&gt; D &lt;-&gt; B &lt;-&gt; A &lt;-&gt; C &lt;-&gt; tail
+2. 发现容量超限（4&gt;3）
+3. 移除尾部C：head &lt;-&gt; D &lt;-&gt; B &lt;-&gt; A &lt;-&gt; tail
+</code></pre>
+<h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><h4 id="1-定义双向链表节点"><a href="#1-定义双向链表节点" class="headerlink" title="1. 定义双向链表节点"></a>1. 定义双向链表节点</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">key, value</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">key</span> = key;    <span class="comment">// 用于删除哈希表项</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">value</span> = value;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">prev</span> = <span class="literal">null</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">next</span> = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-初始化LRU缓存"><a href="#2-初始化LRU缓存" class="headerlink" title="2. 初始化LRU缓存"></a>2. 初始化LRU缓存</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LRUCache</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">capacity</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">capacity</span> = capacity;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">map</span> = &#123;&#125;;           <span class="comment">// 哈希表</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">size</span> = <span class="number">0</span>;            <span class="comment">// 当前大小</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">head</span> = <span class="keyword">new</span> <span class="title class_">ListNode</span>(); <span class="comment">// 伪头部</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">tail</span> = <span class="keyword">new</span> <span class="title class_">ListNode</span>(); <span class="comment">// 伪尾部</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">head</span>.<span class="property">next</span> = <span class="variable language_">this</span>.<span class="property">tail</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">tail</span>.<span class="property">prev</span> = <span class="variable language_">this</span>.<span class="property">head</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-实现辅助方法"><a href="#3-实现辅助方法" class="headerlink" title="3. 实现辅助方法"></a>3. 实现辅助方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加到头部</span></span><br><span class="line"><span class="title function_">_addToHead</span>(<span class="params">node</span>) &#123;</span><br><span class="line">  node.<span class="property">prev</span> = <span class="variable language_">this</span>.<span class="property">head</span>;</span><br><span class="line">  node.<span class="property">next</span> = <span class="variable language_">this</span>.<span class="property">head</span>.<span class="property">next</span>;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">head</span>.<span class="property">next</span>.<span class="property">prev</span> = node;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">head</span>.<span class="property">next</span> = node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除节点</span></span><br><span class="line"><span class="title function_">_removeNode</span>(<span class="params">node</span>) &#123;</span><br><span class="line">  node.<span class="property">prev</span>.<span class="property">next</span> = node.<span class="property">next</span>;</span><br><span class="line">  node.<span class="property">next</span>.<span class="property">prev</span> = node.<span class="property">prev</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移动节点到头部</span></span><br><span class="line"><span class="title function_">_moveToHead</span>(<span class="params">node</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">_removeNode</span>(node);</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">_addToHead</span>(node);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除尾部节点</span></span><br><span class="line"><span class="title function_">_removeTail</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> node = <span class="variable language_">this</span>.<span class="property">tail</span>.<span class="property">prev</span>;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">_removeNode</span>(node);</span><br><span class="line">  <span class="keyword">return</span> node; <span class="comment">// 返回被移除的节点，用于删除哈希表项</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-实现get和put"><a href="#4-实现get和put" class="headerlink" title="4. 实现get和put"></a>4. 实现get和put</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">get</span>(<span class="params">key</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!(key <span class="keyword">in</span> <span class="variable language_">this</span>.<span class="property">map</span>)) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> node = <span class="variable language_">this</span>.<span class="property">map</span>[key];</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">_moveToHead</span>(node); <span class="comment">// 移动到头部表示最近使用</span></span><br><span class="line">  <span class="keyword">return</span> node.<span class="property">value</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">put</span>(<span class="params">key, value</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (key <span class="keyword">in</span> <span class="variable language_">this</span>.<span class="property">map</span>) &#123;</span><br><span class="line">    <span class="comment">// 已存在则更新值并移动</span></span><br><span class="line">    <span class="keyword">const</span> node = <span class="variable language_">this</span>.<span class="property">map</span>[key];</span><br><span class="line">    node.<span class="property">value</span> = value;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">_moveToHead</span>(node);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 创建新节点</span></span><br><span class="line">    <span class="keyword">const</span> node = <span class="keyword">new</span> <span class="title class_">ListNode</span>(key, value);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">map</span>[key] = node;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">_addToHead</span>(node);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">size</span>++;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 检查容量</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">size</span> &gt; <span class="variable language_">this</span>.<span class="property">capacity</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> removed = <span class="variable language_">this</span>.<span class="title function_">_removeTail</span>();</span><br><span class="line">      <span class="keyword">delete</span> <span class="variable language_">this</span>.<span class="property">map</span>[removed.<span class="property">key</span>];</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">size</span>--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-实现要点总结"><a href="#3-实现要点总结" class="headerlink" title="3.实现要点总结"></a>3.实现要点总结</h2><ol>
+<li><strong>双向链表</strong>：维护访问顺序，头部是最近使用的，尾部是最久未使用的</li>
+<li><strong>哈希表</strong>：实现O(1)时间复杂度的节点查找</li>
+<li><strong>伪头尾节点</strong>：简化边界条件处理</li>
+<li><strong>关键操作</strong>：<ul>
+<li>访问节点时移动到头部</li>
+<li>插入新节点到头部</li>
+<li>满容量时删除尾部节点</li>
+</ul>
+</li>
+</ol>
+<p>通过这种结构，我们实现了所有操作都是O(1)时间复杂度的LRU缓存。</p>
+<p>如果你需要更接近底层原理的实现（比如面试中可能会要求），可以使用双向链表+哈希表：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">key, value</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">key</span> = key;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">value</span> = value;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">prev</span> = <span class="literal">null</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">next</span> = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LRUCache</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">capacity</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">capacity</span> = capacity;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">size</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">cache</span> = &#123;&#125;;</span><br><span class="line">    <span class="comment">// 使用伪头部和伪尾部节点</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">head</span> = <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">tail</span> = <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">head</span>.<span class="property">next</span> = <span class="variable language_">this</span>.<span class="property">tail</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">tail</span>.<span class="property">prev</span> = <span class="variable language_">this</span>.<span class="property">head</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">get</span>(<span class="params">key</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (key <span class="keyword">in</span> <span class="variable language_">this</span>.<span class="property">cache</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> node = <span class="variable language_">this</span>.<span class="property">cache</span>[key];</span><br><span class="line">      <span class="comment">// 移动到头部</span></span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">moveToHead</span>(node);</span><br><span class="line">      <span class="keyword">return</span> node.<span class="property">value</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">put</span>(<span class="params">key, value</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (key <span class="keyword">in</span> <span class="variable language_">this</span>.<span class="property">cache</span>) &#123;</span><br><span class="line">      <span class="comment">// 如果存在，更新值并移动到头部</span></span><br><span class="line">      <span class="keyword">const</span> node = <span class="variable language_">this</span>.<span class="property">cache</span>[key];</span><br><span class="line">      node.<span class="property">value</span> = value;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">moveToHead</span>(node);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 创建新节点</span></span><br><span class="line">      <span class="keyword">const</span> node = <span class="keyword">new</span> <span class="title class_">ListNode</span>(key, value);</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">cache</span>[key] = node;</span><br><span class="line">      <span class="comment">// 添加到头部</span></span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">addToHead</span>(node);</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">size</span>++;</span><br><span class="line">      <span class="comment">// 检查容量</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">size</span> &gt; <span class="variable language_">this</span>.<span class="property">capacity</span>) &#123;</span><br><span class="line">        <span class="comment">// 移除尾部节点</span></span><br><span class="line">        <span class="keyword">const</span> removed = <span class="variable language_">this</span>.<span class="title function_">removeTail</span>();</span><br><span class="line">        <span class="keyword">delete</span> <span class="variable language_">this</span>.<span class="property">cache</span>[removed.<span class="property">key</span>];</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">size</span>--;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">addToHead</span>(<span class="params">node</span>) &#123;</span><br><span class="line">    node.<span class="property">prev</span> = <span class="variable language_">this</span>.<span class="property">head</span>;</span><br><span class="line">    node.<span class="property">next</span> = <span class="variable language_">this</span>.<span class="property">head</span>.<span class="property">next</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">head</span>.<span class="property">next</span>.<span class="property">prev</span> = node;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">head</span>.<span class="property">next</span> = node;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">removeNode</span>(<span class="params">node</span>) &#123;</span><br><span class="line">    node.<span class="property">prev</span>.<span class="property">next</span> = node.<span class="property">next</span>;</span><br><span class="line">    node.<span class="property">next</span>.<span class="property">prev</span> = node.<span class="property">prev</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">moveToHead</span>(<span class="params">node</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">removeNode</span>(node);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">addToHead</span>(node);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">removeTail</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> node = <span class="variable language_">this</span>.<span class="property">tail</span>.<span class="property">prev</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">removeNode</span>(node);</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么使用Map实现更简洁？"><a href="#为什么使用Map实现更简洁？" class="headerlink" title="为什么使用Map实现更简洁？"></a>为什么使用Map实现更简洁？</h2><p>JavaScript的Map对象保持键值对的插入顺序，这使得我们可以利用这个特性：</p>
+<ol>
+<li>新插入或访问的元素会自动移到”最后”</li>
+<li>第一个元素就是最久未使用的</li>
+</ol>
+<p>这种实现方式利用了语言特性，代码更简洁，但在面试中可能会被要求实现更底层的双向链表版本。</p>
+<h2 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h2><ul>
+<li><strong>get操作</strong>：O(1) - 哈希表查找 + 链表移动</li>
+<li><strong>put操作</strong>：O(1) - 哈希表插入&#x2F;更新 + 链表操作</li>
+</ul>
+<h2 id="LRU缓存的应用场景"><a href="#LRU缓存的应用场景" class="headerlink" title="LRU缓存的应用场景"></a>LRU缓存的应用场景</h2><ol>
+<li>数据库缓存（如MySQL查询缓存）</li>
+<li>操作系统页面置换</li>
+<li>Web服务器缓存</li>
+<li>CDN内容分发网络</li>
+<li>浏览器缓存机制</li>
+</ol>
+<h2 id="LRU的变种"><a href="#LRU的变种" class="headerlink" title="LRU的变种"></a>LRU的变种</h2><ol>
+<li><strong>LRU-K</strong>：考虑最近K次访问的历史</li>
+<li><strong>2Q</strong>：两个队列，一个用于最近访问，一个用于频繁访问</li>
+<li><strong>ARC</strong>：自适应缓存替换算法，结合LRU和LFU</li>
+</ol>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p><strong>优点</strong>：</p>
+<ul>
+<li>实现相对简单</li>
+<li>对热点数据友好</li>
+<li>时间复杂度优秀（O(1)）</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li>对于偶发性的批量操作可能导致缓存污染</li>
+<li>需要维护额外的数据结构（哈希表+双向链表）</li>
+<li>对于某些访问模式（如循环访问超过缓存大小的数据集）效率不高</li>
+</ul>
+<p>LRU缓存因其简单高效的特点，在实际开发中被广泛使用，是面试中常见的数据结构设计题目。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/17/algorithms/031-LRU%E7%BC%93%E5%AD%98(hash%E6%88%96%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8)/" data-id="cmcae1sjj002msssdg3ih86pq" data-title="031-LRU缓存(hash或双向链表)" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-algorithms/032-数组中第k个最大元素(计数排序)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/17/algorithms/032-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0(%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F)/" class="article-date">
+  <time class="dt-published" datetime="2025-06-17T15:59:37.000Z" itemprop="datePublished">2025-06-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/17/algorithms/032-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0(%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F)/">032-数组中第k个最大元素(计数排序)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="215-数组中的第K个最大元素-中等"><a href="#215-数组中的第K个最大元素-中等" class="headerlink" title="215. 数组中的第K个最大元素-中等"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/kth-largest-element-in-an-array/">215. 数组中的第K个最大元素</a>-中等</h1><p>给定整数数组 <code>nums</code> 和整数 <code>k</code>，请返回数组中第 <strong><code>k</code></strong> 个最大的元素。</p>
+<p>请注意，你需要找的是数组排序后的第 <code>k</code> 个最大的元素，而不是第 <code>k</code> 个不同的元素。</p>
+<p>你必须设计并实现时间复杂度为 <code>O(n)</code> 的算法解决此问题。</p>
+<p><strong>示例 :</strong></p>
+<pre><code>输入: [3,2,1,5,6,4], k = 2
+输出: 5
+</code></pre>
+<h3 id="第一版题解，直接用sort"><a href="#第一版题解，直接用sort" class="headerlink" title="第一版题解，直接用sort()"></a>第一版题解，直接用sort()</h3><p>JavaScript 的 <code>Array.prototype.sort()</code> 方法的时间复杂度 <strong>取决于具体 JavaScript 引擎的实现</strong>，但所有现代引擎都采用 <strong>O(n log n)</strong> 时间复杂度的排序算法。</p>
+<p>再细看一下题目要求发现超出了时间复杂度要求，虽然我觉得用原生的最简洁也更好交付。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[]</span>&#125; <span class="variable">nums</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">k</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> findKthLargest = <span class="keyword">function</span>(<span class="params">nums, k</span>) &#123;</span><br><span class="line">    <span class="comment">//从大到小对nums排序</span></span><br><span class="line">    <span class="keyword">const</span> sortedNums = nums.<span class="title function_">sort</span>(<span class="function">(<span class="params">a,b</span>)=&gt;</span>b-a);</span><br><span class="line">    <span class="keyword">return</span> sortedNums[k-<span class="number">1</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第二版方法-：计数排序Counting-Sort-适用于有限范围整数"><a href="#第二版方法-：计数排序Counting-Sort-适用于有限范围整数" class="headerlink" title="第二版方法 ：计数排序Counting Sort 适用于有限范围整数"></a>第二版<strong>方法 ：计数排序Counting Sort</strong> <strong>适用于有限范围整数</strong></h3><p><strong>时间复杂度</strong>：O(n + m)，其中 <code>m</code> 是数据范围（若 <code>m</code> 远大于 <code>n</code>，则可能退化为 O(n²)）<br><strong>适用条件</strong>：</p>
+<ul>
+<li><strong>数据范围较小</strong>（如 <code>0 ≤ nums[i] ≤ 10000</code>）。</li>
+<li><strong>数据是整数</strong>（浮点数不适用）。</li>
+</ul>
+<h4 id="JavaScript-实现："><a href="#JavaScript-实现：" class="headerlink" title="JavaScript 实现："></a><strong>JavaScript 实现</strong>：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">findKthLargest</span>(<span class="params">nums, k</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> min = <span class="title class_">Math</span>.<span class="title function_">min</span>(...nums);</span><br><span class="line">    <span class="keyword">const</span> max = <span class="title class_">Math</span>.<span class="title function_">max</span>(...nums);</span><br><span class="line">    <span class="keyword">const</span> count = <span class="title class_">Array</span>(max - min + <span class="number">1</span>).<span class="title function_">fill</span>(<span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> num <span class="keyword">of</span> nums) &#123;</span><br><span class="line">        count[num - min]++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = count.<span class="property">length</span> - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        sum += count[i];</span><br><span class="line">        <span class="keyword">if</span> (sum &gt;= k) &#123;</span><br><span class="line">            <span class="comment">//将计数数组的索引i转换为原始数组中的真实数值并返回</span></span><br><span class="line">            <span class="keyword">return</span> i + min;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>如果数据范围 <code>max - min</code> 较小（如 <code>1 ≤ nums[i] ≤ 10000</code>），则 **O(n + m) ≈ O(n)**。</li>
+<li>但如果 <code>nums = [1, 1000000]</code>，则 <code>m = 1000000</code>，此时 **O(n + m) 退化为 O(m)**，不满足要求。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/17/algorithms/032-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0(%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F)/" data-id="cmcae1sjk002psssd3s4hfq02" data-title="032-数组中第k个最大元素(计数排序)" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/52/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="page-number" href="/page/52/">52</a><span class="page-number current">53</span><a class="page-number" href="/page/54/">54</a><a class="page-number" href="/page/55/">55</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" href="/page/54/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

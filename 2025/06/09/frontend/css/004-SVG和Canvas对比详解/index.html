@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>004-SVG和Canvas对比详解 | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="SVG 和 Canvas 是两种主流的 Web 图形技术，各有优缺点和适用场景。以下是详细对比：  1. 基础概念   特性 SVG (Scalable Vector Graphics) Canvas    类型 矢量图形（基于 XML 描述图形） 位图（通过 JavaScript 动态绘制像素）   渲染方式 由浏览器解析 XML 并渲染（DOM 的一部分） 通过 JavaScript API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="004-SVG和Canvas对比详解">
+<meta property="og:url" content="http://example.com/2025/06/09/frontend/css/004-SVG%E5%92%8CCanvas%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="SVG 和 Canvas 是两种主流的 Web 图形技术，各有优缺点和适用场景。以下是详细对比：  1. 基础概念   特性 SVG (Scalable Vector Graphics) Canvas    类型 矢量图形（基于 XML 描述图形） 位图（通过 JavaScript 动态绘制像素）   渲染方式 由浏览器解析 XML 并渲染（DOM 的一部分） 通过 JavaScript API">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-09T15:59:16.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:43:37.027Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-frontend/css/004-SVG和Canvas对比详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/09/frontend/css/004-SVG%E5%92%8CCanvas%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2025-06-09T15:59:16.000Z" itemprop="datePublished">2025-06-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Frontend/">Frontend</a>►<a class="article-category-link" href="/categories/Frontend/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      004-SVG和Canvas对比详解
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>SVG 和 Canvas 是两种主流的 Web 图形技术，各有优缺点和适用场景。以下是详细对比：</p>
+<hr>
+<h2 id="1-基础概念"><a href="#1-基础概念" class="headerlink" title="1. 基础概念"></a><strong>1. 基础概念</strong></h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>SVG (Scalable Vector Graphics)</th>
+<th>Canvas</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>类型</strong></td>
+<td><strong>矢量图形</strong>（基于 XML 描述图形）</td>
+<td><strong>位图</strong>（通过 JavaScript 动态绘制像素）</td>
+</tr>
+<tr>
+<td><strong>渲染方式</strong></td>
+<td>由浏览器解析 XML 并渲染（DOM 的一部分）</td>
+<td>通过 JavaScript API 直接操作像素</td>
+</tr>
+<tr>
+<td><strong>分辨率</strong></td>
+<td>无限缩放，不失真（矢量特性）</td>
+<td>依赖画布尺寸，放大后可能模糊</td>
+</tr>
+<tr>
+<td><strong>交互支持</strong></td>
+<td>原生支持事件绑定（如 <code>click</code>、<code>mouseover</code>）</td>
+<td>需手动计算坐标实现交互</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>图标、地图、可交互图表、动态 UI 元素</td>
+<td>游戏、数据可视化、图像处理、动画</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="2-技术细节对比"><a href="#2-技术细节对比" class="headerlink" title="2. 技术细节对比"></a><strong>2. 技术细节对比</strong></h2><h3 id="2-1-语法与结构"><a href="#2-1-语法与结构" class="headerlink" title="2.1 语法与结构"></a><strong>2.1 语法与结构</strong></h3><ul>
+<li><p><strong>SVG</strong>：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">&quot;200&quot;</span> <span class="attr">height</span>=<span class="string">&quot;200&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">&quot;100&quot;</span> <span class="attr">cy</span>=<span class="string">&quot;100&quot;</span> <span class="attr">r</span>=<span class="string">&quot;50&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;red&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;alert(&#x27;clicked!&#x27;)&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过 XML 标签定义图形，支持 CSS 和 JavaScript 操作。</li>
+</ul>
+</li>
+<li><p><strong>Canvas</strong>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;myCanvas&quot;</span> <span class="attr">width</span>=<span class="string">&quot;200&quot;</span> <span class="attr">height</span>=<span class="string">&quot;200&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;myCanvas&#x27;</span>).<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>);</span><br><span class="line">ctx.<span class="property">fillStyle</span> = <span class="string">&#x27;red&#x27;</span>;</span><br><span class="line">ctx.<span class="title function_">beginPath</span>();</span><br><span class="line">ctx.<span class="title function_">arc</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">50</span>, <span class="number">0</span>, <span class="title class_">Math</span>.<span class="property">PI</span> * <span class="number">2</span>);</span><br><span class="line">ctx.<span class="title function_">fill</span>();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>完全依赖 JavaScript API 绘制，无内置图形对象。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-性能"><a href="#2-2-性能" class="headerlink" title="2.2 性能"></a><strong>2.2 性能</strong></h3><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>SVG</th>
+<th>Canvas</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>静态图形</strong></td>
+<td>较高（浏览器优化渲染）</td>
+<td>极高（直接操作像素）</td>
+</tr>
+<tr>
+<td><strong>动态更新</strong></td>
+<td>较差（频繁 DOM 操作成本高）</td>
+<td>极佳（适合高频重绘，如游戏）</td>
+</tr>
+<tr>
+<td><strong>图形复杂度</strong></td>
+<td>适合简单或中等复杂度图形</td>
+<td>适合高复杂度或大量图形（如粒子效果）</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-功能对比"><a href="#2-3-功能对比" class="headerlink" title="2.3 功能对比"></a><strong>2.3 功能对比</strong></h3><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>SVG</th>
+<th>Canvas</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>文本渲染</strong></td>
+<td>完美支持（可选中、SEO 友好）</td>
+<td>需手动绘制，不支持文本选择</td>
+</tr>
+<tr>
+<td><strong>动画</strong></td>
+<td>通过 CSS&#x2F;JS 或 SMIL 实现</td>
+<td>需手动控制每一帧（如 <code>requestAnimationFrame</code>）</td>
+</tr>
+<tr>
+<td><strong>图像处理</strong></td>
+<td>仅支持基础滤镜（如模糊、阴影）</td>
+<td>支持像素级操作（如 <code>getImageData</code>）</td>
+</tr>
+<tr>
+<td><strong>响应式适配</strong></td>
+<td>自动缩放（矢量特性）</td>
+<td>需监听窗口事件并重绘</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="3-选择建议"><a href="#3-选择建议" class="headerlink" title="3. 选择建议"></a><strong>3. 选择建议</strong></h2><h3 id="优先使用-SVG-的场景"><a href="#优先使用-SVG-的场景" class="headerlink" title="优先使用 SVG 的场景"></a><strong>优先使用 SVG 的场景</strong></h3><ul>
+<li>需要 <strong>矢量缩放</strong>（如图标、Logo）。</li>
+<li>需要 <strong>交互事件</strong>（如可点击的地图区域）。</li>
+<li>图形复杂度较低且需与 DOM 协同（如动态图表）。</li>
+</ul>
+<h3 id="优先使用-Canvas-的场景"><a href="#优先使用-Canvas-的场景" class="headerlink" title="优先使用 Canvas 的场景"></a><strong>优先使用 Canvas 的场景</strong></h3><ul>
+<li>高频更新（如游戏、实时数据可视化）。</li>
+<li>大量图形渲染（如粒子系统、复杂动画）。</li>
+<li>需要像素级操作（如图像编辑器、滤镜效果）。</li>
+</ul>
+<hr>
+<h2 id="4-代码示例对比"><a href="#4-代码示例对比" class="headerlink" title="4. 代码示例对比"></a><strong>4. 代码示例对比</strong></h2><h3 id="示例1：绘制一个可交互的圆形"><a href="#示例1：绘制一个可交互的圆形" class="headerlink" title="示例1：绘制一个可交互的圆形"></a><strong>示例1：绘制一个可交互的圆形</strong></h3><ul>
+<li><p><strong>SVG</strong>（直接绑定事件）：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">&quot;200&quot;</span> <span class="attr">height</span>=<span class="string">&quot;200&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">&quot;100&quot;</span> <span class="attr">cy</span>=<span class="string">&quot;100&quot;</span> <span class="attr">r</span>=<span class="string">&quot;50&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;blue&quot;</span> </span></span><br><span class="line"><span class="tag">          <span class="attr">onclick</span>=<span class="string">&quot;this.setAttribute(&#x27;fill&#x27;, &#x27;red&#x27;)&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Canvas</strong>（需手动计算点击区域）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;myCanvas&#x27;</span>);</span><br><span class="line">canvas.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> rect = canvas.<span class="title function_">getBoundingClientRect</span>();</span><br><span class="line">  <span class="keyword">const</span> x = e.<span class="property">clientX</span> - rect.<span class="property">left</span>, y = e.<span class="property">clientY</span> - rect.<span class="property">top</span>;</span><br><span class="line">  <span class="keyword">const</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>);</span><br><span class="line">  ctx.<span class="title function_">clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, canvas.<span class="property">width</span>, canvas.<span class="property">height</span>);</span><br><span class="line">  ctx.<span class="property">fillStyle</span> = <span class="string">&#x27;blue&#x27;</span>;</span><br><span class="line">  ctx.<span class="title function_">beginPath</span>();</span><br><span class="line">  ctx.<span class="title function_">arc</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">50</span>, <span class="number">0</span>, <span class="title class_">Math</span>.<span class="property">PI</span> * <span class="number">2</span>);</span><br><span class="line">  <span class="keyword">if</span> (ctx.<span class="title function_">isPointInPath</span>(x, y)) &#123;</span><br><span class="line">    ctx.<span class="property">fillStyle</span> = <span class="string">&#x27;red&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  ctx.<span class="title function_">fill</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="5-结合使用"><a href="#5-结合使用" class="headerlink" title="5. 结合使用"></a><strong>5. 结合使用</strong></h2><p>实际项目中可混合使用两者：</p>
+<ul>
+<li><strong>Canvas 为主</strong>：处理高性能渲染（如游戏背景）。</li>
+<li><strong>SVG 覆盖</strong>：添加可交互的 UI 元素（如按钮、提示框）。</li>
+</ul>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><table>
+<thead>
+<tr>
+<th><strong>维度</strong></th>
+<th><strong>SVG</strong></th>
+<th><strong>Canvas</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>图形类型</strong></td>
+<td>矢量</td>
+<td>位图</td>
+</tr>
+<tr>
+<td><strong>交互性</strong></td>
+<td>原生支持</td>
+<td>需手动实现</td>
+</tr>
+<tr>
+<td><strong>性能</strong></td>
+<td>适合静态或低频更新</td>
+<td>适合高频动态渲染</td>
+</tr>
+<tr>
+<td><strong>复杂度</strong></td>
+<td>适合中小规模图形</td>
+<td>适合大规模或像素级操作</td>
+</tr>
+<tr>
+<td><strong>学习曲线</strong></td>
+<td>简单（类似 HTML）</td>
+<td>较高（需掌握绘图 API）</td>
+</tr>
+</tbody></table>
+<p>根据需求选择技术，或结合两者优势实现复杂应用！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/09/frontend/css/004-SVG%E5%92%8CCanvas%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/" data-id="cmcae1sjw005dsssd59obah8o" data-title="004-SVG和Canvas对比详解" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/09/frontend/css/005-CSS%20Sprites/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          005-CSS Sprites
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/09/frontend/css/003-CSS%E9%80%89%E6%8B%A9%E5%99%A8%E4%BC%98%E5%85%88%E7%BA%A7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">003-CSS选择器优先级</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>012-跳跃游戏能否到终点+最小跳跃次数（贪心算法） | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="跳跃游戏问题详解（图文解析）跳跃游戏是经典的贪心算法问题，主要有两种变体，我将分别详细解释并配以图示说明。 跳跃游戏 I（能否到达终点）问题描述给定一个非负整数数组 nums，你最初位于数组的第一个位置。数组中的每个元素代表你在该位置可以跳跃的最大长度。判断你是否能够到达最后一个位置。 示例输入：nums &#x3D; [2,3,1,1,4]输出：true解释：从位置 0 跳到位置 1，再从位置 1 跳到位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="012-跳跃游戏能否到终点+最小跳跃次数（贪心算法）">
+<meta property="og:url" content="http://example.com/2025/06/16/algorithms/012-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%E8%83%BD%E5%90%A6%E5%88%B0%E7%BB%88%E7%82%B9+%E6%9C%80%E5%B0%8F%E8%B7%B3%E8%B7%83%E6%AC%A1%E6%95%B0%EF%BC%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%EF%BC%89/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="跳跃游戏问题详解（图文解析）跳跃游戏是经典的贪心算法问题，主要有两种变体，我将分别详细解释并配以图示说明。 跳跃游戏 I（能否到达终点）问题描述给定一个非负整数数组 nums，你最初位于数组的第一个位置。数组中的每个元素代表你在该位置可以跳跃的最大长度。判断你是否能够到达最后一个位置。 示例输入：nums &#x3D; [2,3,1,1,4]输出：true解释：从位置 0 跳到位置 1，再从位置 1 跳到位">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-16T15:59:24.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:18:15.021Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="algorithms">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-algorithms/012-跳跃游戏能否到终点+最小跳跃次数（贪心算法）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/16/algorithms/012-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%E8%83%BD%E5%90%A6%E5%88%B0%E7%BB%88%E7%82%B9+%E6%9C%80%E5%B0%8F%E8%B7%B3%E8%B7%83%E6%AC%A1%E6%95%B0%EF%BC%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2025-06-16T15:59:24.000Z" itemprop="datePublished">2025-06-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      012-跳跃游戏能否到终点+最小跳跃次数（贪心算法）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="跳跃游戏问题详解（图文解析）"><a href="#跳跃游戏问题详解（图文解析）" class="headerlink" title="跳跃游戏问题详解（图文解析）"></a>跳跃游戏问题详解（图文解析）</h1><p>跳跃游戏是经典的贪心算法问题，主要有两种变体，我将分别详细解释并配以图示说明。</p>
+<h2 id="跳跃游戏-I（能否到达终点）"><a href="#跳跃游戏-I（能否到达终点）" class="headerlink" title="跳跃游戏 I（能否到达终点）"></a>跳跃游戏 I（能否到达终点）</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>给定一个非负整数数组 <code>nums</code>，你最初位于数组的第一个位置。数组中的每个元素代表你在该位置可以跳跃的最大长度。判断你是否能够到达最后一个位置。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>输入：<code>nums = [2,3,1,1,4]</code><br>输出：<code>true</code><br>解释：从位置 0 跳到位置 1，再从位置 1 跳到位置 4。</p>
+<h3 id="解题思路：贪心算法"><a href="#解题思路：贪心算法" class="headerlink" title="解题思路：贪心算法"></a>解题思路：贪心算法</h3><ol>
+<li>维护一个变量 <code>maxReach</code> 表示当前能到达的最远位置</li>
+<li>遍历数组，更新 <code>maxReach</code></li>
+<li>如果当前位置超过了 <code>maxReach</code>，说明无法继续前进</li>
+<li>如果 <code>maxReach</code> 能覆盖最后一个位置，返回 true</li>
+</ol>
+<h3 id="JavaScript实现"><a href="#JavaScript实现" class="headerlink" title="JavaScript实现"></a>JavaScript实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">canJump</span>(<span class="params">nums</span>) &#123;</span><br><span class="line">    <span class="comment">//maxReach表示能到达的最大索引位置</span></span><br><span class="line">    <span class="keyword">let</span> maxReach = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt; maxReach) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        maxReach = <span class="title class_">Math</span>.<span class="title function_">max</span>(maxReach, i + nums[i]);</span><br><span class="line">        <span class="keyword">if</span> (maxReach &gt;= nums.<span class="property">length</span> - <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="图示说明（nums-2-3-1-1-4-）"><a href="#图示说明（nums-2-3-1-1-4-）" class="headerlink" title="图示说明（nums &#x3D; [2,3,1,1,4]）"></a>图示说明（nums &#x3D; [2,3,1,1,4]）</h3><pre><code>位置: 0(2) → 1(3) → 2(1) → 3(1) → 4(4)
+步骤:
+1. i=0: maxReach = max(0, 0+2) = 2
+   [可以覆盖位置1,2]
+   
+2. i=1: 1 &lt;= 2 (可以到达)
+   maxReach = max(2, 1+3) = 4
+   [可以覆盖位置4，直接返回true]
+</code></pre>
+<h2 id="跳跃游戏-II（最少跳跃次数）"><a href="#跳跃游戏-II（最少跳跃次数）" class="headerlink" title="跳跃游戏 II（最少跳跃次数）"></a>跳跃游戏 II（最少跳跃次数）</h2><h3 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h3><p>在保证能到达终点的前提下，找出最少的跳跃次数。</p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><p>输入：<code>nums = [2,3,1,1,4]</code><br>输出：<code>2</code><br>解释：最少需要跳2次：0 → 1 → 4。</p>
+<h3 id="解题思路：贪心算法优化"><a href="#解题思路：贪心算法优化" class="headerlink" title="解题思路：贪心算法优化"></a>解题思路：贪心算法优化</h3><ol>
+<li><p>维护三个变量：</p>
+<ul>
+<li><code>maxReach</code>：当前能到达的最远位置</li>
+<li><code>steps</code>：当前步数能到达的边界</li>
+<li><code>jumps</code>：跳跃次数</li>
+</ul>
+</li>
+<li><p>遍历数组：</p>
+<ul>
+<li>更新 <code>maxReach</code></li>
+<li>到达边界时增加跳跃次数，并更新边界</li>
+</ul>
+</li>
+</ol>
+<h3 id="JavaScript实现-1"><a href="#JavaScript实现-1" class="headerlink" title="JavaScript实现"></a>JavaScript实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">jump</span>(<span class="params">nums</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> jumps = <span class="number">0</span>, maxReach = <span class="number">0</span>, steps = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.<span class="property">length</span> - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        maxReach = <span class="title class_">Math</span>.<span class="title function_">max</span>(maxReach, i + nums[i]);</span><br><span class="line">        <span class="keyword">if</span> (i === steps) &#123;</span><br><span class="line">            jumps++;</span><br><span class="line">            steps = maxReach;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> jumps;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="图示说明（nums-2-3-1-1-4-）-1"><a href="#图示说明（nums-2-3-1-1-4-）-1" class="headerlink" title="图示说明（nums &#x3D; [2,3,1,1,4]）"></a>图示说明（nums &#x3D; [2,3,1,1,4]）</h3><pre><code>位置: 0(2) → 1(3) → 2(1) → 3(1) → 4(4)
+步骤:
+1. i=0:
+   - maxReach = max(0, 0+2) = 2
+   - steps=0 (到达边界)
+   - jumps=1, steps更新为2
+   [第1跳可以到达位置1,2]
+
+2. i=1:
+   - maxReach = max(2, 1+3) = 4
+   - i ≠ steps (1≠2)
+   
+3. i=2:
+   - maxReach保持4
+   - i=steps=2 (到达边界)
+   - jumps=2, steps更新为4
+   [第2跳可以到达位置4]
+   
+4. 结束，总共跳了2次
+</code></pre>
+<h2 id="关键点总结"><a href="#关键点总结" class="headerlink" title="关键点总结"></a>关键点总结</h2><ol>
+<li><p><strong>贪心选择</strong>：每次选择能跳得最远的位置</p>
+</li>
+<li><p><strong>跳跃游戏I</strong>：</p>
+<ul>
+<li>时间复杂度：O(n)</li>
+<li>空间复杂度：O(1)</li>
+<li>只需判断能否到达终点</li>
+</ul>
+</li>
+<li><p><strong>跳跃游戏II</strong>：</p>
+<ul>
+<li>时间复杂度：O(n)</li>
+<li>空间复杂度：O(1)</li>
+<li>需要计算最少跳跃次数</li>
+<li>注意遍历到 <code>nums.length - 1</code> 即可</li>
+</ul>
+</li>
+<li><p><strong>边界情况</strong>：</p>
+<ul>
+<li>空数组或单元素数组</li>
+<li>包含0的情况（如 <code>[3,2,1,0,4]</code>）</li>
+</ul>
+</li>
+</ol>
+<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
+<li>认为必须按最大步数跳跃（实际上可以跳1~最大步数的任意值）</li>
+<li>在跳跃游戏II中使用BFS导致效率低下</li>
+<li>忽略数组包含0的情况处理</li>
+</ol>
+<h2 id="复杂度对比"><a href="#复杂度对比" class="headerlink" title="复杂度对比"></a>复杂度对比</h2><table>
+<thead>
+<tr>
+<th>算法</th>
+<th>时间复杂度</th>
+<th>空间复杂度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>动态规划</td>
+<td>O(n²)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>贪心算法</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+</tbody></table>
+<p>贪心算法是这类问题的最优解。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/16/algorithms/012-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%E8%83%BD%E5%90%A6%E5%88%B0%E7%BB%88%E7%82%B9+%E6%9C%80%E5%B0%8F%E8%B7%B3%E8%B7%83%E6%AC%A1%E6%95%B0%EF%BC%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%EF%BC%89/" data-id="cmcae1sjb000vsssd923haaa9" data-title="012-跳跃游戏能否到终点+最小跳跃次数（贪心算法）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/16/algorithms/013-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2%EF%BC%88%E5%9B%9E%E6%BA%AF%E6%B3%95%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          013-分割回文串（回溯法）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/16/algorithms/011-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">011-组合总和（深度优先搜索（DFS））</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

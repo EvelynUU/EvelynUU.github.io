@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:url" content="http://example.com/page/55/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:locale">
+<meta property="article:author" content="EvelynUU">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-frontend/javascript/016-fetch &amp; axios" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/19/frontend/javascript/016-fetch%20&%20axios/" class="article-date">
+  <time class="dt-published" datetime="2025-06-19T05:49:10.000Z" itemprop="datePublished">2025-06-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Frontend/">Frontend</a>►<a class="article-category-link" href="/categories/Frontend/JavaScript/">JavaScript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/19/frontend/javascript/016-fetch%20&%20axios/">016-fetch &amp; axios</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Fetch-与-Axios-详解（JavaScript-HTTP-请求工具）"><a href="#Fetch-与-Axios-详解（JavaScript-HTTP-请求工具）" class="headerlink" title="Fetch 与 Axios 详解（JavaScript HTTP 请求工具）"></a>Fetch 与 Axios 详解（JavaScript HTTP 请求工具）</h3><hr>
+<h4 id="1-Fetch-API（现代浏览器原生支持）"><a href="#1-Fetch-API（现代浏览器原生支持）" class="headerlink" title="1. Fetch API（现代浏览器原生支持）"></a><strong>1. Fetch API（现代浏览器原生支持）</strong></h4><p><strong>核心特点</strong>：</p>
+<ul>
+<li>浏览器原生 API（无需安装）</li>
+<li>基于 Promise 设计</li>
+<li>符合现代 Web 标准</li>
+</ul>
+<p><strong>基本用法</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fetch</span>(url, options)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!response.<span class="property">ok</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;HTTP error&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> response.<span class="title function_">json</span>(); <span class="comment">// 解析为JSON</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">data</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(data))</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;Error:&#x27;</span>, error));</span><br></pre></td></tr></table></figure>
+
+<p><strong>关键配置项（options）</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,      <span class="comment">// GET, PUT, DELETE 等</span></span><br><span class="line">  <span class="attr">headers</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Authorization&#x27;</span>: <span class="string">&#x27;Bearer token&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data),  <span class="comment">// POST/PUT 数据</span></span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&#x27;cors&#x27;</span>,        <span class="comment">// cors, no-cors, same-origin</span></span><br><span class="line">  <span class="attr">cache</span>: <span class="string">&#x27;no-cache&#x27;</span>,   <span class="comment">// 缓存控制</span></span><br><span class="line">  <span class="attr">credentials</span>: <span class="string">&#x27;include&#x27;</span> <span class="comment">// 携带cookie</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>优势</strong>：</p>
+<ul>
+<li>零依赖、轻量级</li>
+<li>流式数据处理支持（<code>response.body</code>）</li>
+<li>符合 Web 标准，未来兼容性好</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li><strong>不自动处理错误状态码</strong>（404&#x2F;500 不会触发 catch）</li>
+<li><strong>需手动转换响应数据</strong>（需调用 <code>.json()/.text()</code>）</li>
+<li><strong>不支持请求超时设置</strong>（需用 <code>AbortController</code> 实现）</li>
+<li><strong>默认不携带 cookie</strong></li>
+<li>无请求&#x2F;响应拦截器</li>
+</ul>
+<p><strong>超时处理示例</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> controller = <span class="keyword">new</span> <span class="title class_">AbortController</span>();</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> controller.<span class="title function_">abort</span>(), <span class="number">5000</span>); <span class="comment">// 5秒超时</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">fetch</span>(url, &#123;</span><br><span class="line">  <span class="attr">signal</span>: controller.<span class="property">signal</span></span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (err.<span class="property">name</span> === <span class="string">&#x27;AbortError&#x27;</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;请求超时&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="2-Axios（第三方库）"><a href="#2-Axios（第三方库）" class="headerlink" title="2. Axios（第三方库）"></a><strong>2. Axios（第三方库）</strong></h4><p><strong>核心特点</strong>：</p>
+<ul>
+<li>功能丰富的 HTTP 客户端</li>
+<li>支持浏览器和 Node.js</li>
+<li>自动转换 JSON 数据</li>
+</ul>
+<p><strong>安装</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install axios</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">yarn add axios</span><br></pre></td></tr></table></figure>
+
+<p><strong>基本用法</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">get</span>(url, &#123; <span class="attr">params</span>: &#123; <span class="attr">id</span>: <span class="number">1</span> &#125; &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(response.<span class="property">data</span>))</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(error));</span><br><span class="line"></span><br><span class="line">axios.<span class="title function_">post</span>(url, &#123; <span class="attr">name</span>: <span class="string">&#x27;John&#x27;</span> &#125;, &#123;</span><br><span class="line">  <span class="attr">headers</span>: &#123; <span class="string">&#x27;X-Custom-Header&#x27;</span>: <span class="string">&#x27;value&#x27;</span> &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>关键特性</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>示例&#x2F;说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>自动JSON转换</strong></td>
+<td>响应数据自动解析到 <code>response.data</code></td>
+</tr>
+<tr>
+<td><strong>错误处理</strong></td>
+<td>400&#x2F;500 状态码自动触发 <code>catch</code></td>
+</tr>
+<tr>
+<td><strong>并发请求</strong></td>
+<td><code>axios.all([req1, req2])</code></td>
+</tr>
+<tr>
+<td><strong>拦截器</strong></td>
+<td>见下方示例</td>
+</tr>
+<tr>
+<td><strong>取消请求</strong></td>
+<td>使用 <code>CancelToken</code> 或 <code>AbortController</code></td>
+</tr>
+<tr>
+<td><strong>进度监控</strong></td>
+<td><code>onUploadProgress</code> 事件</td>
+</tr>
+<tr>
+<td><strong>CSRF防护</strong></td>
+<td>自动处理 XSRF-TOKEN</td>
+</tr>
+</tbody></table>
+<p><strong>拦截器示例</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请求拦截器</span></span><br><span class="line">axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">  config.<span class="property">headers</span>.<span class="property">Auth</span> = <span class="string">&#x27;Bearer token&#x27;</span>; <span class="comment">// 自动添加token</span></span><br><span class="line">  <span class="keyword">return</span> config;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 响应拦截器</span></span><br><span class="line">axios.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(</span><br><span class="line">  <span class="function"><span class="params">response</span> =&gt;</span> response,</span><br><span class="line">  <span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (error.<span class="property">response</span>.<span class="property">status</span> === <span class="number">401</span>) &#123;</span><br><span class="line">      <span class="comment">// 统一处理未授权错误</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p><strong>取消请求示例</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> source = axios.<span class="property">CancelToken</span>.<span class="title function_">source</span>();</span><br><span class="line"></span><br><span class="line">axios.<span class="title function_">get</span>(url, &#123; <span class="attr">cancelToken</span>: source.<span class="property">token</span> &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function"><span class="params">thrown</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (axios.<span class="title function_">isCancel</span>(thrown)) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;请求取消:&#x27;</span>, thrown.<span class="property">message</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取消请求</span></span><br><span class="line">source.<span class="title function_">cancel</span>(<span class="string">&#x27;用户取消操作&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="3-Fetch-vs-Axios-核心对比"><a href="#3-Fetch-vs-Axios-核心对比" class="headerlink" title="3. Fetch vs Axios 核心对比"></a><strong>3. Fetch vs Axios 核心对比</strong></h4><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Fetch</th>
+<th>Axios</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>安装</strong></td>
+<td>浏览器原生</td>
+<td>需安装第三方库</td>
+</tr>
+<tr>
+<td><strong>响应处理</strong></td>
+<td>需手动调用 <code>.json()</code></td>
+<td>自动解析 JSON 数据</td>
+</tr>
+<tr>
+<td><strong>错误处理</strong></td>
+<td>不 reject HTTP 错误</td>
+<td>自动 reject 非 2xx 响应</td>
+</tr>
+<tr>
+<td><strong>超时设置</strong></td>
+<td>需用 AbortController</td>
+<td>内置 <code>timeout</code> 参数</td>
+</tr>
+<tr>
+<td><strong>拦截器</strong></td>
+<td>不支持</td>
+<td>支持请求&#x2F;响应拦截器</td>
+</tr>
+<tr>
+<td><strong>进度跟踪</strong></td>
+<td>通过 ReadableStream 实现</td>
+<td>内置 <code>onUploadProgress</code></td>
+</tr>
+<tr>
+<td><strong>取消请求</strong></td>
+<td>AbortController</td>
+<td>CancelToken &#x2F; AbortController</td>
+</tr>
+<tr>
+<td><strong>浏览器支持</strong></td>
+<td>现代浏览器（IE 需 polyfill）</td>
+<td>广泛支持（含 IE11）</td>
+</tr>
+<tr>
+<td><strong>CSRF&#x2F;XSRF</strong></td>
+<td>需手动处理</td>
+<td>自动防御</td>
+</tr>
+<tr>
+<td><strong>并发</strong></td>
+<td>Promise.all</td>
+<td>axios.all + axios.spread</td>
+</tr>
+<tr>
+<td><strong>请求体数据类型</strong></td>
+<td>需手动序列化</td>
+<td>自动处理对象数据</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="4-使用场景推荐"><a href="#4-使用场景推荐" class="headerlink" title="4. 使用场景推荐"></a><strong>4. 使用场景推荐</strong></h4><ul>
+<li><p><strong>推荐使用 Fetch 的场景</strong>：</p>
+<ul>
+<li>小型项目或简单请求</li>
+<li>需要最小化依赖</li>
+<li>使用现代浏览器且不需要高级功能</li>
+<li>需要流式数据处理（如大文件下载）</li>
+</ul>
+</li>
+<li><p><strong>推荐使用 Axios 的场景</strong>：</p>
+<ul>
+<li>企业级应用</li>
+<li>需要统一错误处理</li>
+<li>需要请求拦截（如自动添加 token）</li>
+<li>需要上传进度条等高级功能</li>
+<li>兼容旧版浏览器（如 IE11）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="5-最佳实践示例"><a href="#5-最佳实践示例" class="headerlink" title="5. 最佳实践示例"></a><strong>5. 最佳实践示例</strong></h4><p><strong>Fetch 高级封装</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">safeFetch</span>(<span class="params">url, options = &#123;&#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> controller = <span class="keyword">new</span> <span class="title class_">AbortController</span>();</span><br><span class="line">  <span class="keyword">const</span> timeoutId = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> controller.<span class="title function_">abort</span>(), <span class="number">10000</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">fetch</span>(url, &#123;</span><br><span class="line">      ...options,</span><br><span class="line">      <span class="attr">credentials</span>: <span class="string">&#x27;include&#x27;</span>,</span><br><span class="line">      <span class="attr">signal</span>: controller.<span class="property">signal</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">clearTimeout</span>(timeoutId);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!response.<span class="property">ok</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">`HTTP <span class="subst">$&#123;response.status&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">await</span> response.<span class="title function_">json</span>();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">`请求失败: <span class="subst">$&#123;error.message&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Axios 实例封装</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api = axios.<span class="title function_">create</span>(&#123;</span><br><span class="line">  <span class="attr">baseURL</span>: <span class="string">&#x27;https://api.example.com&#x27;</span>,</span><br><span class="line">  <span class="attr">timeout</span>: <span class="number">10000</span>,</span><br><span class="line">  <span class="attr">headers</span>: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span> &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加请求拦截器</span></span><br><span class="line">api.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">  config.<span class="property">headers</span>.<span class="property">Authorization</span> = <span class="string">`Bearer <span class="subst">$&#123;getToken()&#125;</span>`</span>;</span><br><span class="line">  <span class="keyword">return</span> config;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用封装实例</span></span><br><span class="line">api.<span class="title function_">get</span>(<span class="string">&#x27;/users&#x27;</span>)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; data &#125;</span>) =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(data));</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="6-总结"><a href="#6-总结" class="headerlink" title="6. 总结"></a><strong>6. 总结</strong></h4><ul>
+<li><strong>Fetch</strong>：轻量级原生解决方案，适合简单场景和现代浏览器，但需自行封装高级功能</li>
+<li><strong>Axios</strong>：功能全面的 HTTP 客户端，提供开箱即用的高级特性（拦截器、取消请求等），适合复杂项目</li>
+<li><strong>选择建议</strong>：<ul>
+<li>优先考虑项目复杂度而非技术新颖性</li>
+<li>新项目可首选 Axios 减少重复封装</li>
+<li>对包体积敏感的场景（如微前端）可选用 Fetch</li>
+<li>考虑团队熟悉度和维护成本</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/19/frontend/javascript/016-fetch%20&%20axios/" data-id="cmcae1skd0091sssd6o5a03h7" data-title="016-fetch &amp; axios" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-devops/kubernetes/CKA CKAD备考" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/20/devops/kubernetes/CKA%20CKAD%E5%A4%87%E8%80%83/" class="article-date">
+  <time class="dt-published" datetime="2025-06-20T05:51:00.000Z" itemprop="datePublished">2025-06-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/DevOps/">DevOps</a>►<a class="article-category-link" href="/categories/DevOps/kubernetes/">kubernetes</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/20/devops/kubernetes/CKA%20CKAD%E5%A4%87%E8%80%83/">CKA/CKAD/CKS 备考指南</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>考取 Kubernetes 相关认证（如 <strong>CKA、CKAD 或 CKS</strong>）</p>
+<hr>
+<h3 id="1-选择适合的认证"><a href="#1-选择适合的认证" class="headerlink" title="1. 选择适合的认证"></a><strong>1. 选择适合的认证</strong></h3><ul>
+<li><p><strong>CKA（Certified Kubernetes Administrator）</strong></p>
+<ul>
+<li><strong>重点</strong>：集群运维、故障排查、网络&#x2F;存储配置、安全等。</li>
+<li><strong>适合人群</strong>：运维、DevOps、SRE 等需管理 Kubernetes 集群的岗位。</li>
+<li><strong>考试内容</strong>：<ul>
+<li>集群安装、升级</li>
+<li>工作负载调度（Deployment、DaemonSet 等）</li>
+<li>网络（Service、Ingress、DNS）</li>
+<li>存储（PV、PVC）</li>
+<li>安全（RBAC、SecurityContext）</li>
+<li>故障排查（节点、Pod、日志）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>CKAD（Certified Kubernetes Application Developer）</strong></p>
+<ul>
+<li><strong>重点</strong>：应用开发、部署、调试（更侧重 YAML 编写）。</li>
+<li><strong>适合人群</strong>：开发、云原生应用工程师。</li>
+<li><strong>考试内容</strong>：<ul>
+<li>Pod 设计（多容器、InitContainer）</li>
+<li>Deployment 滚动更新、回滚</li>
+<li>ConfigMap&#x2F;Secret 使用</li>
+<li>调试（Probe、日志）</li>
+<li>Helm 基础（Chart 模板）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>CKS（Certified Kubernetes Security Specialist）</strong></p>
+<ul>
+<li><strong>前置要求</strong>：需先通过 CKA。</li>
+<li><strong>重点</strong>：集群安全（认证、授权、审计、运行时安全）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2-报名与考试信息"><a href="#2-报名与考试信息" class="headerlink" title="2. 报名与考试信息"></a><strong>2. 报名与考试信息</strong></h3><ul>
+<li><strong>官网</strong>：<a target="_blank" rel="noopener" href="https://training.linuxfoundation.org/">Linux Foundation Training</a></li>
+<li><strong>考试形式</strong>：<ul>
+<li><strong>线上监考</strong>，时长 2 小时（CKA&#x2F;CKAD）或 2.5 小时（CKS）。</li>
+<li><strong>实操题</strong>：在真实 Kubernetes 集群中完成任务（需快速编写 YAML 或命令行操作）。</li>
+</ul>
+</li>
+<li><strong>通过分数</strong>：CKA&#x2F;CKAD 66%，CKS 67%。</li>
+</ul>
+<hr>
+<h3 id="3-备考资源与步骤"><a href="#3-备考资源与步骤" class="headerlink" title="3. 备考资源与步骤"></a><strong>3. 备考资源与步骤</strong></h3><h4 id="①-官方资源"><a href="#①-官方资源" class="headerlink" title="① 官方资源"></a><strong>① 官方资源</strong></h4><ul>
+<li><strong>Kubernetes 官方文档</strong>：<ul>
+<li>重点章节：Concepts &gt; Workloads、Services&#x2F;Networking、Storage、Security。</li>
+<li>文档搜索技巧（考试时可快速查阅）。</li>
+</ul>
+</li>
+<li><strong>考试大纲</strong>：下载最新版，逐项攻克（官网提供）。</li>
+</ul>
+<h4 id="②-推荐学习平台"><a href="#②-推荐学习平台" class="headerlink" title="② 推荐学习平台"></a><strong>② 推荐学习平台</strong></h4><ul>
+<li><strong>理论+实践课程</strong>：<ul>
+<li><a target="_blank" rel="noopener" href="https://kodekloud.com/">KodeKloud</a>（互动式实验，适合新手）。</li>
+<li><a target="_blank" rel="noopener" href="https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/">Udemy: Mumshad Mannambeth 的课程</a>（含模拟题）。</li>
+</ul>
+</li>
+<li><strong>动手实验</strong>：<ul>
+<li><a target="_blank" rel="noopener" href="https://killercoda.com/">Killercoda</a>（免费在线 Kubernetes 实验环境）。</li>
+<li>本地搭建集群：Minikube、Kind 或 kubeadm。</li>
+</ul>
+</li>
+</ul>
+<h4 id="③-刷题与模拟"><a href="#③-刷题与模拟" class="headerlink" title="③ 刷题与模拟"></a><strong>③ 刷题与模拟</strong></h4><ul>
+<li><strong>模拟考试</strong>：<ul>
+<li><a target="_blank" rel="noopener" href="https://killer.sh/">Killer.sh</a>（官方提供的模拟环境，难度略高于实际考试）。</li>
+<li>重点练习：快速编写 YAML（<code>kubectl run --dry-run=client -o yaml</code> 生成模板）。</li>
+</ul>
+</li>
+<li><strong>高频考点</strong>：<ul>
+<li>CKA：etcd 备份恢复、网络策略（NetworkPolicy）、节点维护。</li>
+<li>CKAD：自定义调度器（nodeSelector、Affinity）、Pod 生命周期钩子。</li>
+</ul>
+</li>
+</ul>
+<h4 id="④-考试技巧"><a href="#④-考试技巧" class="headerlink" title="④ 考试技巧"></a><strong>④ 考试技巧</strong></h4><ul>
+<li><strong>时间管理</strong>：每题不超过 5-10 分钟，标记难题最后做。</li>
+<li><strong>命令别名</strong>：提前设置 <code>alias k=kubectl</code> 并启用自动补全。</li>
+<li><strong>文档速查</strong>：学会用 <code>kubectl explain</code> 和官方文档搜索（Ctrl+F）。</li>
+</ul>
+<hr>
+<h3 id="4-考试当天注意事项"><a href="#4-考试当天注意事项" class="headerlink" title="4. 考试当天注意事项"></a><strong>4. 考试当天注意事项</strong></h3><ul>
+<li><strong>环境准备</strong>：<ul>
+<li>稳定的网络、安静的空间、摄像头&#x2F;麦克风。</li>
+<li>关闭无关软件，避免使用多显示器。</li>
+</ul>
+</li>
+<li><strong>允许的资源</strong>：<ul>
+<li>仅可访问 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/">Kubernetes 官方文档</a> 和 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/">GitHub 官方仓库</a>。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="5-认证后的维护"><a href="#5-认证后的维护" class="headerlink" title="5. 认证后的维护"></a><strong>5. 认证后的维护</strong></h3><ul>
+<li><strong>有效期</strong>：CKA&#x2F;CKAD&#x2F;CKS 认证有效期为 <strong>3 年</strong>，可通过重考或参与 Linux 基金会活动续期。</li>
+<li><strong>简历展示</strong>：将认证徽章（Badge）添加到 LinkedIn&#x2F;GitHub。</li>
+</ul>
+<hr>
+<h3 id="6-其他建议"><a href="#6-其他建议" class="headerlink" title="6. 其他建议"></a><strong>6. 其他建议</strong></h3><ul>
+<li><strong>先考 CKAD 还是 CKA？</strong><ul>
+<li>如果你是开发者，先考 CKAD；如果侧重运维，直接考 CKA。</li>
+</ul>
+</li>
+<li><strong>CKS 建议</strong>：在通过 CKA 后 1-2 个月内备考（安全知识重叠）。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/20/devops/kubernetes/CKA%20CKAD%E5%A4%87%E8%80%83/" data-id="cmcae1sjm003esssde09rbh1z" data-title="CKA/CKAD/CKS 备考指南" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/54/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/53/">53</a><a class="page-number" href="/page/54/">54</a><span class="page-number current">55</span><a class="page-number" href="/page/56/">56</a><a class="page-number" href="/page/57/">57</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" href="/page/56/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

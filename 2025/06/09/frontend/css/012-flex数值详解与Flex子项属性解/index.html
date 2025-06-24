@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>012-flex数值与Flex子属性 | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="flex: 1 详解与 Flex 子项属性解析一、flex: 1 的完整含义flex: 1 是 flex-grow、flex-shrink 和 flex-basis 的简写形式，其完整等价于： 12345flex: 1 1 0;&#x2F;* 等价于 *&#x2F;flex-grow: 1;flex-shrink: 1;flex-basis: 0;  二、三大核心属性详解1. flex-grow（扩展比例）定义：当容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="012-flex数值与Flex子属性">
+<meta property="og:url" content="http://example.com/2025/06/09/frontend/css/012-flex%E6%95%B0%E5%80%BC%E8%AF%A6%E8%A7%A3%E4%B8%8EFlex%E5%AD%90%E9%A1%B9%E5%B1%9E%E6%80%A7%E8%A7%A3/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="flex: 1 详解与 Flex 子项属性解析一、flex: 1 的完整含义flex: 1 是 flex-grow、flex-shrink 和 flex-basis 的简写形式，其完整等价于： 12345flex: 1 1 0;&#x2F;* 等价于 *&#x2F;flex-grow: 1;flex-shrink: 1;flex-basis: 0;  二、三大核心属性详解1. flex-grow（扩展比例）定义：当容">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-09T15:59:25.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:44:01.599Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-frontend/css/012-flex数值详解与Flex子项属性解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/09/frontend/css/012-flex%E6%95%B0%E5%80%BC%E8%AF%A6%E8%A7%A3%E4%B8%8EFlex%E5%AD%90%E9%A1%B9%E5%B1%9E%E6%80%A7%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2025-06-09T15:59:25.000Z" itemprop="datePublished">2025-06-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Frontend/">Frontend</a>►<a class="article-category-link" href="/categories/Frontend/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      012-flex数值与Flex子属性
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="flex-1-详解与-Flex-子项属性解析"><a href="#flex-1-详解与-Flex-子项属性解析" class="headerlink" title="flex: 1 详解与 Flex 子项属性解析"></a><code>flex: 1</code> 详解与 Flex 子项属性解析</h1><h2 id="一、flex-1-的完整含义"><a href="#一、flex-1-的完整含义" class="headerlink" title="一、flex: 1 的完整含义"></a>一、<code>flex: 1</code> 的完整含义</h2><p><code>flex: 1</code> 是 <code>flex-grow</code>、<code>flex-shrink</code> 和 <code>flex-basis</code> 的简写形式，其完整等价于：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">flex</span>: <span class="number">1</span> <span class="number">1</span> <span class="number">0</span>;</span><br><span class="line"><span class="comment">/* 等价于 */</span></span><br><span class="line"><span class="attribute">flex-grow</span>: <span class="number">1</span>;</span><br><span class="line"><span class="attribute">flex-shrink</span>: <span class="number">1</span>;</span><br><span class="line"><span class="attribute">flex-basis</span>: <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、三大核心属性详解"><a href="#二、三大核心属性详解" class="headerlink" title="二、三大核心属性详解"></a>二、三大核心属性详解</h2><h3 id="1-flex-grow（扩展比例）"><a href="#1-flex-grow（扩展比例）" class="headerlink" title="1. flex-grow（扩展比例）"></a>1. <code>flex-grow</code>（扩展比例）</h3><p><strong>定义</strong>：当容器有剩余空间时，子项的分配比例<br><strong>特点</strong>：</p>
+<ul>
+<li>默认值：<code>0</code>（不扩展）</li>
+<li>必须是非负数字</li>
+<li>按比例分配剩余空间</li>
+</ul>
+<p><strong>示例</strong>：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item1</span> &#123; <span class="attribute">flex-grow</span>: <span class="number">1</span>; &#125;</span><br><span class="line"><span class="selector-class">.item2</span> &#123; <span class="attribute">flex-grow</span>: <span class="number">2</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>→ 剩余空间按 1:2 分配</p>
+<h3 id="2-flex-shrink（收缩比例）"><a href="#2-flex-shrink（收缩比例）" class="headerlink" title="2. flex-shrink（收缩比例）"></a>2. <code>flex-shrink</code>（收缩比例）</h3><p><strong>定义</strong>：当空间不足时，子项的收缩比例<br><strong>特点</strong>：</p>
+<ul>
+<li>默认值：<code>1</code>（允许收缩）</li>
+<li>必须是非负数字</li>
+<li><code>0</code> 表示不收缩（类似 <code>flex-shrink: none</code>）</li>
+</ul>
+<p><strong>计算方式</strong>：</p>
+<pre><code>实际收缩量 = (子项原始尺寸 × flex-shrink值) / ∑(所有子项原始尺寸 × flex-shrink值) × 溢出空间
+</code></pre>
+<h3 id="3-flex-basis（基准尺寸）"><a href="#3-flex-basis（基准尺寸）" class="headerlink" title="3. flex-basis（基准尺寸）"></a>3. <code>flex-basis</code>（基准尺寸）</h3><p><strong>定义</strong>：子项在分配多余空间之前的初始尺寸<br><strong>特点</strong>：</p>
+<ul>
+<li>默认值：<code>auto</code>（取元素自身尺寸）</li>
+<li>可设为具体值（<code>200px</code>、<code>20%</code>等）或 <code>0</code></li>
+<li>当设置为 <code>0</code> 时，会忽略元素自身尺寸</li>
+</ul>
+<h2 id="三、flex-简写形式对照表"><a href="#三、flex-简写形式对照表" class="headerlink" title="三、flex 简写形式对照表"></a>三、<code>flex</code> 简写形式对照表</h2><table>
+<thead>
+<tr>
+<th>简写形式</th>
+<th>等价完整形式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>flex: initial</code></td>
+<td><code>0 1 auto</code></td>
+<td>默认值，不扩展但可收缩</td>
+</tr>
+<tr>
+<td><code>flex: auto</code></td>
+<td><code>1 1 auto</code></td>
+<td>完全弹性，基准为内容尺寸</td>
+</tr>
+<tr>
+<td><code>flex: none</code></td>
+<td><code>0 0 auto</code></td>
+<td>完全刚性，不伸缩</td>
+</tr>
+<tr>
+<td><code>flex: 1</code></td>
+<td><code>1 1 0</code></td>
+<td>完全弹性，基准为0</td>
+</tr>
+<tr>
+<td><code>flex: 2 1</code></td>
+<td><code>2 1 0</code></td>
+<td>扩展系数2，基准为0</td>
+</tr>
+<tr>
+<td><code>flex: 1 100px</code></td>
+<td><code>1 1 100px</code></td>
+<td>基准100px，可伸缩</td>
+</tr>
+</tbody></table>
+<h2 id="四、深度解析-flex-1-的特性"><a href="#四、深度解析-flex-1-的特性" class="headerlink" title="四、深度解析 flex: 1 的特性"></a>四、深度解析 <code>flex: 1</code> 的特性</h2><h3 id="1-空间分配机制"><a href="#1-空间分配机制" class="headerlink" title="1. 空间分配机制"></a>1. 空间分配机制</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;item&quot;</span> <span class="attr">style</span>=<span class="string">&quot;flex: 1&quot;</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;item&quot;</span> <span class="attr">style</span>=<span class="string">&quot;flex: 2&quot;</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;item&quot;</span> <span class="attr">style</span>=<span class="string">&quot;flex: 1&quot;</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>总比例：1 + 2 + 1 &#x3D; 4</li>
+<li>剩余空间分配：<ul>
+<li>A 获得 1&#x2F;4</li>
+<li>B 获得 2&#x2F;4</li>
+<li>C 获得 1&#x2F;4</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-与-flex-basis-0-的关系"><a href="#2-与-flex-basis-0-的关系" class="headerlink" title="2. 与 flex-basis: 0 的关系"></a>2. 与 <code>flex-basis: 0</code> 的关系</h3><p><code>flex: 1</code> 的 <code>flex-basis: 0</code> 会导致：</p>
+<ul>
+<li>忽略元素内容宽度</li>
+<li>完全按比例分配空间</li>
+<li>实现真正均匀分布（不同于 <code>flex: auto</code>）</li>
+</ul>
+<h3 id="3-与-flex-grow-1-的区别"><a href="#3-与-flex-grow-1-的区别" class="headerlink" title="3. 与 flex-grow: 1 的区别"></a>3. 与 <code>flex-grow: 1</code> 的区别</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 情况1 */</span></span><br><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">flex-grow</span>: <span class="number">1</span>; &#125; <span class="comment">/* flex-shrink: 1, flex-basis: auto */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 情况2 */</span></span><br><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">flex</span>: <span class="number">1</span>; &#125; <span class="comment">/* flex-shrink: 1, flex-basis: 0 */</span></span><br></pre></td></tr></table></figure>
+
+<p>区别：</p>
+<ul>
+<li>情况1 会受元素内容影响</li>
+<li>情况2 完全按比例分配</li>
+</ul>
+<h2 id="五、常见应用场景"><a href="#五、常见应用场景" class="headerlink" title="五、常见应用场景"></a>五、常见应用场景</h2><h3 id="1-等分布局"><a href="#1-等分布局" class="headerlink" title="1. 等分布局"></a>1. 等分布局</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex</span>: <span class="number">1</span>; <span class="comment">/* 完全等分 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-主内容自适应"><a href="#2-主内容自适应" class="headerlink" title="2. 主内容自适应"></a>2. 主内容自适应</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.sidebar</span> &#123;</span><br><span class="line">  <span class="attribute">flex</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">200px</span>; <span class="comment">/* 固定宽度 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.main</span> &#123;</span><br><span class="line">  <span class="attribute">flex</span>: <span class="number">1</span>; <span class="comment">/* 占据剩余空间 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-响应式网格"><a href="#3-响应式网格" class="headerlink" title="3. 响应式网格"></a>3. 响应式网格</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.grid-item</span> &#123;</span><br><span class="line">  <span class="attribute">flex</span>: <span class="number">1</span> <span class="number">0</span> <span class="number">250px</span>; <span class="comment">/* 最小250px，可扩展 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、常见误区与注意事项"><a href="#六、常见误区与注意事项" class="headerlink" title="六、常见误区与注意事项"></a>六、常见误区与注意事项</h2><ol>
+<li><p><strong><code>flex-basis</code> 与 <code>width</code> 的优先级</strong>：</p>
+<ul>
+<li>在Flex布局中，<code>flex-basis</code> 会覆盖 <code>width</code></li>
+<li>除非 <code>flex-basis: auto</code></li>
+</ul>
+</li>
+<li><p><strong>最小内容尺寸限制</strong>：</p>
+<ul>
+<li>即使 <code>flex-basis: 0</code>，也不会小于内容最小宽度</li>
+<li>可加 <code>min-width: 0</code> 强制收缩</li>
+</ul>
+</li>
+<li><p><strong>性能考虑</strong>：</p>
+<ul>
+<li>避免过度嵌套Flex容器</li>
+<li><code>flex: 1</code> 比 <code>flex-grow: 1</code> 性能稍优（浏览器优化）</li>
+</ul>
+</li>
+<li><p><strong>IE11 兼容性</strong>：</p>
+<ul>
+<li>IE11 对 <code>flex-basis: 0</code> 支持有问题</li>
+<li>需写成 <code>flex: 1 1 0px</code></li>
+</ul>
+</li>
+</ol>
+<p>通过深入理解这些属性，可以精准控制Flex布局中的空间分配，实现各种复杂的自适应布局效果。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/09/frontend/css/012-flex%E6%95%B0%E5%80%BC%E8%AF%A6%E8%A7%A3%E4%B8%8EFlex%E5%AD%90%E9%A1%B9%E5%B1%9E%E6%80%A7%E8%A7%A3/" data-id="cmcae1sjz0064sssd646xa01w" data-title="012-flex数值与Flex子属性" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/09/frontend/css/013-Grid%E5%B8%83%E5%B1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          013-Grid布局
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/09/frontend/css/011-Flex%E5%B8%83%E5%B1%80%E8%AF%A6%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">011-Flex布局</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

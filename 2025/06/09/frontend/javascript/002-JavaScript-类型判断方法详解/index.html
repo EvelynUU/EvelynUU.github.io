@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>002-JavaScript 类型判断方法详解 | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="123456789101112131415161718192021222324252627282930313233## JavaScript 类型判断方法详解### 1. 判断数据类型的常用方法| **方法**         | **说明**                                                                 | **示例**">
+<meta property="og:type" content="article">
+<meta property="og:title" content="002-JavaScript 类型判断方法详解">
+<meta property="og:url" content="http://example.com/2025/06/09/frontend/javascript/002-JavaScript-%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233## JavaScript 类型判断方法详解### 1. 判断数据类型的常用方法| **方法**         | **说明**                                                                 | **示例**">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-09T05:44:56.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:44:41.003Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="Javascript">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-frontend/javascript/002-JavaScript-类型判断方法详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/09/frontend/javascript/002-JavaScript-%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2025-06-09T05:44:56.000Z" itemprop="datePublished">2025-06-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Frontend/">Frontend</a>►<a class="article-category-link" href="/categories/Frontend/JavaScript/">JavaScript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      002-JavaScript 类型判断方法详解
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## JavaScript 类型判断方法详解</span></span><br><span class="line"></span><br><span class="line"><span class="section">### 1. 判断数据类型的常用方法</span></span><br><span class="line">| <span class="strong">**方法**</span>         | <span class="strong">**说明**</span>                                                                 | <span class="strong">**示例**</span>                                 |</span><br><span class="line">|------------------|-------------------------------------------------------------------------|-----------------------------------------|</span><br><span class="line">| <span class="code">`typeof`</span>         | 返回基本类型字符串，对引用类型（除函数）返回 <span class="code">`&quot;object&quot;`</span>                  | <span class="code">`typeof &quot;str&quot;`</span> → <span class="code">`&quot;string&quot;`</span>             |</span><br><span class="line">| <span class="code">`instanceof`</span>     | 检测构造函数的原型是否在对象原型链上（用于引用类型）                    | <span class="code">`[] instanceof Array`</span> → <span class="code">`true`</span>          |</span><br><span class="line">| <span class="code">`Object.prototype.toString.call()`</span> | 最准确的类型判断方法，返回 <span class="code">`[object Type]`</span> 格式字符串 | <span class="code">`toString.call(null)`</span> → <span class="code">`[object Null]`</span> |</span><br><span class="line">| <span class="code">`Array.isArray()`</span> | ES5 新增的数组检测方法                                                  | <span class="code">`Array.isArray([])`</span> → <span class="code">`true`</span>            |</span><br><span class="line">| <span class="code">`===`</span>            | 特殊值直接比较（<span class="code">`null`</span>/<span class="code">`undefined`</span>）                                    | <span class="code">`value === null`</span>                        |</span><br><span class="line"></span><br><span class="line"><span class="section">### 2. `instanceof` 原理</span></span><br><span class="line"><span class="strong">**实现机制**</span>：  </span><br><span class="line">沿着对象的原型链向上查找，检查构造函数的 <span class="code">`prototype`</span> 属性是否出现在原型链中</span><br><span class="line"></span><br><span class="line"><span class="code">```javascript</span></span><br><span class="line"><span class="code">function myInstanceof(obj, constructor) &#123;</span></span><br><span class="line"><span class="code">  // 获取对象的原型</span></span><br><span class="line"><span class="code">  let proto = Object.getPrototypeOf(obj);</span></span><br><span class="line"><span class="code">  </span></span><br><span class="line"><span class="code">  while (proto) &#123;</span></span><br><span class="line"><span class="code">    // 找到原型匹配</span></span><br><span class="line"><span class="code">    if (proto === constructor.prototype) return true;</span></span><br><span class="line"><span class="code">    // 继续向上查找</span></span><br><span class="line"><span class="code">    proto = Object.getPrototypeOf(proto);</span></span><br><span class="line"><span class="code">  &#125;</span></span><br><span class="line"><span class="code">  return false;</span></span><br><span class="line"><span class="code">&#125;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">// 测试</span></span><br><span class="line"><span class="code">console.log(myInstanceof([], Array));   // true</span></span><br><span class="line"><span class="code">console.log(myInstanceof(&#123;&#125;, Object));  // true</span></span><br><span class="line"><span class="code">console.log(myInstanceof([], Object));  // true（Array继承自Object）</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>对基本类型无效：<code>1 instanceof Number</code> → <code>false</code></li>
+<li>跨框架对象检测可能失效（不同执行环境有不同原型）</li>
+<li>修改 <code>prototype</code> 可能导致意外行为</li>
+</ul>
+<h3 id="3-判断空对象的-4-种方法"><a href="#3-判断空对象的-4-种方法" class="headerlink" title="3. 判断空对象的 4 种方法"></a>3. 判断空对象的 4 种方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法1：Object.keys（推荐）</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(obj).<span class="property">length</span> === <span class="number">0</span>;  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法2：JSON.stringify</span></span><br><span class="line"><span class="title class_">JSON</span>.<span class="title function_">stringify</span>(obj) === <span class="string">&#x27;&#123;&#125;&#x27;</span>;   <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法3：for...in 遍历</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isEmpty</span>(<span class="params">obj</span>) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="keyword">if</span> (obj.<span class="title function_">hasOwnProperty</span>(key)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法4：Object.getOwnPropertyNames</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(obj).<span class="property">length</span> === <span class="number">0</span>; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>特殊案例处理</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Symbol 属性需单独检测</span></span><br><span class="line"><span class="keyword">const</span> symObj = &#123; [<span class="title class_">Symbol</span>(<span class="string">&#x27;key&#x27;</span>)]: <span class="string">&#x27;value&#x27;</span> &#125;;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">getOwnPropertySymbols</span>(symObj).<span class="property">length</span> === <span class="number">0</span>; <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不可枚举属性</span></span><br><span class="line"><span class="keyword">const</span> nonEnum = <span class="title class_">Object</span>.<span class="title function_">create</span>(&#123;&#125;, &#123;</span><br><span class="line">  <span class="attr">hidden</span>: &#123; <span class="attr">value</span>: <span class="string">&#x27;secret&#x27;</span>, <span class="attr">enumerable</span>: <span class="literal">false</span> &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(nonEnum).<span class="property">length</span> === <span class="number">0</span>; <span class="comment">// true（需注意）</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-typeof-null-的特殊性"><a href="#4-typeof-null-的特殊性" class="headerlink" title="4. typeof null 的特殊性"></a>4. <code>typeof null</code> 的特殊性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>; <span class="comment">// &quot;object&quot;（历史遗留问题）</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>原因</strong>：<br>JavaScript 早期设计时用二进制前三位标识类型：</p>
+<ul>
+<li><code>000</code>：对象类型</li>
+<li><code>1</code>：整型</li>
+<li><code>010</code>：双精度浮点型</li>
+<li><code>100</code>：字符串</li>
+<li><code>110</code>：布尔型<br><code>null</code> 的二进制全为 <code>0</code>，被错误识别为对象类型</li>
+</ul>
+<p><strong>正确检测 null</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">isNull</span> = (<span class="params">value</span>) =&gt; value === <span class="literal">null</span>;  <span class="comment">// 直接全等比较</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-typeof-NaN-的特殊性"><a href="#5-typeof-NaN-的特殊性" class="headerlink" title="5. typeof NaN 的特殊性"></a>5. <code>typeof NaN</code> 的特殊性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="title class_">NaN</span>; <span class="comment">// &quot;number&quot;（符合IEEE 754标准）</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>NaN 的特性</strong>：</p>
+<ul>
+<li>全称：Not-A-Number（非数字）</li>
+<li>是特殊的 Number 类型值</li>
+<li>由无效数学运算产生：<code>0/0</code>, <code>Math.sqrt(-1)</code></li>
+<li>不等于任何值（包括自身）：<code>NaN === NaN</code> → <code>false</code></li>
+</ul>
+<p><strong>检测 NaN 的方法</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES6 推荐方法</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isNaN</span>(<span class="title class_">NaN</span>);  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 兼容旧环境方法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isNaN</span>(<span class="params">value</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> value !== value;  <span class="comment">// NaN是唯一不自等的值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意全局isNaN的缺陷（会先尝试类型转换）</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="string">&quot;hello&quot;</span>);     <span class="comment">// true（字符串被转成NaN）</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isNaN</span>(<span class="string">&quot;hello&quot;</span>); <span class="comment">// false（严格检测）</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="类型判断总结表"><a href="#类型判断总结表" class="headerlink" title="类型判断总结表"></a>类型判断总结表</h3><table>
+<thead>
+<tr>
+<th><strong>表达式</strong></th>
+<th><strong>结果</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>typeof &quot;hello&quot;</code></td>
+<td><code>&quot;string&quot;</code></td>
+<td>基本类型准确检测</td>
+</tr>
+<tr>
+<td><code>typeof null</code></td>
+<td><code>&quot;object&quot;</code></td>
+<td>历史遗留问题</td>
+</tr>
+<tr>
+<td><code>typeof NaN</code></td>
+<td><code>&quot;number&quot;</code></td>
+<td>IEEE 754 标准定义</td>
+</tr>
+<tr>
+<td><code>typeof function() &#123;&#125;</code></td>
+<td><code>&quot;function&quot;</code></td>
+<td>函数的特殊处理</td>
+</tr>
+<tr>
+<td><code>[] instanceof Array</code></td>
+<td><code>true</code></td>
+<td>原型链检测</td>
+</tr>
+<tr>
+<td><code>Object.prototype.toString.call(&#123;&#125;)</code></td>
+<td><code>&quot;[object Object]&quot;</code></td>
+<td>最可靠的类型判断</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/09/frontend/javascript/002-JavaScript-%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/" data-id="cmcae1sk6007rsssdafcggvqk" data-title="002-JavaScript 类型判断方法详解" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/09/frontend/javascript/003-var-let-const-%E5%85%A8%E9%9D%A2%E5%AF%B9%E6%AF%94/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          003-var-let-const 全面对比
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/09/frontend/javascript/001-JavaScript-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">001-JavaScript 数据类型</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

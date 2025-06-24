@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>021-组件库样式管理机制 | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="组件库的样式管理与主题切换机制是构建灵活、可维护前端系统的核心能力。结合主流技术方案和工程实践，以下从样式管理机制、主题切换方案、工程化实践三个维度系统解析：  &#x20;一、组件库样式管理机制1. 样式隔离技术 CSS Modules通过为类名添加哈希值（如 .button_3Hk5），避免全局污染。在React生态广泛应用，需配合 :global 语法覆盖组件库样式。 Scoped CSSV">
+<meta property="og:type" content="article">
+<meta property="og:title" content="021-组件库样式管理机制">
+<meta property="og:url" content="http://example.com/2025/06/09/frontend/css/021-%E7%BB%84%E4%BB%B6%E5%BA%93%E6%A0%B7%E5%BC%8F%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="组件库的样式管理与主题切换机制是构建灵活、可维护前端系统的核心能力。结合主流技术方案和工程实践，以下从样式管理机制、主题切换方案、工程化实践三个维度系统解析：  &#x20;一、组件库样式管理机制1. 样式隔离技术 CSS Modules通过为类名添加哈希值（如 .button_3Hk5），避免全局污染。在React生态广泛应用，需配合 :global 语法覆盖组件库样式。 Scoped CSSV">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-09T15:59:34.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:44:30.208Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-frontend/css/021-组件库样式管理机制" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/09/frontend/css/021-%E7%BB%84%E4%BB%B6%E5%BA%93%E6%A0%B7%E5%BC%8F%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6/" class="article-date">
+  <time class="dt-published" datetime="2025-06-09T15:59:34.000Z" itemprop="datePublished">2025-06-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Frontend/">Frontend</a>►<a class="article-category-link" href="/categories/Frontend/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      021-组件库样式管理机制
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>组件库的样式管理与主题切换机制是构建灵活、可维护前端系统的核心能力。结合主流技术方案和工程实践，以下从样式管理机制、主题切换方案、工程化实践三个维度系统解析：</p>
+<hr>
+<h3 id="x20-一、组件库样式管理机制"><a href="#x20-一、组件库样式管理机制" class="headerlink" title="&#x20;一、组件库样式管理机制"></a>&#x20;一、组件库样式管理机制</h3><h4 id="1-样式隔离技术"><a href="#1-样式隔离技术" class="headerlink" title="1. 样式隔离技术"></a>1. <strong>样式隔离技术</strong></h4><ul>
+<li><strong>CSS Modules</strong><br>通过为类名添加哈希值（如 <code>.button_3Hk5</code>），避免全局污染。在React生态广泛应用，需配合 <code>:global</code> 语法覆盖组件库样式。</li>
+<li><strong>Scoped CSS</strong><br>Vue的解决方案，通过属性选择器（如 <code>[data-v-2fc5154c]</code>）限定样式作用域。使用 <code>&gt;&gt;&gt;</code> 或 <code>/deep/</code> 穿透子组件覆盖第三方样式。</li>
+<li><strong>Shadow DOM</strong><br>彻底隔离组件样式（如Web Components），但需权衡兼容性和开发成本。</li>
+</ul>
+<h4 id="2-样式预处理器与变量体系"><a href="#2-样式预处理器与变量体系" class="headerlink" title="2. 样式预处理器与变量体系"></a>2. <strong>样式预处理器与变量体系</strong></h4><ul>
+<li><strong>Less&#x2F;Sass 变量</strong><br>定义颜色、间距等全局变量（如 <code>@primary-color: #1890ff;</code>），便于统一修改。Ant Design等库依赖此机制。</li>
+<li><strong>CSS 变量（Custom Properties）</strong><br>原生支持动态更新（如 <code>--primary-color: #3498db;</code>），无需预编译，适合主题切换。</li>
+</ul>
+<h4 id="3-样式与组件生命周期绑定"><a href="#3-样式与组件生命周期绑定" class="headerlink" title="3. 样式与组件生命周期绑定"></a>3. <strong>样式与组件生命周期绑定</strong></h4><ul>
+<li><strong>CSS-in-JS</strong><br>使用Styled-components或Emotion，将样式嵌入JS，实现动态主题注入和按需加载。缺点是运行时性能开销。</li>
+<li><strong>原子化CSS</strong><br>如Tailwind，通过工具类组合样式，减少CSS体积，但定制主题需扩展配置。</li>
+</ul>
+<hr>
+<h3 id="x20-二、主题切换的实现方案"><a href="#x20-二、主题切换的实现方案" class="headerlink" title="&#x20;二、主题切换的实现方案"></a>&#x20;二、主题切换的实现方案</h3><h4 id="1-CSS-变量方案"><a href="#1-CSS-变量方案" class="headerlink" title="1. CSS 变量方案"></a>1. <strong>CSS 变量方案</strong></h4><p><strong>实现步骤</strong>：</p>
+<ul>
+<li>定义全局变量：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attr">--primary-color</span>: <span class="number">#3498db</span>;</span><br><span class="line">  <span class="attr">--bg-color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>组件内使用变量：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.button</span> &#123; <span class="attribute">background</span>: <span class="built_in">var</span>(--primary-color); &#125;</span><br></pre></td></tr></table></figure></li>
+<li>JS动态更新：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">style</span>.<span class="title function_">setProperty</span>(<span class="string">&#x27;--primary-color&#x27;</span>, <span class="string">&#x27;#e74c3c&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>优势</strong>：无编译依赖、性能高效；<strong>局限</strong>：IE不兼容（可用 <code>css-vars-ponyfill</code> 降级）。</p>
+<h4 id="2-CSS-in-JS-主题注入"><a href="#2-CSS-in-JS-主题注入" class="headerlink" title="2. CSS-in-JS 主题注入"></a>2. <strong>CSS-in-JS 主题注入</strong></h4><p><strong>示例（Styled-components）</strong>：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ThemeProvider</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;styled-components&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> darkTheme = &#123; <span class="attr">primary</span>: <span class="string">&#x27;#e74c3c&#x27;</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">ThemeProvider</span> <span class="attr">theme</span>=<span class="string">&#123;darkTheme&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">Button</span>&gt;</span>Click<span class="tag">&lt;/<span class="name">Button</span>&gt;</span> // 内部使用 props.theme.primary</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">ThemeProvider</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>适用React生态，支持主题动态响应，但增加包体积。</p>
+<h4 id="3-多CSS文件切换"><a href="#3-多CSS文件切换" class="headerlink" title="3. 多CSS文件切换"></a>3. <strong>多CSS文件切换</strong></h4><p><strong>实现方式</strong>：</p>
+<ul>
+<li>为不同主题编译独立CSS文件（如 <code>light-theme.css</code>&#x2F;<code>dark-theme.css</code>）。</li>
+<li>通过JS动态切换<code>&lt;link&gt;</code>标签的href属性：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">loadTheme</span>(<span class="params">theme</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> link = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;theme-link&#x27;</span>);</span><br><span class="line">  link.<span class="property">href</span> = <span class="string">`<span class="subst">$&#123;theme&#125;</span>-theme.css`</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>适用场景</strong>：主题数量少的静态站点；<strong>缺点</strong>：重复样式、切换闪屏。</p>
+<h4 id="4-组件库深度适配方案"><a href="#4-组件库深度适配方案" class="headerlink" title="4. 组件库深度适配方案"></a>4. <strong>组件库深度适配方案</strong></h4><ul>
+<li>**Ant Design (Less 变量)**<br>使用 <code>webpack-theme-color-replacer</code> 插件，在构建时提取颜色规则，运行时替换为自定义色值。</li>
+<li>**Element Plus (CSS 变量)**<br>结合 <code>use-element-plus-theme</code> 库，动态修改根变量：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useElementPlusTheme &#125; <span class="keyword">from</span> <span class="string">&#x27;use-element-plus-theme&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> &#123; changeTheme &#125; = <span class="title function_">useElementPlusTheme</span>();</span><br><span class="line"><span class="title function_">changeTheme</span>(<span class="string">&#x27;#722ed1&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="5-主题方案对比"><a href="#5-主题方案对比" class="headerlink" title="5. 主题方案对比"></a>5. <strong>主题方案对比</strong></h4><table>
+<thead>
+<tr>
+<th><strong>方案</strong></th>
+<th><strong>动态性</strong></th>
+<th><strong>性能</strong></th>
+<th><strong>兼容性</strong></th>
+<th><strong>适用场景</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CSS 变量</td>
+<td>★★★★☆</td>
+<td>★★★★☆</td>
+<td>需降级处理</td>
+<td>现代浏览器项目</td>
+</tr>
+<tr>
+<td>CSS-in-JS</td>
+<td>★★★★★</td>
+<td>★★☆☆☆</td>
+<td>全支持</td>
+<td>React应用、高定制需求</td>
+</tr>
+<tr>
+<td>多CSS文件切换</td>
+<td>★★☆☆☆</td>
+<td>★★★☆☆</td>
+<td>全支持</td>
+<td>主题数量少的静态站点</td>
+</tr>
+<tr>
+<td>Less变量编译</td>
+<td>★☆☆☆☆</td>
+<td>★★★★☆</td>
+<td>依赖构建工具</td>
+<td>Ant Design等Less项目</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="x20-三、工程化与最佳实践"><a href="#x20-三、工程化与最佳实践" class="headerlink" title="&#x20;三、工程化与最佳实践"></a>&#x20;三、工程化与最佳实践</h3><ol>
+<li><p><strong>构建工具优化</strong></p>
+<ul>
+<li><strong>Rollup打包</strong>：对组件库更友好，支持Tree-shaking，搭配 <code>@rollup/plugin-postcss</code> 处理CSS。</li>
+<li><strong>按需加载</strong>：通过Babel插件（如 <code>babel-plugin-import</code>）实现组件级样式引用，减少体积。</li>
+</ul>
+</li>
+<li><p><strong>主题切换性能保障</strong></p>
+<ul>
+<li><strong>持久化存储</strong>：使用 <code>VueUse</code> 的 <code>useStorage</code> 或 <code>localStorage</code> 记忆用户选择。</li>
+<li><strong>服务端渲染(SSR)兼容</strong>：CSS-in-JS库需配置 <code>babel-plugin-styled-components</code> 避免样式闪屏。</li>
+</ul>
+</li>
+<li><p><strong>测试与维护</strong></p>
+<ul>
+<li><strong>视觉回归测试</strong>：通过工具（如BackstopJS）确保主题切换不影响布局。</li>
+<li>**设计令牌(Design Tokens)**：将颜色&#x2F;间距等抽象为JSON，统一供CSS和JS使用，提升可维护性。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="x20-总结"><a href="#x20-总结" class="headerlink" title="&#x20;总结"></a>&#x20;总结</h3><ul>
+<li><strong>基础组件库</strong>：推荐 <strong>CSS变量 + 设计令牌</strong>，平衡动态性与性能。</li>
+<li><strong>复杂应用</strong>：React生态可选 <strong>CSS-in-JS</strong>，Vue生态适合 <strong>Scoped CSS + 深度选择器</strong>。</li>
+<li><strong>旧项目改造</strong>：Ant Design等Less库可用 <strong>webpack-theme-color-replacer</strong> 渐进升级。</li>
+</ul>
+<p>通过结合工程化工具（如Rollup、PostCSS）和标准化样式规范，可构建高扩展的主题系统，同时避免全局污染与维护成本。实践中需根据技术栈和性能要求灵活选型。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/09/frontend/css/021-%E7%BB%84%E4%BB%B6%E5%BA%93%E6%A0%B7%E5%BC%8F%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6/" data-id="cmcae1sk30070sssdbnxi0jcp" data-title="021-组件库样式管理机制" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/10/frontend/scss/001-%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          001-Sass基础特性
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/09/frontend/css/020-@Media%E4%B8%8Evh%20wh/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">020-@Media与vh wh</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

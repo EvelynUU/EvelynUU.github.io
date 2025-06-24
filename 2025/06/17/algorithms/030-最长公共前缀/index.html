@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>030-最长公共前缀 | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="14.最长公共前缀问题-简单问题描述给定一个字符串数组 strs，找出所有字符串的最长公共前缀。如果不存在公共前缀，返回空字符串 &quot;&quot;。 示例12345输入：strs &#x3D; [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]输出：&quot;fl&quot;输入：strs &#x3D; [&quot;dog&quot;,&amp;quo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="030-最长公共前缀">
+<meta property="og:url" content="http://example.com/2025/06/17/algorithms/030-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="14.最长公共前缀问题-简单问题描述给定一个字符串数组 strs，找出所有字符串的最长公共前缀。如果不存在公共前缀，返回空字符串 &quot;&quot;。 示例12345输入：strs &#x3D; [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]输出：&quot;fl&quot;输入：strs &#x3D; [&quot;dog&quot;,&amp;quo">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-17T15:59:35.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:25:36.078Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="algorithms">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-algorithms/030-最长公共前缀" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/17/algorithms/030-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/" class="article-date">
+  <time class="dt-published" datetime="2025-06-17T15:59:35.000Z" itemprop="datePublished">2025-06-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      030-最长公共前缀
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="14-最长公共前缀问题-简单"><a href="#14-最长公共前缀问题-简单" class="headerlink" title="14.最长公共前缀问题-简单"></a><strong>14.最长公共前缀问题-简单</strong></h2><h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><strong>问题描述</strong></h4><p>给定一个字符串数组 <code>strs</code>，找出所有字符串的<strong>最长公共前缀</strong>。如果不存在公共前缀，返回空字符串 <code>&quot;&quot;</code>。</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a><strong>示例</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：strs = [<span class="string">&quot;flower&quot;</span>,<span class="string">&quot;flow&quot;</span>,<span class="string">&quot;flight&quot;</span>]</span><br><span class="line">输出：<span class="string">&quot;fl&quot;</span></span><br><span class="line"></span><br><span class="line">输入：strs = [<span class="string">&quot;dog&quot;</span>,<span class="string">&quot;racecar&quot;</span>,<span class="string">&quot;car&quot;</span>]</span><br><span class="line">输出：<span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="方法一：水平扫描法（逐字符比较）"><a href="#方法一：水平扫描法（逐字符比较）" class="headerlink" title="方法一：水平扫描法（逐字符比较）"></a><strong>方法一：水平扫描法（逐字符比较）</strong></h3><h4 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a><strong>核心思想</strong></h4><ol>
+<li>以第一个字符串为基准。</li>
+<li>逐个字符与其他字符串的对应位置比较。</li>
+<li>遇到不匹配时停止，返回当前匹配的前缀。</li>
+</ol>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a><strong>代码实现</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> longestCommonPrefix = <span class="keyword">function</span>(<span class="params">strs</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (strs.<span class="property">length</span> === <span class="number">0</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> prefix = strs[<span class="number">0</span>]; <span class="comment">// 初始化为第一个字符串</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; strs.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="comment">//用startsWith更直观： !strs[i].startsWith(prefix)</span></span><br><span class="line">        <span class="keyword">while</span> (strs[i].<span class="title function_">indexOf</span>(prefix) !== <span class="number">0</span>) &#123; <span class="comment">// 检查当前字符串是否以prefix开头</span></span><br><span class="line">            prefix = prefix.<span class="title function_">slice</span>(<span class="number">0</span>, prefix.<span class="property">length</span> - <span class="number">1</span>); <span class="comment">// 缩短prefix</span></span><br><span class="line">            <span class="keyword">if</span> (prefix === <span class="string">&quot;&quot;</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>; <span class="comment">// 提前终止</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> prefix;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a><strong>复杂度分析</strong></h4><ul>
+<li>时间复杂度：O(S)，其中 S 是所有字符串的字符总数。</li>
+<li>空间复杂度：O(1)。</li>
+</ul>
+<hr>
+<h3 id="方法二：垂直扫描法（逐列比较）"><a href="#方法二：垂直扫描法（逐列比较）" class="headerlink" title="方法二：垂直扫描法（逐列比较）"></a><strong>方法二：垂直扫描法（逐列比较）</strong></h3><h4 id="核心思想-1"><a href="#核心思想-1" class="headerlink" title="核心思想"></a><strong>核心思想</strong></h4><ol>
+<li>按列比较所有字符串的相同位置字符。</li>
+<li>遇到不匹配时停止。</li>
+</ol>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a><strong>代码实现</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> longestCommonPrefix = <span class="keyword">function</span>(<span class="params">strs</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (strs.<span class="property">length</span> === <span class="number">0</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; strs[<span class="number">0</span>].<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> char = strs[<span class="number">0</span>][i]; <span class="comment">// 当前列的基准字符</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt; strs.<span class="property">length</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i === strs[j].<span class="property">length</span> || strs[j][i] !== char) &#123;</span><br><span class="line">                <span class="keyword">return</span> strs[<span class="number">0</span>].<span class="title function_">slice</span>(<span class="number">0</span>, i); <span class="comment">// 返回当前匹配的前缀</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> strs[<span class="number">0</span>]; <span class="comment">// 全部字符匹配</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a><strong>复杂度分析</strong></h4><ul>
+<li>时间复杂度：O(S)，最坏情况下需要比较所有字符。</li>
+<li>空间复杂度：O(1)。</li>
+</ul>
+<hr>
+<h3 id="方法三：分治法"><a href="#方法三：分治法" class="headerlink" title="方法三：分治法"></a><strong>方法三：分治法</strong></h3><h4 id="核心思想-2"><a href="#核心思想-2" class="headerlink" title="核心思想"></a><strong>核心思想</strong></h4><ol>
+<li>将问题分解为子问题：分别求左半部分和右半部分的最长公共前缀。</li>
+<li>合并子问题的解。</li>
+</ol>
+<h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a><strong>代码实现</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> longestCommonPrefix = <span class="keyword">function</span>(<span class="params">strs</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (strs.<span class="property">length</span> === <span class="number">0</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">divideAndConquer</span>(strs, <span class="number">0</span>, strs.<span class="property">length</span> - <span class="number">1</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">divideAndConquer</span>(<span class="params">strs, left, right</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (left === right) <span class="keyword">return</span> strs[left];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> mid = <span class="title class_">Math</span>.<span class="title function_">floor</span>((left + right) / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">const</span> leftPrefix = <span class="title function_">divideAndConquer</span>(strs, left, mid);</span><br><span class="line">    <span class="keyword">const</span> rightPrefix = <span class="title function_">divideAndConquer</span>(strs, mid + <span class="number">1</span>, right);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">commonPrefix</span>(leftPrefix, rightPrefix);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">commonPrefix</span>(<span class="params">str1, str2</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> minLen = <span class="title class_">Math</span>.<span class="title function_">min</span>(str1.<span class="property">length</span>, str2.<span class="property">length</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; minLen; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (str1[i] !== str2[i]) &#123;</span><br><span class="line">            <span class="keyword">return</span> str1.<span class="title function_">slice</span>(<span class="number">0</span>, i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str1.<span class="title function_">slice</span>(<span class="number">0</span>, minLen);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="复杂度分析-2"><a href="#复杂度分析-2" class="headerlink" title="复杂度分析"></a><strong>复杂度分析</strong></h4><ul>
+<li>时间复杂度：O(S)，其中 S 是所有字符串的字符总数。</li>
+<li>空间复杂度：O(m log n)，递归调用栈的深度。</li>
+</ul>
+<hr>
+<h3 id="方法四：二分查找法"><a href="#方法四：二分查找法" class="headerlink" title="方法四：二分查找法"></a><strong>方法四：二分查找法</strong></h3><h4 id="核心思想-3"><a href="#核心思想-3" class="headerlink" title="核心思想"></a><strong>核心思想</strong></h4><ol>
+<li>对最短字符串的长度进行二分查找。</li>
+<li>检查当前长度是否是所有字符串的公共前缀。</li>
+</ol>
+<h4 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a><strong>代码实现</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> longestCommonPrefix = <span class="keyword">function</span>(<span class="params">strs</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (strs.<span class="property">length</span> === <span class="number">0</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> minLen = <span class="title class_">Math</span>.<span class="title function_">min</span>(...strs.<span class="title function_">map</span>(<span class="function"><span class="params">s</span> =&gt;</span> s.<span class="property">length</span>));</span><br><span class="line">    <span class="keyword">let</span> low = <span class="number">1</span>, high = minLen;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">        <span class="keyword">const</span> mid = <span class="title class_">Math</span>.<span class="title function_">floor</span>((low + high) / <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_">isCommonPrefix</span>(strs, mid)) &#123;</span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            high = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> strs[<span class="number">0</span>].<span class="title function_">slice</span>(<span class="number">0</span>, (low + high) / <span class="number">2</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isCommonPrefix</span>(<span class="params">strs, len</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> prefix = strs[<span class="number">0</span>].<span class="title function_">slice</span>(<span class="number">0</span>, len);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; strs.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!strs[i].<span class="title function_">startsWith</span>(prefix)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="复杂度分析-3"><a href="#复杂度分析-3" class="headerlink" title="复杂度分析"></a><strong>复杂度分析</strong></h4><ul>
+<li>时间复杂度：O(S log m)，其中 m 是最短字符串的长度。</li>
+<li>空间复杂度：O(1)。</li>
+</ul>
+<hr>
+<h3 id="方法对比"><a href="#方法对比" class="headerlink" title="方法对比"></a><strong>方法对比</strong></h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>时间复杂度</th>
+<th>空间复杂度</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>水平扫描</td>
+<td>O(S)</td>
+<td>O(1)</td>
+<td>通用</td>
+</tr>
+<tr>
+<td>垂直扫描</td>
+<td>O(S)</td>
+<td>O(1)</td>
+<td>字符较短时</td>
+</tr>
+<tr>
+<td>分治法</td>
+<td>O(S)</td>
+<td>O(m log n)</td>
+<td>大规模数据</td>
+</tr>
+<tr>
+<td>二分查找</td>
+<td>O(S log m)</td>
+<td>O(1)</td>
+<td>字符串较长时</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="边界情况处理"><a href="#边界情况处理" class="headerlink" title="边界情况处理"></a><strong>边界情况处理</strong></h3><ol>
+<li><strong>空数组</strong>：直接返回 <code>&quot;&quot;</code>。</li>
+<li><strong>单字符串</strong>：返回该字符串本身。</li>
+<li><strong>完全匹配</strong>：返回最短字符串。</li>
+</ol>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><ul>
+<li><strong>推荐方法</strong>：垂直扫描法（代码简洁，效率高）。</li>
+<li><strong>优化选择</strong>：如果字符串非常长，考虑二分查找法。</li>
+<li><strong>分治法的优势</strong>：适合分布式计算或超大规模数据。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/17/algorithms/030-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/" data-id="cmcae1sjj002jsssdfbq05sh9" data-title="030-最长公共前缀" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/17/algorithms/031-LRU%E7%BC%93%E5%AD%98(hash%E6%88%96%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          031-LRU缓存(hash或双向链表)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/17/algorithms/029-%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">029-判断子序列</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

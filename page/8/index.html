@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:url" content="http://example.com/page/8/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:locale">
+<meta property="article:author" content="EvelynUU">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-foundation/protocol_browser/006-TCP和UDP" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/05/20/foundation/protocol_browser/006-TCP%E5%92%8CUDP/" class="article-date">
+  <time class="dt-published" datetime="2025-05-20T05:51:20.000Z" itemprop="datePublished">2025-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Foundation/">Foundation</a>►<a class="article-category-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/05/20/foundation/protocol_browser/006-TCP%E5%92%8CUDP/">006-TCP和UDP</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="TCP与UDP协议深度解析"><a href="#TCP与UDP协议深度解析" class="headerlink" title="TCP与UDP协议深度解析"></a>TCP与UDP协议深度解析</h1><h2 id="一、传输层核心概念"><a href="#一、传输层核心概念" class="headerlink" title="一、传输层核心概念"></a>一、传输层核心概念</h2><h3 id="1-1-传输层作用"><a href="#1-1-传输层作用" class="headerlink" title="1.1 传输层作用"></a>1.1 传输层作用</h3><ul>
+<li><strong>进程到进程通信</strong>：与网络层的”主机到主机”通信互补</li>
+<li><strong>多路复用&#x2F;解复用</strong>：通过端口号区分不同应用</li>
+<li><strong>可靠性保障</strong>（TCP）：确保数据完整有序到达</li>
+<li><strong>流量控制</strong>：防止发送方淹没接收方</li>
+</ul>
+<h3 id="1-2-协议栈位置"><a href="#1-2-协议栈位置" class="headerlink" title="1.2 协议栈位置"></a>1.2 协议栈位置</h3><pre><code>+---------------------+
+|     应用层 (HTTP)    |
++---------------------+
+|     传输层 (TCP/UDP) |
++---------------------+
+|     网络层 (IP)      |
++---------------------+
+|   数据链路层 (以太网) |
++---------------------+
+</code></pre>
+<h2 id="二、TCP协议深度解析"><a href="#二、TCP协议深度解析" class="headerlink" title="二、TCP协议深度解析"></a>二、TCP协议深度解析</h2><h3 id="2-1-TCP核心特性"><a href="#2-1-TCP核心特性" class="headerlink" title="2.1 TCP核心特性"></a>2.1 TCP核心特性</h3><h4 id="可靠性保障机制"><a href="#可靠性保障机制" class="headerlink" title="可靠性保障机制"></a>可靠性保障机制</h4><ol>
+<li><p><strong>序列号与确认应答</strong>（SEQ&#x2F;ACK）</p>
+<ul>
+<li>每个字节都有唯一序列号</li>
+<li>接收方通过ACK确认已收到数据</li>
+<li>示例：<code>ACK=1001</code>表示已收到1-1000字节</li>
+</ul>
+</li>
+<li><p><strong>超时重传</strong></p>
+<ul>
+<li>RTO（Retransmission Timeout）动态计算：<br>RTO &#x3D; SRTT + max(G, K×RTTVAR)<br>其中SRTT是平滑往返时间，RTTVAR是方差</li>
+</ul>
+</li>
+<li><p><strong>数据排序</strong></p>
+<ul>
+<li>通过序列号重组乱序到达的报文段</li>
+</ul>
+</li>
+</ol>
+<h4 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h4><ul>
+<li><strong>滑动窗口协议</strong>：<ul>
+<li>接收方通过窗口字段通告可用缓冲区大小</li>
+<li>发送方根据窗口大小调整发送速率</li>
+</ul>
+</li>
+<li><strong>零窗口探测</strong>：当窗口为0时发送探测报文</li>
+</ul>
+<h4 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h4><ol>
+<li><p><strong>慢启动</strong>：</p>
+<ul>
+<li>窗口从1 MSS开始指数增长</li>
+<li>到达阈值(ssthresh)后进入拥塞避免</li>
+</ul>
+</li>
+<li><p><strong>拥塞避免</strong>：</p>
+<ul>
+<li>窗口线性增长</li>
+<li>出现丢包时调整ssthresh</li>
+</ul>
+</li>
+<li><p><strong>快速重传</strong>：</p>
+<ul>
+<li>收到3个重复ACK立即重传</li>
+<li>不等待超时计时器</li>
+</ul>
+</li>
+<li><p><strong>快速恢复</strong>：</p>
+<ul>
+<li>重传后窗口减半</li>
+<li>直接进入拥塞避免阶段</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-2-TCP头部结构"><a href="#2-2-TCP头部结构" class="headerlink" title="2.2 TCP头部结构"></a>2.2 TCP头部结构</h3><pre><code> 0                   1                   2                   3   
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 
++---------------+---------------+---------------+---------------+
+|     Source Port (16)         |   Destination Port (16)        |
++---------------+---------------+---------------+---------------+
+|                       Sequence Number (32)                    |
++---------------+---------------+---------------+---------------+
+|                     Acknowledgment Number (32)                |
++---------------+---------------+---------------+---------------+
+|  Data | Reserved | Control | Window Size (16)                 |
+| Offset|          | Flags   |                                 |
++---------------+---------------+---------------+---------------+
+|     Checksum (16)            |  Urgent Pointer (16)           |
++---------------+---------------+---------------+---------------+
+|                    Options (0-40 bytes, optional)            |
+|                   + Padding to 32-bit boundary               |
++---------------+---------------+---------------+---------------+
+|                             Data                              |
++---------------+---------------+---------------+---------------+
+</code></pre>
+<p><strong>关键字段说明</strong>：</p>
+<ul>
+<li><strong>控制标志位</strong>：<ul>
+<li>SYN：建立连接</li>
+<li>ACK：确认有效</li>
+<li>FIN：关闭连接</li>
+<li>RST：重置连接</li>
+<li>PSH：推送数据（立即处理）</li>
+<li>URG：紧急指针有效</li>
+</ul>
+</li>
+<li><strong>窗口大小</strong>：接收方可用缓冲区字节数</li>
+<li><strong>选项字段</strong>：<ul>
+<li>MSS（最大报文段长度）</li>
+<li>窗口缩放因子</li>
+<li>时间戳（用于RTT计算）</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-3-TCP连接管理"><a href="#2-3-TCP连接管理" class="headerlink" title="2.3 TCP连接管理"></a>2.3 TCP连接管理</h3><h4 id="三次握手（连接建立）"><a href="#三次握手（连接建立）" class="headerlink" title="三次握手（连接建立）"></a>三次握手（连接建立）</h4><ol>
+<li>客户端发送SYN（SEQ&#x3D;x）</li>
+<li>服务端回复SYN-ACK（SEQ&#x3D;y, ACK&#x3D;x+1）</li>
+<li>客户端发送ACK（ACK&#x3D;y+1）</li>
+</ol>
+<p><strong>状态变迁</strong>：</p>
+<pre><code>CLOSED → SYN_SENT → ESTABLISHED (客户端)
+CLOSED → LISTEN → SYN_RCVD → ESTABLISHED (服务端)
+</code></pre>
+<h4 id="四次挥手（连接关闭）"><a href="#四次挥手（连接关闭）" class="headerlink" title="四次挥手（连接关闭）"></a>四次挥手（连接关闭）</h4><ol>
+<li>主动方发送FIN（SEQ&#x3D;u）</li>
+<li>被动方回复ACK（ACK&#x3D;u+1）</li>
+<li>被动方发送FIN（SEQ&#x3D;v）</li>
+<li>主动方回复ACK（ACK&#x3D;v+1）</li>
+</ol>
+<p><strong>状态变迁</strong>：</p>
+<pre><code>ESTABLISHED → FIN_WAIT_1 → FIN_WAIT_2 → TIME_WAIT → CLOSED (主动方)
+ESTABLISHED → CLOSE_WAIT → LAST_ACK → CLOSED (被动方)
+</code></pre>
+<h3 id="2-4-TCP高级特性"><a href="#2-4-TCP高级特性" class="headerlink" title="2.4 TCP高级特性"></a>2.4 TCP高级特性</h3><h4 id="选择性确认（SACK）"><a href="#选择性确认（SACK）" class="headerlink" title="选择性确认（SACK）"></a>选择性确认（SACK）</h4><ul>
+<li>解决多个包丢失时的效率问题</li>
+<li>通过TCP选项字段通告不连续的数据块</li>
+<li>示例选项格式：<br>Kind&#x3D;5 Length&#x3D;10 Left Edge&#x3D;1001 Right Edge&#x3D;2000</li>
+</ul>
+<h4 id="时间戳选项"><a href="#时间戳选项" class="headerlink" title="时间戳选项"></a>时间戳选项</h4><ul>
+<li>计算精确RTT（往返时间）</li>
+<li>防止序列号回绕（PAWS机制）</li>
+<li>格式：<br>Kind&#x3D;8 Length&#x3D;10 Timestamp Value&#x3D;12345678 Timestamp Echo Reply&#x3D;0</li>
+</ul>
+<h2 id="三、UDP协议深度解析"><a href="#三、UDP协议深度解析" class="headerlink" title="三、UDP协议深度解析"></a>三、UDP协议深度解析</h2><h3 id="3-1-UDP核心特性"><a href="#3-1-UDP核心特性" class="headerlink" title="3.1 UDP核心特性"></a>3.1 UDP核心特性</h3><h4 id="无连接服务"><a href="#无连接服务" class="headerlink" title="无连接服务"></a>无连接服务</h4><ul>
+<li>无需建立&#x2F;维护连接</li>
+<li>每个数据报独立处理</li>
+</ul>
+<h4 id="不可靠传输"><a href="#不可靠传输" class="headerlink" title="不可靠传输"></a>不可靠传输</h4><ul>
+<li>不保证交付</li>
+<li>不保证顺序</li>
+<li>无拥塞控制</li>
+</ul>
+<h4 id="轻量级头部"><a href="#轻量级头部" class="headerlink" title="轻量级头部"></a>轻量级头部</h4><pre><code> 0                   1                   2                   3   
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 
++---------------+---------------+---------------+---------------+
+|     Source Port (16)         |   Destination Port (16)        |
++---------------+---------------+---------------+---------------+
+|      Length (16)             |     Checksum (16)              |
++---------------+---------------+---------------+---------------+
+|                             Data                              |
++---------------+---------------+---------------+---------------+
+</code></pre>
+<p><strong>字段说明</strong>：</p>
+<ul>
+<li><strong>长度字段</strong>：包括头部和数据的总长度（最小8字节）</li>
+<li><strong>校验和</strong>：可选（IPv4），强制（IPv6）</li>
+</ul>
+<h3 id="3-2-UDP适用场景"><a href="#3-2-UDP适用场景" class="headerlink" title="3.2 UDP适用场景"></a>3.2 UDP适用场景</h3><ol>
+<li><p><strong>实时应用</strong>：</p>
+<ul>
+<li>视频会议（WebRTC）</li>
+<li>在线游戏（FPS&#x2F;MOBA）</li>
+<li>VoIP（如SIP协议）</li>
+</ul>
+</li>
+<li><p><strong>广播&#x2F;多播</strong>：</p>
+<ul>
+<li>DHCP发现</li>
+<li>视频流分发</li>
+</ul>
+</li>
+<li><p><strong>简单查询</strong>：</p>
+<ul>
+<li>DNS查询</li>
+<li>SNMP监控</li>
+</ul>
+</li>
+<li><p><strong>自定义可靠协议</strong>：</p>
+<ul>
+<li>QUIC（HTTP&#x2F;3基础）</li>
+<li>某些P2P协议</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-3-UDP优势与局限"><a href="#3-3-UDP优势与局限" class="headerlink" title="3.3 UDP优势与局限"></a>3.3 UDP优势与局限</h3><h4 id="优势："><a href="#优势：" class="headerlink" title="优势："></a>优势：</h4><ul>
+<li><strong>低延迟</strong>：无连接建立开销</li>
+<li><strong>低开销</strong>：头部仅8字节（TCP至少20字节）</li>
+<li><strong>无阻塞控制</strong>：适合容忍丢包的应用</li>
+<li><strong>支持多播</strong>：TCP只能单播</li>
+</ul>
+<h4 id="局限："><a href="#局限：" class="headerlink" title="局限："></a>局限：</h4><ul>
+<li>需要应用层处理可靠性</li>
+<li>易受DDoS攻击（如UDP洪水）</li>
+<li>可能加剧网络拥塞</li>
+</ul>
+<h2 id="四、TCP与UDP对比"><a href="#四、TCP与UDP对比" class="headerlink" title="四、TCP与UDP对比"></a>四、TCP与UDP对比</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>TCP</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>连接方式</td>
+<td>面向连接（三次握手）</td>
+<td>无连接</td>
+</tr>
+<tr>
+<td>可靠性</td>
+<td>可靠（确认、重传）</td>
+<td>不可靠</td>
+</tr>
+<tr>
+<td>流量控制</td>
+<td>滑动窗口机制</td>
+<td>无</td>
+</tr>
+<tr>
+<td>拥塞控制</td>
+<td>复杂算法（慢启动等）</td>
+<td>无</td>
+</tr>
+<tr>
+<td>数据顺序</td>
+<td>保证按序到达</td>
+<td>不保证顺序</td>
+</tr>
+<tr>
+<td>头部开销</td>
+<td>最小20字节</td>
+<td>8字节</td>
+</tr>
+<tr>
+<td>传输方式</td>
+<td>字节流</td>
+<td>数据报文</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>文件传输、网页浏览</td>
+<td>实时视频、DNS查询</td>
+</tr>
+<tr>
+<td>多播支持</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>资源消耗</td>
+<td>高（维护连接状态）</td>
+<td>低</td>
+</tr>
+</tbody></table>
+<h2 id="五、协议选择策略"><a href="#五、协议选择策略" class="headerlink" title="五、协议选择策略"></a>五、协议选择策略</h2><h3 id="5-1-选择TCP的场景"><a href="#5-1-选择TCP的场景" class="headerlink" title="5.1 选择TCP的场景"></a>5.1 选择TCP的场景</h3><ul>
+<li>需要可靠交付（如文件传输）</li>
+<li>需要严格数据顺序（如数据库同步）</li>
+<li>传输大量数据（HTTP下载）</li>
+<li>无法容忍数据丢失（金融交易）</li>
+</ul>
+<h3 id="5-2-选择UDP的场景"><a href="#5-2-选择UDP的场景" class="headerlink" title="5.2 选择UDP的场景"></a>5.2 选择UDP的场景</h3><ul>
+<li>低延迟优先（实时游戏）</li>
+<li>简单查询响应（DNS）</li>
+<li>广播&#x2F;多播需求（视频会议）</li>
+<li>自定义可靠协议（QUIC）</li>
+<li>容忍数据丢失（语音通话）</li>
+</ul>
+<h3 id="5-3-混合使用案例"><a href="#5-3-混合使用案例" class="headerlink" title="5.3 混合使用案例"></a>5.3 混合使用案例</h3><h4 id="视频会议系统："><a href="#视频会议系统：" class="headerlink" title="视频会议系统："></a>视频会议系统：</h4><ul>
+<li><strong>信令控制</strong>：TCP（SIP协议）</li>
+<li><strong>媒体传输</strong>：UDP（RTP协议）</li>
+<li><strong>补充机制</strong>：应用层重传关键帧</li>
+</ul>
+<h2 id="六、高级主题与演进"><a href="#六、高级主题与演进" class="headerlink" title="六、高级主题与演进"></a>六、高级主题与演进</h2><h3 id="6-1-TCP优化技术"><a href="#6-1-TCP优化技术" class="headerlink" title="6.1 TCP优化技术"></a>6.1 TCP优化技术</h3><h4 id="BBR拥塞控制算法"><a href="#BBR拥塞控制算法" class="headerlink" title="BBR拥塞控制算法"></a>BBR拥塞控制算法</h4><ul>
+<li>Google开发的基于带宽时延积的算法</li>
+<li>特点：<ul>
+<li>测量实际带宽和RTT</li>
+<li>主动探测瓶颈带宽</li>
+<li>在丢包率高时仍保持高吞吐</li>
+</ul>
+</li>
+</ul>
+<h4 id="Multipath-TCP"><a href="#Multipath-TCP" class="headerlink" title="Multipath TCP"></a>Multipath TCP</h4><ul>
+<li>同时使用多个网络路径</li>
+<li>应用场景：<ul>
+<li>手机WiFi和4G同时使用</li>
+<li>数据中心多网卡绑定</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-2-UDP的创新应用"><a href="#6-2-UDP的创新应用" class="headerlink" title="6.2 UDP的创新应用"></a>6.2 UDP的创新应用</h3><h4 id="QUIC协议"><a href="#QUIC协议" class="headerlink" title="QUIC协议"></a>QUIC协议</h4><ul>
+<li>基于UDP的可靠传输协议</li>
+<li>HTTP&#x2F;3的基础</li>
+<li>特性：<ul>
+<li>0-RTT连接建立</li>
+<li>改进的拥塞控制</li>
+<li>连接迁移支持</li>
+</ul>
+</li>
+</ul>
+<h4 id="WebRTC"><a href="#WebRTC" class="headerlink" title="WebRTC"></a>WebRTC</h4><ul>
+<li>浏览器实时通信框架</li>
+<li>使用UDP传输媒体流</li>
+<li>应用层实现：<ul>
+<li>丢包重传（NACK）</li>
+<li>前向纠错（FEC）</li>
+<li>拥塞控制（GCC算法）</li>
+</ul>
+</li>
+</ul>
+<h2 id="七、协议分析实践"><a href="#七、协议分析实践" class="headerlink" title="七、协议分析实践"></a>七、协议分析实践</h2><h3 id="7-1-Wireshark抓包分析"><a href="#7-1-Wireshark抓包分析" class="headerlink" title="7.1 Wireshark抓包分析"></a>7.1 Wireshark抓包分析</h3><h4 id="TCP连接示例："><a href="#TCP连接示例：" class="headerlink" title="TCP连接示例："></a>TCP连接示例：</h4><pre><code>No.  Time        Source        Destination   Protocol Info
+1    0.000000   192.168.1.2   93.184.216.34  TCP      [SYN] Seq=0
+2    0.028415   93.184.216.34 192.168.1.2    TCP      [SYN, ACK] Seq=0 Ack=1
+3    0.028472   192.168.1.2   93.184.216.34  TCP      [ACK] Seq=1 Ack=1
+</code></pre>
+<h4 id="UDP数据报示例："><a href="#UDP数据报示例：" class="headerlink" title="UDP数据报示例："></a>UDP数据报示例：</h4><pre><code>No.  Time        Source        Destination   Protocol Info
+1    0.000000   192.168.1.2   8.8.8.8       DNS      Standard query A example.com
+2    0.032158   8.8.8.8       192.168.1.2   DNS      Standard query response A 93.184.216.34
+</code></pre>
+<h3 id="7-2-性能测试工具"><a href="#7-2-性能测试工具" class="headerlink" title="7.2 性能测试工具"></a>7.2 性能测试工具</h3><h4 id="iPerf测试TCP吞吐量："><a href="#iPerf测试TCP吞吐量：" class="headerlink" title="iPerf测试TCP吞吐量："></a>iPerf测试TCP吞吐量：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 服务端</span></span><br><span class="line">iperf3 -s</span><br><span class="line"></span><br><span class="line"><span class="comment"># 客户端</span></span><br><span class="line">iperf3 -c server_ip -t 30 -w 256K</span><br></pre></td></tr></table></figure>
+
+<h4 id="UDP带宽测试："><a href="#UDP带宽测试：" class="headerlink" title="UDP带宽测试："></a>UDP带宽测试：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iperf3 -c server_ip -u -b 100M -t 20</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、安全考量"><a href="#八、安全考量" class="headerlink" title="八、安全考量"></a>八、安全考量</h2><h3 id="8-1-TCP安全威胁"><a href="#8-1-TCP安全威胁" class="headerlink" title="8.1 TCP安全威胁"></a>8.1 TCP安全威胁</h3><h4 id="SYN-Flood攻击"><a href="#SYN-Flood攻击" class="headerlink" title="SYN Flood攻击"></a>SYN Flood攻击</h4><ul>
+<li>攻击原理：发送大量SYN不完成握手</li>
+<li>防御方案：<ul>
+<li>SYN Cookie</li>
+<li>连接速率限制</li>
+</ul>
+</li>
+</ul>
+<h4 id="序列号预测"><a href="#序列号预测" class="headerlink" title="序列号预测"></a>序列号预测</h4><ul>
+<li>早期系统使用可预测的ISN</li>
+<li>现代系统使用加密哈希生成ISN</li>
+</ul>
+<h3 id="8-2-UDP安全威胁"><a href="#8-2-UDP安全威胁" class="headerlink" title="8.2 UDP安全威胁"></a>8.2 UDP安全威胁</h3><h4 id="反射放大攻击"><a href="#反射放大攻击" class="headerlink" title="反射放大攻击"></a>反射放大攻击</h4><ul>
+<li>利用DNS&#x2F;NTP等服务响应大于请求的特性</li>
+<li>防御：<ul>
+<li>禁用开放递归DNS</li>
+<li>入口过滤（BCP38）</li>
+</ul>
+</li>
+</ul>
+<h4 id="UDP洪水攻击"><a href="#UDP洪水攻击" class="headerlink" title="UDP洪水攻击"></a>UDP洪水攻击</h4><ul>
+<li>消耗目标带宽资源</li>
+<li>缓解方案：<ul>
+<li>限速</li>
+<li>流量清洗</li>
+</ul>
+</li>
+</ul>
+<h2 id="九、协议演进趋势"><a href="#九、协议演进趋势" class="headerlink" title="九、协议演进趋势"></a>九、协议演进趋势</h2><h3 id="9-1-TCP发展"><a href="#9-1-TCP发展" class="headerlink" title="9.1 TCP发展"></a>9.1 TCP发展</h3><ul>
+<li><strong>TCP Fast Open</strong>：允许在SYN阶段携带数据</li>
+<li><strong>TCP ECN</strong>：显式拥塞通知</li>
+<li><strong>TCP-AO</strong>：更安全的认证选项</li>
+</ul>
+<h3 id="9-2-UDP创新"><a href="#9-2-UDP创新" class="headerlink" title="9.2 UDP创新"></a>9.2 UDP创新</h3><ul>
+<li><strong>QUIC标准化</strong>：成为HTTP&#x2F;3基础</li>
+<li><strong>UDP-Lite</strong>：部分校验和（适合有纠错的应用）</li>
+<li><strong>UDT</strong>：基于UDP的高速数据传输协议</li>
+</ul>
+<p>通过这种深度技术解析，可以全面理解TCP和UDP的设计哲学、实现细节以及适用场景，为网络编程和协议选择提供坚实基础。实际应用中应根据业务需求、网络环境和性能要求做出合理选择。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/05/20/foundation/protocol_browser/006-TCP%E5%92%8CUDP/" data-id="cmcae1sjs004hsssd577b9bot" data-title="006-TCP和UDP" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-foundation/protocol_browser/003-浏览器与Node事件循环详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/05/20/foundation/protocol_browser/003-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8ENode%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2025-05-20T05:51:23.000Z" itemprop="datePublished">2025-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Foundation/">Foundation</a>►<a class="article-category-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/05/20/foundation/protocol_browser/003-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8ENode%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E8%AF%A6%E8%A7%A3/">003-浏览器与Node事件循环</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="浏览器与Node-js事件循环-Event-Loop-详解"><a href="#浏览器与Node-js事件循环-Event-Loop-详解" class="headerlink" title="浏览器与Node.js事件循环(Event Loop)详解"></a>浏览器与Node.js事件循环(Event Loop)详解</h1><h2 id="浏览器事件循环-Event-Loop"><a href="#浏览器事件循环-Event-Loop" class="headerlink" title="浏览器事件循环(Event Loop)"></a>浏览器事件循环(Event Loop)</h2><h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>浏览器的事件循环是JavaScript实现异步编程的核心机制，它负责协调用户交互、脚本执行、渲染、网络请求等事件。</p>
+<h3 id="2-运行机制"><a href="#2-运行机制" class="headerlink" title="2. 运行机制"></a>2. 运行机制</h3><h4 id="主要组成部分："><a href="#主要组成部分：" class="headerlink" title="主要组成部分："></a>主要组成部分：</h4><ul>
+<li>**调用栈(Call Stack)**：执行同步代码的栈结构</li>
+<li>**任务队列(Task Queue)**：<ul>
+<li>宏任务队列(Macrotask Queue)</li>
+<li>微任务队列(Microtask Queue)</li>
+</ul>
+</li>
+<li><strong>Web APIs</strong>：浏览器提供的异步API环境</li>
+</ul>
+<h4 id="执行流程："><a href="#执行流程：" class="headerlink" title="执行流程："></a>执行流程：</h4><ol>
+<li>执行全局同步代码（同步任务直接进入调用栈执行）</li>
+<li>遇到异步操作时：<ul>
+<li>宏任务（setTimeout、setInterval、I&#x2F;O等）交给Web APIs处理，完成后回调放入宏任务队列</li>
+<li>微任务（Promise.then、MutationObserver等）回调放入微任务队列</li>
+</ul>
+</li>
+<li>当调用栈为空时：<ul>
+<li>先检查微任务队列并执行所有微任务</li>
+<li>然后从宏任务队列取出一个任务执行</li>
+</ul>
+</li>
+<li>重复上述过程</li>
+</ol>
+<h4 id="图示流程："><a href="#图示流程：" class="headerlink" title="图示流程："></a>图示流程：</h4><pre><code>[执行同步代码] → [微任务队列全部执行] → [渲染(如有需要)] → [取一个宏任务执行] → [重复]
+</code></pre>
+<h3 id="3-任务分类"><a href="#3-任务分类" class="headerlink" title="3. 任务分类"></a>3. 任务分类</h3><h4 id="宏任务-Macrotasks-："><a href="#宏任务-Macrotasks-：" class="headerlink" title="宏任务(Macrotasks)："></a>宏任务(Macrotasks)：</h4><ul>
+<li>script整体代码</li>
+<li>setTimeout&#x2F;setInterval</li>
+<li>I&#x2F;O操作</li>
+<li>UI渲染</li>
+<li>postMessage</li>
+<li>MessageChannel</li>
+<li>setImmediate（仅IE&#x2F;Node.js）</li>
+</ul>
+<h4 id="微任务-Microtasks-："><a href="#微任务-Microtasks-：" class="headerlink" title="微任务(Microtasks)："></a>微任务(Microtasks)：</h4><ul>
+<li>Promise.then&#x2F;catch&#x2F;finally</li>
+<li>MutationObserver</li>
+<li>process.nextTick（Node.js特有）</li>
+<li>queueMicrotask</li>
+</ul>
+<h3 id="4-执行顺序示例"><a href="#4-执行顺序示例" class="headerlink" title="4. 执行顺序示例"></a>4. 执行顺序示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;script start&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;setTimeout&#x27;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Promise</span>.<span class="title function_">resolve</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;promise1&#x27;</span>);</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;promise2&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;script end&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出顺序：</span></span><br><span class="line"><span class="comment">// script start</span></span><br><span class="line"><span class="comment">// script end</span></span><br><span class="line"><span class="comment">// promise1</span></span><br><span class="line"><span class="comment">// promise2</span></span><br><span class="line"><span class="comment">// setTimeout</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Node-js事件循环"><a href="#Node-js事件循环" class="headerlink" title="Node.js事件循环"></a>Node.js事件循环</h2><h3 id="1-基本概念-1"><a href="#1-基本概念-1" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>Node.js使用libuv库实现的事件驱动架构，其事件循环比浏览器更复杂，分为多个阶段。</p>
+<h3 id="2-阶段划分"><a href="#2-阶段划分" class="headerlink" title="2. 阶段划分"></a>2. 阶段划分</h3><h4 id="完整事件循环阶段（按顺序执行）："><a href="#完整事件循环阶段（按顺序执行）：" class="headerlink" title="完整事件循环阶段（按顺序执行）："></a>完整事件循环阶段（按顺序执行）：</h4><ol>
+<li><strong>timers阶段</strong>：执行setTimeout和setInterval的回调</li>
+<li><strong>pending callbacks阶段</strong>：执行某些系统操作的回调（如TCP错误）</li>
+<li><strong>idle, prepare阶段</strong>：Node内部使用</li>
+<li><strong>poll阶段</strong>：<ul>
+<li>检索新的I&#x2F;O事件</li>
+<li>执行I&#x2F;O相关回调（几乎所有的回调，除了close、timers和setImmediate）</li>
+<li>可能会阻塞在此阶段等待新事件</li>
+</ul>
+</li>
+<li><strong>check阶段</strong>：执行setImmediate的回调</li>
+<li><strong>close callbacks阶段</strong>：执行关闭事件的回调（如socket.on(‘close’)）</li>
+</ol>
+<h3 id="3-特殊队列"><a href="#3-特殊队列" class="headerlink" title="3. 特殊队列"></a>3. 特殊队列</h3><h4 id="nextTick队列"><a href="#nextTick队列" class="headerlink" title="nextTick队列"></a>nextTick队列</h4><ul>
+<li><code>process.nextTick()</code>的回调</li>
+<li>不属于事件循环的任何阶段</li>
+<li>在当前操作完成后立即执行，优先级高于微任务</li>
+</ul>
+<h4 id="微任务队列"><a href="#微任务队列" class="headerlink" title="微任务队列"></a>微任务队列</h4><ul>
+<li>包括Promise.then、queueMicrotask等</li>
+<li>在每个阶段之间执行</li>
+</ul>
+<h3 id="4-执行顺序规则"><a href="#4-执行顺序规则" class="headerlink" title="4. 执行顺序规则"></a>4. 执行顺序规则</h3><ol>
+<li>nextTick队列 &gt; 微任务队列 &gt; 其他阶段</li>
+<li>每个阶段执行完毕后，都会先执行完nextTick队列和微任务队列</li>
+</ol>
+<h3 id="5-与浏览器的区别"><a href="#5-与浏览器的区别" class="headerlink" title="5. 与浏览器的区别"></a>5. 与浏览器的区别</h3><ol>
+<li>阶段划分不同：Node.js有明确的阶段划分</li>
+<li>优先级不同：<ul>
+<li>Node.js中：process.nextTick &gt; Promise微任务</li>
+<li>浏览器中：Promise微任务 &gt; setTimeout宏任务</li>
+</ul>
+</li>
+<li>实现机制不同：Node.js基于libuv，浏览器基于HTML5规范</li>
+</ol>
+<h3 id="6-执行顺序示例"><a href="#6-执行顺序示例" class="headerlink" title="6. 执行顺序示例"></a>6. 执行顺序示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;start&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;timer1&#x27;</span>);</span><br><span class="line">  <span class="title class_">Promise</span>.<span class="title function_">resolve</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;promise1&#x27;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;timer2&#x27;</span>);</span><br><span class="line">  <span class="title class_">Promise</span>.<span class="title function_">resolve</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;promise2&#x27;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Promise</span>.<span class="title function_">resolve</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;promise3&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">process.<span class="title function_">nextTick</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;nextTick&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;end&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Node.js输出顺序：</span></span><br><span class="line"><span class="comment">start</span></span><br><span class="line"><span class="comment">end</span></span><br><span class="line"><span class="comment">nextTick</span></span><br><span class="line"><span class="comment">promise3</span></span><br><span class="line"><span class="comment">timer1</span></span><br><span class="line"><span class="comment">promise1</span></span><br><span class="line"><span class="comment">timer2</span></span><br><span class="line"><span class="comment">promise2</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="常见面试问题解答"><a href="#常见面试问题解答" class="headerlink" title="常见面试问题解答"></a>常见面试问题解答</h2><h3 id="Q1-浏览器和Node-js事件循环的主要区别？"><a href="#Q1-浏览器和Node-js事件循环的主要区别？" class="headerlink" title="Q1: 浏览器和Node.js事件循环的主要区别？"></a>Q1: 浏览器和Node.js事件循环的主要区别？</h3><ol>
+<li>阶段划分：Node.js有明确的6个阶段，浏览器更简单</li>
+<li>任务优先级：Node.js中process.nextTick优先级最高</li>
+<li>实现机制：Node.js使用libuv，浏览器遵循HTML5规范</li>
+<li>微任务执行时机：Node.js在每个阶段之间执行微任务</li>
+</ol>
+<h3 id="Q2-process-nextTick和setImmediate的区别？"><a href="#Q2-process-nextTick和setImmediate的区别？" class="headerlink" title="Q2: process.nextTick和setImmediate的区别？"></a>Q2: process.nextTick和setImmediate的区别？</h3><ul>
+<li><code>process.nextTick()</code>：<ul>
+<li>在当前阶段立即执行</li>
+<li>优先级高于微任务</li>
+</ul>
+</li>
+<li><code>setImmediate()</code>：<ul>
+<li>在check阶段执行</li>
+<li>属于宏任务</li>
+</ul>
+</li>
+</ul>
+<h3 id="Q3-为什么Promise-then比setTimeout先执行？"><a href="#Q3-为什么Promise-then比setTimeout先执行？" class="headerlink" title="Q3: 为什么Promise.then比setTimeout先执行？"></a>Q3: 为什么Promise.then比setTimeout先执行？</h3><p>因为Promise.then属于微任务，会在当前宏任务执行完后立即执行所有微任务，而setTimeout是下一个宏任务。</p>
+<h3 id="Q4-Node-js中哪些操作会产生微任务？"><a href="#Q4-Node-js中哪些操作会产生微任务？" class="headerlink" title="Q4: Node.js中哪些操作会产生微任务？"></a>Q4: Node.js中哪些操作会产生微任务？</h3><ul>
+<li>Promise.then&#x2F;catch&#x2F;finally</li>
+<li>async&#x2F;await</li>
+<li>queueMicrotask</li>
+<li>process.nextTick（虽然严格来说不属于微任务，但行为类似且优先级更高）</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/05/20/foundation/protocol_browser/003-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8ENode%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E8%AF%A6%E8%A7%A3/" data-id="cmcae1sjq0048sssdbntj6b77" data-title="003-浏览器与Node事件循环" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/7/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" href="/page/9/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>004-函数式组件和Class组件 | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="从多个维度对比函数式组件和Class组件的本质区别，包括设计思想、生命周期、状态管理、代码结构等。 设计思想： Class组件：基于面向对象编程（OOP）思想，组件是类的实例，拥有实例属性（state、props）和方法（生命周期方法、自定义方法）。  函数式组件：基于函数式编程（FP）思想，组件是一个纯函数，接收props作为输入，返回JSX作为输出。在引入Hooks之后，函数式组件也能够拥有状">
+<meta property="og:type" content="article">
+<meta property="og:title" content="004-函数式组件和Class组件">
+<meta property="og:url" content="http://example.com/2025/06/01/frontend/react/004-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6%E5%92%8CClass%E7%BB%84%E4%BB%B6/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="从多个维度对比函数式组件和Class组件的本质区别，包括设计思想、生命周期、状态管理、代码结构等。 设计思想： Class组件：基于面向对象编程（OOP）思想，组件是类的实例，拥有实例属性（state、props）和方法（生命周期方法、自定义方法）。  函数式组件：基于函数式编程（FP）思想，组件是一个纯函数，接收props作为输入，返回JSX作为输出。在引入Hooks之后，函数式组件也能够拥有状">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-01T05:44:40.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:47:58.367Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-frontend/react/004-函数式组件和Class组件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/01/frontend/react/004-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6%E5%92%8CClass%E7%BB%84%E4%BB%B6/" class="article-date">
+  <time class="dt-published" datetime="2025-06-01T05:44:40.000Z" itemprop="datePublished">2025-06-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Frontend/">Frontend</a>►<a class="article-category-link" href="/categories/Frontend/React/">React</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      004-函数式组件和Class组件
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>从多个维度对比函数式组件和Class组件的本质区别，包括设计思想、生命周期、状态管理、代码结构等。</p>
+<h3 id="设计思想："><a href="#设计思想：" class="headerlink" title="设计思想："></a>设计思想：</h3><ul>
+<li><p>Class组件：基于面向对象编程（OOP）思想，组件是类的实例，拥有实例属性（state、props）和方法（生命周期方法、自定义方法）。</p>
+</li>
+<li><p>函数式组件：基于函数式编程（FP）思想，组件是一个纯函数，接收props作为输入，返回JSX作为输出。在引入Hooks之后，函数式组件也能够拥有状态和副作用处理能力。</p>
+<h3 id="生命周期："><a href="#生命周期：" class="headerlink" title="生命周期："></a>生命周期：</h3></li>
+<li><p>Class组件：具有明确的生命周期方法，如<code>componentDidMount</code>、<code>componentDidUpdate</code>、<code>componentWillUnmount</code>等。</p>
+</li>
+<li><p>函数式组件：使用Hooks模拟生命周期。例如，<code>useEffect</code>可以处理副作用，通过不同的依赖数组模拟不同生命周期。</p>
+<h3 id="状态管理："><a href="#状态管理：" class="headerlink" title="状态管理："></a>状态管理：</h3></li>
+<li><p>Class组件：使用<code>this.state</code>和<code>this.setState</code>管理状态。<code>setState</code>可能是异步的，且状态更新是通过合并对象实现的。</p>
+</li>
+<li><p>函数式组件：使用<code>useState</code>、<code>useReducer</code>等Hook管理状态。状态更新是通过替换而不是合并（但也可以实现合并逻辑）。每次渲染都有独立的状态（通过闭包实现），但Hooks会保证在每次渲染中状态的一致性。</p>
+<h3 id="代码结构："><a href="#代码结构：" class="headerlink" title="代码结构："></a>代码结构：</h3></li>
+<li><p>Class组件：需要更多的模板代码（如constructor中绑定this、类方法等）。</p>
+</li>
+<li><p>函数式组件：代码更简洁，没有<code>this</code>绑定问题，逻辑复用更灵活（通过自定义Hook）。</p>
+<h3 id="性能优化："><a href="#性能优化：" class="headerlink" title="性能优化："></a>性能优化：</h3></li>
+<li><p>Class组件：通过<code>shouldComponentUpdate</code>或<code>PureComponent</code>进行优化。</p>
+</li>
+<li><p>函数式组件：通过<code>React.memo</code>包裹组件进行浅比较，避免不必要的渲染。在Hooks中，可以使用<code>useMemo</code>和<code>useCallback</code>来缓存值和函数。</p>
+<h3 id="逻辑复用："><a href="#逻辑复用：" class="headerlink" title="逻辑复用："></a>逻辑复用：</h3></li>
+<li><p>Class组件：使用高阶组件（HOC）或渲染属性（Render Props）实现逻辑复用。</p>
+</li>
+<li><p>函数式组件：使用自定义Hook实现逻辑复用，更自然且没有嵌套地狱。</p>
+<h3 id="心智模型："><a href="#心智模型：" class="headerlink" title="心智模型："></a>心智模型：</h3></li>
+<li><p>Class组件：需要理解OOP的概念，如实例化、继承、生命周期方法。同时，需要处理<code>this</code>的指向问题。</p>
+</li>
+<li><p>函数式组件：更关注数据流和副作用控制，利用闭包和不可变性。Hooks要求遵守规则（如只在顶层使用Hooks）。</p>
+<h3 id="未来趋势："><a href="#未来趋势：" class="headerlink" title="未来趋势："></a>未来趋势：</h3></li>
+<li><p>React团队推荐使用函数式组件，因为Hooks提供了更强大的能力，并且函数式组件更符合React的理念（UI作为状态的函数）。</p>
+<h3 id="错误边界（Error-Boundaries）："><a href="#错误边界（Error-Boundaries）：" class="headerlink" title="错误边界（Error Boundaries）："></a>错误边界（Error Boundaries）：</h3></li>
+<li><p>目前，只有Class组件可以定义为错误边界（通过<code>static getDerivedStateFromError</code>和<code>componentDidCatch</code>）。</p>
+</li>
+<li><p>函数式组件尚不能直接作为错误边界，但可以通过包裹Class组件实现。</p>
+<h3 id="实例引用："><a href="#实例引用：" class="headerlink" title="实例引用："></a>实例引用：</h3></li>
+<li><p>Class组件：可以通过<code>createRef</code>或回调Ref获取组件实例，从而调用实例方法。</p>
+</li>
+<li><p>函数式组件：不能直接使用<code>ref</code>获取组件实例（因为没有实例），但可以通过<code>forwardRef</code>和<code>useImperativeHandle</code>暴露特定方法。</p>
+<h3 id="副作用处理："><a href="#副作用处理：" class="headerlink" title="副作用处理："></a>副作用处理：</h3></li>
+<li><p>Class组件：副作用通常放在生命周期方法中，如数据获取在<code>componentDidMount</code>和<code>componentDidUpdate</code>中。</p>
+</li>
+<li><p>函数式组件：使用<code>useEffect</code>处理副作用，将相关的副作用组织在一起（而不是分散在不同的生命周期中）。</p>
+<h3 id="状态更新："><a href="#状态更新：" class="headerlink" title="状态更新："></a>状态更新：</h3></li>
+<li><p>Class组件：<code>setState</code>是合并更新，且是异步的（在React事件处理中），但可以通过回调函数获取更新后的状态。</p>
+</li>
+<li><p>函数式组件：状态更新函数（如<code>setState</code>）是替换更新（对于对象类型，需要手动合并），也是异步的。但可以通过<code>useEffect</code>来响应状态变化。</p>
+<h3 id="代码可读性："><a href="#代码可读性：" class="headerlink" title="代码可读性："></a>代码可读性：</h3></li>
+<li><p>函数式组件通常更简洁，逻辑更集中（相关逻辑可以放在同一个<code>useEffect</code>中，而不是分散在多个生命周期方法中）。</p>
+<h3 id="测试："><a href="#测试：" class="headerlink" title="测试："></a>测试：</h3></li>
+<li><p>函数式组件更容易测试，因为它们是纯函数（输入props，输出JSX）。自定义Hook也更容易独立测试。</p>
+<h3 id="学习曲线："><a href="#学习曲线：" class="headerlink" title="学习曲线："></a>学习曲线：</h3></li>
+<li><p>Class组件需要理解OOP和<code>this</code>，而函数式组件需要理解闭包、副作用管理和Hooks的规则。</p>
+<h3 id="内部状态："><a href="#内部状态：" class="headerlink" title="内部状态："></a>内部状态：</h3></li>
+<li><p>Class组件：状态存储在实例上，在整个生命周期中持续存在。</p>
+</li>
+<li><p>函数式组件：状态存储在函数闭包中，每次渲染都有独立的状态值，但React通过Hook队列保证状态的一致性。</p>
+<h3 id="设计模式："><a href="#设计模式：" class="headerlink" title="设计模式："></a>设计模式：</h3></li>
+<li><p>Class组件：可以使用继承（但React推荐组合优于继承）。</p>
+</li>
+<li><p>函数式组件：完全基于组合（通过Hooks组合逻辑）。</p>
+<h3 id="代码拆分："><a href="#代码拆分：" class="headerlink" title="代码拆分："></a>代码拆分：</h3></li>
+<li><p>函数式组件可以更自然地使用动态导入（<code>React.lazy</code>）进行代码拆分。</p>
+<h3 id="上下文（Context）："><a href="#上下文（Context）：" class="headerlink" title="上下文（Context）："></a>上下文（Context）：</h3></li>
+<li><p>两者都可以使用Context，但函数式组件使用<code>useContext</code>更简洁。</p>
+<h3 id="渲染优化："><a href="#渲染优化：" class="headerlink" title="渲染优化："></a>渲染优化：</h3></li>
+<li><p>Class组件：<code>PureComponent</code>自动实现<code>shouldComponentUpdate</code>进行浅比较。</p>
+</li>
+<li><p>函数式组件：<code>React.memo</code>是一个高阶组件，对props进行浅比较。</p>
+</li>
+</ul>
+<p>总结：函数式组件是React的未来，它通过Hooks提供了更强大、更灵活的功能，同时减少了模板代码，提高了代码的可读性和可维护性。但在某些特定场景（如错误边界）下，Class组件仍然是必要的。</p>
+<h1 id="函数式组件-vs-Class-组件：本质区别深度解析"><a href="#函数式组件-vs-Class-组件：本质区别深度解析" class="headerlink" title="函数式组件 vs Class 组件：本质区别深度解析"></a>函数式组件 vs Class 组件：本质区别深度解析</h1><p>React 组件开发的两种范式有着根本性的区别，理解这些差异对于编写高效、可维护的代码至关重要。以下是两者的全面对比：</p>
+<h2 id="核心设计哲学差异"><a href="#核心设计哲学差异" class="headerlink" title="核心设计哲学差异"></a>核心设计哲学差异</h2><table>
+<thead>
+<tr>
+<th><strong>维度</strong></th>
+<th><strong>函数式组件</strong></th>
+<th><strong>Class 组件</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>编程范式</strong></td>
+<td>函数式编程 (FP)</td>
+<td>面向对象编程 (OOP)</td>
+</tr>
+<tr>
+<td><strong>核心概念</strong></td>
+<td>纯函数、不可变性</td>
+<td>类、实例、继承</td>
+</tr>
+<tr>
+<td><strong>状态处理</strong></td>
+<td>闭包 + Hook 状态</td>
+<td>实例属性 (<code>this.state</code>)</td>
+</tr>
+<tr>
+<td><strong>组件本质</strong></td>
+<td>数据 → UI 的转换函数</td>
+<td>具有生命周期状态机</td>
+</tr>
+<tr>
+<td><strong>思维模型</strong></td>
+<td>“UI 作为数据的函数”</td>
+<td>“组件作为有状态对象”</td>
+</tr>
+</tbody></table>
+<h2 id="技术实现差异"><a href="#技术实现差异" class="headerlink" title="技术实现差异"></a>技术实现差异</h2><h3 id="1-状态管理机制"><a href="#1-状态管理机制" class="headerlink" title="1. 状态管理机制"></a>1. 状态管理机制</h3><p><strong>函数式组件：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Counter</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 使用闭包管理状态</span></span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 每次渲染都是独立闭包</span></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setCount(c =&gt; c + 1)&#125;&gt;&#123;count&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Class 组件：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Counter</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="comment">// 状态存储在实例属性中</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123; <span class="attr">count</span>: <span class="number">0</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 使用类方法更新状态</span></span><br><span class="line">  increment = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123; <span class="attr">count</span>: <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">count</span> + <span class="number">1</span> &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.increment&#125;</span>&gt;</span>&#123;this.state.count&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>关键区别：</strong></p>
+<ul>
+<li>函数组件每次渲染都有<strong>独立的闭包作用域</strong></li>
+<li>Class 组件状态存储在<strong>持久化的实例属性</strong>中</li>
+<li>函数组件状态更新是<strong>替换式</strong>，Class 组件是<strong>合并式</strong></li>
+</ul>
+<h3 id="2-生命周期管理"><a href="#2-生命周期管理" class="headerlink" title="2. 生命周期管理"></a>2. 生命周期管理</h3><p><strong>函数式组件：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// componentDidMount + componentDidUpdate</span></span><br><span class="line">  <span class="title function_">fetchData</span>();</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// componentWillUnmount</span></span><br><span class="line">    abortController.<span class="title function_">abort</span>();</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;, [dependencies]); <span class="comment">// 依赖项控制执行时机</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Class 组件：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">fetchData</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">componentDidUpdate</span>(<span class="params">prevProps</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">id</span> !== prevProps.<span class="property">id</span>) &#123;</span><br><span class="line">    <span class="title function_">refetchData</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">componentWillUnmount</span>(<span class="params"></span>) &#123;</span><br><span class="line">  abortController.<span class="title function_">abort</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>关键区别：</strong></p>
+<ul>
+<li>函数组件使用 <strong>useEffect 统一管理副作用</strong></li>
+<li>Class 组件有<strong>明确的生命周期方法</strong></li>
+<li>函数组件通过依赖数组<strong>精细控制更新逻辑</strong></li>
+</ul>
+<h3 id="3-性能优化方式"><a href="#3-性能优化方式" class="headerlink" title="3. 性能优化方式"></a>3. 性能优化方式</h3><p><strong>函数式组件：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">MemoizedComponent</span> = <span class="title class_">React</span>.<span class="title function_">memo</span>(</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">MyComponent</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="comment">/* 仅在 props 改变时重新渲染 */</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function">(<span class="params">prevProps, nextProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">/* 自定义比较函数 */</span></span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Parent</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> callback = <span class="title function_">useCallback</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 记忆化函数</span></span><br><span class="line">  &#125;, [deps]);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Child</span> <span class="attr">onClick</span>=<span class="string">&#123;callback&#125;</span> /&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Class 组件：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyComponent</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.PureComponent</span> &#123;</span><br><span class="line">  <span class="comment">// 自动浅比较 props 和 state</span></span><br><span class="line">  </span><br><span class="line">  <span class="title function_">shouldComponentUpdate</span>(<span class="params">nextProps, nextState</span>) &#123;</span><br><span class="line">    <span class="comment">// 手动控制更新逻辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">id</span> !== nextProps.<span class="property">id</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>关键区别：</strong></p>
+<ul>
+<li>函数组件使用 <strong>React.memo + useCallback&#x2F;useMemo</strong></li>
+<li>Class 组件使用 <strong>PureComponent + shouldComponentUpdate</strong></li>
+<li>函数组件的优化更细粒度但需手动管理依赖</li>
+</ul>
+<h3 id="4-逻辑复用机制"><a href="#4-逻辑复用机制" class="headerlink" title="4. 逻辑复用机制"></a>4. 逻辑复用机制</h3><p><strong>函数式组件：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自定义 Hook</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">useFetch</span>(<span class="params">url</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [data, setData] = <span class="title function_">useState</span>(<span class="literal">null</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">fetch</span>(url).<span class="title function_">then</span>(<span class="function"><span class="params">r</span> =&gt;</span> r.<span class="title function_">json</span>()).<span class="title function_">then</span>(setData);</span><br><span class="line">  &#125;, [url]);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多个组件复用相同逻辑</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">UserProfile</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> user = <span class="title function_">useFetch</span>(<span class="string">&#x27;/api/user&#x27;</span>);</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Class 组件：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 高阶组件模式</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">withFetch</span> = (<span class="params">url</span>) =&gt; <span class="function">(<span class="params">WrappedComponent</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">class</span> <span class="title class_">extends</span> <span class="title class_">React</span>.<span class="property">Component</span> &#123;</span><br><span class="line">    state = &#123; <span class="attr">data</span>: <span class="literal">null</span> &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="title function_">fetch</span>(url).<span class="title function_">then</span>(<span class="function"><span class="params">r</span> =&gt;</span> r.<span class="title function_">json</span>()).<span class="title function_">then</span>(<span class="function"><span class="params">data</span> =&gt;</span> </span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123; data &#125;));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">WrappedComponent</span> <span class="attr">data</span>=<span class="string">&#123;this.state.data&#125;</span> &#123;<span class="attr">...this.props</span>&#125; /&gt;</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用高阶组件</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserProfile</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; data &#125; = <span class="variable language_">this</span>.<span class="property">props</span>;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">withFetch</span>(<span class="string">&#x27;/api/user&#x27;</span>)(<span class="title class_">UserProfile</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>关键区别：</strong></p>
+<ul>
+<li>函数组件使用 <strong>自定义 Hook</strong> 实现逻辑复用</li>
+<li>Class 组件使用 <strong>高阶组件(HOC)</strong> 或 <strong>渲染属性(Render Props)</strong></li>
+<li>自定义 Hook 避免组件嵌套，提供更自然的组合方式</li>
+</ul>
+<h2 id="组件实例差异"><a href="#组件实例差异" class="headerlink" title="组件实例差异"></a>组件实例差异</h2><table>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>函数式组件</strong></th>
+<th><strong>Class 组件</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>实例存在性</strong></td>
+<td>无实例概念</td>
+<td>有组件实例 (<code>this</code>)</td>
+</tr>
+<tr>
+<td><strong>ref 处理</strong></td>
+<td>需要 <code>useRef</code> + <code>forwardRef</code></td>
+<td>直接使用 <code>this</code> 访问</td>
+</tr>
+<tr>
+<td><strong>方法绑定</strong></td>
+<td>无需绑定</td>
+<td>需要绑定 <code>this</code> (箭头函数&#x2F;构造函数绑定)</td>
+</tr>
+<tr>
+<td><strong>内部方法</strong></td>
+<td>函数内定义</td>
+<td>类方法 (可继承)</td>
+</tr>
+<tr>
+<td><strong>错误边界</strong></td>
+<td>不支持 (需包裹类组件)</td>
+<td>支持 (componentDidCatch)</td>
+</tr>
+</tbody></table>
+<h2 id="x20-渲染行为差异"><a href="#x20-渲染行为差异" class="headerlink" title="&#x20;渲染行为差异"></a>&#x20;渲染行为差异</h2><h3 id="1-闭包陷阱-vs-最新值"><a href="#1-闭包陷阱-vs-最新值" class="headerlink" title="1. 闭包陷阱 vs 最新值"></a>1. 闭包陷阱 vs 最新值</h3><p><strong>函数式组件：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Timer</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> id = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 闭包捕获初始 count 值</span></span><br><span class="line">      <span class="title function_">setCount</span>(count + <span class="number">1</span>); <span class="comment">// 始终为 1</span></span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">clearInterval</span>(id);</span><br><span class="line">  &#125;, []); <span class="comment">// 空依赖数组</span></span><br><span class="line">  <span class="comment">// 正确方式: setCount(c =&gt; c + 1)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Class 组件：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Timer</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  state = &#123; <span class="attr">count</span>: <span class="number">0</span> &#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">interval</span> = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 总是访问最新 state</span></span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123; <span class="attr">count</span>: <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">count</span> + <span class="number">1</span> &#125;);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">componentWillUnmount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="built_in">clearInterval</span>(<span class="variable language_">this</span>.<span class="property">interval</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Props-变化响应"><a href="#2-Props-变化响应" class="headerlink" title="2. Props 变化响应"></a>2. Props 变化响应</h3><p><strong>函数式组件：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">UserProfile</span>(<span class="params">&#123; userId &#125;</span>) &#123;</span><br><span class="line">  <span class="comment">// 每次 userId 变化都会触发重新获取</span></span><br><span class="line">  <span class="keyword">const</span> user = <span class="title function_">useFetch</span>(<span class="string">`/api/users/<span class="subst">$&#123;userId&#125;</span>`</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Class 组件：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">UserProfile</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">fetchUser</span>(<span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">userId</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">componentDidUpdate</span>(<span class="params">prevProps</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (prevProps.<span class="property">userId</span> !== <span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">userId</span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">fetchUser</span>(<span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">userId</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">fetchUser</span>(<span class="params">id</span>) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="未来发展与最佳实践"><a href="#未来发展与最佳实践" class="headerlink" title="未来发展与最佳实践"></a>未来发展与最佳实践</h2><h3 id="趋势与建议"><a href="#趋势与建议" class="headerlink" title="趋势与建议"></a>趋势与建议</h3><ol>
+<li><strong>React 官方推荐函数式组件</strong>：Hooks 已成为 React 的未来</li>
+<li><strong>渐进迁移策略</strong>：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 混合使用示例</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LegacyComponent</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">WrapperComponent</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [state, setState] = <span class="title function_">useState</span>();</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">LegacyComponent</span> <span class="attr">prop</span>=<span class="string">&#123;state&#125;</span> /&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><strong>性能考量</strong>：<ul>
+<li>函数组件：更小的打包体积，更快的初始渲染</li>
+<li>Class 组件：生命周期方法优化复杂更新</li>
+</ul>
+</li>
+<li><strong>并发模式兼容性</strong>：函数组件+ Hooks 更好地支持 Suspense 和并发特性</li>
+</ol>
+<h3 id="何时选择-Class-组件"><a href="#何时选择-Class-组件" class="headerlink" title="何时选择 Class 组件"></a>何时选择 Class 组件</h3><ol>
+<li>需要实现错误边界 (<code>componentDidCatch</code>)</li>
+<li>遗留代码库维护</li>
+<li>需要精确控制生命周期的复杂场景</li>
+<li>依赖 <code>getSnapshotBeforeUpdate</code> 等特定生命周期</li>
+</ol>
+<h2 id="总结：核心区别矩阵"><a href="#总结：核心区别矩阵" class="headerlink" title="总结：核心区别矩阵"></a>总结：核心区别矩阵</h2><table>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>函数式组件</strong></th>
+<th><strong>Class 组件</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>状态管理</strong></td>
+<td><code>useState</code> + 闭包</td>
+<td><code>this.state</code> + <code>setState</code></td>
+</tr>
+<tr>
+<td><strong>生命周期</strong></td>
+<td><code>useEffect</code> 统一模型</td>
+<td>独立生命周期方法</td>
+</tr>
+<tr>
+<td><strong>代码组织</strong></td>
+<td>逻辑关注点分离 (Hooks)</td>
+<td>按生命周期阶段组织</td>
+</tr>
+<tr>
+<td><strong>性能优化</strong></td>
+<td><code>React.memo</code> + Hook 依赖</td>
+<td><code>PureComponent</code> + <code>SCU</code></td>
+</tr>
+<tr>
+<td><strong>逻辑复用</strong></td>
+<td>自定义 Hooks (组合式)</td>
+<td>HOC&#x2F;Render Props (嵌套式)</td>
+</tr>
+<tr>
+<td><strong>学习曲线</strong></td>
+<td>需要理解闭包和函数式概念</td>
+<td>需要理解 OOP 和 <code>this</code> 绑定</td>
+</tr>
+<tr>
+<td><strong>未来兼容性</strong></td>
+<td>完全支持并发模式</td>
+<td>部分生命周期在并发模式受限</td>
+</tr>
+<tr>
+<td><strong>组件实例</strong></td>
+<td>无实例 (需 <code>useRef</code>)</td>
+<td>有实例 (<code>this</code>)</td>
+</tr>
+<tr>
+<td><strong>代码简洁性</strong></td>
+<td>更简洁 (无模板代码)</td>
+<td>更多样板代码</td>
+</tr>
+<tr>
+<td><strong>错误边界</strong></td>
+<td>不支持 (需包装)</td>
+<td>原生支持</td>
+</tr>
+</tbody></table>
+<p><strong>最终建议</strong>：对于新项目，优先使用函数式组件 + Hooks。对于现有 Class 组件，除非有特定需求，否则逐步迁移到函数式组件。理解两者的本质差异有助于在不同场景做出最佳选择。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/01/frontend/react/004-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6%E5%92%8CClass%E7%BB%84%E4%BB%B6/" data-id="cmcae1sk5007esssdf13rdww1" data-title="004-函数式组件和Class组件" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/01/frontend/react/005-React%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          005-React性能优化
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/01/frontend/react/003-HOC%E4%B8%8E%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">003-HOC与函数柯里化</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

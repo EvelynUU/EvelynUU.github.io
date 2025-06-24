@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>007-闭包的概念和使用场景 | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="闭包：概念解析与应用场景全解闭包核心概念定义闭包（Closure） 是指能够访问其外部函数作用域中变量的函数，即使外部函数已经执行结束。闭包由两部分组成：  函数 创建该函数时所在的作用域环境  关键特性   特性 说明    作用域保留 闭包会保留其外部函数的作用域链，即使外部函数已执行完毕   变量持久化 外部函数的变量不会被垃圾回收，而是被闭包长期引用   状态封装 通过闭包可以创建私有变量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="007-闭包的概念和使用场景">
+<meta property="og:url" content="http://example.com/2025/06/09/frontend/javascript/007-%E9%97%AD%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="闭包：概念解析与应用场景全解闭包核心概念定义闭包（Closure） 是指能够访问其外部函数作用域中变量的函数，即使外部函数已经执行结束。闭包由两部分组成：  函数 创建该函数时所在的作用域环境  关键特性   特性 说明    作用域保留 闭包会保留其外部函数的作用域链，即使外部函数已执行完毕   变量持久化 外部函数的变量不会被垃圾回收，而是被闭包长期引用   状态封装 通过闭包可以创建私有变量">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-09T05:47:04.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:44:57.126Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="Javascript">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-frontend/javascript/007-闭包的概念和使用场景" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/09/frontend/javascript/007-%E9%97%AD%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" class="article-date">
+  <time class="dt-published" datetime="2025-06-09T05:47:04.000Z" itemprop="datePublished">2025-06-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Frontend/">Frontend</a>►<a class="article-category-link" href="/categories/Frontend/JavaScript/">JavaScript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      007-闭包的概念和使用场景
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="闭包：概念解析与应用场景全解"><a href="#闭包：概念解析与应用场景全解" class="headerlink" title="闭包：概念解析与应用场景全解"></a>闭包：概念解析与应用场景全解</h1><h2 id="闭包核心概念"><a href="#闭包核心概念" class="headerlink" title="闭包核心概念"></a>闭包核心概念</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><strong>闭包（Closure）</strong> 是指<strong>能够访问其外部函数作用域中变量的函数</strong>，即使外部函数已经执行结束。闭包由两部分组成：</p>
+<ol>
+<li>函数</li>
+<li>创建该函数时所在的作用域环境</li>
+</ol>
+<h3 id="关键特性"><a href="#关键特性" class="headerlink" title="关键特性"></a>关键特性</h3><table>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>作用域保留</td>
+<td>闭包会保留其外部函数的作用域链，即使外部函数已执行完毕</td>
+</tr>
+<tr>
+<td>变量持久化</td>
+<td>外部函数的变量不会被垃圾回收，而是被闭包长期引用</td>
+</tr>
+<tr>
+<td>状态封装</td>
+<td>通过闭包可以创建私有变量，实现数据封装</td>
+</tr>
+</tbody></table>
+<h2 id="闭包经典应用场景"><a href="#闭包经典应用场景" class="headerlink" title="闭包经典应用场景"></a>闭包经典应用场景</h2><h3 id="场景1：模块化开发（私有变量封装）"><a href="#场景1：模块化开发（私有变量封装）" class="headerlink" title="场景1：模块化开发（私有变量封装）"></a>场景1：模块化开发（私有变量封装）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 计数器模块</span></span><br><span class="line"><span class="keyword">const</span> counter = (<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 私有变量</span></span><br><span class="line">  <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 公共接口</span></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="title function_">increment</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> ++count;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">decrement</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> --count;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">getValue</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(counter.<span class="title function_">getValue</span>()); <span class="comment">// 0</span></span><br><span class="line">counter.<span class="title function_">increment</span>();</span><br><span class="line">counter.<span class="title function_">increment</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(counter.<span class="title function_">getValue</span>()); <span class="comment">// 2</span></span><br><span class="line">counter.<span class="title function_">decrement</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(counter.<span class="title function_">getValue</span>()); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="场景2：函数工厂（动态函数创建）"><a href="#场景2：函数工厂（动态函数创建）" class="headerlink" title="场景2：函数工厂（动态函数创建）"></a>场景2：函数工厂（动态函数创建）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建幂函数工厂</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">powerFactory</span>(<span class="params">exponent</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params">base</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">pow</span>(base, exponent);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建特定幂函数</span></span><br><span class="line"><span class="keyword">const</span> square = <span class="title function_">powerFactory</span>(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">const</span> cube = <span class="title function_">powerFactory</span>(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">square</span>(<span class="number">4</span>)); <span class="comment">// 16 (4^2)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">cube</span>(<span class="number">3</span>));   <span class="comment">// 27 (3^3)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="场景3：事件处理（保留上下文）"><a href="#场景3：事件处理（保留上下文）" class="headerlink" title="场景3：事件处理（保留上下文）"></a>场景3：事件处理（保留上下文）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 按钮列表事件处理</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setupButtons</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> buttons = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;.btn&#x27;</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; buttons.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="comment">// 使用闭包保留每个按钮的索引</span></span><br><span class="line">    (<span class="keyword">function</span>(<span class="params">index</span>) &#123;</span><br><span class="line">      buttons[index].<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`按钮 <span class="subst">$&#123;index + <span class="number">1</span>&#125;</span> 被点击`</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;)(i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 替代方案（使用let块级作用域）</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setupButtonsModern</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> buttons = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;.btn&#x27;</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; buttons.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    buttons[i].<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`按钮 <span class="subst">$&#123;i + <span class="number">1</span>&#125;</span> 被点击`</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="场景4：函数柯里化"><a href="#场景4：函数柯里化" class="headerlink" title="场景4：函数柯里化"></a>场景4：函数柯里化</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 柯里化函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">curry</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">curried</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (args.<span class="property">length</span> &gt;= fn.<span class="property">length</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> fn.<span class="title function_">apply</span>(<span class="variable language_">this</span>, args);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="function">(<span class="params">...nextArgs</span>) =&gt;</span> curried.<span class="title function_">apply</span>(<span class="variable language_">this</span>, [...args, ...nextArgs]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用柯里化</span></span><br><span class="line"><span class="keyword">const</span> add = <span class="title function_">curry</span>(<span class="function">(<span class="params">a, b, c</span>) =&gt;</span> a + b + c);</span><br><span class="line"><span class="keyword">const</span> addFive = <span class="title function_">add</span>(<span class="number">2</span>)(<span class="number">3</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">addFive</span>(<span class="number">5</span>)); <span class="comment">// 10 (2+3+5)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="场景5：状态管理"><a href="#场景5：状态管理" class="headerlink" title="场景5：状态管理"></a>场景5：状态管理</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 状态管理器</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createState</span>(<span class="params">initialValue</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> state = initialValue;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> state;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">set</span>(<span class="params">newValue</span>) &#123;</span><br><span class="line">      state = newValue;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 高级功能：状态变更订阅</span></span><br><span class="line">    <span class="title function_">subscribe</span>(<span class="params">callback</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> <span class="title function_">listener</span> = (<span class="params"></span>) =&gt; <span class="title function_">callback</span>(state);</span><br><span class="line">      <span class="comment">// 模拟订阅机制</span></span><br><span class="line">      <span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;stateChange&#x27;</span>, listener);</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 返回取消订阅函数</span></span><br><span class="line">      <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">document</span>.<span class="title function_">removeEventListener</span>(<span class="string">&#x27;stateChange&#x27;</span>, listener);</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用状态管理器</span></span><br><span class="line"><span class="keyword">const</span> userState = <span class="title function_">createState</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;Alice&#x27;</span>, <span class="attr">age</span>: <span class="number">30</span> &#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(userState.<span class="title function_">get</span>()); <span class="comment">// &#123;name: &#x27;Alice&#x27;, age: 30&#125;</span></span><br><span class="line">userState.<span class="title function_">set</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;Bob&#x27;</span>, <span class="attr">age</span>: <span class="number">25</span> &#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(userState.<span class="title function_">get</span>()); <span class="comment">// &#123;name: &#x27;Bob&#x27;, age: 25&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="场景6：性能优化（记忆化）"><a href="#场景6：性能优化（记忆化）" class="headerlink" title="场景6：性能优化（记忆化）"></a>场景6：性能优化（记忆化）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 记忆化函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">memoize</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> cache = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">    <span class="comment">// 创建缓存键</span></span><br><span class="line">    <span class="keyword">const</span> key = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(args);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 检查缓存</span></span><br><span class="line">    <span class="keyword">if</span> (cache.<span class="title function_">has</span>(key)) &#123;</span><br><span class="line">      <span class="keyword">return</span> cache.<span class="title function_">get</span>(key);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 计算并缓存结果</span></span><br><span class="line">    <span class="keyword">const</span> result = fn.<span class="title function_">apply</span>(<span class="variable language_">this</span>, args);</span><br><span class="line">    cache.<span class="title function_">set</span>(key, result);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用记忆化</span></span><br><span class="line"><span class="keyword">const</span> fibonacci = <span class="title function_">memoize</span>(<span class="keyword">function</span>(<span class="params">n</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> n;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">fibonacci</span>(n - <span class="number">1</span>) + <span class="title function_">fibonacci</span>(n - <span class="number">2</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fibonacci</span>(<span class="number">10</span>)); <span class="comment">// 55（首次计算）</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fibonacci</span>(<span class="number">10</span>)); <span class="comment">// 55（从缓存读取）</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="React-Vue-中的闭包应用"><a href="#React-Vue-中的闭包应用" class="headerlink" title="React&#x2F;Vue 中的闭包应用"></a>React&#x2F;Vue 中的闭包应用</h2><h3 id="React-Hooks-示例"><a href="#React-Hooks-示例" class="headerlink" title="React Hooks 示例"></a>React Hooks 示例</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Counter</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// useState 内部使用闭包保存状态</span></span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// useEffect 使用闭包保留回调函数</span></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> timer = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 闭包保留最新count值</span></span><br><span class="line">      <span class="title function_">setCount</span>(<span class="function"><span class="params">c</span> =&gt;</span> c + <span class="number">1</span>);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">clearInterval</span>(timer);</span><br><span class="line">  &#125;, []); <span class="comment">// 依赖数组为空，只运行一次</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>计数: &#123;count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Vue-Composition-API-示例"><a href="#Vue-Composition-API-示例" class="headerlink" title="Vue Composition API 示例"></a>Vue Composition API 示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123; ref, onMounted, onUnmounted &#125; from &#x27;vue&#x27;;</span><br><span class="line"></span><br><span class="line">// ref 使用闭包保存响应式状态</span><br><span class="line">const count = ref(0);</span><br><span class="line"></span><br><span class="line">// 定时器使用闭包访问最新值</span><br><span class="line">onMounted(() =&gt; &#123;</span><br><span class="line">  const timer = setInterval(() =&gt; &#123;</span><br><span class="line">    count.value++;</span><br><span class="line">  &#125;, 1000);</span><br><span class="line">  </span><br><span class="line">  // 清理函数使用闭包</span><br><span class="line">  onUnmounted(() =&gt; &#123;</span><br><span class="line">    clearInterval(timer);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;计数: &#123;&#123; count &#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="闭包常见问题与解决方案"><a href="#闭包常见问题与解决方案" class="headerlink" title="闭包常见问题与解决方案"></a>闭包常见问题与解决方案</h2><h3 id="问题1：循环中的闭包陷阱"><a href="#问题1：循环中的闭包陷阱" class="headerlink" title="问题1：循环中的闭包陷阱"></a>问题1：循环中的闭包陷阱</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误示例</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i); <span class="comment">// 全部输出5</span></span><br><span class="line">  &#125;, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解决方案1：IIFE创建闭包</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">  (<span class="keyword">function</span>(<span class="params">j</span>) &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(j); <span class="comment">// 0,1,2,3,4</span></span><br><span class="line">    &#125;, <span class="number">100</span>);</span><br><span class="line">  &#125;)(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解决方案2：使用let块级作用域</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i); <span class="comment">// 0,1,2,3,4</span></span><br><span class="line">  &#125;, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题2：内存泄漏"><a href="#问题2：内存泄漏" class="headerlink" title="问题2：内存泄漏"></a>问题2：内存泄漏</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 大型对象保留在闭包中</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createHeavyObjectHolder</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> largeObject = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">1000000</span>).<span class="title function_">fill</span>(<span class="string">&#x27;data&#x27;</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="title function_">getData</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> largeObject[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解决方案：不再需要时解除引用</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createSafeHolder</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> largeObject = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">1000000</span>).<span class="title function_">fill</span>(<span class="string">&#x27;data&#x27;</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> api = &#123;</span><br><span class="line">    <span class="title function_">getData</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> largeObject[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 提供清理方法</span></span><br><span class="line">  api.<span class="property">cleanup</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    largeObject = <span class="literal">null</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> api;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">const</span> holder = <span class="title function_">createSafeHolder</span>();</span><br><span class="line"><span class="comment">// 使用完成后清理</span></span><br><span class="line">holder.<span class="title function_">cleanup</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="闭包性能优化技巧"><a href="#闭包性能优化技巧" class="headerlink" title="闭包性能优化技巧"></a>闭包性能优化技巧</h2><ol>
+<li><strong>避免不必要的闭包</strong>：只在需要封装状态时使用</li>
+<li><strong>最小化闭包范围</strong>：减少闭包中引用的变量数量</li>
+<li><strong>及时解除引用</strong>：不再需要的闭包手动设置为null</li>
+<li><strong>使用模块模式</strong>：替代多个小型闭包</li>
+<li><strong>避免循环中创建闭包</strong>：改用块级作用域变量</li>
+</ol>
+<h2 id="闭包与垃圾回收"><a href="#闭包与垃圾回收" class="headerlink" title="闭包与垃圾回收"></a>闭包与垃圾回收</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">  A[函数执行完毕] --&gt; B&#123;内部变量是否被引用&#125;</span><br><span class="line">  B --&gt;|被闭包引用| C[保留在内存中]</span><br><span class="line">  B --&gt;|未被引用| D[标记为可回收]</span><br><span class="line">  C --&gt; E[闭包不再被引用]</span><br><span class="line">  E --&gt; D</span><br></pre></td></tr></table></figure>
+
+<h2 id="经典面试题解析"><a href="#经典面试题解析" class="headerlink" title="经典面试题解析"></a>经典面试题解析</h2><h3 id="题目1：闭包输出问题"><a href="#题目1：闭包输出问题" class="headerlink" title="题目1：闭包输出问题"></a>题目1：闭包输出问题</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">createFunctions</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> result = [];</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">    result[i] = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> i;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> funcs = <span class="title function_">createFunctions</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(funcs[<span class="number">0</span>]()); <span class="comment">// 3</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(funcs[<span class="number">1</span>]()); <span class="comment">// 3</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(funcs[<span class="number">2</span>]()); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>解析</strong>：所有闭包共享同一个变量i，循环结束时i&#x3D;3</p>
+<h3 id="题目2：闭包计数器"><a href="#题目2：闭包计数器" class="headerlink" title="题目2：闭包计数器"></a>题目2：闭包计数器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">createCounter</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">increment</span>: <span class="function">() =&gt;</span> count++,</span><br><span class="line">    <span class="attr">get</span>: <span class="function">() =&gt;</span> count,</span><br><span class="line">    <span class="attr">reset</span>: <span class="function">() =&gt;</span> &#123; count = <span class="number">0</span>; &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> c = <span class="title function_">createCounter</span>();</span><br><span class="line">c.<span class="title function_">increment</span>();</span><br><span class="line">c.<span class="title function_">increment</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c.<span class="title function_">get</span>()); <span class="comment">// 2</span></span><br><span class="line">c.<span class="title function_">reset</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c.<span class="title function_">get</span>()); <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>解析</strong>：通过闭包实现私有变量count的封装</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="闭包核心价值"><a href="#闭包核心价值" class="headerlink" title="闭包核心价值"></a>闭包核心价值</h3><table>
+<thead>
+<tr>
+<th><strong>应用方向</strong></th>
+<th><strong>价值体现</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据封装</td>
+<td>创建私有变量，实现信息隐藏</td>
+</tr>
+<tr>
+<td>状态保持</td>
+<td>长期保存数据，不受外部函数执行结束影响</td>
+</tr>
+<tr>
+<td>函数工厂</td>
+<td>动态生成特定配置的函数</td>
+</tr>
+<tr>
+<td>模块化</td>
+<td>构建独立作用域，避免全局污染</td>
+</tr>
+<tr>
+<td>高阶函数</td>
+<td>实现函数组合、柯里化等高级功能</td>
+</tr>
+<tr>
+<td>异步编程</td>
+<td>在回调中保持上下文一致性</td>
+</tr>
+</tbody></table>
+<h3 id="使用原则"><a href="#使用原则" class="headerlink" title="使用原则"></a>使用原则</h3><ol>
+<li><strong>必要性原则</strong>：只在需要封装状态时使用闭包</li>
+<li><strong>最小化原则</strong>：保持闭包作用域尽可能小</li>
+<li><strong>可控性原则</strong>：提供清理机制避免内存泄漏</li>
+<li><strong>可维护性原则</strong>：避免过度嵌套的闭包结构</li>
+</ol>
+<p>闭包是JavaScript最强大的特性之一，合理使用闭包可以：</p>
+<ul>
+<li>✅ 创建优雅的模块化代码</li>
+<li>✅ 实现高效的状态管理</li>
+<li>✅ 封装复杂的业务逻辑</li>
+<li>✅ 构建可复用的函数工厂</li>
+</ul>
+<p>但同时要注意：</p>
+<ul>
+<li>❌ 避免不必要的内存占用</li>
+<li>❌ 防止意外的变量共享</li>
+<li>❌ 警惕循环引用导致的内存泄漏</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/09/frontend/javascript/007-%E9%97%AD%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" data-id="cmcae1sk80088sssd8vqk3gjb" data-title="007-闭包的概念和使用场景" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/09/frontend/javascript/008-ES5-%E5%AE%9E%E7%8E%B0-ES6-%E7%B1%BB%E7%BB%A7%E6%89%BF%EF%BC%9A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%AE%8C%E6%95%B4%E5%AE%9E%E7%8E%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          008-ES5 实现 ES6 类继承：深度解析与完整实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/09/frontend/javascript/006-call-apply-bind%E8%AF%A6%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">006-call-apply-bind详解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>CKA/CKAD/CKS 备考指南 | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="考取 Kubernetes 相关认证（如 CKA、CKAD 或 CKS）  1. 选择适合的认证 CKA（Certified Kubernetes Administrator）  重点：集群运维、故障排查、网络&#x2F;存储配置、安全等。 适合人群：运维、DevOps、SRE 等需管理 Kubernetes 集群的岗位。 考试内容： 集群安装、升级 工作负载调度（Deployment、Daemo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CKA&#x2F;CKAD&#x2F;CKS 备考指南">
+<meta property="og:url" content="http://example.com/2025/06/20/devops/kubernetes/CKA%20CKAD%E5%A4%87%E8%80%83/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="考取 Kubernetes 相关认证（如 CKA、CKAD 或 CKS）  1. 选择适合的认证 CKA（Certified Kubernetes Administrator）  重点：集群运维、故障排查、网络&#x2F;存储配置、安全等。 适合人群：运维、DevOps、SRE 等需管理 Kubernetes 集群的岗位。 考试内容： 集群安装、升级 工作负载调度（Deployment、Daemo">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-20T05:51:00.000Z">
+<meta property="article:modified_time" content="2025-06-24T08:53:35.159Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="k8s">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-devops/kubernetes/CKA CKAD备考" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/20/devops/kubernetes/CKA%20CKAD%E5%A4%87%E8%80%83/" class="article-date">
+  <time class="dt-published" datetime="2025-06-20T05:51:00.000Z" itemprop="datePublished">2025-06-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/DevOps/">DevOps</a>►<a class="article-category-link" href="/categories/DevOps/kubernetes/">kubernetes</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      CKA/CKAD/CKS 备考指南
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>考取 Kubernetes 相关认证（如 <strong>CKA、CKAD 或 CKS</strong>）</p>
+<hr>
+<h3 id="1-选择适合的认证"><a href="#1-选择适合的认证" class="headerlink" title="1. 选择适合的认证"></a><strong>1. 选择适合的认证</strong></h3><ul>
+<li><p><strong>CKA（Certified Kubernetes Administrator）</strong></p>
+<ul>
+<li><strong>重点</strong>：集群运维、故障排查、网络&#x2F;存储配置、安全等。</li>
+<li><strong>适合人群</strong>：运维、DevOps、SRE 等需管理 Kubernetes 集群的岗位。</li>
+<li><strong>考试内容</strong>：<ul>
+<li>集群安装、升级</li>
+<li>工作负载调度（Deployment、DaemonSet 等）</li>
+<li>网络（Service、Ingress、DNS）</li>
+<li>存储（PV、PVC）</li>
+<li>安全（RBAC、SecurityContext）</li>
+<li>故障排查（节点、Pod、日志）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>CKAD（Certified Kubernetes Application Developer）</strong></p>
+<ul>
+<li><strong>重点</strong>：应用开发、部署、调试（更侧重 YAML 编写）。</li>
+<li><strong>适合人群</strong>：开发、云原生应用工程师。</li>
+<li><strong>考试内容</strong>：<ul>
+<li>Pod 设计（多容器、InitContainer）</li>
+<li>Deployment 滚动更新、回滚</li>
+<li>ConfigMap&#x2F;Secret 使用</li>
+<li>调试（Probe、日志）</li>
+<li>Helm 基础（Chart 模板）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>CKS（Certified Kubernetes Security Specialist）</strong></p>
+<ul>
+<li><strong>前置要求</strong>：需先通过 CKA。</li>
+<li><strong>重点</strong>：集群安全（认证、授权、审计、运行时安全）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2-报名与考试信息"><a href="#2-报名与考试信息" class="headerlink" title="2. 报名与考试信息"></a><strong>2. 报名与考试信息</strong></h3><ul>
+<li><strong>官网</strong>：<a target="_blank" rel="noopener" href="https://training.linuxfoundation.org/">Linux Foundation Training</a></li>
+<li><strong>考试形式</strong>：<ul>
+<li><strong>线上监考</strong>，时长 2 小时（CKA&#x2F;CKAD）或 2.5 小时（CKS）。</li>
+<li><strong>实操题</strong>：在真实 Kubernetes 集群中完成任务（需快速编写 YAML 或命令行操作）。</li>
+</ul>
+</li>
+<li><strong>通过分数</strong>：CKA&#x2F;CKAD 66%，CKS 67%。</li>
+</ul>
+<hr>
+<h3 id="3-备考资源与步骤"><a href="#3-备考资源与步骤" class="headerlink" title="3. 备考资源与步骤"></a><strong>3. 备考资源与步骤</strong></h3><h4 id="①-官方资源"><a href="#①-官方资源" class="headerlink" title="① 官方资源"></a><strong>① 官方资源</strong></h4><ul>
+<li><strong>Kubernetes 官方文档</strong>：<ul>
+<li>重点章节：Concepts &gt; Workloads、Services&#x2F;Networking、Storage、Security。</li>
+<li>文档搜索技巧（考试时可快速查阅）。</li>
+</ul>
+</li>
+<li><strong>考试大纲</strong>：下载最新版，逐项攻克（官网提供）。</li>
+</ul>
+<h4 id="②-推荐学习平台"><a href="#②-推荐学习平台" class="headerlink" title="② 推荐学习平台"></a><strong>② 推荐学习平台</strong></h4><ul>
+<li><strong>理论+实践课程</strong>：<ul>
+<li><a target="_blank" rel="noopener" href="https://kodekloud.com/">KodeKloud</a>（互动式实验，适合新手）。</li>
+<li><a target="_blank" rel="noopener" href="https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/">Udemy: Mumshad Mannambeth 的课程</a>（含模拟题）。</li>
+</ul>
+</li>
+<li><strong>动手实验</strong>：<ul>
+<li><a target="_blank" rel="noopener" href="https://killercoda.com/">Killercoda</a>（免费在线 Kubernetes 实验环境）。</li>
+<li>本地搭建集群：Minikube、Kind 或 kubeadm。</li>
+</ul>
+</li>
+</ul>
+<h4 id="③-刷题与模拟"><a href="#③-刷题与模拟" class="headerlink" title="③ 刷题与模拟"></a><strong>③ 刷题与模拟</strong></h4><ul>
+<li><strong>模拟考试</strong>：<ul>
+<li><a target="_blank" rel="noopener" href="https://killer.sh/">Killer.sh</a>（官方提供的模拟环境，难度略高于实际考试）。</li>
+<li>重点练习：快速编写 YAML（<code>kubectl run --dry-run=client -o yaml</code> 生成模板）。</li>
+</ul>
+</li>
+<li><strong>高频考点</strong>：<ul>
+<li>CKA：etcd 备份恢复、网络策略（NetworkPolicy）、节点维护。</li>
+<li>CKAD：自定义调度器（nodeSelector、Affinity）、Pod 生命周期钩子。</li>
+</ul>
+</li>
+</ul>
+<h4 id="④-考试技巧"><a href="#④-考试技巧" class="headerlink" title="④ 考试技巧"></a><strong>④ 考试技巧</strong></h4><ul>
+<li><strong>时间管理</strong>：每题不超过 5-10 分钟，标记难题最后做。</li>
+<li><strong>命令别名</strong>：提前设置 <code>alias k=kubectl</code> 并启用自动补全。</li>
+<li><strong>文档速查</strong>：学会用 <code>kubectl explain</code> 和官方文档搜索（Ctrl+F）。</li>
+</ul>
+<hr>
+<h3 id="4-考试当天注意事项"><a href="#4-考试当天注意事项" class="headerlink" title="4. 考试当天注意事项"></a><strong>4. 考试当天注意事项</strong></h3><ul>
+<li><strong>环境准备</strong>：<ul>
+<li>稳定的网络、安静的空间、摄像头&#x2F;麦克风。</li>
+<li>关闭无关软件，避免使用多显示器。</li>
+</ul>
+</li>
+<li><strong>允许的资源</strong>：<ul>
+<li>仅可访问 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/">Kubernetes 官方文档</a> 和 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/">GitHub 官方仓库</a>。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="5-认证后的维护"><a href="#5-认证后的维护" class="headerlink" title="5. 认证后的维护"></a><strong>5. 认证后的维护</strong></h3><ul>
+<li><strong>有效期</strong>：CKA&#x2F;CKAD&#x2F;CKS 认证有效期为 <strong>3 年</strong>，可通过重考或参与 Linux 基金会活动续期。</li>
+<li><strong>简历展示</strong>：将认证徽章（Badge）添加到 LinkedIn&#x2F;GitHub。</li>
+</ul>
+<hr>
+<h3 id="6-其他建议"><a href="#6-其他建议" class="headerlink" title="6. 其他建议"></a><strong>6. 其他建议</strong></h3><ul>
+<li><strong>先考 CKAD 还是 CKA？</strong><ul>
+<li>如果你是开发者，先考 CKAD；如果侧重运维，直接考 CKA。</li>
+</ul>
+</li>
+<li><strong>CKS 建议</strong>：在通过 CKA 后 1-2 个月内备考（安全知识重叠）。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/20/devops/kubernetes/CKA%20CKAD%E5%A4%87%E8%80%83/" data-id="cmcae1sjm003esssde09rbh1z" data-title="CKA/CKAD/CKS 备考指南" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.1%20Architecture/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          1.1 Architecture
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/19/frontend/javascript/016-fetch%20&%20axios/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">016-fetch &amp; axios</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

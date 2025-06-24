@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>025-寻找两个正序数组的中位数（二分查找） | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="寻找两个正序数组的中位数给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的 中位数 。 算法的时间复杂度应该为 O(log (m+n)) 。 示例 1： 输入：nums1 &#x3D; [1,3], nums2 &#x3D; [2] 输出：2.00000 解释：合并数组 &#x3D; [1,2,3] ，中位数 2  示例 2： 输入：nums1 &#x3D; [1,2],">
+<meta property="og:type" content="article">
+<meta property="og:title" content="025-寻找两个正序数组的中位数（二分查找）">
+<meta property="og:url" content="http://example.com/2025/06/17/algorithms/025-%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0%EF%BC%88%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%EF%BC%89/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="寻找两个正序数组的中位数给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的 中位数 。 算法的时间复杂度应该为 O(log (m+n)) 。 示例 1： 输入：nums1 &#x3D; [1,3], nums2 &#x3D; [2] 输出：2.00000 解释：合并数组 &#x3D; [1,2,3] ，中位数 2  示例 2： 输入：nums1 &#x3D; [1,2],">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-17T15:59:30.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:24:10.497Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="algorithms">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-algorithms/025-寻找两个正序数组的中位数（二分查找）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/17/algorithms/025-%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0%EF%BC%88%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2025-06-17T15:59:30.000Z" itemprop="datePublished">2025-06-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      025-寻找两个正序数组的中位数（二分查找）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="寻找两个正序数组的中位数"><a href="#寻找两个正序数组的中位数" class="headerlink" title="寻找两个正序数组的中位数"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/median-of-two-sorted-arrays/">寻找两个正序数组的中位数</a></h3><p>给定两个大小分别为 <code>m</code> 和 <code>n</code> 的正序（从小到大）数组 <code>nums1</code> 和 <code>nums2</code>。请你找出并返回这两个正序数组的 <strong>中位数</strong> 。</p>
+<p>算法的时间复杂度应该为 <code>O(log (m+n))</code> 。</p>
+<p><strong>示例 1：</strong></p>
+<pre><code>输入：nums1 = [1,3], nums2 = [2]
+输出：2.00000
+解释：合并数组 = [1,2,3] ，中位数 2
+</code></pre>
+<p><strong>示例 2：</strong></p>
+<pre><code>输入：nums1 = [1,2], nums2 = [3,4]
+输出：2.50000
+解释：合并数组 = [1,2,3,4] ，中位数 (2 + 3) / 2 = 2.5
+</code></pre>
+<p>在不要求算法复杂度的情况下，个人认为先和并后排序的方法更简单易懂， 有手就行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> findMedianSortedArrays = <span class="keyword">function</span>(<span class="params">nums1, nums2</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> combined = nums1.<span class="title function_">concat</span>(nums2);</span><br><span class="line">    <span class="keyword">const</span> sortedCombined = combined.<span class="title function_">sort</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b); <span class="comment">// 修正：按数值排序</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> length = sortedCombined.<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">if</span> (length % <span class="number">2</span> === <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> sortedCombined[<span class="title class_">Math</span>.<span class="title function_">floor</span>(length / <span class="number">2</span>)];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (sortedCombined[(length / <span class="number">2</span>) - <span class="number">1</span>] + sortedCombined[length / <span class="number">2</span>]) / <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>下面是二分法的详细解析， O(log(min(m,n))</p>
+<h3 id="终极解答方案：二分查找法求两个有序数组的中位数"><a href="#终极解答方案：二分查找法求两个有序数组的中位数" class="headerlink" title="终极解答方案：二分查找法求两个有序数组的中位数"></a><strong>终极解答方案：二分查找法求两个有序数组的中位数</strong></h3><hr>
+<h4 id="1-核心思想"><a href="#1-核心思想" class="headerlink" title="1. 核心思想"></a><strong>1. 核心思想</strong></h4><ul>
+<li><strong>二分查找短数组</strong>：在较短的数组上执行二分查找，确定分割点 <code>partitionX</code>。</li>
+<li><strong>自动计算长数组分割点</strong>：<code>partitionY = (m + n + 1) / 2 - partitionX</code>。</li>
+<li><strong>验证分割有效性</strong>：检查左半部分的最大值是否 ≤ 右半部分的最小值。</li>
+</ul>
+<hr>
+<h4 id="2-完整代码"><a href="#2-完整代码" class="headerlink" title="2. 完整代码"></a><strong>2. 完整代码</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> findMedianSortedArrays = <span class="keyword">function</span>(<span class="params">nums1, nums2</span>) &#123;</span><br><span class="line">    <span class="comment">// 确保 nums1 是较短的数组</span></span><br><span class="line">    <span class="keyword">if</span> (nums1.<span class="property">length</span> &gt; nums2.<span class="property">length</span>) &#123;</span><br><span class="line">        [nums1, nums2] = [nums2, nums1];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> m = nums1.<span class="property">length</span>, n = nums2.<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">const</span> k = <span class="title class_">Math</span>.<span class="title function_">floor</span>((m + n + <span class="number">1</span>) / <span class="number">2</span>); <span class="comment">// 中位数位置</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 初始化二分查找边界</span></span><br><span class="line">    <span class="keyword">let</span> low = <span class="number">0</span>, high = m;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">        <span class="comment">// 在 nums1 中尝试分割点 partitionX</span></span><br><span class="line">        <span class="keyword">const</span> partitionX = <span class="title class_">Math</span>.<span class="title function_">floor</span>((low + high) / <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">const</span> partitionY = k - partitionX; <span class="comment">// nums2 的分割点</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 处理边界情况（分割点在数组两端）</span></span><br><span class="line">        <span class="keyword">const</span> maxLeftX = (partitionX === <span class="number">0</span>) ? -<span class="title class_">Infinity</span> : nums1[partitionX - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">const</span> minRightX = (partitionX === m) ? <span class="title class_">Infinity</span> : nums1[partitionX];</span><br><span class="line">        <span class="keyword">const</span> maxLeftY = (partitionY === <span class="number">0</span>) ? -<span class="title class_">Infinity</span> : nums2[partitionY - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">const</span> minRightY = (partitionY === n) ? <span class="title class_">Infinity</span> : nums2[partitionY];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 检查分割是否有效</span></span><br><span class="line">        <span class="keyword">if</span> (maxLeftX &lt;= minRightY &amp;&amp; maxLeftY &lt;= minRightX) &#123;</span><br><span class="line">            <span class="comment">// 计算中位数</span></span><br><span class="line">            <span class="keyword">if</span> ((m + n) % <span class="number">2</span> === <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">max</span>(maxLeftX, maxLeftY); <span class="comment">// 奇数长度</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> (<span class="title class_">Math</span>.<span class="title function_">max</span>(maxLeftX, maxLeftY) + <span class="title class_">Math</span>.<span class="title function_">min</span>(minRightX, minRightY)) / <span class="number">2</span>; <span class="comment">// 偶数长度</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (maxLeftX &gt; minRightY) &#123;</span><br><span class="line">            high = partitionX - <span class="number">1</span>; <span class="comment">// 左移分割点</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            low = partitionX + <span class="number">1</span>;  <span class="comment">// 右移分割点</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="3-分步图解（示例数组-1-3-5-7-和-2-4-5-6-）"><a href="#3-分步图解（示例数组-1-3-5-7-和-2-4-5-6-）" class="headerlink" title="3. 分步图解（示例数组 [1,3,5,7] 和 [2,4,5,6]）"></a><strong>3. 分步图解（示例数组 <code>[1,3,5,7]</code> 和 <code>[2,4,5,6]</code>）</strong></h4><h5 id="Step-1：初始化"><a href="#Step-1：初始化" class="headerlink" title="Step 1：初始化"></a><strong>Step 1：初始化</strong></h5><ul>
+<li><code>nums1 = [1,3,5,7]</code>（m&#x3D;4），<code>nums2 = [2,4,5,6]</code>（n&#x3D;4）</li>
+<li><code>k = (4+4+1)/2 = 4</code>（中位数位置）</li>
+<li><code>low = 0</code>，<code>high = 4</code></li>
+</ul>
+<h5 id="Step-2：第一次迭代（partitionX-2）"><a href="#Step-2：第一次迭代（partitionX-2）" class="headerlink" title="Step 2：第一次迭代（partitionX&#x3D;2）"></a><strong>Step 2：第一次迭代（partitionX&#x3D;2）</strong></h5><pre><code>nums1分割: [1,3 | 5,7]  (partitionX=2)
+nums2分割: [2,4 | 5,6]  (partitionY=4-2=2)
+
+关键值:
+- maxLeftX = 3, minRightX = 5
+- maxLeftY = 4, minRightY = 5
+
+检查:
+3 ≤ 5 (True) 且 4 ≤ 5 (True) → 分割有效！
+</code></pre>
+<h5 id="Step-3：计算中位数"><a href="#Step-3：计算中位数" class="headerlink" title="Step 3：计算中位数"></a><strong>Step 3：计算中位数</strong></h5><ul>
+<li>总长度 <code>m+n=8</code>（偶数）：<ul>
+<li>中位数 &#x3D; <code>(max(3,4) + min(5,5)) / 2 = (4 + 5) / 2 = 4.5</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="4-关键步骤图示"><a href="#4-关键步骤图示" class="headerlink" title="4. 关键步骤图示"></a><strong>4. 关键步骤图示</strong></h4><pre><code>nums1: [1, 3 | 5, 7]
+          ↑ partitionX=2
+nums2: [2, 4 | 5, 6]
+          ↑ partitionY=2
+
+合并后的虚拟数组:
+左半部分: [1,3,2,4] → 最大=max(3,4)=4
+右半部分: [5,7,5,6] → 最小=min(5,5)=5
+中位数 = (4 + 5)/2 = 4.5
+</code></pre>
+<hr>
+<h4 id="5-复杂度分析"><a href="#5-复杂度分析" class="headerlink" title="5. 复杂度分析"></a><strong>5. 复杂度分析</strong></h4><ul>
+<li><strong>时间复杂度</strong>：<code>O(log(min(m,n)))</code><br>仅在短数组上执行二分查找。</li>
+<li><strong>空间复杂度</strong>：<code>O(1)</code><br>仅使用常数空间。</li>
+</ul>
+<hr>
+<h4 id="6-边界情况处理"><a href="#6-边界情况处理" class="headerlink" title="6. 边界情况处理"></a><strong>6. 边界情况处理</strong></h4><table>
+<thead>
+<tr>
+<th>情况</th>
+<th>处理方式</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分割点在 nums1 左端</td>
+<td><code>maxLeftX = -Infinity</code></td>
+<td><code>partitionX=0</code></td>
+</tr>
+<tr>
+<td>分割点在 nums1 右端</td>
+<td><code>minRightX = Infinity</code></td>
+<td><code>partitionX=m</code></td>
+</tr>
+<tr>
+<td>数组为空</td>
+<td>直接返回另一数组的中位数</td>
+<td><code>nums1=[], nums2=[1,2]</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="7-为什么这样高效？"><a href="#7-为什么这样高效？" class="headerlink" title="7. 为什么这样高效？"></a><strong>7. 为什么这样高效？</strong></h4><ul>
+<li><strong>短数组二分</strong>：减少搜索范围。</li>
+<li><strong>数学约束</strong>：<code>partitionX + partitionY = k</code> 保证左右部分长度平衡。</li>
+<li><strong>边界保护</strong>：<code>-Infinity</code> 和 <code>Infinity</code> 避免复杂条件判断。</li>
+</ul>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><ol>
+<li><strong>交换数组</strong>：确保 <code>nums1</code> 是较短的数组。</li>
+<li><strong>二分查找</strong>：在 <code>nums1</code> 上尝试分割点 <code>partitionX</code>。</li>
+<li><strong>验证分割</strong>：检查 <code>maxLeft ≤ minRight</code>。</li>
+<li><strong>调整方向</strong>：根据比较结果移动 <code>low</code> 或 <code>high</code>。</li>
+<li><strong>计算中位数</strong>：根据奇偶长度返回结果。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/17/algorithms/025-%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0%EF%BC%88%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%EF%BC%89/" data-id="cmcae1sjh0024sssd1zcsghjl" data-title="025-寻找两个正序数组的中位数（二分查找）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/17/algorithms/026-%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90%EF%BC%88DFS%20or%20DP%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          026-括号生成（DFS or DP）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/17/algorithms/024-%E5%92%8C%E4%B8%BAK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%EF%BC%88%E5%89%8D%E7%BC%80%E5%92%8C%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">024-和为K的子数组（前缀和）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>003-浏览器与Node事件循环 | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="浏览器与Node.js事件循环(Event Loop)详解浏览器事件循环(Event Loop)1. 基本概念浏览器的事件循环是JavaScript实现异步编程的核心机制，它负责协调用户交互、脚本执行、渲染、网络请求等事件。 2. 运行机制主要组成部分： **调用栈(Call Stack)**：执行同步代码的栈结构 **任务队列(Task Queue)**： 宏任务队列(Macrotask Que">
+<meta property="og:type" content="article">
+<meta property="og:title" content="003-浏览器与Node事件循环">
+<meta property="og:url" content="http://example.com/2025/05/20/foundation/protocol_browser/003-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8ENode%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="浏览器与Node.js事件循环(Event Loop)详解浏览器事件循环(Event Loop)1. 基本概念浏览器的事件循环是JavaScript实现异步编程的核心机制，它负责协调用户交互、脚本执行、渲染、网络请求等事件。 2. 运行机制主要组成部分： **调用栈(Call Stack)**：执行同步代码的栈结构 **任务队列(Task Queue)**： 宏任务队列(Macrotask Que">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-05-20T05:51:23.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:50:29.427Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="ProtocolAndBrowser">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-foundation/protocol_browser/003-浏览器与Node事件循环详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/05/20/foundation/protocol_browser/003-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8ENode%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2025-05-20T05:51:23.000Z" itemprop="datePublished">2025-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Foundation/">Foundation</a>►<a class="article-category-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      003-浏览器与Node事件循环
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="浏览器与Node-js事件循环-Event-Loop-详解"><a href="#浏览器与Node-js事件循环-Event-Loop-详解" class="headerlink" title="浏览器与Node.js事件循环(Event Loop)详解"></a>浏览器与Node.js事件循环(Event Loop)详解</h1><h2 id="浏览器事件循环-Event-Loop"><a href="#浏览器事件循环-Event-Loop" class="headerlink" title="浏览器事件循环(Event Loop)"></a>浏览器事件循环(Event Loop)</h2><h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>浏览器的事件循环是JavaScript实现异步编程的核心机制，它负责协调用户交互、脚本执行、渲染、网络请求等事件。</p>
+<h3 id="2-运行机制"><a href="#2-运行机制" class="headerlink" title="2. 运行机制"></a>2. 运行机制</h3><h4 id="主要组成部分："><a href="#主要组成部分：" class="headerlink" title="主要组成部分："></a>主要组成部分：</h4><ul>
+<li>**调用栈(Call Stack)**：执行同步代码的栈结构</li>
+<li>**任务队列(Task Queue)**：<ul>
+<li>宏任务队列(Macrotask Queue)</li>
+<li>微任务队列(Microtask Queue)</li>
+</ul>
+</li>
+<li><strong>Web APIs</strong>：浏览器提供的异步API环境</li>
+</ul>
+<h4 id="执行流程："><a href="#执行流程：" class="headerlink" title="执行流程："></a>执行流程：</h4><ol>
+<li>执行全局同步代码（同步任务直接进入调用栈执行）</li>
+<li>遇到异步操作时：<ul>
+<li>宏任务（setTimeout、setInterval、I&#x2F;O等）交给Web APIs处理，完成后回调放入宏任务队列</li>
+<li>微任务（Promise.then、MutationObserver等）回调放入微任务队列</li>
+</ul>
+</li>
+<li>当调用栈为空时：<ul>
+<li>先检查微任务队列并执行所有微任务</li>
+<li>然后从宏任务队列取出一个任务执行</li>
+</ul>
+</li>
+<li>重复上述过程</li>
+</ol>
+<h4 id="图示流程："><a href="#图示流程：" class="headerlink" title="图示流程："></a>图示流程：</h4><pre><code>[执行同步代码] → [微任务队列全部执行] → [渲染(如有需要)] → [取一个宏任务执行] → [重复]
+</code></pre>
+<h3 id="3-任务分类"><a href="#3-任务分类" class="headerlink" title="3. 任务分类"></a>3. 任务分类</h3><h4 id="宏任务-Macrotasks-："><a href="#宏任务-Macrotasks-：" class="headerlink" title="宏任务(Macrotasks)："></a>宏任务(Macrotasks)：</h4><ul>
+<li>script整体代码</li>
+<li>setTimeout&#x2F;setInterval</li>
+<li>I&#x2F;O操作</li>
+<li>UI渲染</li>
+<li>postMessage</li>
+<li>MessageChannel</li>
+<li>setImmediate（仅IE&#x2F;Node.js）</li>
+</ul>
+<h4 id="微任务-Microtasks-："><a href="#微任务-Microtasks-：" class="headerlink" title="微任务(Microtasks)："></a>微任务(Microtasks)：</h4><ul>
+<li>Promise.then&#x2F;catch&#x2F;finally</li>
+<li>MutationObserver</li>
+<li>process.nextTick（Node.js特有）</li>
+<li>queueMicrotask</li>
+</ul>
+<h3 id="4-执行顺序示例"><a href="#4-执行顺序示例" class="headerlink" title="4. 执行顺序示例"></a>4. 执行顺序示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;script start&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;setTimeout&#x27;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Promise</span>.<span class="title function_">resolve</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;promise1&#x27;</span>);</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;promise2&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;script end&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出顺序：</span></span><br><span class="line"><span class="comment">// script start</span></span><br><span class="line"><span class="comment">// script end</span></span><br><span class="line"><span class="comment">// promise1</span></span><br><span class="line"><span class="comment">// promise2</span></span><br><span class="line"><span class="comment">// setTimeout</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Node-js事件循环"><a href="#Node-js事件循环" class="headerlink" title="Node.js事件循环"></a>Node.js事件循环</h2><h3 id="1-基本概念-1"><a href="#1-基本概念-1" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>Node.js使用libuv库实现的事件驱动架构，其事件循环比浏览器更复杂，分为多个阶段。</p>
+<h3 id="2-阶段划分"><a href="#2-阶段划分" class="headerlink" title="2. 阶段划分"></a>2. 阶段划分</h3><h4 id="完整事件循环阶段（按顺序执行）："><a href="#完整事件循环阶段（按顺序执行）：" class="headerlink" title="完整事件循环阶段（按顺序执行）："></a>完整事件循环阶段（按顺序执行）：</h4><ol>
+<li><strong>timers阶段</strong>：执行setTimeout和setInterval的回调</li>
+<li><strong>pending callbacks阶段</strong>：执行某些系统操作的回调（如TCP错误）</li>
+<li><strong>idle, prepare阶段</strong>：Node内部使用</li>
+<li><strong>poll阶段</strong>：<ul>
+<li>检索新的I&#x2F;O事件</li>
+<li>执行I&#x2F;O相关回调（几乎所有的回调，除了close、timers和setImmediate）</li>
+<li>可能会阻塞在此阶段等待新事件</li>
+</ul>
+</li>
+<li><strong>check阶段</strong>：执行setImmediate的回调</li>
+<li><strong>close callbacks阶段</strong>：执行关闭事件的回调（如socket.on(‘close’)）</li>
+</ol>
+<h3 id="3-特殊队列"><a href="#3-特殊队列" class="headerlink" title="3. 特殊队列"></a>3. 特殊队列</h3><h4 id="nextTick队列"><a href="#nextTick队列" class="headerlink" title="nextTick队列"></a>nextTick队列</h4><ul>
+<li><code>process.nextTick()</code>的回调</li>
+<li>不属于事件循环的任何阶段</li>
+<li>在当前操作完成后立即执行，优先级高于微任务</li>
+</ul>
+<h4 id="微任务队列"><a href="#微任务队列" class="headerlink" title="微任务队列"></a>微任务队列</h4><ul>
+<li>包括Promise.then、queueMicrotask等</li>
+<li>在每个阶段之间执行</li>
+</ul>
+<h3 id="4-执行顺序规则"><a href="#4-执行顺序规则" class="headerlink" title="4. 执行顺序规则"></a>4. 执行顺序规则</h3><ol>
+<li>nextTick队列 &gt; 微任务队列 &gt; 其他阶段</li>
+<li>每个阶段执行完毕后，都会先执行完nextTick队列和微任务队列</li>
+</ol>
+<h3 id="5-与浏览器的区别"><a href="#5-与浏览器的区别" class="headerlink" title="5. 与浏览器的区别"></a>5. 与浏览器的区别</h3><ol>
+<li>阶段划分不同：Node.js有明确的阶段划分</li>
+<li>优先级不同：<ul>
+<li>Node.js中：process.nextTick &gt; Promise微任务</li>
+<li>浏览器中：Promise微任务 &gt; setTimeout宏任务</li>
+</ul>
+</li>
+<li>实现机制不同：Node.js基于libuv，浏览器基于HTML5规范</li>
+</ol>
+<h3 id="6-执行顺序示例"><a href="#6-执行顺序示例" class="headerlink" title="6. 执行顺序示例"></a>6. 执行顺序示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;start&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;timer1&#x27;</span>);</span><br><span class="line">  <span class="title class_">Promise</span>.<span class="title function_">resolve</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;promise1&#x27;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;timer2&#x27;</span>);</span><br><span class="line">  <span class="title class_">Promise</span>.<span class="title function_">resolve</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;promise2&#x27;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Promise</span>.<span class="title function_">resolve</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;promise3&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">process.<span class="title function_">nextTick</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;nextTick&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;end&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Node.js输出顺序：</span></span><br><span class="line"><span class="comment">start</span></span><br><span class="line"><span class="comment">end</span></span><br><span class="line"><span class="comment">nextTick</span></span><br><span class="line"><span class="comment">promise3</span></span><br><span class="line"><span class="comment">timer1</span></span><br><span class="line"><span class="comment">promise1</span></span><br><span class="line"><span class="comment">timer2</span></span><br><span class="line"><span class="comment">promise2</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="常见面试问题解答"><a href="#常见面试问题解答" class="headerlink" title="常见面试问题解答"></a>常见面试问题解答</h2><h3 id="Q1-浏览器和Node-js事件循环的主要区别？"><a href="#Q1-浏览器和Node-js事件循环的主要区别？" class="headerlink" title="Q1: 浏览器和Node.js事件循环的主要区别？"></a>Q1: 浏览器和Node.js事件循环的主要区别？</h3><ol>
+<li>阶段划分：Node.js有明确的6个阶段，浏览器更简单</li>
+<li>任务优先级：Node.js中process.nextTick优先级最高</li>
+<li>实现机制：Node.js使用libuv，浏览器遵循HTML5规范</li>
+<li>微任务执行时机：Node.js在每个阶段之间执行微任务</li>
+</ol>
+<h3 id="Q2-process-nextTick和setImmediate的区别？"><a href="#Q2-process-nextTick和setImmediate的区别？" class="headerlink" title="Q2: process.nextTick和setImmediate的区别？"></a>Q2: process.nextTick和setImmediate的区别？</h3><ul>
+<li><code>process.nextTick()</code>：<ul>
+<li>在当前阶段立即执行</li>
+<li>优先级高于微任务</li>
+</ul>
+</li>
+<li><code>setImmediate()</code>：<ul>
+<li>在check阶段执行</li>
+<li>属于宏任务</li>
+</ul>
+</li>
+</ul>
+<h3 id="Q3-为什么Promise-then比setTimeout先执行？"><a href="#Q3-为什么Promise-then比setTimeout先执行？" class="headerlink" title="Q3: 为什么Promise.then比setTimeout先执行？"></a>Q3: 为什么Promise.then比setTimeout先执行？</h3><p>因为Promise.then属于微任务，会在当前宏任务执行完后立即执行所有微任务，而setTimeout是下一个宏任务。</p>
+<h3 id="Q4-Node-js中哪些操作会产生微任务？"><a href="#Q4-Node-js中哪些操作会产生微任务？" class="headerlink" title="Q4: Node.js中哪些操作会产生微任务？"></a>Q4: Node.js中哪些操作会产生微任务？</h3><ul>
+<li>Promise.then&#x2F;catch&#x2F;finally</li>
+<li>async&#x2F;await</li>
+<li>queueMicrotask</li>
+<li>process.nextTick（虽然严格来说不属于微任务，但行为类似且优先级更高）</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/05/20/foundation/protocol_browser/003-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8ENode%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E8%AF%A6%E8%A7%A3/" data-id="cmcae1sjq0048sssdbntj6b77" data-title="003-浏览器与Node事件循环" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/05/20/foundation/protocol_browser/004-HTTP2%E4%B8%8EHTTP3%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          004-HTTP2与HTTP3
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/05/20/foundation/protocol_browser/002-%E8%B7%A8%E5%9F%9F%E8%AF%A6%E8%A7%A3%EF%BC%9A%E5%8E%9F%E7%90%86%E3%80%81%E6%9C%BA%E5%88%B6%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">002-跨域：原理、机制与解决方案</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

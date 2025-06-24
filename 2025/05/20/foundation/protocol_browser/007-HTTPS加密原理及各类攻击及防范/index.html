@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>007-HTTPS加密原理及各类攻击及防范 | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="HTTPS加密原理及各类攻击及防范HTTPS加密原理HTTPS &#x3D; HTTP + SSL&#x2F;TLS，它通过加密通信内容来保护数据传输安全。HTTPS结合使用了对称加密和非对称加密两种技术，发挥各自优势： 1. 非对称加密（建立安全通道） 用途：用于密钥交换和身份验证 常见算法：RSA、ECC、DH 特点： 公钥加密，私钥解密（或反之） 计算量大，速度慢 安全性基于数学难题（如大数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="007-HTTPS加密原理及各类攻击及防范">
+<meta property="og:url" content="http://example.com/2025/05/20/foundation/protocol_browser/007-HTTPS%E5%8A%A0%E5%AF%86%E5%8E%9F%E7%90%86%E5%8F%8A%E5%90%84%E7%B1%BB%E6%94%BB%E5%87%BB%E5%8F%8A%E9%98%B2%E8%8C%83/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="HTTPS加密原理及各类攻击及防范HTTPS加密原理HTTPS &#x3D; HTTP + SSL&#x2F;TLS，它通过加密通信内容来保护数据传输安全。HTTPS结合使用了对称加密和非对称加密两种技术，发挥各自优势： 1. 非对称加密（建立安全通道） 用途：用于密钥交换和身份验证 常见算法：RSA、ECC、DH 特点： 公钥加密，私钥解密（或反之） 计算量大，速度慢 安全性基于数学难题（如大数">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-05-20T05:51:55.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:50:41.561Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="ProtocolAndBrowser">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-foundation/protocol_browser/007-HTTPS加密原理及各类攻击及防范" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/05/20/foundation/protocol_browser/007-HTTPS%E5%8A%A0%E5%AF%86%E5%8E%9F%E7%90%86%E5%8F%8A%E5%90%84%E7%B1%BB%E6%94%BB%E5%87%BB%E5%8F%8A%E9%98%B2%E8%8C%83/" class="article-date">
+  <time class="dt-published" datetime="2025-05-20T05:51:55.000Z" itemprop="datePublished">2025-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Foundation/">Foundation</a>►<a class="article-category-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      007-HTTPS加密原理及各类攻击及防范
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="HTTPS加密原理及各类攻击及防范"><a href="#HTTPS加密原理及各类攻击及防范" class="headerlink" title="HTTPS加密原理及各类攻击及防范"></a>HTTPS加密原理及各类攻击及防范</h1><h2 id="HTTPS加密原理"><a href="#HTTPS加密原理" class="headerlink" title="HTTPS加密原理"></a>HTTPS加密原理</h2><p>HTTPS &#x3D; HTTP + SSL&#x2F;TLS，它通过加密通信内容来保护数据传输安全。HTTPS结合使用了对称加密和非对称加密两种技术，发挥各自优势：</p>
+<h3 id="1-非对称加密（建立安全通道）"><a href="#1-非对称加密（建立安全通道）" class="headerlink" title="1. 非对称加密（建立安全通道）"></a>1. 非对称加密（建立安全通道）</h3><ul>
+<li><strong>用途</strong>：用于密钥交换和身份验证</li>
+<li><strong>常见算法</strong>：RSA、ECC、DH</li>
+<li><strong>特点</strong>：<ul>
+<li>公钥加密，私钥解密（或反之）</li>
+<li>计算量大，速度慢</li>
+<li>安全性基于数学难题（如大数分解）</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-对称加密（加密实际数据）"><a href="#2-对称加密（加密实际数据）" class="headerlink" title="2. 对称加密（加密实际数据）"></a>2. 对称加密（加密实际数据）</h3><ul>
+<li><strong>用途</strong>：加密实际传输的数据</li>
+<li><strong>常见算法</strong>：AES、DES、3DES</li>
+<li><strong>特点</strong>：<ul>
+<li>加密解密使用相同密钥</li>
+<li>计算量小，速度快</li>
+<li>安全性依赖于密钥保密性</li>
+</ul>
+</li>
+</ul>
+<h3 id="结合使用过程"><a href="#结合使用过程" class="headerlink" title="结合使用过程"></a>结合使用过程</h3><ol>
+<li><strong>客户端发起HTTPS请求</strong>：ClientHello，包含支持的加密套件列表</li>
+<li><strong>服务器响应</strong>：ServerHello，选择加密套件并发送证书（含公钥）</li>
+<li><strong>证书验证</strong>：客户端验证证书合法性（颁发机构、有效期等）</li>
+<li><strong>密钥交换</strong>：<ul>
+<li>客户端生成随机数（预主密钥）</li>
+<li>用服务器公钥加密预主密钥发送给服务器</li>
+<li>服务器用私钥解密获取预主密钥</li>
+</ul>
+</li>
+<li><strong>会话密钥生成</strong>：双方用预主密钥+随机数生成相同的会话密钥（对称密钥）</li>
+<li><strong>对称加密通信</strong>：后续通信使用会话密钥进行对称加密</li>
+</ol>
+<p>这种设计既利用了非对称加密的安全密钥交换，又获得了对称加密的高效数据传输。</p>
+<h2 id="中间人攻击-Man-in-the-Middle-Attack"><a href="#中间人攻击-Man-in-the-Middle-Attack" class="headerlink" title="中间人攻击(Man-in-the-Middle Attack)"></a>中间人攻击(Man-in-the-Middle Attack)</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>攻击者秘密插入到通信双方之间，冒充双方与对方通信，使双方认为他们是在直接通信，而实际上整个会话都被攻击者控制。</p>
+<h3 id="常见类型及举例"><a href="#常见类型及举例" class="headerlink" title="常见类型及举例"></a>常见类型及举例</h3><ol>
+<li><p><strong>SSL剥离(SSL Stripping)</strong></p>
+<ul>
+<li>攻击方式：将HTTPS连接降级为HTTP</li>
+<li>举例：公共WiFi中，攻击者拦截所有流量，将HTTPS链接替换为HTTP</li>
+</ul>
+</li>
+<li><p><strong>伪造证书攻击</strong></p>
+<ul>
+<li>攻击方式：使用自签名或被盗的证书冒充合法网站</li>
+<li>举例：攻击者伪造银行网站证书，诱导用户连接</li>
+</ul>
+</li>
+<li><p><strong>DNS欺骗</strong></p>
+<ul>
+<li>攻击方式：篡改DNS解析结果</li>
+<li>举例：将www.bank.com解析到攻击者控制的IP</li>
+</ul>
+</li>
+<li><p><strong>ARP欺骗</strong></p>
+<ul>
+<li>攻击方式：局域网内伪造ARP响应</li>
+<li>举例：在公司网络中冒充网关</li>
+</ul>
+</li>
+<li><p><strong>BEAST攻击</strong></p>
+<ul>
+<li>攻击方式：针对SSL&#x2F;TLS早期版本的漏洞</li>
+<li>举例：解密加密的会话cookie</li>
+</ul>
+</li>
+</ol>
+<h3 id="防范措施"><a href="#防范措施" class="headerlink" title="防范措施"></a>防范措施</h3><ol>
+<li><p><strong>服务器端措施</strong>：</p>
+<ul>
+<li>使用强加密算法和足够长的密钥</li>
+<li>及时更新SSL&#x2F;TLS版本（禁用SSL3.0、TLS1.0等旧协议）</li>
+<li>部署HSTS(HTTP Strict Transport Security)防止SSL剥离</li>
+<li>使用证书钉扎(Certificate Pinning)</li>
+</ul>
+</li>
+<li><p><strong>客户端措施</strong>：</p>
+<ul>
+<li>验证证书有效性（检查颁发机构、有效期、域名匹配）</li>
+<li>不忽略浏览器安全警告</li>
+<li>不在不受信任的网络进行敏感操作</li>
+<li>使用VPN在公共网络</li>
+</ul>
+</li>
+<li><p><strong>网络层面</strong>：</p>
+<ul>
+<li>部署入侵检测系统(IDS)监控异常流量</li>
+<li>使用DNSSEC防止DNS欺骗</li>
+<li>企业网络可部署证书透明化监控</li>
+</ul>
+</li>
+<li><p><strong>用户教育</strong>：</p>
+<ul>
+<li>识别钓鱼网站</li>
+<li>不安装不受信任的根证书</li>
+<li>定期清除浏览器缓存和证书</li>
+</ul>
+</li>
+</ol>
+<p>HTTPS通过合理结合对称和非对称加密，配合严格的证书验证机制，能有效防范中间人攻击，但需要服务器和客户端共同采取适当的安全措施才能确保完整的安全性。</p>
+<h1 id="常见网络安全攻击方法及解决方案"><a href="#常见网络安全攻击方法及解决方案" class="headerlink" title="常见网络安全攻击方法及解决方案"></a>常见网络安全攻击方法及解决方案</h1><h2 id="1-注入攻击（Injection-Attacks）"><a href="#1-注入攻击（Injection-Attacks）" class="headerlink" title="1. 注入攻击（Injection Attacks）"></a>1. 注入攻击（Injection Attacks）</h2><h3 id="类型及示例"><a href="#类型及示例" class="headerlink" title="类型及示例"></a>类型及示例</h3><ul>
+<li><strong>SQL注入</strong>：通过输入恶意SQL代码操纵数据库<ul>
+<li>示例：<code>&#39; OR &#39;1&#39;=&#39;1</code> 这样的登录表单输入</li>
+</ul>
+</li>
+<li><strong>命令注入</strong>：在系统命令中插入恶意代码<ul>
+<li>示例：<code>; rm -rf /</code> 追加到合法的系统命令后</li>
+</ul>
+</li>
+<li><strong>LDAP注入</strong>：操纵LDAP查询语句</li>
+<li><strong>XPath注入</strong>：针对XML数据库的攻击</li>
+</ul>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>使用参数化查询（Prepared Statements）</li>
+<li>实施输入验证和过滤</li>
+<li>最小权限原则（数据库账户只赋予必要权限）</li>
+<li>使用ORM框架避免直接SQL拼接</li>
+<li>定期更新和修补数据库系统</li>
+</ul>
+<h2 id="2-跨站脚本攻击（XSS）"><a href="#2-跨站脚本攻击（XSS）" class="headerlink" title="2. 跨站脚本攻击（XSS）"></a>2. 跨站脚本攻击（XSS）</h2><h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><ul>
+<li><strong>存储型XSS</strong>：恶意脚本永久存储在目标服务器</li>
+<li><strong>反射型XSS</strong>：恶意脚本通过URL参数反射给用户</li>
+<li><strong>DOM型XSS</strong>：完全在客户端执行的攻击</li>
+</ul>
+<h3 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>实施内容安全策略（CSP）</li>
+<li>对用户输入进行HTML实体编码</li>
+<li>使用HttpOnly标记的Cookie</li>
+<li>框架内置的XSS防护（如React的JSX自动转义）</li>
+<li>定期进行安全扫描和渗透测试</li>
+</ul>
+<h2 id="3-跨站请求伪造（CSRF）"><a href="#3-跨站请求伪造（CSRF）" class="headerlink" title="3. 跨站请求伪造（CSRF）"></a>3. 跨站请求伪造（CSRF）</h2><h3 id="攻击原理"><a href="#攻击原理" class="headerlink" title="攻击原理"></a>攻击原理</h3><p>利用用户已认证的状态，诱使用户执行非预期的操作</p>
+<h3 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>使用CSRF令牌（同步器令牌模式）</li>
+<li>检查Referer和Origin头部</li>
+<li>设置SameSite Cookie属性</li>
+<li>关键操作要求二次认证</li>
+<li>限制敏感操作的HTTP方法（如只允许POST）</li>
+</ul>
+<h2 id="4-拒绝服务攻击（DoS-DDoS）"><a href="#4-拒绝服务攻击（DoS-DDoS）" class="headerlink" title="4. 拒绝服务攻击（DoS&#x2F;DDoS）"></a>4. 拒绝服务攻击（DoS&#x2F;DDoS）</h2><h3 id="类型-1"><a href="#类型-1" class="headerlink" title="类型"></a>类型</h3><ul>
+<li><strong>网络层攻击</strong>：SYN洪水、UDP洪水</li>
+<li><strong>应用层攻击</strong>：HTTP洪水、Slowloris</li>
+<li><strong>放大攻击</strong>：利用DNS&#x2F;NTP等协议的反射放大</li>
+</ul>
+<h3 id="解决方案-3"><a href="#解决方案-3" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>部署流量清洗设备</li>
+<li>配置网络设备（如防火墙、路由器）的速率限制</li>
+<li>使用CDN分散流量</li>
+<li>启用云服务商的DDoS防护（如AWS Shield）</li>
+<li>实施弹性架构设计（自动扩展）</li>
+</ul>
+<h2 id="5-中间人攻击（MITM）补充"><a href="#5-中间人攻击（MITM）补充" class="headerlink" title="5. 中间人攻击（MITM）补充"></a>5. 中间人攻击（MITM）补充</h2><h3 id="高级防护措施"><a href="#高级防护措施" class="headerlink" title="高级防护措施"></a>高级防护措施</h3><ul>
+<li>实施证书透明度（Certificate Transparency）</li>
+<li>使用QUIC协议（基于UDP的加密协议）</li>
+<li>部署双向TLS认证（mTLS）</li>
+<li>定期轮换密钥和证书</li>
+</ul>
+<h2 id="6-社会工程学攻击"><a href="#6-社会工程学攻击" class="headerlink" title="6. 社会工程学攻击"></a>6. 社会工程学攻击</h2><h3 id="常见形式"><a href="#常见形式" class="headerlink" title="常见形式"></a>常见形式</h3><ul>
+<li><strong>钓鱼攻击</strong>（邮件、短信、电话）</li>
+<li><strong>鱼叉式钓鱼</strong>（针对特定目标）</li>
+<li><strong>水坑攻击</strong>（感染目标常访问的网站）</li>
+<li><strong>尾随攻击</strong>（物理安全突破）</li>
+</ul>
+<h3 id="解决方案-4"><a href="#解决方案-4" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>员工安全意识培训</li>
+<li>多因素认证（MFA）</li>
+<li>模拟钓鱼测试</li>
+<li>严格的访问控制政策</li>
+<li>可疑行为报告机制</li>
+</ul>
+<h2 id="7-零日攻击（0-day-Exploits）"><a href="#7-零日攻击（0-day-Exploits）" class="headerlink" title="7. 零日攻击（0-day Exploits）"></a>7. 零日攻击（0-day Exploits）</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>利用尚未公开或修补的漏洞</p>
+<h3 id="解决方案-5"><a href="#解决方案-5" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>实施深度防御策略</li>
+<li>行为分析而非特征检测</li>
+<li>网络分段隔离关键系统</li>
+<li>漏洞奖励计划鼓励白帽报告</li>
+<li>快速响应和补丁管理流程</li>
+</ul>
+<h2 id="8-暴力破解攻击"><a href="#8-暴力破解攻击" class="headerlink" title="8. 暴力破解攻击"></a>8. 暴力破解攻击</h2><h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>密码、API密钥、加密密钥等</p>
+<h3 id="解决方案-6"><a href="#解决方案-6" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>账户锁定机制</li>
+<li>速率限制（Rate Limiting）</li>
+<li>强密码策略</li>
+<li>密码哈希加盐</li>
+<li>使用CAPTCHA</li>
+</ul>
+<h2 id="9-内部威胁"><a href="#9-内部威胁" class="headerlink" title="9. 内部威胁"></a>9. 内部威胁</h2><h3 id="类型-2"><a href="#类型-2" class="headerlink" title="类型"></a>类型</h3><ul>
+<li>恶意内部人员</li>
+<li>被入侵的账户</li>
+<li>疏忽导致的泄露</li>
+</ul>
+<h3 id="解决方案-7"><a href="#解决方案-7" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>最小权限和职责分离</li>
+<li>用户行为分析（UEBA）</li>
+<li>全面的日志记录和审计</li>
+<li>离职流程中的权限回收</li>
+<li>数据丢失防护（DLP）系统</li>
+</ul>
+<h2 id="10-API安全威胁"><a href="#10-API安全威胁" class="headerlink" title="10. API安全威胁"></a>10. API安全威胁</h2><h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ul>
+<li>未受保护的API端点</li>
+<li>过度的数据暴露</li>
+<li>缺乏速率限制</li>
+<li>错误的身份验证实现</li>
+</ul>
+<h3 id="解决方案-8"><a href="#解决方案-8" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>严格的API身份验证（OAuth 2.0）</li>
+<li>输入验证和输出过滤</li>
+<li>详细的API文档和安全设计</li>
+<li>定期安全测试</li>
+<li>API网关实施安全策略</li>
+</ul>
+<h2 id="综合防御策略"><a href="#综合防御策略" class="headerlink" title="综合防御策略"></a>综合防御策略</h2><ol>
+<li><strong>分层防御</strong>：在网络、主机、应用、数据各层实施安全控制</li>
+<li><strong>持续监控</strong>：SIEM系统实时分析安全事件</li>
+<li><strong>定期评估</strong>：渗透测试、漏洞扫描、红队演练</li>
+<li><strong>事件响应</strong>：建立完善的安全事件响应流程</li>
+<li><strong>安全意识</strong>：全员参与的持续安全培训</li>
+<li><strong>合规框架</strong>：遵循NIST、ISO 27001等安全标准</li>
+</ol>
+<p>网络安全是持续的过程，需要结合技术手段和管理措施，随着威胁态势的变化不断调整防御策略。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/05/20/foundation/protocol_browser/007-HTTPS%E5%8A%A0%E5%AF%86%E5%8E%9F%E7%90%86%E5%8F%8A%E5%90%84%E7%B1%BB%E6%94%BB%E5%87%BB%E5%8F%8A%E9%98%B2%E8%8C%83/" data-id="cmcae1sjs004lsssd1yo92ra6" data-title="007-HTTPS加密原理及各类攻击及防范" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/05/20/foundation/protocol_browser/008-7%E5%B1%82%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          008-7层网络协议
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/05/20/foundation/protocol_browser/005-%E8%BE%93%E5%85%A5URL%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E5%AE%8C%E6%88%90%E7%9A%84%E8%B6%85%E8%AF%A6%E7%BB%86%E8%A7%A3%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">005-输入URL到页面加载完成流程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

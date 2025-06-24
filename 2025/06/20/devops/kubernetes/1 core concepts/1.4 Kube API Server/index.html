@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>1.4 Kube API Server | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、API Server 核心功能Kubernetes API Server（kube-apiserver）是集群的唯一入口，提供 RESTful API 供所有组件和用户交互。其核心职责包括：  请求处理：接收并校验 kubectl、控制器、调度器等客户端的请求。 数据持久化：将集群状态（如 Pod、Service 等资源）存储到 ETCD。 认证与授权：通过插件链（如 RBAC、Webhook">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.4 Kube API Server">
+<meta property="og:url" content="http://example.com/2025/06/20/devops/kubernetes/1%20core%20concepts/1.4%20Kube%20API%20Server/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="一、API Server 核心功能Kubernetes API Server（kube-apiserver）是集群的唯一入口，提供 RESTful API 供所有组件和用户交互。其核心职责包括：  请求处理：接收并校验 kubectl、控制器、调度器等客户端的请求。 数据持久化：将集群状态（如 Pod、Service 等资源）存储到 ETCD。 认证与授权：通过插件链（如 RBAC、Webhook">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-20T05:51:25.000Z">
+<meta property="article:modified_time" content="2025-06-24T08:51:02.328Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="k8s">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-devops/kubernetes/1 core concepts/1.4 Kube API Server" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.4%20Kube%20API%20Server/" class="article-date">
+  <time class="dt-published" datetime="2025-06-20T05:51:25.000Z" itemprop="datePublished">2025-06-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/DevOps/">DevOps</a>►<a class="article-category-link" href="/categories/DevOps/kubernetes/">kubernetes</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      1.4 Kube API Server
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="一、API-Server-核心功能"><a href="#一、API-Server-核心功能" class="headerlink" title="一、API Server 核心功能"></a><strong>一、API Server 核心功能</strong></h3><p>Kubernetes API Server（<code>kube-apiserver</code>）是集群的<strong>唯一入口</strong>，提供 RESTful API 供所有组件和用户交互。其核心职责包括：</p>
+<ol>
+<li><strong>请求处理</strong>：接收并校验 <code>kubectl</code>、控制器、调度器等客户端的请求。</li>
+<li><strong>数据持久化</strong>：将集群状态（如 Pod、Service 等资源）存储到 ETCD。</li>
+<li><strong>认证与授权</strong>：通过插件链（如 RBAC、Webhook）控制访问权限。</li>
+<li><strong>资源版本控制</strong>：为每个对象维护多版本（如 <code>v1</code>、<code>apps/v1</code>）。</li>
+<li><strong>API 扩展</strong>：支持 Custom Resource Definitions (CRDs)。</li>
+</ol>
+<hr>
+<h3 id="二、API-Server-架构与组件交互"><a href="#二、API-Server-架构与组件交互" class="headerlink" title="二、API Server 架构与组件交互"></a><strong>二、API Server 架构与组件交互</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">    A[用户/工具] --&gt;|HTTP请求| B[API Server]</span><br><span class="line">    B --&gt;|读写| C[ETCD]</span><br><span class="line">    B --&gt; D[Controller Manager]</span><br><span class="line">    B --&gt; E[Scheduler]</span><br><span class="line">    D --&gt;|监听资源变化| B</span><br><span class="line">    E --&gt;|获取未调度Pod| B</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>唯一数据入口</strong>：所有组件（包括 <code>kubelet</code>）必须通过 API Server 操作资源。</li>
+<li><strong>无状态设计</strong>：可水平扩展，通过负载均衡暴露服务。</li>
+</ul>
+<hr>
+<h3 id="三、API-Server-关键启动参数"><a href="#三、API-Server-关键启动参数" class="headerlink" title="三、API Server 关键启动参数"></a><strong>三、API Server 关键启动参数</strong></h3><p>配置文件通常位于 <code>/etc/kubernetes/manifests/kube-apiserver.yaml</code>（静态 Pod 部署方式）。以下为关键参数：</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>作用</strong></th>
+<th><strong>示例值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--etcd-servers</code></td>
+<td>指定 ETCD 集群地址</td>
+<td><code>https://10.0.0.1:2379</code></td>
+</tr>
+<tr>
+<td><code>--authorization-mode</code></td>
+<td>授权模式（如 RBAC、Node）</td>
+<td><code>RBAC,Node</code></td>
+</tr>
+<tr>
+<td><code>--enable-admission-plugins</code></td>
+<td>准入控制插件（如资源限制、Pod 安全策略）</td>
+<td><code>ResourceQuota,PodSecurity</code></td>
+</tr>
+<tr>
+<td><code>--service-cluster-ip-range</code></td>
+<td>Service 的 ClusterIP 地址池</td>
+<td><code>10.96.0.0/12</code></td>
+</tr>
+<tr>
+<td><code>--tls-cert-file</code></td>
+<td>API Server 的 TLS 证书</td>
+<td><code>/etc/kubernetes/pki/apiserver.crt</code></td>
+</tr>
+<tr>
+<td><code>--audit-log-path</code></td>
+<td>审计日志路径（记录所有 API 请求）</td>
+<td><code>/var/log/kubernetes/audit.log</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="四、常见命令与使用场景"><a href="#四、常见命令与使用场景" class="headerlink" title="四、常见命令与使用场景"></a><strong>四、常见命令与使用场景</strong></h3><h4 id="1-查看-API-Server-状态"><a href="#1-查看-API-Server-状态" class="headerlink" title="1. 查看 API Server 状态"></a><strong>1. 查看 API Server 状态</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查 API Server Pod 状态 </span></span><br><span class="line"><span class="comment"># 通常Kubeadm在master node的kubesystem namespace中将kubeapi server服务器部署为pod</span></span><br><span class="line">kubectl get pods -n kube-system -l component=kube-apiserver</span><br><span class="line"><span class="comment"># 在Kubeadm管理情况下，可以在pod definition file查看options:</span></span><br><span class="line"><span class="built_in">cat</span> /etc/kubernetes/manifests/kube-apiserver.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment">#在非Kubeadm管理情况下，options查看：</span></span><br><span class="line"><span class="built_in">cat</span> /etc/systemd/system/kube-apiserver.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看正在运行的进程</span></span><br><span class="line">ps -aux | grep kube-apiserver</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试 API Server 连通性</span></span><br><span class="line">kubectl cluster-info</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-直接访问-API（无需-kubectl）"><a href="#2-直接访问-API（无需-kubectl）" class="headerlink" title="2. 直接访问 API（无需 kubectl）"></a><strong>2. 直接访问 API（无需 kubectl）</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取所有 Pod 信息（需认证）</span></span><br><span class="line">curl -k -H <span class="string">&quot;Authorization: Bearer <span class="subst">$(kubectl get secret -n default -o jsonpath=&#x27;&#123;.items[0].data.token&#125;&#x27; | base64 --decode)</span>&quot;</span> \</span><br><span class="line">  https://&lt;API_SERVER_IP&gt;:6443/api/v1/pods</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看支持的 API 资源列表</span></span><br><span class="line">kubectl api-resources</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-调试-API-请求"><a href="#3-调试-API-请求" class="headerlink" title="3. 调试 API 请求"></a><strong>3. 调试 API 请求</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看请求的详细过程（包括 API 版本和响应）</span></span><br><span class="line">kubectl get pods -v=8</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以 YAML 格式输出原始 API 响应</span></span><br><span class="line">kubectl get pod nginx -o yaml --raw</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-管理-API-扩展（CRD）"><a href="#4-管理-API-扩展（CRD）" class="headerlink" title="4. 管理 API 扩展（CRD）"></a><strong>4. 管理 API 扩展（CRD）</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建自定义资源定义（CRD）</span></span><br><span class="line">kubectl apply -f my-crd.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有 API 版本（包括自定义资源）</span></span><br><span class="line">kubectl api-versions</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-安全相关操作"><a href="#5-安全相关操作" class="headerlink" title="5. 安全相关操作"></a><strong>5. 安全相关操作</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查当前用户的权限</span></span><br><span class="line">kubectl auth can-i create deployments --namespace dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看审计日志（需提前配置 --audit-log-path）</span></span><br><span class="line"><span class="built_in">tail</span> -f /var/log/kubernetes/audit.log</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="五、API-Server-高可用配置"><a href="#五、API-Server-高可用配置" class="headerlink" title="五、API Server 高可用配置"></a><strong>五、API Server 高可用配置</strong></h3><p>生产环境中通常需要部署多个 API Server 实例，通过负载均衡对外提供服务：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例：kube-apiserver 的静态 Pod 配置（高可用）</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">kube-apiserver</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">kube-system</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">command:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">kube-apiserver</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">--etcd-servers=https://10.0.0.1:2379,https://10.0.0.2:2379</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">--service-cluster-ip-range=10.96.0.0/12</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">--apiserver-count=3</span>  <span class="comment"># 指定集群中 API Server 的数量</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="六、常见问题排查"><a href="#六、常见问题排查" class="headerlink" title="六、常见问题排查"></a><strong>六、常见问题排查</strong></h3><h4 id="1-API-Server-无法启动"><a href="#1-API-Server-无法启动" class="headerlink" title="1. API Server 无法启动"></a><strong>1. API Server 无法启动</strong></h4><ul>
+<li><strong>检查日志</strong>：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl -u kube-apiserver -f</span><br></pre></td></tr></table></figure></li>
+<li><strong>常见原因</strong>：<ul>
+<li>ETCD 连接失败（证书错误或网络不通）。</li>
+<li>端口冲突（默认 6443）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-请求被拒绝"><a href="#2-请求被拒绝" class="headerlink" title="2. 请求被拒绝"></a><strong>2. 请求被拒绝</strong></h4><ul>
+<li><strong>错误示例</strong>：<code>403 Forbidden</code></li>
+<li><strong>解决方案</strong>：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查 RBAC 权限</span></span><br><span class="line">kubectl get rolebindings,clusterrolebindings --all-namespaces</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="3-性能优化"><a href="#3-性能优化" class="headerlink" title="3. 性能优化"></a><strong>3. 性能优化</strong></h4><ul>
+<li><strong>启用缓存</strong>：<code>--watch-cache=true</code>（默认开启）。</li>
+<li><strong>限制请求速率</strong>：<code>--max-requests-inflight=400</code>。</li>
+</ul>
+<hr>
+<h3 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a><strong>七、总结</strong></h3><ul>
+<li><strong>API Server 是集群的“网关”</strong>：所有操作必须通过其 REST API。</li>
+<li><strong>核心能力</strong>：认证、授权、版本转换、数据校验。</li>
+<li><strong>关键命令</strong>：<code>kubectl cluster-info</code>、<code>kubectl api-resources</code>、<code>curl</code> 直接访问 API。</li>
+<li><strong>生产建议</strong>：启用审计日志、配置高可用、定期升级。</li>
+</ul>
+<p>通过理解 API Server 的运作机制，可以更高效地管理 Kubernetes 集群并快速定位问题。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/20/devops/kubernetes/1%20core%20concepts/1.4%20Kube%20API%20Server/" data-id="cmcae1skh009usssdgour477v" data-title="1.4 Kube API Server" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          1.5 Kube Controller Manager
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.2&3%20ETCD/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">1.2&amp;1.3 ETCD</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

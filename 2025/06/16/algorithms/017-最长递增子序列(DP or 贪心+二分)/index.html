@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>017-最长递增子序列(DP or 贪心+二分) | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="最长递增子序列（LIS）JavaScript 详解最长递增子序列（Longest Increasing Subsequence）是算法中经典的动态规划问题。下面我将用 JavaScript 详细解释两种解法：动态规划法和贪心+二分法。 问题描述给定一个无序的整数数组，找到其中最长的严格递增子序列的长度。 示例： 123输入: [10,9,2,5,3,7,101,18]输出: 4 解释: 最长的递增">
+<meta property="og:type" content="article">
+<meta property="og:title" content="017-最长递增子序列(DP or 贪心+二分)">
+<meta property="og:url" content="http://example.com/2025/06/16/algorithms/017-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97(DP%20or%20%E8%B4%AA%E5%BF%83+%E4%BA%8C%E5%88%86)/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="最长递增子序列（LIS）JavaScript 详解最长递增子序列（Longest Increasing Subsequence）是算法中经典的动态规划问题。下面我将用 JavaScript 详细解释两种解法：动态规划法和贪心+二分法。 问题描述给定一个无序的整数数组，找到其中最长的严格递增子序列的长度。 示例： 123输入: [10,9,2,5,3,7,101,18]输出: 4 解释: 最长的递增">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-16T15:59:29.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:20:38.899Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="algorithms">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-algorithms/017-最长递增子序列(DP or 贪心+二分)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/16/algorithms/017-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97(DP%20or%20%E8%B4%AA%E5%BF%83+%E4%BA%8C%E5%88%86)/" class="article-date">
+  <time class="dt-published" datetime="2025-06-16T15:59:29.000Z" itemprop="datePublished">2025-06-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      017-最长递增子序列(DP or 贪心+二分)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="最长递增子序列（LIS）JavaScript-详解"><a href="#最长递增子序列（LIS）JavaScript-详解" class="headerlink" title="最长递增子序列（LIS）JavaScript 详解"></a>最长递增子序列（LIS）JavaScript 详解</h1><p>最长递增子序列（Longest Increasing Subsequence）是算法中经典的动态规划问题。下面我将用 JavaScript 详细解释两种解法：动态规划法和贪心+二分法。</p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个无序的整数数组，找到其中最长的严格递增子序列的长度。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [<span class="number">10</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">101</span>,<span class="number">18</span>]</span><br><span class="line">输出: <span class="number">4</span> </span><br><span class="line">解释: 最长的递增子序列是 [<span class="number">2</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">101</span>]，长度为<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="方法一：动态规划（O-n²-）"><a href="#方法一：动态规划（O-n²-）" class="headerlink" title="方法一：动态规划（O(n²)）"></a>方法一：动态规划（O(n²)）</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
+<li>创建 dp 数组，<code>dp[i]</code> 表示以 <code>nums[i]</code> 结尾的最长递增子序列长度</li>
+<li>初始时每个元素本身就是一个子序列，所以初始值为 1</li>
+<li>对于每个元素，检查前面所有比它小的元素，更新 dp 值</li>
+<li>最后返回 dp 数组中的最大值</li>
+</ol>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">lengthOfLIS</span>(<span class="params">nums</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.<span class="property">length</span> === <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> dp = <span class="keyword">new</span> <span class="title class_">Array</span>(nums.<span class="property">length</span>).<span class="title function_">fill</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">let</span> maxLen = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; nums.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; nums[j]) &#123;</span><br><span class="line">                dp[i] = <span class="title class_">Math</span>.<span class="title function_">max</span>(dp[i], dp[j] + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        maxLen = <span class="title class_">Math</span>.<span class="title function_">max</span>(maxLen, dp[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> maxLen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li>时间复杂度：O(n²) - 双重循环</li>
+<li>空间复杂度：O(n) - dp 数组</li>
+</ul>
+<h2 id="方法二：贪心-二分查找（O-nlogn-）"><a href="#方法二：贪心-二分查找（O-nlogn-）" class="headerlink" title="方法二：贪心+二分查找（O(nlogn)）"></a>方法二：贪心+二分查找（O(nlogn)）</h2><h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
+<li>维护一个 <code>tails</code> 数组，<code>tails[i]</code> 表示长度为 i+1 的递增子序列的最小末尾元素</li>
+<li>遍历数组，对于每个数字：<ul>
+<li>如果它比 <code>tails</code> 最后一个元素大，直接加入数组</li>
+<li>否则，用二分查找找到第一个 ≥ 它的元素并替换</li>
+</ul>
+</li>
+<li><code>tails</code> 的长度就是最长递增子序列的长度</li>
+</ol>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">lengthOfLIS</span>(<span class="params">nums</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> tails = [];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> num <span class="keyword">of</span> nums) &#123;</span><br><span class="line">        <span class="keyword">let</span> left = <span class="number">0</span>, right = tails.<span class="property">length</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 二分查找插入位置</span></span><br><span class="line">        <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">            <span class="keyword">const</span> mid = <span class="title class_">Math</span>.<span class="title function_">floor</span>((left + right) / <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">if</span> (tails[mid] &lt; num) &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (left === tails.<span class="property">length</span>) &#123;</span><br><span class="line">            tails.<span class="title function_">push</span>(num);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            tails[left] = num;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> tails.<span class="property">length</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li>时间复杂度：O(nlogn) - 遍历数组 O(n)，每个元素二分查找 O(logn)</li>
+<li>空间复杂度：O(n) - tails 数组</li>
+</ul>
+<h2 id="两种方法对比"><a href="#两种方法对比" class="headerlink" title="两种方法对比"></a>两种方法对比</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>时间复杂度</th>
+<th>空间复杂度</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>动态规划</td>
+<td>O(n²)</td>
+<td>O(n)</td>
+<td>小规模数据，需要知道具体序列</td>
+</tr>
+<tr>
+<td>贪心+二分</td>
+<td>O(nlogn)</td>
+<td>O(n)</td>
+<td>大规模数据，只需长度</td>
+</tr>
+</tbody></table>
+<h2 id="示例测试"><a href="#示例测试" class="headerlink" title="示例测试"></a>示例测试</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">lengthOfLIS</span>([<span class="number">10</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">101</span>,<span class="number">18</span>])); <span class="comment">// 4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">lengthOfLIS</span>([<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">3</span>])); <span class="comment">// 4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">lengthOfLIS</span>([<span class="number">7</span>,<span class="number">7</span>,<span class="number">7</span>,<span class="number">7</span>,<span class="number">7</span>,<span class="number">7</span>])); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="进阶：输出具体的最长递增子序列"><a href="#进阶：输出具体的最长递增子序列" class="headerlink" title="进阶：输出具体的最长递增子序列"></a>进阶：输出具体的最长递增子序列</h2><p>如果需要输出具体的序列而不仅仅是长度，可以修改动态规划解法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getLIS</span>(<span class="params">nums</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> dp = <span class="keyword">new</span> <span class="title class_">Array</span>(nums.<span class="property">length</span>).<span class="title function_">fill</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">const</span> prev = <span class="keyword">new</span> <span class="title class_">Array</span>(nums.<span class="property">length</span>).<span class="title function_">fill</span>(-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">let</span> maxIndex = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; nums.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; nums[j] &amp;&amp; dp[i] &lt; dp[j] + <span class="number">1</span>) &#123;</span><br><span class="line">                dp[i] = dp[j] + <span class="number">1</span>;</span><br><span class="line">                prev[i] = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (dp[i] &gt; dp[maxIndex]) &#123;</span><br><span class="line">            maxIndex = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> result = [];</span><br><span class="line">    <span class="keyword">while</span> (maxIndex !== -<span class="number">1</span>) &#123;</span><br><span class="line">        result.<span class="title function_">unshift</span>(nums[maxIndex]);</span><br><span class="line">        maxIndex = prev[maxIndex];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最长递增子序列问题有两种主要解法：</p>
+<ol>
+<li><strong>动态规划</strong>：直观易懂，适合小规模数据和需要输出具体序列的情况</li>
+<li><strong>贪心+二分</strong>：效率更高，适合大规模数据但实现稍复杂</li>
+</ol>
+<h1 id="最长递增子序列（LIS）贪心-二分法详细图解"><a href="#最长递增子序列（LIS）贪心-二分法详细图解" class="headerlink" title="最长递增子序列（LIS）贪心+二分法详细图解"></a>最长递增子序列（LIS）贪心+二分法详细图解</h1><p>贪心+二分法是最优的LIS解法，时间复杂度O(nlogn)。下面我用详细的步骤和图解来解释这个算法。</p>
+<h2 id="算法核心思想"><a href="#算法核心思想" class="headerlink" title="算法核心思想"></a>算法核心思想</h2><p>维护一个<code>tails</code>数组，其中<code>tails[i]</code>表示长度为i+1的所有递增子序列的最小末尾元素。</p>
+<h2 id="示例数组"><a href="#示例数组" class="headerlink" title="示例数组"></a>示例数组</h2><pre><code>nums = [10, 9, 2, 5, 3, 7, 101, 18]
+</code></pre>
+<h2 id="详细步骤图解"><a href="#详细步骤图解" class="headerlink" title="详细步骤图解"></a>详细步骤图解</h2><h3 id="初始状态"><a href="#初始状态" class="headerlink" title="初始状态"></a>初始状态</h3><p><code>tails = []</code> (空数组)</p>
+<h3 id="处理每个元素："><a href="#处理每个元素：" class="headerlink" title="处理每个元素："></a>处理每个元素：</h3><ol>
+<li><p><strong>i&#x3D;0, num&#x3D;10</strong></p>
+<ul>
+<li>tails为空，直接加入</li>
+<li><code>tails = [10]</code></li>
+<li>解释：长度为1的子序列最小末尾是10</li>
+</ul>
+</li>
+<li><p><strong>i&#x3D;1, num&#x3D;9</strong></p>
+<ul>
+<li>二分查找9在tails中的位置</li>
+<li>tails &#x3D; [10]，找到第一个≥9的是10</li>
+<li>替换10→9</li>
+<li><code>tails = [9]</code></li>
+<li>解释：长度为1的子序列最小末尾现在是9</li>
+</ul>
+</li>
+<li><p><strong>i&#x3D;2, num&#x3D;2</strong></p>
+<ul>
+<li>tails &#x3D; [9]，找到第一个≥2的是9</li>
+<li>替换9→2</li>
+<li><code>tails = [2]</code></li>
+<li>解释：长度为1的子序列最小末尾现在是2</li>
+</ul>
+</li>
+<li><p><strong>i&#x3D;3, num&#x3D;5</strong></p>
+<ul>
+<li>tails &#x3D; [2]，5&gt;2，可以扩展</li>
+<li>加入5</li>
+<li><code>tails = [2, 5]</code></li>
+<li>解释：<ul>
+<li>长度为1的最小末尾：2</li>
+<li>长度为2的最小末尾：5</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>i&#x3D;4, num&#x3D;3</strong></p>
+<ul>
+<li>tails &#x3D; [2,5]，二分查找3</li>
+<li>找到第一个≥3的是5</li>
+<li>替换5→3</li>
+<li><code>tails = [2,3]</code></li>
+<li>解释：<ul>
+<li>长度为1的最小末尾：2</li>
+<li>长度为2的最小末尾：3</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>i&#x3D;5, num&#x3D;7</strong></p>
+<ul>
+<li>tails &#x3D; [2,3]，7&gt;3，可以扩展</li>
+<li>加入7</li>
+<li><code>tails = [2,3,7]</code></li>
+<li>解释：<ul>
+<li>长度1：2</li>
+<li>长度2：3</li>
+<li>长度3：7</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>i&#x3D;6, num&#x3D;101</strong></p>
+<ul>
+<li>tails &#x3D; [2,3,7]，101&gt;7，可以扩展</li>
+<li>加入101</li>
+<li><code>tails = [2,3,7,101]</code></li>
+<li>解释：<ul>
+<li>长度1：2</li>
+<li>长度2：3</li>
+<li>长度3：7</li>
+<li>长度4：101</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>i&#x3D;7, num&#x3D;18</strong></p>
+<ul>
+<li>tails &#x3D; [2,3,7,101]，二分查找18</li>
+<li>找到第一个≥18的是101</li>
+<li>替换101→18</li>
+<li><code>tails = [2,3,7,18]</code></li>
+<li>解释：<ul>
+<li>长度1：2</li>
+<li>长度2：3</li>
+<li>长度3：7</li>
+<li>长度4：18 (比101更小)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="完整过程表格"><a href="#完整过程表格" class="headerlink" title="完整过程表格"></a>完整过程表格</h2><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>当前数字</th>
+<th>tails数组变化</th>
+<th>操作说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>10</td>
+<td>[10]</td>
+<td>直接加入</td>
+</tr>
+<tr>
+<td>2</td>
+<td>9</td>
+<td>[9]</td>
+<td>替换10→9</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>[2]</td>
+<td>替换9→2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5</td>
+<td>[2,5]</td>
+<td>5&gt;2，扩展</td>
+</tr>
+<tr>
+<td>5</td>
+<td>3</td>
+<td>[2,3]</td>
+<td>替换5→3</td>
+</tr>
+<tr>
+<td>6</td>
+<td>7</td>
+<td>[2,3,7]</td>
+<td>7&gt;3，扩展</td>
+</tr>
+<tr>
+<td>7</td>
+<td>101</td>
+<td>[2,3,7,101]</td>
+<td>101&gt;7，扩展</td>
+</tr>
+<tr>
+<td>8</td>
+<td>18</td>
+<td>[2,3,7,18]</td>
+<td>替换101→18</td>
+</tr>
+</tbody></table>
+<h2 id="为什么这样能得到正确结果？"><a href="#为什么这样能得到正确结果？" class="headerlink" title="为什么这样能得到正确结果？"></a>为什么这样能得到正确结果？</h2><ol>
+<li><strong>贪心策略</strong>：我们总是希望递增子序列的末尾元素尽可能小，这样后面有更多机会扩展更长的序列</li>
+<li><strong>tails数组性质</strong>：tails数组一定是严格递增的，这保证了我们可以使用二分查找</li>
+<li><strong>替换不影响长度</strong>：当我们替换某个位置的元素时，不会改变当前的最大长度，只是为未来可能的扩展创造了更好的条件</li>
+</ol>
+<h2 id="最终结果"><a href="#最终结果" class="headerlink" title="最终结果"></a>最终结果</h2><p><code>tails</code>数组的最终长度是4，因此最长递增子序列的长度为4。</p>
+<p>可能的LIS序列：</p>
+<ul>
+<li>[2,3,7,101]</li>
+<li>[2,3,7,18]</li>
+</ul>
+<p>虽然tails数组不直接给出具体的LIS，但它正确记录了LIS的长度。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/16/algorithms/017-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97(DP%20or%20%E8%B4%AA%E5%BF%83+%E4%BA%8C%E5%88%86)/" data-id="cmcae1sjd001dsssd2fqr7xwo" data-title="017-最长递增子序列(DP or 贪心+二分)" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/16/algorithms/018-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97(DP)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          018-最长公共子序列(DP)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/16/algorithms/016-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F(DFS%20or%20BFS)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">016-岛屿数量(DFS or BFS)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

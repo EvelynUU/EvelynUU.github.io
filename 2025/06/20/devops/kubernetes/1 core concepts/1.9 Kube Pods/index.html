@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>1.9 Kube Pods | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Kubernetes Pods一、Pod 基础概念1. Pod 的本质 最小部署单元：Kubernetes 中最小的可调度和管理单元 逻辑主机：表示集群中的一个”逻辑虚拟机” 共享环境：一个 Pod 中的容器共享： 网络命名空间（同一 IP 和端口空间） 存储卷（Volumes） 内核命名空间（如 IPC）    2. Pod 生命周期12# 查看 Pod 生命周期事件kubectl descri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.9 Kube Pods">
+<meta property="og:url" content="http://example.com/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="Kubernetes Pods一、Pod 基础概念1. Pod 的本质 最小部署单元：Kubernetes 中最小的可调度和管理单元 逻辑主机：表示集群中的一个”逻辑虚拟机” 共享环境：一个 Pod 中的容器共享： 网络命名空间（同一 IP 和端口空间） 存储卷（Volumes） 内核命名空间（如 IPC）    2. Pod 生命周期12# 查看 Pod 生命周期事件kubectl descri">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-20T05:52:00.000Z">
+<meta property="article:modified_time" content="2025-06-24T08:52:59.020Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="k8s">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-devops/kubernetes/1 core concepts/1.9 Kube Pods" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/" class="article-date">
+  <time class="dt-published" datetime="2025-06-20T05:52:00.000Z" itemprop="datePublished">2025-06-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/DevOps/">DevOps</a>►<a class="article-category-link" href="/categories/DevOps/kubernetes/">kubernetes</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      1.9 Kube Pods
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Kubernetes-Pods"><a href="#Kubernetes-Pods" class="headerlink" title="Kubernetes Pods"></a>Kubernetes Pods</h2><h2 id="一、Pod-基础概念"><a href="#一、Pod-基础概念" class="headerlink" title="一、Pod 基础概念"></a>一、Pod 基础概念</h2><h3 id="1-Pod-的本质"><a href="#1-Pod-的本质" class="headerlink" title="1. Pod 的本质"></a>1. Pod 的本质</h3><ul>
+<li><strong>最小部署单元</strong>：Kubernetes 中最小的可调度和管理单元</li>
+<li><strong>逻辑主机</strong>：表示集群中的一个”逻辑虚拟机”</li>
+<li><strong>共享环境</strong>：一个 Pod 中的容器共享：<ul>
+<li>网络命名空间（同一 IP 和端口空间）</li>
+<li>存储卷（Volumes）</li>
+<li>内核命名空间（如 IPC）</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-Pod-生命周期"><a href="#2-Pod-生命周期" class="headerlink" title="2. Pod 生命周期"></a>2. Pod 生命周期</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 Pod 生命周期事件</span></span><br><span class="line">kubectl describe pod &lt;pod-name&gt; | grep -A 10 <span class="string">&quot;Events:&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>典型阶段：</p>
+<ol>
+<li><strong>Pending</strong>：调度阶段</li>
+<li><strong>Running</strong>：至少一个容器运行中</li>
+<li><strong>Succeeded</strong>：所有容器成功终止</li>
+<li><strong>Failed</strong>：至少一个容器异常终止</li>
+<li><strong>Unknown</strong>：状态无法获取</li>
+</ol>
+<h2 id="二、Pod-核心配置"><a href="#二、Pod-核心配置" class="headerlink" title="二、Pod 核心配置"></a>二、Pod 核心配置</h2><h3 id="1-基本-YAML-结构"><a href="#1-基本-YAML-结构" class="headerlink" title="1. 基本 YAML 结构"></a>1. 基本 YAML 结构</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-pod</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">my-app</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">main-container</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx:1.19</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-多容器-Pod-示例"><a href="#2-多容器-Pod-示例" class="headerlink" title="2. 多容器 Pod 示例"></a>2. 多容器 Pod 示例</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">multi-container-pod</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">web-server</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">log-agent</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">fluentd</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">metrics-collector</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">prom/statsd-exporter</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="三、Pod-网络详解"><a href="#三、Pod-网络详解" class="headerlink" title="三、Pod 网络详解"></a>三、Pod 网络详解</h2><h3 id="1-网络模型特性"><a href="#1-网络模型特性" class="headerlink" title="1. 网络模型特性"></a>1. 网络模型特性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 Pod IP 信息</span></span><br><span class="line">kubectl get pod &lt;pod-name&gt; -o wide</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>IP-per-Pod</strong>：每个 Pod 获得唯一集群IP</li>
+<li><strong>跨节点通信</strong>：无需 NAT 直接互通</li>
+<li><strong>端口管理</strong>：容器端口通过 <code>containerPort</code> 暴露</li>
+</ul>
+<h3 id="2-网络诊断命令"><a href="#2-网络诊断命令" class="headerlink" title="2. 网络诊断命令"></a>2. 网络诊断命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 测试 Pod 间网络连通性</span></span><br><span class="line">kubectl <span class="built_in">exec</span> &lt;pod-name&gt; -- curl -I &lt;target-pod-ip&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查 DNS 解析</span></span><br><span class="line">kubectl <span class="built_in">exec</span> &lt;pod-name&gt; -- nslookup kubernetes.default</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、Pod-存储管理"><a href="#四、Pod-存储管理" class="headerlink" title="四、Pod 存储管理"></a>四、Pod 存储管理</h2><h3 id="1-Volume-类型"><a href="#1-Volume-类型" class="headerlink" title="1. Volume 类型"></a>1. Volume 类型</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">data-volume</span></span><br><span class="line">    <span class="attr">emptyDir:</span> &#123;&#125;</span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">config-volume</span></span><br><span class="line">    <span class="attr">configMap:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">app-config</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">app</span></span><br><span class="line">    <span class="attr">volumeMounts:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/data</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">data-volume</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/etc/config</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">config-volume</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-常用-Volume-类型对比"><a href="#2-常用-Volume-类型对比" class="headerlink" title="2. 常用 Volume 类型对比"></a>2. 常用 Volume 类型对比</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>用途</th>
+<th>生命周期</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>emptyDir</td>
+<td>临时存储</td>
+<td>随 Pod 删除</td>
+</tr>
+<tr>
+<td>hostPath</td>
+<td>访问节点文件系统</td>
+<td>持久</td>
+</tr>
+<tr>
+<td>configMap</td>
+<td>注入配置数据</td>
+<td>可热更新</td>
+</tr>
+<tr>
+<td>secret</td>
+<td>注入敏感数据</td>
+<td>加密存储</td>
+</tr>
+<tr>
+<td>persistentVolume</td>
+<td>持久化存储</td>
+<td>独立于 Pod 生命周期</td>
+</tr>
+</tbody></table>
+<h2 id="五、Pod-健康管理"><a href="#五、Pod-健康管理" class="headerlink" title="五、Pod 健康管理"></a>五、Pod 健康管理</h2><h3 id="1-探针配置示例"><a href="#1-探针配置示例" class="headerlink" title="1. 探针配置示例"></a>1. 探针配置示例</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">containers:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">web</span></span><br><span class="line">  <span class="attr">livenessProbe:</span></span><br><span class="line">    <span class="attr">httpGet:</span></span><br><span class="line">      <span class="attr">path:</span> <span class="string">/healthz</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line">    <span class="attr">initialDelaySeconds:</span> <span class="number">15</span></span><br><span class="line">    <span class="attr">periodSeconds:</span> <span class="number">20</span></span><br><span class="line">  <span class="attr">readinessProbe:</span></span><br><span class="line">    <span class="attr">tcpSocket:</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line">    <span class="attr">initialDelaySeconds:</span> <span class="number">5</span></span><br><span class="line">    <span class="attr">periodSeconds:</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-探针类型对比"><a href="#2-探针类型对比" class="headerlink" title="2. 探针类型对比"></a>2. 探针类型对比</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>用途</th>
+<th>失败后果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>livenessProbe</td>
+<td>检测容器是否存活</td>
+<td>重启容器</td>
+</tr>
+<tr>
+<td>readinessProbe</td>
+<td>检测容器是否就绪</td>
+<td>从服务端点移除</td>
+</tr>
+<tr>
+<td>startupProbe</td>
+<td>保护慢启动容器</td>
+<td>在成功前阻止其他探针</td>
+</tr>
+</tbody></table>
+<h2 id="六、Pod-调度控制"><a href="#六、Pod-调度控制" class="headerlink" title="六、Pod 调度控制"></a>六、Pod 调度控制</h2><h3 id="1-资源限制配置"><a href="#1-资源限制配置" class="headerlink" title="1. 资源限制配置"></a>1. 资源限制配置</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">resources:</span></span><br><span class="line">  <span class="attr">requests:</span></span><br><span class="line">    <span class="attr">cpu:</span> <span class="string">&quot;250m&quot;</span></span><br><span class="line">    <span class="attr">memory:</span> <span class="string">&quot;512Mi&quot;</span></span><br><span class="line">  <span class="attr">limits:</span></span><br><span class="line">    <span class="attr">cpu:</span> <span class="string">&quot;1&quot;</span></span><br><span class="line">    <span class="attr">memory:</span> <span class="string">&quot;1Gi&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-高级调度策略"><a href="#2-高级调度策略" class="headerlink" title="2. 高级调度策略"></a>2. 高级调度策略</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">affinity:</span></span><br><span class="line">  <span class="attr">nodeAffinity:</span></span><br><span class="line">    <span class="attr">requiredDuringSchedulingIgnoredDuringExecution:</span></span><br><span class="line">      <span class="attr">nodeSelectorTerms:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">matchExpressions:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">key:</span> <span class="string">gpu-type</span></span><br><span class="line">          <span class="attr">operator:</span> <span class="string">In</span></span><br><span class="line">          <span class="attr">values:</span> [<span class="string">&quot;nvidia&quot;</span>]</span><br><span class="line">  <span class="attr">podAntiAffinity:</span></span><br><span class="line">    <span class="attr">preferredDuringSchedulingIgnoredDuringExecution:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">weight:</span> <span class="number">100</span></span><br><span class="line">      <span class="attr">podAffinityTerm:</span></span><br><span class="line">        <span class="attr">labelSelector:</span></span><br><span class="line">          <span class="attr">matchLabels:</span></span><br><span class="line">            <span class="attr">app:</span> <span class="string">database</span></span><br><span class="line">        <span class="attr">topologyKey:</span> <span class="string">kubernetes.io/hostname</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="七、Pod-运维命令"><a href="#七、Pod-运维命令" class="headerlink" title="七、Pod 运维命令"></a>七、Pod 运维命令</h2><h3 id="1-基础操作"><a href="#1-基础操作" class="headerlink" title="1. 基础操作"></a>1. 基础操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建 Pod</span></span><br><span class="line">kubectl apply -f pod.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 Pod 详情</span></span><br><span class="line">kubectl describe pod &lt;pod-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 Pod 日志</span></span><br><span class="line">kubectl logs &lt;pod-name&gt; [-c &lt;container-name&gt;]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入 Pod 容器</span></span><br><span class="line">kubectl <span class="built_in">exec</span> -it &lt;pod-name&gt; -- /bin/bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除 Pod</span></span><br><span class="line">kubectl delete pod &lt;pod-name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-高级诊断"><a href="#2-高级诊断" class="headerlink" title="2. 高级诊断"></a>2. 高级诊断</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 Pod 事件（按时间排序）</span></span><br><span class="line">kubectl get events --sort-by=.metadata.creationTimestamp --field-selector involvedObject.name=&lt;pod-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查资源使用情况</span></span><br><span class="line">kubectl top pod &lt;pod-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 临时拷贝文件</span></span><br><span class="line">kubectl <span class="built_in">cp</span> &lt;pod-name&gt;:/path/to/file ./local-file</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、特殊-Pod-类型"><a href="#八、特殊-Pod-类型" class="headerlink" title="八、特殊 Pod 类型"></a>八、特殊 Pod 类型</h2><h3 id="1-Static-Pod（静态-Pod）"><a href="#1-Static-Pod（静态-Pod）" class="headerlink" title="1. Static Pod（静态 Pod）"></a>1. Static Pod（静态 Pod）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 kubelet 静态 Pod 目录配置</span></span><br><span class="line">ps aux | grep kubelet | grep pod-manifest-path</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>特性：由 kubelet 直接管理，不经过 API Server</li>
+<li>用途：用于运行集群核心组件（如 etcd、kube-apiserver）</li>
+</ul>
+<h3 id="2-Ephemeral-Pod（临时-Pod）"><a href="#2-Ephemeral-Pod（临时-Pod）" class="headerlink" title="2. Ephemeral Pod（临时 Pod）"></a>2. Ephemeral Pod（临时 Pod）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建临时调试 Pod</span></span><br><span class="line">kubectl debug -it &lt;target-pod&gt; --image=busybox --target=&lt;container-name&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>特性：临时性，适合故障诊断</li>
+<li>生命周期：随调试会话结束而终止</li>
+</ul>
+<h2 id="九、Pod-安全上下文"><a href="#九、Pod-安全上下文" class="headerlink" title="九、Pod 安全上下文"></a>九、Pod 安全上下文</h2><h3 id="1-安全配置示例"><a href="#1-安全配置示例" class="headerlink" title="1. 安全配置示例"></a>1. 安全配置示例</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">securityContext:</span></span><br><span class="line">  <span class="attr">runAsUser:</span> <span class="number">1000</span></span><br><span class="line">  <span class="attr">runAsGroup:</span> <span class="number">3000</span></span><br><span class="line">  <span class="attr">fsGroup:</span> <span class="number">2000</span></span><br><span class="line">  <span class="attr">capabilities:</span></span><br><span class="line">    <span class="attr">add:</span> [<span class="string">&quot;NET_ADMIN&quot;</span>]</span><br><span class="line">  <span class="attr">readOnlyRootFilesystem:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-安全策略类型"><a href="#2-安全策略类型" class="headerlink" title="2. 安全策略类型"></a>2. 安全策略类型</h3><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>作用</th>
+<th>安全影响</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>runAsNonRoot</td>
+<td>禁止 root 运行</td>
+<td>减少权限提升风险</td>
+</tr>
+<tr>
+<td>readOnlyRootFilesystem</td>
+<td>根文件系统只读</td>
+<td>防止文件系统篡改</td>
+</tr>
+<tr>
+<td>allowPrivilegeEscalation</td>
+<td>禁止特权提升</td>
+<td>限制容器权限</td>
+</tr>
+<tr>
+<td>seccompProfile</td>
+<td>系统调用过滤</td>
+<td>减少攻击面</td>
+</tr>
+</tbody></table>
+<h2 id="十、Pod-设计模式"><a href="#十、Pod-设计模式" class="headerlink" title="十、Pod 设计模式"></a>十、Pod 设计模式</h2><h3 id="1-Sidecar-模式"><a href="#1-Sidecar-模式" class="headerlink" title="1. Sidecar 模式"></a>1. Sidecar 模式</h3><ul>
+<li><strong>特点</strong>：辅助容器增强主容器功能</li>
+<li><strong>用例</strong>：日志收集、监控代理、服务网格</li>
+</ul>
+<h3 id="2-Adapter-模式"><a href="#2-Adapter-模式" class="headerlink" title="2. Adapter 模式"></a>2. Adapter 模式</h3><ul>
+<li><strong>特点</strong>：标准化容器输出</li>
+<li><strong>用例</strong>：指标格式转换、日志格式化</li>
+</ul>
+<h3 id="3-Ambassador-模式"><a href="#3-Ambassador-模式" class="headerlink" title="3. Ambassador 模式"></a>3. Ambassador 模式</h3><ul>
+<li><strong>特点</strong>：代理外部服务访问</li>
+<li><strong>用例</strong>：数据库连接代理、API 网关</li>
+</ul>
+<p>Pod 作为 Kubernetes 的核心抽象，理解其设计理念和操作细节是掌握 Kubernetes 的关键。这些命令和配置示例覆盖了 Pod 管理的各个方面，可作为日常工作的实用参考。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/" data-id="cmcae1sl200ixsssd7otxb68b" data-title="1.9 Kube Pods" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">1.8 Kube Proxy</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

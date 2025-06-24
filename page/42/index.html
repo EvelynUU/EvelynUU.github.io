@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:url" content="http://example.com/page/42/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:locale">
+<meta property="article:author" content="EvelynUU">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-algorithms/009-盛最多水的容器（双指针）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/16/algorithms/009-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%EF%BC%88%E5%8F%8C%E6%8C%87%E9%92%88%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2025-06-16T15:59:21.000Z" itemprop="datePublished">2025-06-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/16/algorithms/009-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%EF%BC%88%E5%8F%8C%E6%8C%87%E9%92%88%EF%BC%89/">009-盛最多水的容器（双指针）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="盛最多水的容器问题详解"><a href="#盛最多水的容器问题详解" class="headerlink" title="盛最多水的容器问题详解"></a>盛最多水的容器问题详解</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个长度为 <code>n</code> 的非负整数数组 <code>height</code>，其中 <code>height[i]</code> 表示第 <code>i</code> 条垂直线的高度。找出其中的两条线，使得它们与 <code>x</code> 轴共同构成的容器可以容纳最多的水。</p>
+<p>注意：你不能倾斜容器。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>输入：<code>[1,8,6,2,5,4,8,3,7]</code><br>输出：<code>49</code><br>解释：图中垂直线代表输入数组 <code>[1,8,6,2,5,4,8,3,7]</code>。在此情况下，容器能够容纳水的最大值为 <code>49</code>（即选择第2个和第9个柱子）。</p>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><h3 id="方法：双指针法"><a href="#方法：双指针法" class="headerlink" title="方法：双指针法"></a>方法：双指针法</h3><ol>
+<li><strong>初始化</strong>：使用两个指针，一个在数组的开头（<code>left</code>），一个在数组的末尾（<code>right</code>）</li>
+<li><strong>计算当前面积</strong>：<code>面积 = min(height[left], height[right]) * (right - left)</code></li>
+<li><strong>移动指针</strong>：移动高度较小的指针（因为移动较高的指针不可能得到更大的面积）</li>
+<li><strong>更新最大面积</strong>：每次计算后比较并保存最大值</li>
+<li><strong>终止条件</strong>：当 <code>left</code> 和 <code>right</code> 相遇时停止</li>
+</ol>
+<h3 id="为什么这个方法有效？"><a href="#为什么这个方法有效？" class="headerlink" title="为什么这个方法有效？"></a>为什么这个方法有效？</h3><ul>
+<li><strong>贪心选择</strong>：每次移动较短的边，保留了可能产生更大面积的机会</li>
+<li><strong>完备性</strong>：通过双指针的移动，我们检查了所有可能的容器组合</li>
+<li><strong>高效性</strong>：只需要一次线性扫描，时间复杂度为 O(n)</li>
+</ul>
+<h2 id="JavaScript实现"><a href="#JavaScript实现" class="headerlink" title="JavaScript实现"></a>JavaScript实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">maxArea</span>(<span class="params">height</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> max = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> right = height.<span class="property">length</span> - <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">        <span class="comment">// 计算当前面积</span></span><br><span class="line">        <span class="keyword">const</span> currentArea = <span class="title class_">Math</span>.<span class="title function_">min</span>(height[left], height[right]) * (right - left);</span><br><span class="line">        <span class="comment">// 更新最大面积</span></span><br><span class="line">        max = <span class="title class_">Math</span>.<span class="title function_">max</span>(max, currentArea);</span><br><span class="line">        <span class="comment">// 移动指针</span></span><br><span class="line">        <span class="keyword">if</span> (height[left] &lt; height[right]) &#123;</span><br><span class="line">            left++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            right--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="示例解析"><a href="#示例解析" class="headerlink" title="示例解析"></a>示例解析</h2><p>以输入 <code>[1,8,6,2,5,4,8,3,7]</code> 为例：</p>
+<pre><code>初始状态：
+left=0 (height=1), right=8 (height=7)
+面积=min(1,7)*8=8
+max=8
+移动left（因为height[left]较小）
+
+下一步：
+left=1 (height=8), right=8 (height=7)
+面积=min(8,7)*7=49
+max=49
+移动right（因为height[right]较小）
+
+下一步：
+left=1 (height=8), right=7 (height=3)
+面积=min(8,3)*6=18
+max保持49
+移动right
+
+...（继续此过程直到left &gt;= right）
+</code></pre>
+<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul>
+<li><strong>时间复杂度</strong>：O(n)，只需一次扫描</li>
+<li><strong>空间复杂度</strong>：O(1)，只使用了常数个额外空间</li>
+</ul>
+<h2 id="边界情况考虑"><a href="#边界情况考虑" class="headerlink" title="边界情况考虑"></a>边界情况考虑</h2><ol>
+<li><strong>空数组或单元素数组</strong>：返回0（无法形成容器）</li>
+<li><strong>所有高度相同</strong>：最大面积为 <code>height[0] * (n-1)</code></li>
+<li><strong>高度为0</strong>：0高度不会影响计算（因为面积由较短的边决定）</li>
+</ol>
+<h2 id="可视化示例"><a href="#可视化示例" class="headerlink" title="可视化示例"></a>可视化示例</h2><pre><code>高度图：
+8|       ■       ■
+7|       ■       ■   ■
+6|   ■   ■       ■   ■
+5|   ■   ■   ■   ■   ■
+4|   ■   ■   ■   ■   ■
+3|   ■   ■   ■   ■   ■   ■
+2|   ■   ■   ■   ■   ■   ■
+1|■  ■   ■   ■   ■   ■   ■
+ 0 1 2 3 4 5 6 7 8 9
+
+最大面积容器：
+左边界：第2个柱子（height=8）
+右边界：第9个柱子（height=7）
+宽度：7（9-2）
+高度：min(8,7)=7
+面积：7*7=49
+</code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>盛水容器问题的双指针解法：</p>
+<ol>
+<li>简单高效，时间复杂度为线性</li>
+<li>关键在于理解为什么移动较短的指针是正确的</li>
+<li>适用于各种边界情况</li>
+<li>是双指针技巧的经典应用场景</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/16/algorithms/009-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%EF%BC%88%E5%8F%8C%E6%8C%87%E9%92%88%EF%BC%89/" data-id="cmcae1sj9000isssd59ug3yb2" data-title="009-盛最多水的容器（双指针）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-algorithms/010-两两交换链表中节点（哑节点）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/16/algorithms/010-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E8%8A%82%E7%82%B9%EF%BC%88%E5%93%91%E8%8A%82%E7%82%B9%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2025-06-16T15:59:22.000Z" itemprop="datePublished">2025-06-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/16/algorithms/010-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E8%8A%82%E7%82%B9%EF%BC%88%E5%93%91%E8%8A%82%E7%82%B9%EF%BC%89/">010-两两交换链表中节点（哑节点）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="两两交换链表中的节点"><a href="#两两交换链表中的节点" class="headerlink" title="两两交换链表中的节点"></a>两两交换链表中的节点</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。</p>
+<p><strong>注意</strong>：不能只是单纯改变节点内部的值，而是需要实际进行节点交换。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>输入：<code>1-&gt;2-&gt;3-&gt;4</code><br>输出：<code>2-&gt;1-&gt;4-&gt;3</code></p>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><h3 id="方法：迭代法"><a href="#方法：迭代法" class="headerlink" title="方法：迭代法"></a>方法：迭代法</h3><ol>
+<li>使用一个哑节点(dummy node)作为链表的起始点</li>
+<li>维护三个指针：<ul>
+<li><code>prev</code>：指向当前要交换的两个节点的前一个节点</li>
+<li><code>first</code>：指向要交换的第一个节点</li>
+<li><code>second</code>：指向要交换的第二个节点</li>
+</ul>
+</li>
+<li>每次交换两个节点，并更新指针位置</li>
+</ol>
+<h3 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h3><ol>
+<li>创建哑节点，指向链表头部</li>
+<li>初始化<code>prev</code>指针指向哑节点</li>
+<li>当<code>prev.next</code>和<code>prev.next.next</code>都存在时：<ul>
+<li>设置<code>first</code>和<code>second</code>指针</li>
+<li>执行交换操作</li>
+<li>移动<code>prev</code>指针到下一组的前面</li>
+</ul>
+</li>
+</ol>
+<h2 id="JavaScript实现"><a href="#JavaScript实现" class="headerlink" title="JavaScript实现"></a>JavaScript实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">ListNode</span>(<span class="params">val, next</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">val</span> = (val===<span class="literal">undefined</span> ? <span class="number">0</span> : val)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">next</span> = (next===<span class="literal">undefined</span> ? <span class="literal">null</span> : next)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">swapPairs</span>(<span class="params">head</span>) &#123;</span><br><span class="line">    <span class="comment">// 创建哑节点</span></span><br><span class="line">    <span class="keyword">const</span> dummy = <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">    dummy.<span class="property">next</span> = head;</span><br><span class="line">    <span class="keyword">let</span> prev = dummy;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (prev.<span class="property">next</span> !== <span class="literal">null</span> &amp;&amp; prev.<span class="property">next</span>.<span class="property">next</span> !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// 初始化要交换的两个节点</span></span><br><span class="line">        <span class="keyword">const</span> first = prev.<span class="property">next</span>;</span><br><span class="line">        <span class="keyword">const</span> second = prev.<span class="property">next</span>.<span class="property">next</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 执行交换</span></span><br><span class="line">        first.<span class="property">next</span> = second.<span class="property">next</span>;</span><br><span class="line">        second.<span class="property">next</span> = first;</span><br><span class="line">        prev.<span class="property">next</span> = second;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 移动prev指针</span></span><br><span class="line">        prev = first;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dummy.<span class="property">next</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul>
+<li><strong>时间复杂度</strong>：O(n)，需要遍历整个链表一次</li>
+<li><strong>空间复杂度</strong>：O(1)，只使用了常数个额外空间</li>
+</ul>
+<h2 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">swapPairs</span>(<span class="params">head</span>) &#123;</span><br><span class="line">    <span class="comment">// 递归终止条件</span></span><br><span class="line">    <span class="keyword">if</span> (head === <span class="literal">null</span> || head.<span class="property">next</span> === <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 要交换的两个节点</span></span><br><span class="line">    <span class="keyword">const</span> first = head;</span><br><span class="line">    <span class="keyword">const</span> second = head.<span class="property">next</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 递归交换后面的节点</span></span><br><span class="line">    first.<span class="property">next</span> = <span class="title function_">swapPairs</span>(second.<span class="property">next</span>);</span><br><span class="line">    second.<span class="property">next</span> = first;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 返回新的头节点</span></span><br><span class="line">    <span class="keyword">return</span> second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="边界情况考虑"><a href="#边界情况考虑" class="headerlink" title="边界情况考虑"></a>边界情况考虑</h2><ol>
+<li><strong>空链表</strong>：直接返回null</li>
+<li><strong>单节点链表</strong>：直接返回该节点</li>
+<li><strong>奇数长度链表</strong>：最后一个节点不交换</li>
+</ol>
+<h2 id="问题形象化理解"><a href="#问题形象化理解" class="headerlink" title="问题形象化理解"></a>问题形象化理解</h2><p>想象你有一串珍珠项链，每颗珍珠上有一个数字。现在要求你把相邻的两颗珍珠交换位置：</p>
+<pre><code>原项链：①→②→③→④→⑤
+交换后：②→①→④→③→⑤
+</code></pre>
+<h2 id="为什么需要哑节点？"><a href="#为什么需要哑节点？" class="headerlink" title="为什么需要哑节点？"></a>为什么需要哑节点？</h2><p>哑节点（dummy node）就像一个”临时挂架”，帮助我们统一处理头节点的交换：</p>
+<pre><code>加入哑节点后：
+哑→①→②→③→④→⑤
+</code></pre>
+<p>这样我们就不需要特殊处理头节点了，所有节点交换都可以用相同的方式处理。</p>
+<h2 id="详细步骤拆解（以-1→2→3→4-为例）"><a href="#详细步骤拆解（以-1→2→3→4-为例）" class="headerlink" title="详细步骤拆解（以 1→2→3→4 为例）"></a>详细步骤拆解（以 1→2→3→4 为例）</h2><h3 id="初始状态"><a href="#初始状态" class="headerlink" title="初始状态"></a>初始状态</h3><pre><code>哑→①→②→③→④→null
+↑
+prev
+</code></pre>
+<h3 id="第一次交换（交换①和②）"><a href="#第一次交换（交换①和②）" class="headerlink" title="第一次交换（交换①和②）"></a>第一次交换（交换①和②）</h3><ol>
+<li><p><strong>确定要交换的节点</strong>：</p>
+<ul>
+<li>first &#x3D; prev.next &#x3D; ①</li>
+<li>second &#x3D; prev.next.next &#x3D; ②</li>
+</ul>
+</li>
+<li><p><strong>执行交换</strong>：</p>
+<ul>
+<li>①.next &#x3D; ②.next → ①.next &#x3D; ③</li>
+<li>②.next &#x3D; ①</li>
+<li>prev.next &#x3D; ②</li>
+</ul>
+</li>
+<li><p><strong>交换后状态</strong>：</p>
+<p>哑→②→①→③→④→null<br>   ↑<br>  prev</p>
+</li>
+</ol>
+<h3 id="第二次交换（交换③和④）"><a href="#第二次交换（交换③和④）" class="headerlink" title="第二次交换（交换③和④）"></a>第二次交换（交换③和④）</h3><ol>
+<li><p><strong>移动prev指针</strong>：prev &#x3D; ①</p>
+</li>
+<li><p><strong>确定要交换的节点</strong>：</p>
+<ul>
+<li>first &#x3D; ①.next &#x3D; ③</li>
+<li>second &#x3D; ①.next.next &#x3D; ④</li>
+</ul>
+</li>
+<li><p><strong>执行交换</strong>：</p>
+<ul>
+<li>③.next &#x3D; ④.next → ③.next &#x3D; null</li>
+<li>④.next &#x3D; ③</li>
+<li>①.next &#x3D; ④</li>
+</ul>
+</li>
+<li><p><strong>交换后状态</strong>：</p>
+<p>哑→②→①→④→③→null<br>         ↑<br>        prev</p>
+</li>
+</ol>
+<h3 id="终止条件"><a href="#终止条件" class="headerlink" title="终止条件"></a>终止条件</h3><p>当prev.next或prev.next.next为null时停止（没有足够的节点可以交换了）</p>
+<h2 id="指针变化图解"><a href="#指针变化图解" class="headerlink" title="指针变化图解"></a>指针变化图解</h2><pre><code>初始：
+dummy → ① → ② → ③ → ④ → null
+ ↑prev   ↑f   ↑s
+
+第一次交换后：
+dummy → ② → ① → ③ → ④ → null
+             ↑prev ↑f   ↑s
+
+第二次交换后：
+dummy → ② → ① → ④ → ③ → null
+                         ↑prev
+</code></pre>
+<h2 id="代码逐行解释"><a href="#代码逐行解释" class="headerlink" title="代码逐行解释"></a>代码逐行解释</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">swapPairs</span>(<span class="params">head</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> dummy = <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">0</span>); <span class="comment">// 创建哑节点</span></span><br><span class="line">    dummy.<span class="property">next</span> = head;            <span class="comment">// 哑节点指向原链表头</span></span><br><span class="line">    <span class="keyword">let</span> prev = dummy;             <span class="comment">// prev初始指向哑节点</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 当还有至少两个节点可以交换时</span></span><br><span class="line">    <span class="keyword">while</span> (prev.<span class="property">next</span> &amp;&amp; prev.<span class="property">next</span>.<span class="property">next</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> first = prev.<span class="property">next</span>;      <span class="comment">// 第一个要交换的节点</span></span><br><span class="line">        <span class="keyword">const</span> second = prev.<span class="property">next</span>.<span class="property">next</span>; <span class="comment">// 第二个要交换的节点</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 执行交换</span></span><br><span class="line">        first.<span class="property">next</span> = second.<span class="property">next</span>; <span class="comment">// ①指向③</span></span><br><span class="line">        second.<span class="property">next</span> = first;      <span class="comment">// ②指向①</span></span><br><span class="line">        prev.<span class="property">next</span> = second;       <span class="comment">// prev指向②</span></span><br><span class="line">        </span><br><span class="line">        prev = first; <span class="comment">// 移动prev到下一组的前面（现在是①）</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dummy.<span class="property">next</span>; <span class="comment">// 返回新链表的头</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
+<li><strong>忘记更新prev指针</strong>：会导致无限循环</li>
+<li><strong>交换顺序错误</strong>：必须先保存second.next，再改变second.next</li>
+<li><strong>边界条件处理</strong>：空链表或单节点链表直接返回</li>
+</ol>
+<h2 id="生活化类比"><a href="#生活化类比" class="headerlink" title="生活化类比"></a>生活化类比</h2><p>想象你在帮小朋友排队：</p>
+<ul>
+<li>每次让相邻的两个小朋友交换位置</li>
+<li>你站在前一对小朋友后面（prev指针）</li>
+<li>指挥前面两个小朋友（first和second）换位置</li>
+<li>然后你走到刚刚换完的那对小朋友后面</li>
+<li>重复这个过程直到队尾</li>
+</ul>
+<h2 id="递归解法理解"><a href="#递归解法理解" class="headerlink" title="递归解法理解"></a>递归解法理解</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">swapPairs</span>(<span class="params">head</span>) &#123;</span><br><span class="line">    <span class="comment">// 递归终止条件：没有节点或只有一个节点</span></span><br><span class="line">    <span class="keyword">if</span> (!head || !head.<span class="property">next</span>) <span class="keyword">return</span> head;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 要交换的两个节点</span></span><br><span class="line">    <span class="keyword">const</span> first = head;</span><br><span class="line">    <span class="keyword">const</span> second = head.<span class="property">next</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// first指向后面已经交换好的链表</span></span><br><span class="line">    first.<span class="property">next</span> = <span class="title function_">swapPairs</span>(second.<span class="property">next</span>);</span><br><span class="line">    <span class="comment">// second指向first完成交换</span></span><br><span class="line">    second.<span class="property">next</span> = first;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 返回新的头节点</span></span><br><span class="line">    <span class="keyword">return</span> second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>递归过程：</p>
+<ol>
+<li>先递归到链表末尾</li>
+<li>从后往前两两交换</li>
+<li>每次返回交换后的子链表头</li>
+</ol>
+<h2 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul>
+<li><strong>时间复杂度</strong>：O(n)，每个节点只被访问一次</li>
+<li><strong>空间复杂度</strong>：<ul>
+<li>迭代法：O(1)</li>
+<li>递归法：O(n)（递归调用栈）</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>两两交换链表节点的关键：</p>
+<ol>
+<li>使用哑节点简化头节点处理</li>
+<li>维护三个关键指针：prev、first、second</li>
+<li>按照固定顺序执行指针修改</li>
+<li>每次交换后正确移动prev指针</li>
+</ol>
+<p>通过这种逐步交换的方式，我们可以高效地完成链表节点的两两交换。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/16/algorithms/010-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E8%8A%82%E7%82%B9%EF%BC%88%E5%93%91%E8%8A%82%E7%82%B9%EF%BC%89/" data-id="cmcae1sja000qsssdfr933may" data-title="010-两两交换链表中节点（哑节点）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/41/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="page-number" href="/page/41/">41</a><span class="page-number current">42</span><a class="page-number" href="/page/43/">43</a><a class="page-number" href="/page/44/">44</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" href="/page/43/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

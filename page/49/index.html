@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:url" content="http://example.com/page/49/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:locale">
+<meta property="article:author" content="EvelynUU">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-algorithms/023-两数相加（虚拟头节点）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/17/algorithms/023-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0%EF%BC%88%E8%99%9A%E6%8B%9F%E5%A4%B4%E8%8A%82%E7%82%B9%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2025-06-17T15:59:28.000Z" itemprop="datePublished">2025-06-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/17/algorithms/023-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0%EF%BC%88%E8%99%9A%E6%8B%9F%E5%A4%B4%E8%8A%82%E7%82%B9%EF%BC%89/">023-两数相加（虚拟头节点）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="问题重述"><a href="#问题重述" class="headerlink" title="问题重述"></a>问题重述</h2><p>给定两个非空的链表，表示两个非负整数。链表中每个节点存储一个数字，且数字是<strong>逆序存储</strong>的（即链表的第一个节点是个位数，第二个节点是十位数，依此类推）。要求将这两个数相加，并返回一个同样以逆序方式存储的和的链表。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p><strong>输入</strong>：</p>
+<ul>
+<li><code>l1 = [2, 4, 3]</code> （表示 <code>342</code>）</li>
+<li><code>l2 = [5, 6, 4]</code> （表示 <code>465</code>）</li>
+</ul>
+<p><strong>输出</strong>：</p>
+<ul>
+<li><code>[7, 0, 8]</code> （因为 <code>342 + 465 = 807</code>，逆序存储为 <code>7 -&gt; 0 -&gt; 8</code>）</li>
+</ul>
+<h3 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h3><ol>
+<li><p><strong>初始化</strong>：</p>
+<ul>
+<li>创建一个<strong>虚拟头节点（dummy）</strong>，简化链表操作。</li>
+<li>初始化 <code>current</code> 指针指向 <code>dummy</code>。</li>
+<li>初始化进位 <code>carry</code> 为 <code>0</code>。</li>
+</ul>
+</li>
+<li><p><strong>遍历链表</strong>：</p>
+<ul>
+<li>同时遍历 <code>l1</code> 和 <code>l2</code>，直到两个链表都遍历完且进位 <code>carry</code> 为 <code>0</code>。</li>
+<li>每次取出当前节点的值（如果链表已遍历完，则取 <code>0</code>）。</li>
+<li>计算 <code>sum = val1 + val2 + carry</code>。</li>
+<li>更新 <code>carry = Math.floor(sum / 10)</code>。</li>
+<li>创建新节点，值为 <code>sum % 10</code>，并链接到 <code>current.next</code>。</li>
+<li>移动 <code>current</code> 到新节点。</li>
+<li>移动 <code>l1</code> 和 <code>l2</code>（如果存在）。</li>
+</ul>
+</li>
+<li><p><strong>处理剩余的进位</strong>：</p>
+<ul>
+<li>如果遍历完链表后 <code>carry &gt; 0</code>，则额外添加一个节点。</li>
+</ul>
+</li>
+<li><p><strong>返回结果</strong>：</p>
+<ul>
+<li><code>dummy.next</code> 就是新链表的头节点。</li>
+</ul>
+</li>
+</ol>
+<h3 id="JavaScript-实现"><a href="#JavaScript-实现" class="headerlink" title="JavaScript 实现"></a>JavaScript 实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">ListNode</span>(<span class="params">val, next</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">val</span> = (val === <span class="literal">undefined</span> ? <span class="number">0</span> : val);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">next</span> = (next === <span class="literal">undefined</span> ? <span class="literal">null</span> : next);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">addTwoNumbers</span>(<span class="params">l1, l2</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> dummy = <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">0</span>); <span class="comment">// 虚拟头节点</span></span><br><span class="line">    <span class="keyword">let</span> current = dummy;</span><br><span class="line">    <span class="keyword">let</span> carry = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (l1 || l2 || carry) &#123;</span><br><span class="line">        <span class="keyword">const</span> val1 = l1 ? l1.<span class="property">val</span> : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">const</span> val2 = l2 ? l2.<span class="property">val</span> : <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> sum = val1 + val2 + carry;</span><br><span class="line">        carry = <span class="title class_">Math</span>.<span class="title function_">floor</span>(sum / <span class="number">10</span>); <span class="comment">// 计算进位</span></span><br><span class="line">        current.<span class="property">next</span> = <span class="keyword">new</span> <span class="title class_">ListNode</span>(sum % <span class="number">10</span>); <span class="comment">// 新节点</span></span><br><span class="line">        current = current.<span class="property">next</span>; <span class="comment">// 移动指针</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (l1) l1 = l1.<span class="property">next</span>;</span><br><span class="line">        <span class="keyword">if</span> (l2) l2 = l2.<span class="property">next</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dummy.<span class="property">next</span>; <span class="comment">// 返回真正的头节点</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试示例"><a href="#测试示例" class="headerlink" title="测试示例"></a>测试示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例测试</span></span><br><span class="line"><span class="keyword">const</span> l1 = <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">2</span>, <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">4</span>, <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">3</span>))); <span class="comment">// 2 -&gt; 4 -&gt; 3 (342)</span></span><br><span class="line"><span class="keyword">const</span> l2 = <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">5</span>, <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">6</span>, <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">4</span>))); <span class="comment">// 5 -&gt; 6 -&gt; 4 (465)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = <span class="title function_">addTwoNumbers</span>(l1, l2); <span class="comment">// 7 -&gt; 0 -&gt; 8 (807)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印结果</span></span><br><span class="line"><span class="keyword">let</span> output = [];</span><br><span class="line"><span class="keyword">let</span> node = result;</span><br><span class="line"><span class="keyword">while</span> (node) &#123;</span><br><span class="line">    output.<span class="title function_">push</span>(node.<span class="property">val</span>);</span><br><span class="line">    node = node.<span class="property">next</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(output); <span class="comment">// [7, 0, 8]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：<code>O(max(n, m))</code>，其中 <code>n</code> 和 <code>m</code> 分别是 <code>l1</code> 和 <code>l2</code> 的长度。</li>
+<li><strong>空间复杂度</strong>：<code>O(max(n, m))</code>，新链表的长度最多为 <code>max(n, m) + 1</code>（如果最后有进位）。</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>使用<strong>虚拟头节点</strong>简化链表操作。</li>
+<li><strong>逐位相加</strong>，并处理进位。</li>
+<li>**遍历直到两个链表都结束且进位为 <code>0</code>**。</li>
+<li>返回 <code>dummy.next</code> 作为结果链表的头节点。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/17/algorithms/023-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0%EF%BC%88%E8%99%9A%E6%8B%9F%E5%A4%B4%E8%8A%82%E7%82%B9%EF%BC%89/" data-id="cmcae1sjg001ysssdf6a10c9w" data-title="023-两数相加（虚拟头节点）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-algorithms/024-和为K的子数组（前缀和）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/17/algorithms/024-%E5%92%8C%E4%B8%BAK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%EF%BC%88%E5%89%8D%E7%BC%80%E5%92%8C%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2025-06-17T15:59:29.000Z" itemprop="datePublished">2025-06-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/17/algorithms/024-%E5%92%8C%E4%B8%BAK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%EF%BC%88%E5%89%8D%E7%BC%80%E5%92%8C%EF%BC%89/">024-和为K的子数组（前缀和）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subarray-sum-equals-k/">560. 和为 K 的子数组</a> 中等</p>
+<p>提示</p>
+<p>给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code> ，请你统计并返回 <em>该数组中和为 <code>k</code></em>* **的子数组的个数 *。</p>
+<p>子数组是数组中元素的连续非空序列。</p>
+<p><strong>示例 1：</strong></p>
+<pre><code>输入：nums = [1,1,1], k = 2
+输出：2
+</code></pre>
+<p><strong>示例 2：</strong></p>
+<pre><code>输入：nums = [1,2,3], k = 3
+输出：2
+</code></pre>
+<p> <strong>一步步详细解答：前缀和 + 哈希表方法</strong></p>
+<h3 id="1-问题理解"><a href="#1-问题理解" class="headerlink" title="1. 问题理解"></a><strong>1. 问题理解</strong></h3><p>我们需要统计数组中<strong>连续子数组的和等于 <code>k</code></strong> 的个数。例如：</p>
+<ul>
+<li><code>nums = [1,1,1]</code>, <code>k = 2</code> → 输出 <code>2</code>（因为 <code>[1,1]</code> 和 <code>[1,1]</code> 都满足）</li>
+<li><code>nums = [1,2,3]</code>, <code>k = 3</code> → 输出 <code>2</code>（因为 <code>[1,2]</code> 和 <code>[3]</code> 都满足）</li>
+</ul>
+<h3 id="2-暴力解法（O-n²-）"><a href="#2-暴力解法（O-n²-）" class="headerlink" title="2. 暴力解法（O(n²)）"></a><strong>2. 暴力解法（O(n²)）</strong></h3><p>最直观的方法是<strong>双重循环</strong>，计算所有可能的子数组的和：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> subarraySum = <span class="keyword">function</span>(<span class="params">nums, k</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> start = <span class="number">0</span>; start &lt; nums.<span class="property">length</span>; start++) &#123;</span><br><span class="line">        <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> end = start; end &lt; nums.<span class="property">length</span>; end++) &#123;</span><br><span class="line">            sum += nums[end]; <span class="comment">// 计算从 start 到 end 的和</span></span><br><span class="line">            <span class="keyword">if</span> (sum === k) &#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>缺点</strong>：当 <code>nums</code> 很大时，效率很低（比如 <code>nums.length = 10^5</code> 时，计算量会非常大）。</p>
+<hr>
+<h3 id="3-优化解法：前缀和-哈希表（O-n-）"><a href="#3-优化解法：前缀和-哈希表（O-n-）" class="headerlink" title="3. 优化解法：前缀和 + 哈希表（O(n)）"></a><strong>3. 优化解法：前缀和 + 哈希表（O(n)）</strong></h3><p>为了优化，我们引入**前缀和（Prefix Sum）**的概念。</p>
+<h4 id="什么是前缀和？"><a href="#什么是前缀和？" class="headerlink" title="什么是前缀和？"></a><strong>什么是前缀和？</strong></h4><p>前缀和是指从数组开头到当前位置的所有元素的和。例如：</p>
+<ul>
+<li><code>nums = [1, 2, 3]</code> 的前缀和数组是 <code>[0, 1, 3, 6]</code>（初始 <code>0</code> 是为了方便计算）。</li>
+</ul>
+<h4 id="为什么用前缀和？"><a href="#为什么用前缀和？" class="headerlink" title="为什么用前缀和？"></a><strong>为什么用前缀和？</strong></h4><p>假设我们有一个子数组 <code>nums[i..j]</code>，它的和可以表示为：</p>
+<pre><code>sum(nums[i..j]) = prefixSum[j+1] - prefixSum[i]
+</code></pre>
+<p>如果我们希望 <code>sum(nums[i..j]) = k</code>，那么：</p>
+<pre><code>prefixSum[j+1] - prefixSum[i] = k
+=&gt; prefixSum[j+1] - k = prefixSum[i]
+</code></pre>
+<p>也就是说，**如果 <code>prefixSum[j+1] - k</code> 在之前的前缀和中出现过，就说明存在一个子数组的和等于 <code>k</code>**。</p>
+<h4 id="如何用哈希表优化？"><a href="#如何用哈希表优化？" class="headerlink" title="如何用哈希表优化？"></a><strong>如何用哈希表优化？</strong></h4><p>我们可以用一个哈希表 <code>map</code> 存储<strong>前缀和出现的次数</strong>，这样可以在 O(1) 时间内查询 <code>prefixSum[j+1] - k</code> 是否出现过。</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a><strong>代码实现</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> subarraySum = <span class="keyword">function</span>(<span class="params">nums, k</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> map = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line">    map.<span class="title function_">set</span>(<span class="number">0</span>, <span class="number">1</span>); <span class="comment">// 初始状态，前缀和为 0 出现 1 次</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        sum += nums[i]; <span class="comment">// 计算当前的前缀和</span></span><br><span class="line">        <span class="keyword">if</span> (map.<span class="title function_">has</span>(sum - k)) &#123; <span class="comment">// 检查 sum - k 是否出现过</span></span><br><span class="line">            count += map.<span class="title function_">get</span>(sum - k); <span class="comment">// 如果有，说明存在子数组和为 k</span></span><br><span class="line">        &#125;</span><br><span class="line">        map.<span class="title function_">set</span>(sum, (map.<span class="title function_">get</span>(sum) || <span class="number">0</span>) + <span class="number">1</span>); <span class="comment">// 更新当前前缀和的出现次数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例解析"><a href="#示例解析" class="headerlink" title="示例解析"></a><strong>示例解析</strong></h4><p><strong>例子 1</strong>：<code>nums = [1,1,1]</code>, <code>k = 2</code></p>
+<table>
+<thead>
+<tr>
+<th>i</th>
+<th>nums[i]</th>
+<th>sum (prefixSum)</th>
+<th>sum - k</th>
+<th>map (sum → count)</th>
+<th>count</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-</td>
+<td>-</td>
+<td>0</td>
+<td>-</td>
+<td>{0:1}</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1-2&#x3D;-1</td>
+<td>{0:1, 1:1}</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2-2&#x3D;0</td>
+<td>{0:1, 1:1, 2:1}</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+<td>3-2&#x3D;1</td>
+<td>{0:1, 1:1, 2:1, 3:1}</td>
+<td>2</td>
+</tr>
+</tbody></table>
+<p>**最终 <code>count = 2</code>**，符合预期。</p>
+<p><strong>例子 2</strong>：<code>nums = [1,2,3]</code>, <code>k = 3</code></p>
+<table>
+<thead>
+<tr>
+<th>i</th>
+<th>nums[i]</th>
+<th>sum (prefixSum)</th>
+<th>sum - k</th>
+<th>map (sum → count)</th>
+<th>count</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-</td>
+<td>-</td>
+<td>0</td>
+<td>-</td>
+<td>{0:1}</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1-3&#x3D;-2</td>
+<td>{0:1, 1:1}</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>3-3&#x3D;0</td>
+<td>{0:1, 1:1, 3:1}</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>6</td>
+<td>6-3&#x3D;3</td>
+<td>{0:1, 1:1, 3:1, 6:1}</td>
+<td>2</td>
+</tr>
+</tbody></table>
+<p>**最终 <code>count = 2</code>**，符合预期。</p>
+<hr>
+<h3 id="4-关键点总结"><a href="#4-关键点总结" class="headerlink" title="4. 关键点总结"></a><strong>4. 关键点总结</strong></h3><ol>
+<li>**<code>map.set(0, 1)</code>**：处理 <code>sum = k</code> 的情况（子数组从 <code>nums[0]</code> 开始）。</li>
+<li><strong><code>sum - k</code> 检查</strong>：如果 <code>sum - k</code> 在 <code>map</code> 中，说明存在子数组和为 <code>k</code>。</li>
+<li>**更新 <code>map</code>**：记录所有 <code>sum</code> 的出现次数，以便后续查询。</li>
+</ol>
+<h4 id="5-类似题目"><a href="#5-类似题目" class="headerlink" title="5. 类似题目"></a><strong>5. 类似题目</strong></h4><ul>
+<li><strong>560. 和为 K 的子数组</strong>（本题）</li>
+<li><strong>523. 连续的子数组和</strong>（和可被 <code>K</code> 整除）</li>
+<li><strong>325. 和等于 k 的最长子数组</strong>（求最长长度）</li>
+</ul>
+<h3 id="最终结论"><a href="#最终结论" class="headerlink" title="最终结论"></a><strong>最终结论</strong></h3><ul>
+<li><strong>前缀和 + 哈希表</strong> 是解决<strong>子数组和问题</strong>的最优方法（O(n) 时间）。</li>
+<li><strong>核心思想</strong>：<code>sum[j] - sum[i] = k</code> ⇒ <code>sum[j] - k = sum[i]</code>，用哈希表记录 <code>sum[i]</code> 的出现次数。</li>
+<li><strong>适用场景</strong>：求子数组和、最长&#x2F;最短子数组长度等问题。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/17/algorithms/024-%E5%92%8C%E4%B8%BAK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%EF%BC%88%E5%89%8D%E7%BC%80%E5%92%8C%EF%BC%89/" data-id="cmcae1sjh0021sssd1sn09aca" data-title="024-和为K的子数组（前缀和）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/48/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/47/">47</a><a class="page-number" href="/page/48/">48</a><span class="page-number current">49</span><a class="page-number" href="/page/50/">50</a><a class="page-number" href="/page/51/">51</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" href="/page/50/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

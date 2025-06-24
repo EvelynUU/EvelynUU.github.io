@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:url" content="http://example.com/page/28/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:locale">
+<meta property="article:author" content="EvelynUU">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-frontend/css/007-清除浮动的方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/09/frontend/css/007-%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8%E7%9A%84%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2025-06-09T15:59:19.000Z" itemprop="datePublished">2025-06-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Frontend/">Frontend</a>►<a class="article-category-link" href="/categories/Frontend/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/09/frontend/css/007-%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8%E7%9A%84%E6%96%B9%E6%B3%95/">007-清除浮动的方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="清除浮动（Clearfix）的完整解决方案"><a href="#清除浮动（Clearfix）的完整解决方案" class="headerlink" title="清除浮动（Clearfix）的完整解决方案"></a>清除浮动（Clearfix）的完整解决方案</h1><p>浮动(float)元素会脱离正常文档流，导致父容器高度塌陷。以下是各种清除浮动的专业方法：</p>
+<h2 id="一、经典-Clearfix-方法"><a href="#一、经典-Clearfix-方法" class="headerlink" title="一、经典 Clearfix 方法"></a>一、经典 Clearfix 方法</h2><h3 id="1-空元素法（不推荐）"><a href="#1-空元素法（不推荐）" class="headerlink" title="1. 空元素法（不推荐）"></a>1. 空元素法（不推荐）</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;parent&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;float-left&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;clear: both;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="comment">&lt;!-- 清除浮动 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>缺点</strong>：添加无意义的空标签，违反语义化原则</p>
+<h3 id="2-伪元素清除法（推荐）"><a href="#2-伪元素清除法（推荐）" class="headerlink" title="2. 伪元素清除法（推荐）"></a>2. 伪元素清除法（推荐）</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>原理</strong>：在父容器末尾创建看不见的块级元素来清除</p>
+<h3 id="3-双伪元素法（兼容旧浏览器）"><a href="#3-双伪元素法（兼容旧浏览器）" class="headerlink" title="3. 双伪元素法（兼容旧浏览器）"></a>3. 双伪元素法（兼容旧浏览器）</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">display</span>: table;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE6/7支持 */</span></span><br><span class="line"><span class="selector-class">.clearfix</span> &#123;</span><br><span class="line">  *<span class="attribute">zoom</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、现代-CSS-解决方案"><a href="#二、现代-CSS-解决方案" class="headerlink" title="二、现代 CSS 解决方案"></a>二、现代 CSS 解决方案</h2><h3 id="1-使用-BFC-特性"><a href="#1-使用-BFC-特性" class="headerlink" title="1. 使用 BFC 特性"></a>1. 使用 BFC 特性</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden; <span class="comment">/* 或 auto */</span></span><br><span class="line">  <span class="comment">/* 或者 */</span></span><br><span class="line">  <span class="attribute">display</span>: flow-root; <span class="comment">/* 专门用于创建BFC */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：<code>overflow</code>可能裁剪内容，<code>flow-root</code>最安全</p>
+<h3 id="2-Flexbox-布局"><a href="#2-Flexbox-布局" class="headerlink" title="2. Flexbox 布局"></a>2. Flexbox 布局</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex; <span class="comment">/* 自动包含浮动子元素 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-Grid-布局"><a href="#3-Grid-布局" class="headerlink" title="3. Grid 布局"></a>3. Grid 布局</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid; <span class="comment">/* 自动包含浮动子元素 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、各方案对比"><a href="#三、各方案对比" class="headerlink" title="三、各方案对比"></a>三、各方案对比</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>优点</th>
+<th>缺点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>空元素法</td>
+<td>简单直接</td>
+<td>非语义化HTML</td>
+<td>快速原型开发</td>
+</tr>
+<tr>
+<td>伪元素清除法</td>
+<td>语义化，广泛支持</td>
+<td>需要额外CSS</td>
+<td>现代浏览器项目</td>
+</tr>
+<tr>
+<td>BFC (overflow)</td>
+<td>一行代码</td>
+<td>可能隐藏溢出内容</td>
+<td>简单布局</td>
+</tr>
+<tr>
+<td>BFC (flow-root)</td>
+<td>无副作用</td>
+<td>IE不支持</td>
+<td>现代浏览器项目</td>
+</tr>
+<tr>
+<td>Flexbox&#x2F;Grid</td>
+<td>现代布局方案</td>
+<td>改变布局模式</td>
+<td>新项目</td>
+</tr>
+</tbody></table>
+<h2 id="四、实际应用示例"><a href="#四、实际应用示例" class="headerlink" title="四、实际应用示例"></a>四、实际应用示例</h2><h3 id="1-通用-Clearfix-类"><a href="#1-通用-Clearfix-类" class="headerlink" title="1. 通用 Clearfix 类"></a>1. 通用 Clearfix 类</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 添加到全局CSS */</span></span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 使用示例 */</span></span><br><span class="line">&lt;<span class="selector-tag">div</span> class=&quot;parent clearfix&quot;&gt;</span><br><span class="line">  &lt;<span class="selector-tag">div</span> class=&quot;<span class="attribute">float</span>-<span class="attribute">left</span>&quot;&gt;&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line">  &lt;<span class="selector-tag">div</span> class=&quot;<span class="attribute">float</span>-<span class="attribute">right</span>&quot;&gt;&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;/<span class="selector-tag">div</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-SCSS-Mixin-版本"><a href="#2-SCSS-Mixin-版本" class="headerlink" title="2. SCSS Mixin 版本"></a>2. SCSS Mixin 版本</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> clearfix &#123;</span><br><span class="line">  &amp;<span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">clear</span>: both;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">  <span class="keyword">@include</span> clearfix;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-处理浮动列表"><a href="#3-处理浮动列表" class="headerlink" title="3. 处理浮动列表"></a>3. 处理浮动列表</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.thumbnail-list</span> &#123;</span><br><span class="line">  <span class="attribute">overflow</span>: auto; <span class="comment">/* 创建BFC */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.thumbnail</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、特殊场景处理"><a href="#五、特殊场景处理" class="headerlink" title="五、特殊场景处理"></a>五、特殊场景处理</h2><h3 id="1-浮动与外边距合并"><a href="#1-浮动与外边距合并" class="headerlink" title="1. 浮动与外边距合并"></a>1. 浮动与外边距合并</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flow-root; <span class="comment">/* 同时解决浮动和外边距合并 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">20px</span>; <span class="comment">/* 不会与父元素外边距合并 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-多列浮动布局"><a href="#2-多列浮动布局" class="headerlink" title="2. 多列浮动布局"></a>2. 多列浮动布局</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.column-container</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">display</span>: table;</span><br><span class="line">  <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.column</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">33.33%</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">15px</span>;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、为什么需要清除浮动？"><a href="#六、为什么需要清除浮动？" class="headerlink" title="六、为什么需要清除浮动？"></a>六、为什么需要清除浮动？</h2><ol>
+<li><strong>父元素高度塌陷</strong>：浮动元素不占据空间，父元素高度计算为0</li>
+<li><strong>布局错乱</strong>：后续元素会环绕浮动元素</li>
+<li><strong>背景&#x2F;边框失效</strong>：父元素无法包裹浮动子元素</li>
+</ol>
+<h2 id="七、最佳实践建议"><a href="#七、最佳实践建议" class="headerlink" title="七、最佳实践建议"></a>七、最佳实践建议</h2><ol>
+<li><strong>优先使用现代布局</strong>：Flexbox&#x2F;Grid 替代浮动布局</li>
+<li><strong>通用方案选择</strong>：<ul>
+<li>新项目：<code>display: flow-root</code></li>
+<li>兼容IE：伪元素法 + <code>zoom:1</code></li>
+</ul>
+</li>
+<li><strong>避免滥用浮动</strong>：仅真正需要文字环绕效果时使用</li>
+</ol>
+<p>随着CSS发展，浮动布局已逐渐被Flexbox和Grid取代，但在维护旧项目和处理特定排版需求时，清除浮动仍是必备技能。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/09/frontend/css/007-%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="cmcae1sjx005qsssd1lpkb1yo" data-title="007-清除浮动的方法" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-frontend/css/008-position详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/09/frontend/css/008-position%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2025-06-09T15:59:20.000Z" itemprop="datePublished">2025-06-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Frontend/">Frontend</a>►<a class="article-category-link" href="/categories/Frontend/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/09/frontend/css/008-position%E8%AF%A6%E8%A7%A3/">008-position详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="CSS-Position-属性详解"><a href="#CSS-Position-属性详解" class="headerlink" title="CSS Position 属性详解"></a>CSS Position 属性详解</h1><h2 id="一、position-基础概念"><a href="#一、position-基础概念" class="headerlink" title="一、position 基础概念"></a>一、position 基础概念</h2><p><code>position</code> 属性用于指定元素的定位方式，配合 <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> 和 <code>z-index</code> 属性控制元素最终位置。</p>
+<h2 id="二、5-种定位类型"><a href="#二、5-种定位类型" class="headerlink" title="二、5 种定位类型"></a>二、5 种定位类型</h2><h3 id="1-static-默认值"><a href="#1-static-默认值" class="headerlink" title="1. static (默认值)"></a>1. static (默认值)</h3><ul>
+<li><strong>特点</strong>：<ul>
+<li>元素处于正常文档流中</li>
+<li>忽略 <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> 和 <code>z-index</code> 属性</li>
+</ul>
+</li>
+<li><strong>使用场景</strong>：<ul>
+<li>取消元素的其他定位效果</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.element</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: static; <span class="comment">/* 默认值，通常不需要显式声明 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-relative-相对定位"><a href="#2-relative-相对定位" class="headerlink" title="2. relative (相对定位)"></a>2. relative (相对定位)</h3><ul>
+<li><strong>特点</strong>：<ul>
+<li>相对于元素自身原始位置进行偏移</li>
+<li>不影响其他元素布局（原始空间保留）</li>
+<li>可配合 <code>z-index</code> 控制层叠顺序</li>
+</ul>
+</li>
+<li><strong>使用场景</strong>：<ul>
+<li>微调元素位置</li>
+<li>作为 <code>absolute</code> 定位元素的参照</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.element</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">10px</span>;  <span class="comment">/* 向下移动10px */</span></span><br><span class="line">  <span class="attribute">left</span>: <span class="number">20px</span>; <span class="comment">/* 向右移动20px */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-absolute-绝对定位"><a href="#3-absolute-绝对定位" class="headerlink" title="3. absolute (绝对定位)"></a>3. absolute (绝对定位)</h3><ul>
+<li><strong>特点</strong>：<ul>
+<li>相对于最近的非 <code>static</code> 定位祖先元素定位</li>
+<li>完全脱离文档流（不占据空间）</li>
+<li>会创建新的层叠上下文</li>
+</ul>
+</li>
+<li><strong>使用场景</strong>：<ul>
+<li>弹出层、下拉菜单</li>
+<li>精确控制位置的UI组件</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative; <span class="comment">/* 建立定位上下文 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-fixed-固定定位"><a href="#4-fixed-固定定位" class="headerlink" title="4. fixed (固定定位)"></a>4. fixed (固定定位)</h3><ul>
+<li><strong>特点</strong>：<ul>
+<li>相对于视口(viewport)定位</li>
+<li>不随页面滚动而移动</li>
+<li>脱离文档流</li>
+</ul>
+</li>
+<li><strong>使用场景</strong>：<ul>
+<li>固定导航栏</li>
+<li>悬浮按钮</li>
+<li>模态对话框</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-sticky-粘性定位"><a href="#5-sticky-粘性定位" class="headerlink" title="5. sticky (粘性定位)"></a>5. sticky (粘性定位)</h3><ul>
+<li><strong>特点</strong>：<ul>
+<li>混合 <code>relative</code> 和 <code>fixed</code> 的特性</li>
+<li>在阈值范围内表现为 <code>relative</code>，超过后表现为 <code>fixed</code></li>
+<li>需要指定至少一个阈值(<code>top</code>, <code>right</code>, <code>bottom</code> 或 <code>left</code>)</li>
+</ul>
+</li>
+<li><strong>使用场景</strong>：<ul>
+<li>滚动吸顶效果</li>
+<li>表格固定表头</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.nav</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: sticky;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>; <span class="comment">/* 当视口顶部接触到元素时固定 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、定位上下文详解"><a href="#三、定位上下文详解" class="headerlink" title="三、定位上下文详解"></a>三、定位上下文详解</h2><h3 id="1-包含块-Containing-Block"><a href="#1-包含块-Containing-Block" class="headerlink" title="1. 包含块(Containing Block)"></a>1. 包含块(Containing Block)</h3><ul>
+<li><code>static</code>&#x2F;<code>relative</code>：最近的块级祖先元素</li>
+<li><code>absolute</code>：最近的非 <code>static</code> 定位祖先元素</li>
+<li><code>fixed</code>：视口(viewport)</li>
+<li><code>sticky</code>：最近的滚动祖先元素</li>
+</ul>
+<h3 id="2-z-index-层叠规则"><a href="#2-z-index-层叠规则" class="headerlink" title="2. z-index 层叠规则"></a>2. z-index 层叠规则</h3><ul>
+<li>仅对非 <code>static</code> 定位元素有效</li>
+<li>值越大越靠前</li>
+<li>相同值时，后出现的元素在上</li>
+</ul>
+<h2 id="四、定位属性组合"><a href="#四、定位属性组合" class="headerlink" title="四、定位属性组合"></a>四、定位属性组合</h2><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>适用定位类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>top</code></td>
+<td>relative&#x2F;absolute&#x2F;fixed&#x2F;sticky</td>
+<td>上边缘偏移</td>
+</tr>
+<tr>
+<td><code>right</code></td>
+<td>relative&#x2F;absolute&#x2F;fixed&#x2F;sticky</td>
+<td>右边缘偏移</td>
+</tr>
+<tr>
+<td><code>bottom</code></td>
+<td>relative&#x2F;absolute&#x2F;fixed&#x2F;sticky</td>
+<td>下边缘偏移</td>
+</tr>
+<tr>
+<td><code>left</code></td>
+<td>relative&#x2F;absolute&#x2F;fixed&#x2F;sticky</td>
+<td>左边缘偏移</td>
+</tr>
+<tr>
+<td><code>z-index</code></td>
+<td>relative&#x2F;absolute&#x2F;fixed&#x2F;sticky</td>
+<td>控制层叠顺序</td>
+</tr>
+<tr>
+<td><code>inset</code></td>
+<td>relative&#x2F;absolute&#x2F;fixed&#x2F;sticky</td>
+<td>简写(top,right,bottom,left)</td>
+</tr>
+</tbody></table>
+<h2 id="五、实用技巧与注意事项"><a href="#五、实用技巧与注意事项" class="headerlink" title="五、实用技巧与注意事项"></a>五、实用技巧与注意事项</h2><h3 id="1-居中定位技巧"><a href="#1-居中定位技巧" class="headerlink" title="1. 居中定位技巧"></a>1. 居中定位技巧</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.center</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>, -<span class="number">50%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-固定定位与transform冲突"><a href="#2-固定定位与transform冲突" class="headerlink" title="2. 固定定位与transform冲突"></a>2. 固定定位与transform冲突</h3><ul>
+<li>父元素的 <code>transform</code> 会改变 <code>fixed</code> 定位的参照物</li>
+</ul>
+<h3 id="3-sticky-定位失效原因"><a href="#3-sticky-定位失效原因" class="headerlink" title="3. sticky 定位失效原因"></a>3. sticky 定位失效原因</h3><ul>
+<li>父元素设置了 <code>overflow: hidden</code></li>
+<li>未指定阈值(如 <code>top</code> 值)</li>
+<li>没有足够的滚动空间</li>
+</ul>
+<h3 id="4-性能优化"><a href="#4-性能优化" class="headerlink" title="4. 性能优化"></a>4. 性能优化</h3><ul>
+<li>避免大量使用 <code>fixed</code> 和 <code>absolute</code> 定位</li>
+<li><code>sticky</code> 定位比 JavaScript 实现的滚动吸附性能更好</li>
+</ul>
+<h2 id="六、浏览器兼容性"><a href="#六、浏览器兼容性" class="headerlink" title="六、浏览器兼容性"></a>六、浏览器兼容性</h2><table>
+<thead>
+<tr>
+<th>定位类型</th>
+<th>主要浏览器支持</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>static</td>
+<td>所有</td>
+<td></td>
+</tr>
+<tr>
+<td>relative</td>
+<td>所有</td>
+<td></td>
+</tr>
+<tr>
+<td>absolute</td>
+<td>所有</td>
+<td></td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>所有</td>
+<td>iOS &lt;7有bug</td>
+</tr>
+<tr>
+<td>sticky</td>
+<td>现代浏览器</td>
+<td>需要-webkit-前缀(旧版)</td>
+</tr>
+</tbody></table>
+<h2 id="七、实际应用案例"><a href="#七、实际应用案例" class="headerlink" title="七、实际应用案例"></a>七、实际应用案例</h2><h3 id="1-模态对话框"><a href="#1-模态对话框" class="headerlink" title="1. 模态对话框"></a>1. 模态对话框</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.modal</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.5</span>);</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">1000</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.modal-content</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>, -<span class="number">50%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-悬浮返回顶部按钮"><a href="#2-悬浮返回顶部按钮" class="headerlink" title="2. 悬浮返回顶部按钮"></a>2. 悬浮返回顶部按钮</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.back-to-top</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">30px</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">30px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#333</span>;</span><br><span class="line">  <span class="attribute">color</span>: white;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-表格固定表头"><a href="#3-表格固定表头" class="headerlink" title="3. 表格固定表头"></a>3. 表格固定表头</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.table-container</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">400px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">th</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: sticky;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">background</span>: white;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>理解并掌握 CSS 定位系统是构建复杂布局的基础，合理使用各种定位方式可以创建出既美观又功能强大的界面效果。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/09/frontend/css/008-position%E8%AF%A6%E8%A7%A3/" data-id="cmcae1sjx005nsssd9tbg4s5j" data-title="008-position详解" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/27/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/27/">27</a><span class="page-number current">28</span><a class="page-number" href="/page/29/">29</a><a class="page-number" href="/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" href="/page/29/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

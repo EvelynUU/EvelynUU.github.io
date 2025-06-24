@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>001-编辑距离（DP） | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="编辑距离超详细解析编辑距离确实是个有点抽象的概念，别着急，我会用最直观的方式帮你彻底理解它。我们就像玩游戏一样，一步步拆解这个过程。 1. 什么是编辑距离？编辑距离是衡量两个字符串相似程度的重要指标，表示将一个字符串转换成另一个字符串所需的最少单字符编辑操作次数（插入、删除或替换） 想象你有两个单词：  原单词：”horse” 目标单词：”ros”  编辑距离就是把”horse”变成”ros”最少">
+<meta property="og:type" content="article">
+<meta property="og:title" content="001-编辑距离（DP）">
+<meta property="og:url" content="http://example.com/2025/06/16/algorithms/001-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB%EF%BC%88DP%EF%BC%89/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="编辑距离超详细解析编辑距离确实是个有点抽象的概念，别着急，我会用最直观的方式帮你彻底理解它。我们就像玩游戏一样，一步步拆解这个过程。 1. 什么是编辑距离？编辑距离是衡量两个字符串相似程度的重要指标，表示将一个字符串转换成另一个字符串所需的最少单字符编辑操作次数（插入、删除或替换） 想象你有两个单词：  原单词：”horse” 目标单词：”ros”  编辑距离就是把”horse”变成”ros”最少">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-16T15:59:13.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:15:02.400Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="algorithms">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-algorithms/001-编辑距离（DP）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/16/algorithms/001-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB%EF%BC%88DP%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2025-06-16T15:59:13.000Z" itemprop="datePublished">2025-06-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      001-编辑距离（DP）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="编辑距离超详细解析"><a href="#编辑距离超详细解析" class="headerlink" title="编辑距离超详细解析"></a>编辑距离超详细解析</h1><p>编辑距离确实是个有点抽象的概念，别着急，我会用最直观的方式帮你彻底理解它。我们就像玩游戏一样，一步步拆解这个过程。</p>
+<h2 id="1-什么是编辑距离？"><a href="#1-什么是编辑距离？" class="headerlink" title="1. 什么是编辑距离？"></a>1. 什么是编辑距离？</h2><p>编辑距离是衡量两个字符串相似程度的重要指标，表示将一个字符串转换成另一个字符串所需的最少单字符编辑操作次数（插入、删除或替换）</p>
+<p>想象你有两个单词：</p>
+<ul>
+<li>原单词：”horse”</li>
+<li>目标单词：”ros”</li>
+</ul>
+<p>编辑距离就是<strong>把”horse”变成”ros”最少需要几步操作</strong>。允许的操作有三种：</p>
+<ol>
+<li><strong>插入</strong>一个字符（比如插入’s’）</li>
+<li><strong>删除</strong>一个字符（比如删除’h’）</li>
+<li><strong>替换</strong>一个字符（比如把’h’换成’r’）</li>
+</ol>
+<p>动态规划解法&#x20;</p>
+<p>基本思路&#x20;</p>
+<p>我们使用一个二维数组 dp 来存储子问题的解，其中 dp[i][j] 表示将 word1 的前 i 个字符转换为 word2 的前 j 个字符所需的最小操作次数。</p>
+<p>JavaScript 实现</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">minDistance</span>(<span class="params">word1, word2</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> m = word1.<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">const</span> n = word2.<span class="property">length</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建DP表 (m+1) x (n+1)</span></span><br><span class="line">    <span class="keyword">const</span> dp = <span class="title class_">Array</span>.<span class="title function_">from</span>(&#123; <span class="attr">length</span>: m + <span class="number">1</span> &#125;, <span class="function">() =&gt;</span> <span class="title class_">Array</span>(n + <span class="number">1</span>).<span class="title function_">fill</span>(<span class="number">0</span>));</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 初始化边界条件</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        dp[i][<span class="number">0</span>] = i; <span class="comment">// 将word1前i个字符变为空串需要i次删除</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt;= n; j++) &#123;</span><br><span class="line">        dp[<span class="number">0</span>][j] = j; <span class="comment">// 将空串变为word2前j个字符需要j次插入</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 填充DP表</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (word1[i - <span class="number">1</span>] === word2[j - <span class="number">1</span>]) &#123;</span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>]; <span class="comment">// 字符相同，无需操作</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                dp[i][j] = <span class="title class_">Math</span>.<span class="title function_">min</span>(</span><br><span class="line">                    dp[i - <span class="number">1</span>][j] + <span class="number">1</span>,     <span class="comment">// 删除word1[i]</span></span><br><span class="line">                    dp[i][j - <span class="number">1</span>] + <span class="number">1</span>,     <span class="comment">// 插入word2[j]</span></span><br><span class="line">                    dp[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span> <span class="comment">// 替换word1[i]为word2[j]</span></span><br><span class="line">                );</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dp[m][n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-最直观的解法演示"><a href="#2-最直观的解法演示" class="headerlink" title="2. 最直观的解法演示"></a>2. 最直观的解法演示</h2><p>让我们手动计算把”horse”变成”ros”的步骤：</p>
+<h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><ol>
+<li>horse → rorse （把h替换成r）</li>
+<li>rorse → rose （删除第二个r）</li>
+<li>rose → ros （删除e）<br>总共：3步</li>
+</ol>
+<h3 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h3><ol>
+<li>horse → orse （删除h）</li>
+<li>orse → rse （把o替换成r）</li>
+<li>rse → ros （把s替换成o，e替换成s）<br>总共：4步</li>
+</ol>
+<p>显然第一种方法更好，编辑距离就是最小的3。</p>
+<h2 id="3-为什么需要动态规划？"><a href="#3-为什么需要动态规划？" class="headerlink" title="3. 为什么需要动态规划？"></a>3. 为什么需要动态规划？</h2><p>手动计算简单，但计算机需要系统的方法。动态规划就是：</p>
+<ul>
+<li>把大问题拆成小问题</li>
+<li>记录已经解决的子问题</li>
+<li>避免重复计算</li>
+</ul>
+<h2 id="4-DP表格超详细构建（以”horse”和”ros”为例）"><a href="#4-DP表格超详细构建（以”horse”和”ros”为例）" class="headerlink" title="4. DP表格超详细构建（以”horse”和”ros”为例）"></a>4. DP表格超详细构建（以”horse”和”ros”为例）</h2><p>我们建立一个表格，行是”horse”+空字符，列是”ros”+空字符：</p>
+<pre><code>    &#39;&#39; r o s
+&#39;&#39; [ , , , ]
+h  [ , , , ]
+o  [ , , , ]
+r  [ , , , ]
+s  [ , , , ]
+e  [ , , , ]
+</code></pre>
+<h3 id="第一步：初始化边界"><a href="#第一步：初始化边界" class="headerlink" title="第一步：初始化边界"></a>第一步：初始化边界</h3><p><strong>第一行</strong>：空字符串变成”ros”各阶段需要多少步？</p>
+<ul>
+<li>‘’→’’：0步</li>
+<li>‘’→’r’：插入r（1步）</li>
+<li>‘’→’ro’：插入r+o（2步）</li>
+<li>‘’→’ros’：插入r+o+s（3步）</li>
+</ul>
+<p><strong>第一列</strong>：”horse”各阶段变成空字符串需要多少步？</p>
+<ul>
+<li>‘’→’’：0步</li>
+<li>‘h’→’’：删除h（1步）</li>
+<li>‘ho’→’’：删除h+o（2步）</li>
+<li>…</li>
+<li>‘horse’→’’：删除h+o+r+s+e（5步）</li>
+</ul>
+<p>填入后表格：</p>
+<pre><code>    &#39;&#39; r o s
+&#39;&#39; [0,1,2,3]
+h  [1, , , ]
+o  [2, , , ]
+r  [3, , , ]
+s  [4, , , ]
+e  [5, , , ]
+</code></pre>
+<h3 id="第二步：填充其他格子"><a href="#第二步：填充其他格子" class="headerlink" title="第二步：填充其他格子"></a>第二步：填充其他格子</h3><p><strong>规则</strong>：</p>
+<ol>
+<li>如果当前字符相同：取左上角的值（因为不需要操作）</li>
+<li>如果不同：取左、上、左上三个值中的最小值+1</li>
+</ol>
+<p><strong>让我们填充几个关键格子</strong>：</p>
+<h4 id="1-1-位置：’h’→’r’"><a href="#1-1-位置：’h’→’r’" class="headerlink" title="(1,1)位置：’h’→’r’"></a>(1,1)位置：’h’→’r’</h4><ul>
+<li>字符’h’≠’r’</li>
+<li>看：<ul>
+<li>左：’’→’r’&#x3D;1（插入）</li>
+<li>上：’h’→’’&#x3D;1（删除）</li>
+<li>左上：’’→’’&#x3D;0（替换）</li>
+</ul>
+</li>
+<li>最小值0+1&#x3D;1</li>
+<li>所以dp[1][1]&#x3D;1（表示’h’→’r’最少需要1步：替换）</li>
+</ul>
+<h4 id="2-2-位置：’ho’→’ro’"><a href="#2-2-位置：’ho’→’ro’" class="headerlink" title="(2,2)位置：’ho’→’ro’"></a>(2,2)位置：’ho’→’ro’</h4><ul>
+<li>最后一个字符’o’&#x3D;&#x3D;’o’</li>
+<li>直接取左上角的值dp[1][1]&#x3D;1</li>
+<li>因为最后一个字符相同，不需要额外操作</li>
+</ul>
+<h4 id="5-3-位置：’horse’→’ros’"><a href="#5-3-位置：’horse’→’ros’" class="headerlink" title="(5,3)位置：’horse’→’ros’"></a>(5,3)位置：’horse’→’ros’</h4><ul>
+<li>最后一个字符’e’≠’s’</li>
+<li>看：<ul>
+<li>左：’hors’→’ros’&#x3D;3（插入’s’）</li>
+<li>上：’horse’→’ro’&#x3D;4（删除’e’）</li>
+<li>左上：’hors’→’ro’&#x3D;2（替换’e’→’s’）</li>
+</ul>
+</li>
+<li>最小值2+1&#x3D;3</li>
+</ul>
+<h3 id="最终完整表格："><a href="#最终完整表格：" class="headerlink" title="最终完整表格："></a>最终完整表格：</h3><pre><code>    &#39;&#39; r o s
+&#39;&#39; [0,1,2,3]
+h  [1,1,2,3]
+o  [2,2,1,2]
+r  [3,2,2,2]
+s  [4,3,3,2]
+e  [5,4,4,3]
+</code></pre>
+<p>右下角的3就是最终答案！</p>
+<h2 id="5-为什么这样计算？"><a href="#5-为什么这样计算？" class="headerlink" title="5. 为什么这样计算？"></a>5. 为什么这样计算？</h2><p>每个格子都代表一个子问题的最优解：</p>
+<ul>
+<li><strong>从左来</strong>：相当于插入当前列对应的字符</li>
+<li><strong>从上来</strong>：相当于删除当前行对应的字符</li>
+<li><strong>从左上角来</strong>：相当于替换（如果不同）或保留（如果相同）</li>
+</ul>
+<h2 id="6-代码逐步对应"><a href="#6-代码逐步对应" class="headerlink" title="6. 代码逐步对应"></a>6. 代码逐步对应</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">minDistance</span>(<span class="params">word1, word2</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> m = word1.<span class="property">length</span>, n = word2.<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">const</span> dp = <span class="title class_">Array</span>(m+<span class="number">1</span>).<span class="title function_">fill</span>().<span class="title function_">map</span>(<span class="function">() =&gt;</span> <span class="title class_">Array</span>(n+<span class="number">1</span>).<span class="title function_">fill</span>(<span class="number">0</span>));</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 初始化第一行和第一列</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;=m; i++) dp[i][<span class="number">0</span>] = i; <span class="comment">// 删除i次</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j=<span class="number">0</span>; j&lt;=n; j++) dp[<span class="number">0</span>][j] = j; <span class="comment">// 插入j次</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">1</span>; i&lt;=m; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j=<span class="number">1</span>; j&lt;=n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(word1[i-<span class="number">1</span>] === word2[j-<span class="number">1</span>]) &#123;</span><br><span class="line">                dp[i][j] = dp[i-<span class="number">1</span>][j-<span class="number">1</span>]; <span class="comment">// 字符相同，直接继承</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                dp[i][j] = <span class="title class_">Math</span>.<span class="title function_">min</span>(</span><br><span class="line">                    dp[i-<span class="number">1</span>][j] + <span class="number">1</span>,   <span class="comment">// 删除word1[i]</span></span><br><span class="line">                    dp[i][j-<span class="number">1</span>] + <span class="number">1</span>,   <span class="comment">// 插入word2[j]</span></span><br><span class="line">                    dp[i-<span class="number">1</span>][j-<span class="number">1</span>] + <span class="number">1</span> <span class="comment">// 替换</span></span><br><span class="line">                );</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[m][n]; <span class="comment">// 右下角的值就是结果</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-常见疑问解答"><a href="#7-常见疑问解答" class="headerlink" title="7. 常见疑问解答"></a>7. 常见疑问解答</h2><p><strong>Q：为什么表格要比字符串长度多1？</strong><br>A：因为要考虑空字符串的情况，这是动态规划的边界条件。</p>
+<p><strong>Q：如何知道具体进行了哪些操作？</strong><br>A：可以反向追踪dp表：</p>
+<ol>
+<li>从右下角开始</li>
+<li>比较当前值与左、上、左上值</li>
+<li>找到使当前值产生的路径</li>
+</ol>
+<p><strong>Q：时间复杂度能优化吗？</strong><br>A：空间可以优化到O(n)（只用两行），但时间必须O(m*n)，因为要填满整个表格。</p>
+<h2 id="8-实战练习"><a href="#8-实战练习" class="headerlink" title="8. 实战练习"></a>8. 实战练习</h2><p>试试计算”intention”和”execution”的编辑距离：</p>
+<ul>
+<li>先建一个9x9的表格（包括空字符串）</li>
+<li>按照上述规则填充</li>
+<li>你会发现答案是5</li>
+</ul>
+<p>通过这样一步步拆解，你应该对编辑距离有了更直观的理解。动态规划的关键就是找到子问题之间的关系，并用表格记录下来避免重复计算。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/16/algorithms/001-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB%EF%BC%88DP%EF%BC%89/" data-id="cmcae1sj9000ksssdgyq51ogi" data-title="001-编辑距离（DP）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/16/algorithms/002-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2%EF%BC%88DP%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          002-最长回文子串（DP）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/16/algorithms/000-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">000-排序算法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

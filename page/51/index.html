@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:url" content="http://example.com/page/51/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:locale">
+<meta property="article:author" content="EvelynUU">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-algorithms/027-移除元素(反向遍历or双指针)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/17/algorithms/027-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0(%E5%8F%8D%E5%90%91%E9%81%8D%E5%8E%86or%E5%8F%8C%E6%8C%87%E9%92%88)/" class="article-date">
+  <time class="dt-published" datetime="2025-06-17T15:59:32.000Z" itemprop="datePublished">2025-06-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/17/algorithms/027-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0(%E5%8F%8D%E5%90%91%E9%81%8D%E5%8E%86or%E5%8F%8C%E6%8C%87%E9%92%88)/">027-移除元素(反向遍历or双指针)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h3><p>给你一个数组 <code>nums</code>* <em>和一个值 <code>val</code>，你需要 <strong><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地</a></strong> 移除所有数值等于 <code>val</code></em> *的元素。元素的顺序可能发生改变。然后返回 <code>nums</code> 中与 <code>val</code> 不同的元素的数量。</p>
+<p>假设 <code>nums</code> 中不等于 <code>val</code> 的元素数量为 <code>k</code>，要通过此题，您需要执行以下操作：</p>
+<ul>
+<li>更改 <code>nums</code> 数组，使 <code>nums</code> 的前 <code>k</code> 个元素包含不等于 <code>val</code> 的元素。<code>nums</code> 的其余元素和 <code>nums</code> 的大小并不重要。</li>
+<li>返回 <code>k</code>。</li>
+</ul>
+<p><strong>用户评测：</strong></p>
+<p>评测机将使用以下代码测试您的解决方案：</p>
+<pre><code>int[] nums = [...]; // 输入数组
+int val = ...; // 要移除的值
+int[] expectedNums = [...]; // 长度正确的预期答案。
+                            // 它以不等于 val 的值排序。
+
+int k = removeElement(nums, val); // 调用你的实现
+
+assert k == expectedNums.length;
+sort(nums, 0, k); // 排序 nums 的前 k 个元素
+for (int i = 0; i &lt; actualLength; i++) &#123;
+    assert nums[i] == expectedNums[i];
+&#125;
+</code></pre>
+<p>如果所有的断言都通过，你的解决方案将会 <strong>通过</strong>。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[]</span>&#125; <span class="variable">nums</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">val</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> removeElement = <span class="keyword">function</span>(<span class="params">nums, val</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> len = nums.<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">let</span> count = len;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=len; i&gt;=<span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i] === val) &#123;</span><br><span class="line">            nums.<span class="title function_">splice</span>(i, <span class="number">1</span>);</span><br><span class="line">            nums.<span class="title function_">push</span>(<span class="string">&#x27;_&#x27;</span>)</span><br><span class="line">            count--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="注意点（反向遍历，如果用splice-index-1-）"><a href="#注意点（反向遍历，如果用splice-index-1-）" class="headerlink" title="注意点（反向遍历，如果用splice(index, 1)）"></a>注意点（反向遍历，如果用splice(index, 1)）</h3><p><strong>关键问题</strong>：当连续出现多个 <code>val</code> 时，正向遍历会因为 <code>splice()</code> 修改数组长度和索引导致漏删。以下是详细分析和修正方案：</p>
+<hr>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a><strong>问题分析</strong></h3><h4 id="代码可能的缺陷"><a href="#代码可能的缺陷" class="headerlink" title="代码可能的缺陷"></a><strong>代码可能的缺陷</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;len; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(nums[i] === val) &#123;</span><br><span class="line">        nums.<span class="title function_">splice</span>(i, <span class="number">1</span>); <span class="comment">// 删除后，后续元素会前移</span></span><br><span class="line">        nums.<span class="title function_">push</span>(<span class="string">&#x27;_&#x27;</span>);</span><br><span class="line">        count--;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Bug 场景</strong>：若 <code>nums = [3, 2, 2, 3]</code>, <code>val = 2</code>：<ol>
+<li>当 <code>i=1</code> 时，删除 <code>nums[1]=2</code> → 数组变为 <code>[3, 2, 3, &#39;_&#39;]</code></li>
+<li>下一轮 <code>i=2</code>，此时 <code>nums[2]=3</code>，漏掉了前移的 <code>2</code>。</li>
+</ol>
+</li>
+</ul>
+<h4 id="根本原因"><a href="#根本原因" class="headerlink" title="根本原因"></a><strong>根本原因</strong></h4><ul>
+<li><code>splice()</code> 会<strong>改变原数组长度和索引</strong>，但循环仍按原长度 <code>len</code> 执行。</li>
+<li>删除元素后未调整索引 <code>i</code>，导致跳过后续元素检查。</li>
+</ul>
+<hr>
+<h3 id="其他方案"><a href="#其他方案" class="headerlink" title="其他方案"></a><strong>其他方案</strong></h3><h4 id="双指针（更高效）"><a href="#双指针（更高效）" class="headerlink" title="双指针（更高效）"></a><strong>双指针（更高效）</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> removeElement = <span class="keyword">function</span>(<span class="params">nums, val</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> right = <span class="number">0</span>; right &lt; nums.<span class="property">length</span>; right++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[right] !== val) &#123;</span><br><span class="line">            nums[left] = nums[right];</span><br><span class="line">            left++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 可选：补位 &#x27;_&#x27;</span></span><br><span class="line">    <span class="keyword">while</span> (left &lt; nums.<span class="property">length</span>) nums[left++] = <span class="string">&#x27;_&#x27;</span>;</span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>优点</strong>：一次遍历完成删除和补位。</p>
+<h4 id="双指针解法图解（LeetCode-27-移除元素）"><a href="#双指针解法图解（LeetCode-27-移除元素）" class="headerlink" title="双指针解法图解（LeetCode 27. 移除元素）"></a><strong>双指针解法图解（LeetCode 27. 移除元素）</strong></h4><hr>
+<h4 id="双指针法核心思想"><a href="#双指针法核心思想" class="headerlink" title="双指针法核心思想"></a><strong>双指针法核心思想</strong></h4><ul>
+<li><strong>快指针（<code>right</code>）</strong>：遍历原数组，寻找保留元素。</li>
+<li><strong>慢指针（<code>left</code>）</strong>：指向下一个保留元素的存放位置。</li>
+</ul>
+<hr>
+<h3 id="双指针图解示例"><a href="#双指针图解示例" class="headerlink" title="双指针图解示例"></a><strong>双指针图解示例</strong></h3><p><strong>输入</strong>：<code>nums = [3, 2, 2, 3]</code>, <code>val = 2</code><br><strong>输出</strong>：<code>[3, 3, _, _]</code>（新长度为 2）</p>
+<h4 id="步骤-1：初始化指针"><a href="#步骤-1：初始化指针" class="headerlink" title="步骤 1：初始化指针"></a><strong>步骤 1：初始化指针</strong></h4><pre><code>nums = [3, 2, 2, 3]
+       ↑ ↑
+       l r (left=0, right=0)
+</code></pre>
+<h4 id="步骤-2：right-0，nums-0-3-≠-val"><a href="#步骤-2：right-0，nums-0-3-≠-val" class="headerlink" title="步骤 2：right=0，nums[0]=3 ≠ val"></a><strong>步骤 2：<code>right=0</code>，<code>nums[0]=3 ≠ val</code></strong></h4><ul>
+<li><p>保留 <code>nums[0]</code>，复制到 <code>nums[left]</code>。</p>
+</li>
+<li><p><code>left</code> 和 <code>right</code> 同时右移：</p>
+<p>nums &#x3D; [3, 2, 2, 3] (未修改)<br>↑ ↑<br>l r (left&#x3D;1, right&#x3D;1)</p>
+</li>
+</ul>
+<h4 id="步骤-3：right-1，nums-1-2-val"><a href="#步骤-3：right-1，nums-1-2-val" class="headerlink" title="步骤 3：right=1，nums[1]=2 == val"></a><strong>步骤 3：<code>right=1</code>，<code>nums[1]=2 == val</code></strong></h4><ul>
+<li><p>跳过不保留，仅 <code>right</code> 右移：</p>
+<p>nums &#x3D; [3, 2, 2, 3]<br>↑   ↑<br>l   r (left&#x3D;1, right&#x3D;2)</p>
+</li>
+</ul>
+<h4 id="步骤-4：right-2，nums-2-2-val"><a href="#步骤-4：right-2，nums-2-2-val" class="headerlink" title="步骤 4：right=2，nums[2]=2 == val"></a><strong>步骤 4：<code>right=2</code>，<code>nums[2]=2 == val</code></strong></h4><ul>
+<li><p>跳过不保留，仅 <code>right</code> 右移：</p>
+<p>nums &#x3D; [3, 2, 2, 3]<br>↑     ↑<br>l     r (left&#x3D;1, right&#x3D;3)</p>
+</li>
+</ul>
+<h4 id="步骤-5：right-3，nums-3-3-≠-val"><a href="#步骤-5：right-3，nums-3-3-≠-val" class="headerlink" title="步骤 5：right=3，nums[3]=3 ≠ val"></a><strong>步骤 5：<code>right=3</code>，<code>nums[3]=3 ≠ val</code></strong></h4><ul>
+<li><p>保留 <code>nums[3]</code>，复制到 <code>nums[left]</code>。</p>
+</li>
+<li><p><code>left</code> 和 <code>right</code> 同时右移：</p>
+<p>nums &#x3D; [3, 3, 2, 3] (left&#x3D;2, right&#x3D;4)<br>↑     ↑<br>l     r</p>
+</li>
+</ul>
+<h4 id="循环结束"><a href="#循环结束" class="headerlink" title="循环结束"></a><strong>循环结束</strong></h4><ul>
+<li><code>right</code> 越界，终止循环。</li>
+<li><strong>新长度</strong>：<code>left = 2</code>（前 <code>left</code> 个元素为有效结果）。</li>
+</ul>
+<h4 id="可选补位"><a href="#可选补位" class="headerlink" title="可选补位"></a><strong>可选补位</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = left; i &lt; nums.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    nums[i] = <span class="string">&#x27;_&#x27;</span>; <span class="comment">// 补位</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最终数组：</p>
+<pre><code>nums = [3, 3, &#39;_&#39;, &#39;_&#39;]
+</code></pre>
+<hr>
+<h3 id="关键点总结"><a href="#关键点总结" class="headerlink" title="关键点总结"></a><strong>关键点总结</strong></h3><ol>
+<li>**快指针 <code>right</code>**：无脑向前扫描，检查每个元素。</li>
+<li>**慢指针 <code>left</code>**：只接收不等于 <code>val</code> 的元素。</li>
+<li><strong>补位</strong>：在返回新长度后，将剩余位置填充 <code>_</code>（按题目需求）。</li>
+</ol>
+<p>这种方法保证了 <strong>O(n) 时间</strong>和 <strong>O(1) 空间</strong>，是最优解。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/17/algorithms/027-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0(%E5%8F%8D%E5%90%91%E9%81%8D%E5%8E%86or%E5%8F%8C%E6%8C%87%E9%92%88)/" data-id="cmcae1sji002asssd1vp173zh" data-title="027-移除元素(反向遍历or双指针)" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-algorithms/028-爬楼梯（DP Fibonacci）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/17/algorithms/028-%E7%88%AC%E6%A5%BC%E6%A2%AF%EF%BC%88DP%20Fibonacci%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2025-06-17T15:59:33.000Z" itemprop="datePublished">2025-06-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithms/">algorithms</a>►<a class="article-category-link" href="/categories/algorithms/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/17/algorithms/028-%E7%88%AC%E6%A5%BC%E6%A2%AF%EF%BC%88DP%20Fibonacci%EF%BC%89/">028-爬楼梯（DP Fibonacci）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="爬楼梯"><a href="#爬楼梯" class="headerlink" title="爬楼梯"></a><strong>爬楼梯</strong></h3><hr>
+<h4 id="1-问题本质分析"><a href="#1-问题本质分析" class="headerlink" title="1. 问题本质分析"></a><strong>1. 问题本质分析</strong></h4><ul>
+<li><strong>问题描述</strong>：每次可以爬 1 或 2 个台阶，求爬到第 <code>n</code> 阶的方法数。</li>
+<li><strong>实际意义</strong>：该问题等价于 <strong>斐波那契数列</strong>，因为：<ul>
+<li>到达第 <code>n</code> 阶的方法数 &#x3D; 从 <code>n-1</code> 阶爬 1 步的方法数 + 从 <code>n-2</code> 阶爬 2 步的方法数。</li>
+<li>即：<code>f(n) = f(n-1) + f(n-2)</code>。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-动态规划的核心思想"><a href="#2-动态规划的核心思想" class="headerlink" title="2. 动态规划的核心思想"></a><strong>2. 动态规划的核心思想</strong></h4><h5 id="1-定义状态"><a href="#1-定义状态" class="headerlink" title="(1) 定义状态"></a><strong>(1) 定义状态</strong></h5><ul>
+<li><code>dp[i]</code>：表示爬到第 <code>i</code> 阶台阶的方法数。</li>
+</ul>
+<h5 id="2-状态转移方程"><a href="#2-状态转移方程" class="headerlink" title="(2) 状态转移方程"></a><strong>(2) 状态转移方程</strong></h5><pre><code>dp[i] = dp[i-1] + dp[i-2]
+</code></pre>
+<ul>
+<li><strong>解释</strong>：<ul>
+<li>从 <code>i-1</code> 阶爬 1 步到达 <code>i</code> 阶。</li>
+<li>从 <code>i-2</code> 阶爬 2 步到达 <code>i</code> 阶。</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-初始化"><a href="#3-初始化" class="headerlink" title="(3) 初始化"></a><strong>(3) 初始化</strong></h5><pre><code>dp[0] = 1  // 初始状态（地面）
+dp[1] = 1  // 第1阶只有1种方法（爬1步）
+dp[2] = 2  // 第2阶有2种方法（1+1或直接2）
+</code></pre>
+<hr>
+<h4 id="3-代码实现与逐步解析"><a href="#3-代码实现与逐步解析" class="headerlink" title="3. 代码实现与逐步解析"></a><strong>3. 代码实现与逐步解析</strong></h4><h5 id="1-基础动态规划（空间复杂度-O-n-）"><a href="#1-基础动态规划（空间复杂度-O-n-）" class="headerlink" title="(1) 基础动态规划（空间复杂度 O(n)）"></a><strong>(1) 基础动态规划（空间复杂度 O(n)）</strong></h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> climbStairs = <span class="keyword">function</span>(<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">2</span>) <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">const</span> dp = <span class="keyword">new</span> <span class="title class_">Array</span>(n + <span class="number">1</span>).<span class="title function_">fill</span>(<span class="number">0</span>);</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1</span>; <span class="comment">// 初始状态</span></span><br><span class="line">    dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        dp[i] = dp[i - <span class="number">1</span>] + dp[i - <span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>时间复杂度</strong>：O(n)</li>
+<li><strong>空间复杂度</strong>：O(n)（存储整个 <code>dp</code> 数组）</li>
+</ul>
+<h5 id="2-优化空间（空间复杂度-O-1-）"><a href="#2-优化空间（空间复杂度-O-1-）" class="headerlink" title="(2) 优化空间（空间复杂度 O(1)）"></a><strong>(2) 优化空间（空间复杂度 O(1)）</strong></h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> climbStairs = <span class="keyword">function</span>(<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">2</span>) <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">1</span>, b = <span class="number">2</span>; <span class="comment">// a=dp[i-2], b=dp[i-1]</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        [a, b] = [b, a + b]; <span class="comment">// 状态转移</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>优化原理</strong>：<br>只需保存前两个状态（<code>dp[i-1]</code> 和 <code>dp[i-2]</code>），无需存储整个数组。</li>
+</ul>
+<hr>
+<h4 id="4-为什么动态规划比递归更优？"><a href="#4-为什么动态规划比递归更优？" class="headerlink" title="4. 为什么动态规划比递归更优？"></a><strong>4. 为什么动态规划比递归更优？</strong></h4><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>时间复杂度</th>
+<th>空间复杂度</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>递归</td>
+<td>O(2ⁿ)</td>
+<td>O(n)</td>
+<td>重复计算导致超时</td>
+</tr>
+<tr>
+<td>记忆化递归</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>需要额外空间存储中间结果</td>
+</tr>
+<tr>
+<td>动态规划</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>最优解</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>递归的问题</strong>：<br>计算 <code>f(5)</code> 时会重复计算 <code>f(3)</code> 和 <code>f(4)</code>，导致指数级复杂度。</li>
+<li><strong>动态规划的优势</strong>：<br>通过递推公式 <strong>自底向上</strong> 计算，避免重复计算。</li>
+</ul>
+<hr>
+<h4 id="5-分步示例（n-5）"><a href="#5-分步示例（n-5）" class="headerlink" title="5. 分步示例（n&#x3D;5）"></a><strong>5. 分步示例（n&#x3D;5）</strong></h4><table>
+<thead>
+<tr>
+<th>i</th>
+<th>a (dp[i-2])</th>
+<th>b (dp[i-1])</th>
+<th>更新后 [a, b]</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>[2, 3]</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td>3</td>
+<td>[3, 5]</td>
+</tr>
+<tr>
+<td>5</td>
+<td>3</td>
+<td>5</td>
+<td>[5, 8]</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>最终结果</strong>：<code>b = 8</code>（即 <code>f(5)=8</code>）</li>
+</ul>
+<hr>
+<h4 id="6-数学本质"><a href="#6-数学本质" class="headerlink" title="6. 数学本质"></a><strong>6. 数学本质</strong></h4><ul>
+<li><strong>斐波那契数列</strong>：<code>1, 1, 2, 3, 5, 8, 13...</code><ul>
+<li><code>f(n) = f(n-1) + f(n-2)</code></li>
+<li>爬楼梯问题是斐波那契数列的变种（初始条件不同）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="7-如何想到动态规划？"><a href="#7-如何想到动态规划？" class="headerlink" title="7. 如何想到动态规划？"></a><strong>7. 如何想到动态规划？</strong></h4><ol>
+<li><strong>识别重叠子问题</strong>：<ul>
+<li>计算 <code>f(5)</code> 需要 <code>f(4)</code> 和 <code>f(3)</code>，而 <code>f(4)</code> 又需要 <code>f(3)</code> 和 <code>f(2)</code>，存在大量重复计算。</li>
+</ul>
+</li>
+<li><strong>定义状态</strong>：<ul>
+<li>用 <code>dp[i]</code> 表示问题的子解。</li>
+</ul>
+</li>
+<li><strong>建立状态转移</strong>：<ul>
+<li>通过问题规律（如 <code>dp[i] = dp[i-1] + dp[i-2]</code>）递推。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="8-边界条件处理"><a href="#8-边界条件处理" class="headerlink" title="8. 边界条件处理"></a><strong>8. 边界条件处理</strong></h4><ul>
+<li><code>n=0</code>：返回 1（地面算一种方法）。</li>
+<li><code>n=1</code>：返回 1（只有一种爬法）。</li>
+<li><code>n=2</code>：返回 2（1+1 或直接 2）。</li>
+</ul>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><ul>
+<li><strong>动态规划适用场景</strong>：<br>问题具有 <strong>最优子结构</strong> 和 <strong>重叠子问题</strong> 特性。</li>
+<li><strong>爬楼梯的关键</strong>：<br>将大问题分解为小问题，通过递推公式避免重复计算。</li>
+<li><strong>优化核心</strong>：<br>用有限变量代替数组，将空间复杂度从 O(n) 降至 O(1)。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/17/algorithms/028-%E7%88%AC%E6%A5%BC%E6%A2%AF%EF%BC%88DP%20Fibonacci%EF%BC%89/" data-id="cmcae1sji002dsssdgmyz3e41" data-title="028-爬楼梯（DP Fibonacci）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/50/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="page-number" href="/page/50/">50</a><span class="page-number current">51</span><a class="page-number" href="/page/52/">52</a><a class="page-number" href="/page/53/">53</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" href="/page/52/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

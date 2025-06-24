@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>003-HOC与函数柯里化 | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="深入解析高阶组件(HOC)与柯里化函数实现一、高阶组件(HOC)详解1. 核心概念高阶组件（Higher-Order Component）是React中用于复用组件逻辑的高级技术，本质上是一个函数：  输入：一个组件 输出：一个新的增强组件  1const EnhancedComponent &#x3D; higherOrderComponent(WrappedComponent);  2. 核心特征 非侵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="003-HOC与函数柯里化">
+<meta property="og:url" content="http://example.com/2025/06/01/frontend/react/003-HOC%E4%B8%8E%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/index.html">
+<meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
+<meta property="og:description" content="深入解析高阶组件(HOC)与柯里化函数实现一、高阶组件(HOC)详解1. 核心概念高阶组件（Higher-Order Component）是React中用于复用组件逻辑的高级技术，本质上是一个函数：  输入：一个组件 输出：一个新的增强组件  1const EnhancedComponent &#x3D; higherOrderComponent(WrappedComponent);  2. 核心特征 非侵">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-01T05:44:39.000Z">
+<meta property="article:modified_time" content="2025-06-24T09:46:32.505Z">
+<meta property="article:author" content="EvelynUU">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Repeatings, Thoughts, and Writings</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-frontend/react/003-HOC与函数柯里化" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/01/frontend/react/003-HOC%E4%B8%8E%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" class="article-date">
+  <time class="dt-published" datetime="2025-06-01T05:44:39.000Z" itemprop="datePublished">2025-06-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Frontend/">Frontend</a>►<a class="article-category-link" href="/categories/Frontend/React/">React</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      003-HOC与函数柯里化
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="深入解析高阶组件-HOC-与柯里化函数实现"><a href="#深入解析高阶组件-HOC-与柯里化函数实现" class="headerlink" title="深入解析高阶组件(HOC)与柯里化函数实现"></a>深入解析高阶组件(HOC)与柯里化函数实现</h2><h3 id="一、高阶组件-HOC-详解"><a href="#一、高阶组件-HOC-详解" class="headerlink" title="一、高阶组件(HOC)详解"></a>一、高阶组件(HOC)详解</h3><h4 id="1-核心概念"><a href="#1-核心概念" class="headerlink" title="1. 核心概念"></a>1. 核心概念</h4><p>高阶组件（Higher-Order Component）是React中用于<strong>复用组件逻辑</strong>的高级技术，本质上是一个函数：</p>
+<ul>
+<li>输入：一个组件</li>
+<li>输出：一个新的增强组件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">EnhancedComponent</span> = <span class="title function_">higherOrderComponent</span>(<span class="title class_">WrappedComponent</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-核心特征"><a href="#2-核心特征" class="headerlink" title="2. 核心特征"></a>2. 核心特征</h4><ul>
+<li><strong>非侵入性</strong>：不修改原组件，通过组合扩展功能</li>
+<li><strong>逻辑复用</strong>：抽离通用逻辑（如鉴权、日志、数据获取）</li>
+<li><strong>渲染劫持</strong>：控制被包裹组件的渲染行为</li>
+<li><strong>Props代理</strong>：操作传入组件的props</li>
+</ul>
+<h4 id="3-常见HOC类型"><a href="#3-常见HOC类型" class="headerlink" title="3. 常见HOC类型"></a>3. 常见HOC类型</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>功能</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Props代理</strong></td>
+<td>增删改props</td>
+<td>注入额外属性</td>
+</tr>
+<tr>
+<td><strong>继承反转</strong></td>
+<td>继承原组件控制渲染</td>
+<td>条件渲染控制</td>
+</tr>
+<tr>
+<td><strong>状态抽象</strong></td>
+<td>管理公共状态</td>
+<td>表单状态管理</td>
+</tr>
+<tr>
+<td><strong>样式增强</strong></td>
+<td>添加样式逻辑</td>
+<td>withStyles</td>
+</tr>
+</tbody></table>
+<h3 id="二、React中的实际HOC案例"><a href="#二、React中的实际HOC案例" class="headerlink" title="二、React中的实际HOC案例"></a>二、React中的实际HOC案例</h3><h4 id="1-Redux的connect"><a href="#1-Redux的connect" class="headerlink" title="1. Redux的connect"></a>1. Redux的connect</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">ConnectedComponent</span> = <span class="title function_">connect</span>(</span><br><span class="line">  mapStateToProps,</span><br><span class="line">  mapDispatchToProps</span><br><span class="line">)(<span class="title class_">Component</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>功能</strong>：连接React组件与Redux store</li>
+<li><strong>原理</strong>：通过Context注入store数据</li>
+</ul>
+<h4 id="2-React-Router的withRouter"><a href="#2-React-Router的withRouter" class="headerlink" title="2. React Router的withRouter"></a>2. React Router的withRouter</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">ComponentWithRouter</span> = <span class="title function_">withRouter</span>(<span class="title class_">Component</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>功能</strong>：注入路由对象（history, location, match）</li>
+<li><strong>使用场景</strong>：非路由组件访问路由信息</li>
+</ul>
+<h4 id="3-自定义HOC示例：权限控制"><a href="#3-自定义HOC示例：权限控制" class="headerlink" title="3. 自定义HOC示例：权限控制"></a>3. 自定义HOC示例：权限控制</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">withAuth</span>(<span class="params">WrappedComponent</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">class</span> <span class="title class_">extends</span> <span class="title class_">React</span>.<span class="property">Component</span> &#123;</span><br><span class="line">    state = &#123; <span class="attr">hasPermission</span>: <span class="literal">false</span> &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">async</span> <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> user = <span class="keyword">await</span> <span class="title function_">fetchUser</span>();</span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123; </span><br><span class="line">        <span class="attr">hasPermission</span>: user.<span class="property">role</span> === <span class="string">&#x27;admin&#x27;</span></span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">hasPermission</span> </span><br><span class="line">        ? <span class="language-xml"><span class="tag">&lt;<span class="name">WrappedComponent</span> &#123;<span class="attr">...this.props</span>&#125; /&gt;</span></span></span><br><span class="line">        : <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>无访问权限<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">AdminPanel</span> = <span class="title function_">withAuth</span>(<span class="title class_">PanelComponent</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、函数柯里化实现：add-1-2-3"><a href="#三、函数柯里化实现：add-1-2-3" class="headerlink" title="三、函数柯里化实现：add(1)(2)(3)"></a>三、函数柯里化实现：add(1)(2)(3)</h3><h4 id="1-柯里化概念"><a href="#1-柯里化概念" class="headerlink" title="1. 柯里化概念"></a>1. 柯里化概念</h4><p>柯里化（Currying）是把多参数函数转换为一系列单参数函数的技术：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 普通函数</span></span><br><span class="line"><span class="title function_">add</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 柯里化函数</span></span><br><span class="line"><span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)();</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-实现方案对比"><a href="#2-实现方案对比" class="headerlink" title="2. 实现方案对比"></a>2. 实现方案对比</h4><table>
+<thead>
+<tr>
+<th>方案</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>递归存储</strong></td>
+<td>闭包保存中间值</td>
+<td>基础实现</td>
+</tr>
+<tr>
+<td><strong>隐式转换</strong></td>
+<td>利用valueOf</td>
+<td>简洁调用</td>
+</tr>
+<tr>
+<td><strong>参数收集</strong></td>
+<td>支持无限链式</td>
+<td>最通用</td>
+</tr>
+</tbody></table>
+<h4 id="3-完整实现代码（支持无限链式调用）"><a href="#3-完整实现代码（支持无限链式调用）" class="headerlink" title="3. 完整实现代码（支持无限链式调用）"></a>3. 完整实现代码（支持无限链式调用）</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  <span class="comment">// 存储所有参数的数组</span></span><br><span class="line">  <span class="keyword">let</span> sum = x;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 定义内部函数</span></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">innerAdd</span>(<span class="params">y</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (y !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">      sum += y;</span><br><span class="line">      <span class="keyword">return</span> innerAdd; <span class="comment">// 返回自身支持链式调用</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum; <span class="comment">// 无参调用时返回结果</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 重写valueOf实现隐式转换</span></span><br><span class="line">  innerAdd.<span class="property">valueOf</span> = <span class="function">() =&gt;</span> sum;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 重写toString便于调试</span></span><br><span class="line">  innerAdd.<span class="property">toString</span> = <span class="function">() =&gt;</span> <span class="string">`CurriedSum(<span class="subst">$&#123;sum&#125;</span>)`</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> innerAdd;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-使用示例"><a href="#4-使用示例" class="headerlink" title="4. 使用示例"></a>4. 使用示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基础用法</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)()); <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 隐式转换</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>));  <span class="comment">// 6 (触发valueOf)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>) + <span class="number">4</span>); <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 无限链式</span></span><br><span class="line"><span class="keyword">const</span> sum = <span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">5</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">sum</span>()); <span class="comment">// 15</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 分段调用</span></span><br><span class="line"><span class="keyword">const</span> addTwo = <span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">1</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">addTwo</span>(<span class="number">3</span>)()); <span class="comment">// 5</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">addTwo</span>(<span class="number">5</span>)()); <span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="5-实现原理图解"><a href="#5-实现原理图解" class="headerlink" title="5. 实现原理图解"></a>5. 实现原理图解</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A[调用add(1)] --&gt; B[创建闭包环境&lt;br&gt;sum=1]</span><br><span class="line">B --&gt; C[返回innerAdd函数]</span><br><span class="line">C --&gt; D[调用(2)] </span><br><span class="line">D --&gt; E[sum=1+2=3]</span><br><span class="line">E --&gt; F[返回innerAdd]</span><br><span class="line">F --&gt; G[调用(3)]</span><br><span class="line">G --&gt; H[sum=3+3=6]</span><br><span class="line">H --&gt; I[返回innerAdd]</span><br><span class="line">I --&gt; J[无参调用]</span><br><span class="line">J --&gt; K[返回sum=6]</span><br></pre></td></tr></table></figure>
+
+<h3 id="四、HOC与柯里化的关联"><a href="#四、HOC与柯里化的关联" class="headerlink" title="四、HOC与柯里化的关联"></a>四、HOC与柯里化的关联</h3><h4 id="1-设计模式相似性"><a href="#1-设计模式相似性" class="headerlink" title="1. 设计模式相似性"></a>1. 设计模式相似性</h4><table>
+<thead>
+<tr>
+<th>概念</th>
+<th>HOC</th>
+<th>柯里化</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>核心思想</strong></td>
+<td>组件增强</td>
+<td>函数转换</td>
+</tr>
+<tr>
+<td><strong>输入输出</strong></td>
+<td>组件 → 组件</td>
+<td>函数 → 函数</td>
+</tr>
+<tr>
+<td><strong>实现方式</strong></td>
+<td>闭包保存状态</td>
+<td>闭包保存参数</td>
+</tr>
+</tbody></table>
+<h4 id="2-React中的结合应用"><a href="#2-React中的结合应用" class="headerlink" title="2. React中的结合应用"></a>2. React中的结合应用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 柯里化风格HOC工厂</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">withFeature</span> = (<span class="params">featureName</span>) =&gt; <span class="function">(<span class="params">WrappedComponent</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">class</span> <span class="title class_">extends</span> <span class="title class_">React</span>.<span class="property">Component</span> &#123;</span><br><span class="line">    <span class="title function_">featureMethod</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`执行<span class="subst">$&#123;featureName&#125;</span>功能`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">WrappedComponent</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        &#123;<span class="attr">...this.props</span>&#125; </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">featureMethod</span>=<span class="string">&#123;this.featureMethod&#125;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      /&gt;</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">const</span> withLogger = <span class="title function_">withFeature</span>(<span class="string">&#x27;日志记录&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">EnhancedComponent</span> = <span class="title function_">withLogger</span>(<span class="title class_">MyComponent</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="五、HOC最佳实践"><a href="#五、HOC最佳实践" class="headerlink" title="五、HOC最佳实践"></a>五、HOC最佳实践</h3><ol>
+<li><strong>命名规范</strong>：使用<code>with</code>前缀（withAuth, withLogger）</li>
+<li><strong>传递无关props</strong>：确保原组件props透传</li>
+<li><strong>避免修改原组件</strong>：使用组合而非继承</li>
+<li><strong>正确处理ref</strong>：使用<code>React.forwardRef</code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">withLogging</span>(<span class="params">WrappedComponent</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">React</span>.<span class="title function_">forwardRef</span>(<span class="function">(<span class="params">props, ref</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">WrappedComponent</span> &#123;<span class="attr">...props</span>&#125; <span class="attr">ref</span>=<span class="string">&#123;ref&#125;</span> /&gt;</span></span>;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><strong>组合多个HOC</strong>：使用compose函数<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> enhance = <span class="title function_">compose</span>(</span><br><span class="line">  withAuth,</span><br><span class="line">  withLogger,</span><br><span class="line">  withAnalytics</span><br><span class="line">);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">EnhancedComponent</span> = <span class="title function_">enhance</span>(<span class="title class_">BaseComponent</span>);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="六、HOC的现代替代方案"><a href="#六、HOC的现代替代方案" class="headerlink" title="六、HOC的现代替代方案"></a>六、HOC的现代替代方案</h3><table>
+<thead>
+<tr>
+<th>方案</th>
+<th>优势</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>React Hooks</strong></td>
+<td>逻辑复用更简洁</td>
+<td>函数组件</td>
+</tr>
+<tr>
+<td><strong>Render Props</strong></td>
+<td>灵活共享代码</td>
+<td>组件间逻辑共享</td>
+</tr>
+<tr>
+<td><strong>Context API</strong></td>
+<td>跨层级数据传递</td>
+<td>主题&#x2F;用户信息</td>
+</tr>
+</tbody></table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用Hooks替代HOC示例</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">useAuth</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [user, setUser] = <span class="title function_">useState</span>(<span class="literal">null</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">fetchUser</span>().<span class="title function_">then</span>(setUser);</span><br><span class="line">  &#125;, []);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">isAdmin</span>: user?.<span class="property">role</span> === <span class="string">&#x27;admin&#x27;</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 组件内使用</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">AdminPanel</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; isAdmin &#125; = <span class="title function_">useAuth</span>();</span><br><span class="line">  <span class="keyword">return</span> isAdmin ? <span class="language-xml"><span class="tag">&lt;<span class="name">Panel</span> /&gt;</span></span> : <span class="language-xml"><span class="tag">&lt;<span class="name">DeniedView</span> /&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li><strong>HOC本质</strong>：组件工厂函数，实现逻辑复用</li>
+<li><strong>核心价值</strong>：解耦、复用、增强组件功能</li>
+<li><strong>柯里化实现</strong>：利用闭包保存中间状态，支持链式调用</li>
+<li><strong>现代演进</strong>：Hooks逐渐成为主流替代方案</li>
+<li><strong>适用场景</strong>：<ul>
+<li>HOC：跨组件复用逻辑（如鉴权、埋点）</li>
+<li>柯里化：参数分步传递的场景（如配置初始化）</li>
+</ul>
+</li>
+</ol>
+<p>通过HOC和柯里化的组合使用，可以构建出高度灵活且可复用的React应用架构，同时保持代码的简洁性和可维护性。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/01/frontend/react/003-HOC%E4%B8%8E%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" data-id="cmcae1sk4007asssd828heuec" data-title="003-HOC与函数柯里化" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/01/frontend/react/004-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6%E5%92%8CClass%E7%BB%84%E4%BB%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          004-函数式组件和Class组件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/01/frontend/react/002-%E8%99%9A%E6%8B%9FDOM/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">002-虚拟DOM</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CNBC/">CNBC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Jenkins/">Jenkins</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/Openshift/">Openshift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/kubernetes/">kubernetes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/">Foundation</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Foundation/ProtocolAndBrowser/">ProtocolAndBrowser</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/Sass/">Sass</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/">ML_LLM_AI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML-LLM-AI/Pytorch/">Pytorch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Principles/">Principles</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/leetcode/">leetcode</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNBC-Finance/" rel="tag">CNBC Finance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Principles/" rel="tag">Principles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProtocolAndBrowser/" rel="tag">ProtocolAndBrowser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CNBC-Finance/" style="font-size: 10px;">CNBC Finance</a> <a href="/tags/CSS/" style="font-size: 18.89px;">CSS</a> <a href="/tags/DB/" style="font-size: 11.11px;">DB</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Javascript/" style="font-size: 17.78px;">Javascript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/OS/" style="font-size: 11.11px;">OS</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Principles/" style="font-size: 10px;">Principles</a> <a href="/tags/ProtocolAndBrowser/" style="font-size: 16.67px;">ProtocolAndBrowser</a> <a href="/tags/Pytorch/" style="font-size: 13.33px;">Pytorch</a> <a href="/tags/React/" style="font-size: 14.44px;">React</a> <a href="/tags/Sass/" style="font-size: 12.22px;">Sass</a> <a href="/tags/algorithms/" style="font-size: 20px;">algorithms</a> <a href="/tags/k8s/" style="font-size: 15.56px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.9%20Kube%20Pods/">1.9 Kube Pods</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.8%20Kube%20Proxy/">1.8 Kube Proxy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/">1.7 Kubelet</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/">1.6 Kube Scheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/20/devops/kubernetes/1%20core%20concepts/1.5%20Kube%20Controller%20Manager/">1.5 Kube Controller Manager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 EvelynUU<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
