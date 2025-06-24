@@ -6,15 +6,15 @@
   
   <title>011-组合总和（深度优先搜索（DFS）） | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="组合总和问题详解组合总和(Combination Sum)是一个经典的回溯算法问题，通常有以下几种变体： 问题描述给定一个无重复元素的整数数组 candidates 和一个目标整数 target，找出所有可以使数字和为 target 的唯一组合。candidates 中的数字可以无限制重复使用。 示例输入：candidates &#x3D; [2,3,6,7], target &#x3D; 7输出：[[2,2,3],">
+  <meta name="description" content="组合总和问题（深度优先搜索（DFS））问题描述给定一个无重复元素的整数数组 candidates 和一个目标整数 target，找出所有可以使数字和为 target 的唯一组合。candidates 中的数字可以无限制重复使用。 示例输入：candidates &#x3D; [2,3,6,7], target &#x3D; 7输出：[[2,2,3], [7]]解释：2+2+3 &#x3D; 77 &#x3D; 7 解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="011-组合总和（深度优先搜索（DFS））">
 <meta property="og:url" content="http://example.com/2025/06/16/algorithms/011-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89%EF%BC%89/index.html">
 <meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
-<meta property="og:description" content="组合总和问题详解组合总和(Combination Sum)是一个经典的回溯算法问题，通常有以下几种变体： 问题描述给定一个无重复元素的整数数组 candidates 和一个目标整数 target，找出所有可以使数字和为 target 的唯一组合。candidates 中的数字可以无限制重复使用。 示例输入：candidates &#x3D; [2,3,6,7], target &#x3D; 7输出：[[2,2,3],">
+<meta property="og:description" content="组合总和问题（深度优先搜索（DFS））问题描述给定一个无重复元素的整数数组 candidates 和一个目标整数 target，找出所有可以使数字和为 target 的唯一组合。candidates 中的数字可以无限制重复使用。 示例输入：candidates &#x3D; [2,3,6,7], target &#x3D; 7输出：[[2,2,3], [7]]解释：2+2+3 &#x3D; 77 &#x3D; 7 解">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-06-16T15:59:23.000Z">
-<meta property="article:modified_time" content="2025-06-24T09:17:57.281Z">
+<meta property="article:modified_time" content="2025-06-24T10:41:10.619Z">
 <meta property="article:author" content="EvelynUU">
 <meta property="article:tag" content="algorithms">
 <meta name="twitter:card" content="summary">
@@ -104,8 +104,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="组合总和问题详解"><a href="#组合总和问题详解" class="headerlink" title="组合总和问题详解"></a>组合总和问题详解</h1><p>组合总和(Combination Sum)是一个经典的回溯算法问题，通常有以下几种变体：</p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个<strong>无重复元素</strong>的整数数组 <code>candidates</code> 和一个目标整数 <code>target</code>，找出所有可以使数字和为 <code>target</code> 的<strong>唯一组合</strong>。<code>candidates</code> 中的数字可以<strong>无限制重复使用</strong>。</p>
+        <h1 id="组合总和问题（深度优先搜索（DFS））"><a href="#组合总和问题（深度优先搜索（DFS））" class="headerlink" title="组合总和问题（深度优先搜索（DFS））"></a>组合总和问题（深度优先搜索（DFS））</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个<strong>无重复元素</strong>的整数数组 <code>candidates</code> 和一个目标整数 <code>target</code>，找出所有可以使数字和为 <code>target</code> 的<strong>唯一组合</strong>。<code>candidates</code> 中的数字可以<strong>无限制重复使用</strong>。</p>
 <h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>输入：<code>candidates = [2,3,6,7]</code>, <code>target = 7</code><br>输出：<code>[[2,2,3], [7]]</code><br>解释：<br>2+2+3 &#x3D; 7<br>7 &#x3D; 7</p>
 <h2 id="解决方案1：回溯算法"><a href="#解决方案1：回溯算法" class="headerlink" title="解决方案1：回溯算法"></a>解决方案1：回溯算法</h2><h3 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h3><ol>
 <li><strong>排序数组</strong>（可选，但有助于剪枝优化）</li>
@@ -212,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/16/algorithms/011-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89%EF%BC%89/" data-id="cmcae1sjb000tsssdb6rm79fq" data-title="011-组合总和（深度优先搜索（DFS））" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/06/16/algorithms/011-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89%EF%BC%89/" data-id="cmcaettlg000uw8sdb3ht47lj" data-title="011-组合总和（深度优先搜索（DFS））" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       

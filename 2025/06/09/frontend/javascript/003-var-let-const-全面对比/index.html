@@ -6,15 +6,15 @@
   
   <title>003-var-let-const 全面对比 | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="123456789101112131415161718192021222324252627## var &#x2F; let &#x2F; const 全面对比### 核心区别总结| **特性**         | &#96;var&#96;                  | &#96;let&#96;                  | &#96;const&#96;                ||------------------|-------">
+  <meta name="description" content="var &#x2F; let &#x2F; const 全面对比核心区别总结   特性 var let const    作用域 函数作用域 块级作用域 块级作用域   变量提升 提升并初始化undefined 提升但不初始化（TDZ） 提升但不初始化（TDZ）   重复声明 允许 禁止 禁止   全局绑定 成为window属性 不成为window属性 不成为window属性   初始值 可不初始">
 <meta property="og:type" content="article">
 <meta property="og:title" content="003-var-let-const 全面对比">
 <meta property="og:url" content="http://example.com/2025/06/09/frontend/javascript/003-var-let-const-%E5%85%A8%E9%9D%A2%E5%AF%B9%E6%AF%94/index.html">
 <meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
-<meta property="og:description" content="123456789101112131415161718192021222324252627## var &#x2F; let &#x2F; const 全面对比### 核心区别总结| **特性**         | &#96;var&#96;                  | &#96;let&#96;                  | &#96;const&#96;                ||------------------|-------">
+<meta property="og:description" content="var &#x2F; let &#x2F; const 全面对比核心区别总结   特性 var let const    作用域 函数作用域 块级作用域 块级作用域   变量提升 提升并初始化undefined 提升但不初始化（TDZ） 提升但不初始化（TDZ）   重复声明 允许 禁止 禁止   全局绑定 成为window属性 不成为window属性 不成为window属性   初始值 可不初始">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-06-09T05:45:20.000Z">
-<meta property="article:modified_time" content="2025-06-24T09:44:43.934Z">
+<meta property="article:modified_time" content="2025-06-24T10:55:39.252Z">
 <meta property="article:author" content="EvelynUU">
 <meta property="article:tag" content="Javascript">
 <meta name="twitter:card" content="summary">
@@ -104,10 +104,55 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## var / let / const 全面对比</span></span><br><span class="line"></span><br><span class="line"><span class="section">### 核心区别总结</span></span><br><span class="line">| <span class="strong">**特性**</span>         | <span class="code">`var`</span>                  | <span class="code">`let`</span>                  | <span class="code">`const`</span>                |</span><br><span class="line">|------------------|------------------------|------------------------|------------------------|</span><br><span class="line">| <span class="strong">**作用域**</span>       | 函数作用域             | 块级作用域             | 块级作用域             |</span><br><span class="line">| <span class="strong">**变量提升**</span>     | 提升并初始化<span class="code">`undefined`</span>| 提升但不初始化（TDZ）  | 提升但不初始化（TDZ）  |</span><br><span class="line">| <span class="strong">**重复声明**</span>     | ✅ 允许                 | ❌ 禁止                 | ❌ 禁止                 |</span><br><span class="line">| <span class="strong">**全局绑定**</span>     | 成为<span class="code">`window`</span>属性       | 不成为<span class="code">`window`</span>属性     | 不成为<span class="code">`window`</span>属性     |</span><br><span class="line">| <span class="strong">**初始值**</span>       | 可不初始化             | 可不初始化             | ❌ 必须初始化          |</span><br><span class="line">| <span class="strong">**循环中的表现**</span> | 每次循环共享同一变量   | 每次迭代创建新绑定     | 每次迭代创建新绑定     |</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">### 关键概念详解</span></span><br><span class="line"></span><br><span class="line"><span class="section">#### 1. 块级作用域（Block Scope）</span></span><br><span class="line"><span class="code">`let`</span>和<span class="code">`const`</span>声明的变量只在代码块<span class="code">`&#123;&#125;`</span>内有效：</span><br><span class="line"><span class="code">```javascript</span></span><br><span class="line"><span class="code">&#123;</span></span><br><span class="line"><span class="code">  var a = 1;</span></span><br><span class="line"><span class="code">  let b = 2;</span></span><br><span class="line"><span class="code">  const c = 3;</span></span><br><span class="line"><span class="code">&#125;</span></span><br><span class="line"><span class="code">console.log(a); // 1（var穿透块作用域）</span></span><br><span class="line"><span class="code">console.log(b); // ReferenceError</span></span><br><span class="line"><span class="code">console.log(c); // ReferenceError</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>典型应用</strong>：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 解决循环变量泄露</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(i)); <span class="comment">// 0,1,2（正确）</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(j)); <span class="comment">// 3,3,3（泄露到全局）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="var-let-const-全面对比"><a href="#var-let-const-全面对比" class="headerlink" title="var &#x2F; let &#x2F; const 全面对比"></a>var &#x2F; let &#x2F; const 全面对比</h2><h3 id="核心区别总结"><a href="#核心区别总结" class="headerlink" title="核心区别总结"></a>核心区别总结</h3><table>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><code>var</code></th>
+<th><code>let</code></th>
+<th><code>const</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>作用域</strong></td>
+<td>函数作用域</td>
+<td>块级作用域</td>
+<td>块级作用域</td>
+</tr>
+<tr>
+<td><strong>变量提升</strong></td>
+<td>提升并初始化<code>undefined</code></td>
+<td>提升但不初始化（TDZ）</td>
+<td>提升但不初始化（TDZ）</td>
+</tr>
+<tr>
+<td><strong>重复声明</strong></td>
+<td>允许</td>
+<td>禁止</td>
+<td>禁止</td>
+</tr>
+<tr>
+<td><strong>全局绑定</strong></td>
+<td>成为<code>window</code>属性</td>
+<td>不成为<code>window</code>属性</td>
+<td>不成为<code>window</code>属性</td>
+</tr>
+<tr>
+<td><strong>初始值</strong></td>
+<td>可不初始化</td>
+<td>可不初始化</td>
+<td>必须初始化</td>
+</tr>
+<tr>
+<td><strong>循环中的表现</strong></td>
+<td>每次循环共享同一变量</td>
+<td>每次迭代创建新绑定</td>
+<td>每次迭代创建新绑定</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="关键概念详解"><a href="#关键概念详解" class="headerlink" title="关键概念详解"></a>关键概念详解</h3><h4 id="1-块级作用域（Block-Scope）"><a href="#1-块级作用域（Block-Scope）" class="headerlink" title="1. 块级作用域（Block Scope）"></a>1. 块级作用域（Block Scope）</h4><p><code>let</code>和<code>const</code>声明的变量只在代码块<code>&#123;&#125;</code>内有效：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">const</span> c = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// 1（var穿透块作用域）</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// ReferenceError</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c); <span class="comment">// ReferenceError</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**典型应用**：</span><br><span class="line"></span><br><span class="line"><span class="string">``</span><span class="string">`javascript</span></span><br><span class="line"><span class="string">// 解决循环变量泄露</span></span><br><span class="line"><span class="string">for (let i = 0; i &lt; 3; i++) &#123;</span></span><br><span class="line"><span class="string">  setTimeout(() =&gt; console.log(i)); // 0,1,2（正确）</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">for (var j = 0; j &lt; 3; j++) &#123;</span></span><br><span class="line"><span class="string">  setTimeout(() =&gt; console.log(j)); // 3,3,3（泄露到全局）</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="2-暂时性死区（TDZ-Temporal-Dead-Zone）"><a href="#2-暂时性死区（TDZ-Temporal-Dead-Zone）" class="headerlink" title="2. 暂时性死区（TDZ - Temporal Dead Zone）"></a>2. 暂时性死区（TDZ - Temporal Dead Zone）</h4><p>在声明前访问<code>let/const</code>变量会触发错误（而<code>var</code>返回<code>undefined</code>）：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// undefined（变量提升）</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// ReferenceError（TDZ区域）</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
@@ -145,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/09/frontend/javascript/003-var-let-const-%E5%85%A8%E9%9D%A2%E5%AF%B9%E6%AF%94/" data-id="cmcae1sk7007usssd1fhuet11" data-title="003-var-let-const 全面对比" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/06/09/frontend/javascript/003-var-let-const-%E5%85%A8%E9%9D%A2%E5%AF%B9%E6%AF%94/" data-id="cmcaettma0079w8sdf0f14g5c" data-title="003-var-let-const 全面对比" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       

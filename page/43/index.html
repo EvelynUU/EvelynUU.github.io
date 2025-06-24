@@ -101,8 +101,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="组合总和问题详解"><a href="#组合总和问题详解" class="headerlink" title="组合总和问题详解"></a>组合总和问题详解</h1><p>组合总和(Combination Sum)是一个经典的回溯算法问题，通常有以下几种变体：</p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个<strong>无重复元素</strong>的整数数组 <code>candidates</code> 和一个目标整数 <code>target</code>，找出所有可以使数字和为 <code>target</code> 的<strong>唯一组合</strong>。<code>candidates</code> 中的数字可以<strong>无限制重复使用</strong>。</p>
+        <h1 id="组合总和问题（深度优先搜索（DFS））"><a href="#组合总和问题（深度优先搜索（DFS））" class="headerlink" title="组合总和问题（深度优先搜索（DFS））"></a>组合总和问题（深度优先搜索（DFS））</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个<strong>无重复元素</strong>的整数数组 <code>candidates</code> 和一个目标整数 <code>target</code>，找出所有可以使数字和为 <code>target</code> 的<strong>唯一组合</strong>。<code>candidates</code> 中的数字可以<strong>无限制重复使用</strong>。</p>
 <h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>输入：<code>candidates = [2,3,6,7]</code>, <code>target = 7</code><br>输出：<code>[[2,2,3], [7]]</code><br>解释：<br>2+2+3 &#x3D; 7<br>7 &#x3D; 7</p>
 <h2 id="解决方案1：回溯算法"><a href="#解决方案1：回溯算法" class="headerlink" title="解决方案1：回溯算法"></a>解决方案1：回溯算法</h2><h3 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h3><ol>
 <li><strong>排序数组</strong>（可选，但有助于剪枝优化）</li>
@@ -209,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/16/algorithms/011-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89%EF%BC%89/" data-id="cmcae1sjb000tsssdb6rm79fq" data-title="011-组合总和（深度优先搜索（DFS））" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/06/16/algorithms/011-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%EF%BC%88%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89%EF%BC%89/" data-id="cmcaettlg000uw8sdb3ht47lj" data-title="011-组合总和（深度优先搜索（DFS））" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -249,8 +248,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="跳跃游戏问题详解（图文解析）"><a href="#跳跃游戏问题详解（图文解析）" class="headerlink" title="跳跃游戏问题详解（图文解析）"></a>跳跃游戏问题详解（图文解析）</h1><p>跳跃游戏是经典的贪心算法问题，主要有两种变体，我将分别详细解释并配以图示说明。</p>
-<h2 id="跳跃游戏-I（能否到达终点）"><a href="#跳跃游戏-I（能否到达终点）" class="headerlink" title="跳跃游戏 I（能否到达终点）"></a>跳跃游戏 I（能否到达终点）</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>给定一个非负整数数组 <code>nums</code>，你最初位于数组的第一个位置。数组中的每个元素代表你在该位置可以跳跃的最大长度。判断你是否能够到达最后一个位置。</p>
+        <h1 id="跳跃游戏问题（图文解析）"><a href="#跳跃游戏问题（图文解析）" class="headerlink" title="跳跃游戏问题（图文解析）"></a>跳跃游戏问题（图文解析）</h1><h2 id="跳跃游戏-I（能否到达终点）"><a href="#跳跃游戏-I（能否到达终点）" class="headerlink" title="跳跃游戏 I（能否到达终点）"></a>跳跃游戏 I（能否到达终点）</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>给定一个非负整数数组 <code>nums</code>，你最初位于数组的第一个位置。数组中的每个元素代表你在该位置可以跳跃的最大长度。判断你是否能够到达最后一个位置。</p>
 <h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>输入：<code>nums = [2,3,1,1,4]</code><br>输出：<code>true</code><br>解释：从位置 0 跳到位置 1，再从位置 1 跳到位置 4。</p>
 <h3 id="解题思路：贪心算法"><a href="#解题思路：贪心算法" class="headerlink" title="解题思路：贪心算法"></a>解题思路：贪心算法</h3><ol>
 <li>维护一个变量 <code>maxReach</code> 表示当前能到达的最远位置</li>
@@ -362,7 +360,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/16/algorithms/012-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%E8%83%BD%E5%90%A6%E5%88%B0%E7%BB%88%E7%82%B9+%E6%9C%80%E5%B0%8F%E8%B7%B3%E8%B7%83%E6%AC%A1%E6%95%B0%EF%BC%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%EF%BC%89/" data-id="cmcae1sjb000vsssd923haaa9" data-title="012-跳跃游戏能否到终点+最小跳跃次数（贪心算法）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/06/16/algorithms/012-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%E8%83%BD%E5%90%A6%E5%88%B0%E7%BB%88%E7%82%B9+%E6%9C%80%E5%B0%8F%E8%B7%B3%E8%B7%83%E6%AC%A1%E6%95%B0%EF%BC%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%EF%BC%89/" data-id="cmcaettlg000sw8sdf9mqe5fc" data-title="012-跳跃游戏能否到终点+最小跳跃次数（贪心算法）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       

@@ -6,15 +6,15 @@
   
   <title>002-死锁处理 | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="死锁处理终极指南：原理、检测与实战解决方案死锁是并发系统中资源竞争导致的僵局状态，当多个进程相互等待对方持有的资源时，系统陷入停滞。本文将深入解析死锁处理全流程，并提供工业级解决方案。  一、死锁核心原理与必要条件1. 死锁发生的四大必要条件（缺一不可）   条件 说明 示例    互斥访问 资源只能被一个进程独占使用 打印机、数据库锁   持有并等待 进程持有资源同时等待新资源 进程A持有文件锁">
+  <meta name="description" content="死锁处理指南：原理、检测与实战解决方案死锁是并发系统中资源竞争导致的僵局状态，当多个进程相互等待对方持有的资源时，系统陷入停滞。  一、死锁核心原理与必要条件1. 死锁发生的四大必要条件（缺一不可）   条件 说明 示例    互斥访问 资源只能被一个进程独占使用 打印机、数据库锁   持有并等待 进程持有资源同时等待新资源 进程A持有文件锁，申请网络端口   不可剥夺 资源只能由持有者主动释放">
 <meta property="og:type" content="article">
 <meta property="og:title" content="002-死锁处理">
 <meta property="og:url" content="http://example.com/2025/04/09/foundation/os/002-%E6%AD%BB%E9%94%81%E5%A4%84%E7%90%86/index.html">
 <meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
-<meta property="og:description" content="死锁处理终极指南：原理、检测与实战解决方案死锁是并发系统中资源竞争导致的僵局状态，当多个进程相互等待对方持有的资源时，系统陷入停滞。本文将深入解析死锁处理全流程，并提供工业级解决方案。  一、死锁核心原理与必要条件1. 死锁发生的四大必要条件（缺一不可）   条件 说明 示例    互斥访问 资源只能被一个进程独占使用 打印机、数据库锁   持有并等待 进程持有资源同时等待新资源 进程A持有文件锁">
+<meta property="og:description" content="死锁处理指南：原理、检测与实战解决方案死锁是并发系统中资源竞争导致的僵局状态，当多个进程相互等待对方持有的资源时，系统陷入停滞。  一、死锁核心原理与必要条件1. 死锁发生的四大必要条件（缺一不可）   条件 说明 示例    互斥访问 资源只能被一个进程独占使用 打印机、数据库锁   持有并等待 进程持有资源同时等待新资源 进程A持有文件锁，申请网络端口   不可剥夺 资源只能由持有者主动释放">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-04-09T15:59:13.000Z">
-<meta property="article:modified_time" content="2025-06-24T09:49:44.087Z">
+<meta property="article:modified_time" content="2025-06-24T10:47:33.196Z">
 <meta property="article:author" content="EvelynUU">
 <meta property="article:tag" content="OS">
 <meta name="twitter:card" content="summary">
@@ -104,7 +104,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="死锁处理终极指南：原理、检测与实战解决方案"><a href="#死锁处理终极指南：原理、检测与实战解决方案" class="headerlink" title="死锁处理终极指南：原理、检测与实战解决方案"></a>死锁处理终极指南：原理、检测与实战解决方案</h2><p>死锁是并发系统中资源竞争导致的僵局状态，当多个进程相互等待对方持有的资源时，系统陷入停滞。本文将深入解析死锁处理全流程，并提供工业级解决方案。</p>
+        <h2 id="死锁处理指南：原理、检测与实战解决方案"><a href="#死锁处理指南：原理、检测与实战解决方案" class="headerlink" title="死锁处理指南：原理、检测与实战解决方案"></a>死锁处理指南：原理、检测与实战解决方案</h2><p>死锁是并发系统中资源竞争导致的僵局状态，当多个进程相互等待对方持有的资源时，系统陷入停滞。</p>
 <hr>
 <h3 id="一、死锁核心原理与必要条件"><a href="#一、死锁核心原理与必要条件" class="headerlink" title="一、死锁核心原理与必要条件"></a>一、死锁核心原理与必要条件</h3><h4 id="1-死锁发生的四大必要条件（缺一不可）"><a href="#1-死锁发生的四大必要条件（缺一不可）" class="headerlink" title="1. 死锁发生的四大必要条件（缺一不可）"></a>1. 死锁发生的四大必要条件（缺一不可）</h4><table>
 <thead>
@@ -327,7 +327,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/04/09/foundation/os/002-%E6%AD%BB%E9%94%81%E5%A4%84%E7%90%86/" data-id="cmcae1sjp003ysssd6xsa6m80" data-title="002-死锁处理" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/04/09/foundation/os/002-%E6%AD%BB%E9%94%81%E5%A4%84%E7%90%86/" data-id="cmcaettlu003rw8sd8igi0vyr" data-title="002-死锁处理" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       

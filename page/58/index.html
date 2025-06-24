@@ -101,7 +101,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="Kube-Scheduler-工作原理"><a href="#Kube-Scheduler-工作原理" class="headerlink" title="Kube Scheduler 工作原理"></a>Kube Scheduler 工作原理</h2><p>Kube Scheduler 是 Kubernetes 控制平面的核心组件之一，负责将新创建的 Pod 分配到集群中合适的节点上运行。scheduler只决定哪个pod放在哪里，但不执行任何操作。</p>
+        <h2 id="1-6-Kube-Scheduler"><a href="#1-6-Kube-Scheduler" class="headerlink" title="1.6 Kube Scheduler"></a>1.6 Kube Scheduler</h2><p>Kube Scheduler 是 Kubernetes 控制平面的核心组件之一，负责将新创建的 Pod 分配到集群中合适的节点上运行。scheduler只决定哪个pod放在哪里，但不执行任何操作。</p>
 <p>以下是基于 Kubernetes 官方文档和 Udemy 课程内容的详细解析：</p>
 <h2 id="一、核心工作原理"><a href="#一、核心工作原理" class="headerlink" title="一、核心工作原理"></a>一、核心工作原理</h2><h3 id="1-调度流程概述"><a href="#1-调度流程概述" class="headerlink" title="1. 调度流程概述"></a>1. 调度流程概述</h3><ol>
 <li>**过滤阶段 (Predicates)**：从所有节点中筛选出符合 Pod 要求的候选节点</li>
@@ -224,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/" data-id="cmcae1ski00a0sssd1dp0co09" data-title="1.6 Kube Scheduler" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/06/20/devops/kubernetes/1%20core%20concepts/1.6%20Kube%20Scheduler/" data-id="cmcaettmp00agw8sdc6ji1j85" data-title="1.6 Kube Scheduler" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -264,7 +264,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="Kubelet-：节点代理的核心组件"><a href="#Kubelet-：节点代理的核心组件" class="headerlink" title="Kubelet ：节点代理的核心组件"></a>Kubelet ：节点代理的核心组件</h2><h2 id="一、Kubelet-概述"><a href="#一、Kubelet-概述" class="headerlink" title="一、Kubelet 概述"></a>一、Kubelet 概述</h2><p>Kubelet 是 Kubernetes 集群中运行在每个工作节点上的主要”节点代理”，负责管理 Pod 和容器的生命周期。它是 Kubernetes 操作的最小单元，确保容器按照预期运行。</p>
+        <h2 id="1-7-Kubelet-：节点代理的核心组件"><a href="#1-7-Kubelet-：节点代理的核心组件" class="headerlink" title="1.7 Kubelet ：节点代理的核心组件"></a>1.7 Kubelet ：节点代理的核心组件</h2><h2 id="一、Kubelet-概述"><a href="#一、Kubelet-概述" class="headerlink" title="一、Kubelet 概述"></a>一、Kubelet 概述</h2><p>Kubelet 是 Kubernetes 集群中运行在每个工作节点上的主要”节点代理”，负责管理 Pod 和容器的生命周期。它是 Kubernetes 操作的最小单元，确保容器按照预期运行。</p>
 <h2 id="二、核心功能详解"><a href="#二、核心功能详解" class="headerlink" title="二、核心功能详解"></a>二、核心功能详解</h2><p>接收到在节点上加载容器或pod的指令时，请求容器运行时引擎（Docker）拉取所需的Image并运行一个实例;Kubelet继续监控pod和容器的状态并及时向Kube API服务器报告。</p>
 <h3 id="1-节点注册-Register-Node"><a href="#1-节点注册-Register-Node" class="headerlink" title="1. 节点注册 (Register Node)"></a>1. 节点注册 (Register Node)</h3><p><strong>工作流程</strong>：</p>
 <ol>
@@ -371,7 +371,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/" data-id="cmcae1skj00a8sssd6xmx4512" data-title="1.7 Kubelet" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/06/20/devops/kubernetes/1%20core%20concepts/1.7%20Kubelet/" data-id="cmcaettmp00ajw8sdeyex761f" data-title="1.7 Kubelet" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       

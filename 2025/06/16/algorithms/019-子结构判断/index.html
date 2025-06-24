@@ -6,15 +6,15 @@
   
   <title>019-子结构判断 | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="子结构判断详解子结构判断是算法设计中常见的问题类型，主要用于确定一个结构是否包含在另一个结构中。下面我将详细解释几种常见的子结构判断问题及其解决方法。 1. 字符串子序列判断问题描述判断字符串s是否是字符串t的子序列（子序列可以不连续但顺序必须一致） 解法（双指针法）12345678910function isSubsequence(s, t) &#123;    let i &#x3D; 0, j &#x3D; 0">
+  <meta name="description" content="子结构判断子结构判断是算法设计中常见的问题类型，主要用于确定一个结构是否包含在另一个结构中 1. 字符串子序列判断问题描述判断字符串s是否是字符串t的子序列（子序列可以不连续但顺序必须一致） 解法（双指针法）12345678910function isSubsequence(s, t) &#123;    let i &#x3D; 0, j &#x3D; 0;    while (i &lt; s.length &amp;a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="019-子结构判断">
 <meta property="og:url" content="http://example.com/2025/06/16/algorithms/019-%E5%AD%90%E7%BB%93%E6%9E%84%E5%88%A4%E6%96%AD/index.html">
 <meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
-<meta property="og:description" content="子结构判断详解子结构判断是算法设计中常见的问题类型，主要用于确定一个结构是否包含在另一个结构中。下面我将详细解释几种常见的子结构判断问题及其解决方法。 1. 字符串子序列判断问题描述判断字符串s是否是字符串t的子序列（子序列可以不连续但顺序必须一致） 解法（双指针法）12345678910function isSubsequence(s, t) &#123;    let i &#x3D; 0, j &#x3D; 0">
+<meta property="og:description" content="子结构判断子结构判断是算法设计中常见的问题类型，主要用于确定一个结构是否包含在另一个结构中 1. 字符串子序列判断问题描述判断字符串s是否是字符串t的子序列（子序列可以不连续但顺序必须一致） 解法（双指针法）12345678910function isSubsequence(s, t) &#123;    let i &#x3D; 0, j &#x3D; 0;    while (i &lt; s.length &amp;a">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-06-16T15:59:31.000Z">
-<meta property="article:modified_time" content="2025-06-24T09:21:56.162Z">
+<meta property="article:modified_time" content="2025-06-24T10:42:36.584Z">
 <meta property="article:author" content="EvelynUU">
 <meta property="article:tag" content="algorithms">
 <meta name="twitter:card" content="summary">
@@ -104,7 +104,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="子结构判断详解"><a href="#子结构判断详解" class="headerlink" title="子结构判断详解"></a>子结构判断详解</h1><p>子结构判断是算法设计中常见的问题类型，主要用于确定一个结构是否包含在另一个结构中。下面我将详细解释几种常见的子结构判断问题及其解决方法。</p>
+        <h1 id="子结构判断"><a href="#子结构判断" class="headerlink" title="子结构判断"></a>子结构判断</h1><p>子结构判断是算法设计中常见的问题类型，主要用于确定一个结构是否包含在另一个结构中</p>
 <h2 id="1-字符串子序列判断"><a href="#1-字符串子序列判断" class="headerlink" title="1. 字符串子序列判断"></a>1. 字符串子序列判断</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>判断字符串s是否是字符串t的子序列（子序列可以不连续但顺序必须一致）</p>
 <h3 id="解法（双指针法）"><a href="#解法（双指针法）" class="headerlink" title="解法（双指针法）"></a>解法（双指针法）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isSubsequence</span>(<span class="params">s, t</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; s.<span class="property">length</span> &amp;&amp; j &lt; t.<span class="property">length</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] === t[j]) &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i === s.<span class="property">length</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -146,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/16/algorithms/019-%E5%AD%90%E7%BB%93%E6%9E%84%E5%88%A4%E6%96%AD/" data-id="cmcae1sje001ksssdfsm4f4gf" data-title="019-子结构判断" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/06/16/algorithms/019-%E5%AD%90%E7%BB%93%E6%9E%84%E5%88%A4%E6%96%AD/" data-id="cmcaettlk001mw8sdecej99m3" data-title="019-子结构判断" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       

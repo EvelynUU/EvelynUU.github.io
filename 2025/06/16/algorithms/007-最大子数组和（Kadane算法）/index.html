@@ -6,15 +6,15 @@
   
   <title>007-最大子数组和（Kadane算法） | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="最大子数组和问题（Maximum Subarray Problem）这是一个经典的算法问题，也称为”Kadane算法”问题。给定一个整数数组，我们需要找到一个具有最大和的连续子数组。 问题描述给定一个整数数组 nums，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。 示例： 123输入: [-2,1,-3,4,-1,2,1,-5,4]输出: 6解释: 连续子数组 [4,-">
+  <meta name="description" content="最大子数组和（Kadane算法）问题描述给定一个整数数组 nums，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。 示例： 123输入: [-2,1,-3,4,-1,2,1,-5,4]输出: 6解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。  解决方案方法一：暴力解法（不推荐）检查所有可能的子数组，计算它们的和并找出最大值。 时间复杂度：O(n²)空间复杂度">
 <meta property="og:type" content="article">
 <meta property="og:title" content="007-最大子数组和（Kadane算法）">
 <meta property="og:url" content="http://example.com/2025/06/16/algorithms/007-%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C%EF%BC%88Kadane%E7%AE%97%E6%B3%95%EF%BC%89/index.html">
 <meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
-<meta property="og:description" content="最大子数组和问题（Maximum Subarray Problem）这是一个经典的算法问题，也称为”Kadane算法”问题。给定一个整数数组，我们需要找到一个具有最大和的连续子数组。 问题描述给定一个整数数组 nums，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。 示例： 123输入: [-2,1,-3,4,-1,2,1,-5,4]输出: 6解释: 连续子数组 [4,-">
+<meta property="og:description" content="最大子数组和（Kadane算法）问题描述给定一个整数数组 nums，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。 示例： 123输入: [-2,1,-3,4,-1,2,1,-5,4]输出: 6解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。  解决方案方法一：暴力解法（不推荐）检查所有可能的子数组，计算它们的和并找出最大值。 时间复杂度：O(n²)空间复杂度">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-06-16T15:59:19.000Z">
-<meta property="article:modified_time" content="2025-06-24T09:16:46.458Z">
+<meta property="article:modified_time" content="2025-06-24T10:40:45.454Z">
 <meta property="article:author" content="EvelynUU">
 <meta property="article:tag" content="algorithms">
 <meta name="twitter:card" content="summary">
@@ -104,8 +104,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="最大子数组和问题（Maximum-Subarray-Problem）"><a href="#最大子数组和问题（Maximum-Subarray-Problem）" class="headerlink" title="最大子数组和问题（Maximum Subarray Problem）"></a>最大子数组和问题（Maximum Subarray Problem）</h1><p>这是一个经典的算法问题，也称为”Kadane算法”问题。给定一个整数数组，我们需要找到一个具有最大和的连续子数组。</p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个整数数组 <code>nums</code>，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+        <h1 id="最大子数组和（Kadane算法）"><a href="#最大子数组和（Kadane算法）" class="headerlink" title="最大子数组和（Kadane算法）"></a>最大子数组和（Kadane算法）</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个整数数组 <code>nums</code>，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
 <p>示例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [-<span class="number">2</span>,<span class="number">1</span>,-<span class="number">3</span>,<span class="number">4</span>,-<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,-<span class="number">5</span>,<span class="number">4</span>]</span><br><span class="line">输出: <span class="number">6</span></span><br><span class="line">解释: 连续子数组 [<span class="number">4</span>,-<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>] 的和最大，为 <span class="number">6</span>。</span><br></pre></td></tr></table></figure>
 
@@ -250,7 +249,7 @@ max_sum = -2
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/16/algorithms/007-%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C%EF%BC%88Kadane%E7%AE%97%E6%B3%95%EF%BC%89/" data-id="cmcae1sj8000esssd4a9oah0y" data-title="007-最大子数组和（Kadane算法）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/06/16/algorithms/007-%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C%EF%BC%88Kadane%E7%AE%97%E6%B3%95%EF%BC%89/" data-id="cmcaettle000iw8sd8s4mdvus" data-title="007-最大子数组和（Kadane算法）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       

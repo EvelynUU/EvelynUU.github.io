@@ -14,7 +14,7 @@
 <meta property="og:description" content="虚拟DOM深度解析与性能对比一、虚拟DOM核心理解本质与工作原理12345graph LRA[状态变化] --&gt; B(生成新虚拟DOM树)B --&gt; C(Diff算法对比)C --&gt; D[计算最小变更集]D --&gt; E[批量更新真实DOM]   轻量级JS对象：  本质：用JS对象模拟真实DOM结构 数据结构示例：12345678910&#123;  type: &amp;#x27">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-06-01T05:44:38.000Z">
-<meta property="article:modified_time" content="2025-06-24T09:46:17.625Z">
+<meta property="article:modified_time" content="2025-06-24T10:52:13.833Z">
 <meta property="article:author" content="EvelynUU">
 <meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
@@ -142,26 +142,26 @@
 </thead>
 <tbody><tr>
 <td><strong>简单静态页面</strong></td>
-<td>⚡️ 极快（&lt;1ms）</td>
-<td>⚠️ 中等（diff计算）</td>
+<td>极快（&lt;1ms）</td>
+<td>中等（diff计算）</td>
 <td>全量更新</td>
 </tr>
 <tr>
 <td><strong>大型列表变更</strong></td>
-<td>🚫 极慢（&gt;500ms）</td>
-<td>⚡️ 快（局部更新）</td>
+<td>极慢（&gt;500ms）</td>
+<td>快（局部更新）</td>
 <td>Diff</td>
 </tr>
 <tr>
 <td><strong>频繁小更新</strong></td>
-<td>🚫 卡顿（布局抖动）</td>
-<td>⚡️ 平滑（批量处理）</td>
+<td>卡顿（布局抖动）</td>
+<td>平滑（批量处理）</td>
 <td>Diff</td>
 </tr>
 <tr>
 <td><strong>节点结构巨变</strong></td>
-<td>⚠️ 中等</td>
-<td>⚠️ 中等（全树比较）</td>
+<td>中等</td>
+<td>中等（全树比较）</td>
 <td>平手</td>
 </tr>
 </tbody></table>
@@ -284,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/01/frontend/react/002-%E8%99%9A%E6%8B%9FDOM/" data-id="cmcae1sk40077sssd65me6qez" data-title="002-虚拟DOM" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/06/01/frontend/react/002-%E8%99%9A%E6%8B%9FDOM/" data-id="cmcaettmg008qw8sdgmtkcgpk" data-title="002-虚拟DOM" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       

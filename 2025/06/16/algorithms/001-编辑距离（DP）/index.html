@@ -6,15 +6,15 @@
   
   <title>001-编辑距离（DP） | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="编辑距离超详细解析编辑距离确实是个有点抽象的概念，别着急，我会用最直观的方式帮你彻底理解它。我们就像玩游戏一样，一步步拆解这个过程。 1. 什么是编辑距离？编辑距离是衡量两个字符串相似程度的重要指标，表示将一个字符串转换成另一个字符串所需的最少单字符编辑操作次数（插入、删除或替换） 想象你有两个单词：  原单词：”horse” 目标单词：”ros”  编辑距离就是把”horse”变成”ros”最少">
+  <meta name="description" content="1. 什么是编辑距离？编辑距离是衡量两个字符串相似程度的重要指标，表示将一个字符串转换成另一个字符串所需的最少单字符编辑操作次数（插入、删除或替换） 想象你有两个单词：  原单词：”horse” 目标单词：”ros”  编辑距离就是把”horse”变成”ros”最少需要几步操作。允许的操作有三种：  插入一个字符（比如插入’s’） 删除一个字符（比如删除’h’） 替换一个字符（比如把’h’换成’r">
 <meta property="og:type" content="article">
 <meta property="og:title" content="001-编辑距离（DP）">
 <meta property="og:url" content="http://example.com/2025/06/16/algorithms/001-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB%EF%BC%88DP%EF%BC%89/index.html">
 <meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
-<meta property="og:description" content="编辑距离超详细解析编辑距离确实是个有点抽象的概念，别着急，我会用最直观的方式帮你彻底理解它。我们就像玩游戏一样，一步步拆解这个过程。 1. 什么是编辑距离？编辑距离是衡量两个字符串相似程度的重要指标，表示将一个字符串转换成另一个字符串所需的最少单字符编辑操作次数（插入、删除或替换） 想象你有两个单词：  原单词：”horse” 目标单词：”ros”  编辑距离就是把”horse”变成”ros”最少">
+<meta property="og:description" content="1. 什么是编辑距离？编辑距离是衡量两个字符串相似程度的重要指标，表示将一个字符串转换成另一个字符串所需的最少单字符编辑操作次数（插入、删除或替换） 想象你有两个单词：  原单词：”horse” 目标单词：”ros”  编辑距离就是把”horse”变成”ros”最少需要几步操作。允许的操作有三种：  插入一个字符（比如插入’s’） 删除一个字符（比如删除’h’） 替换一个字符（比如把’h’换成’r">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-06-16T15:59:13.000Z">
-<meta property="article:modified_time" content="2025-06-24T09:15:02.400Z">
+<meta property="article:modified_time" content="2025-06-24T10:39:54.293Z">
 <meta property="article:author" content="EvelynUU">
 <meta property="article:tag" content="algorithms">
 <meta name="twitter:card" content="summary">
@@ -104,8 +104,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="编辑距离超详细解析"><a href="#编辑距离超详细解析" class="headerlink" title="编辑距离超详细解析"></a>编辑距离超详细解析</h1><p>编辑距离确实是个有点抽象的概念，别着急，我会用最直观的方式帮你彻底理解它。我们就像玩游戏一样，一步步拆解这个过程。</p>
-<h2 id="1-什么是编辑距离？"><a href="#1-什么是编辑距离？" class="headerlink" title="1. 什么是编辑距离？"></a>1. 什么是编辑距离？</h2><p>编辑距离是衡量两个字符串相似程度的重要指标，表示将一个字符串转换成另一个字符串所需的最少单字符编辑操作次数（插入、删除或替换）</p>
+        <h2 id="1-什么是编辑距离？"><a href="#1-什么是编辑距离？" class="headerlink" title="1. 什么是编辑距离？"></a>1. 什么是编辑距离？</h2><p>编辑距离是衡量两个字符串相似程度的重要指标，表示将一个字符串转换成另一个字符串所需的最少单字符编辑操作次数（插入、删除或替换）</p>
 <p>想象你有两个单词：</p>
 <ul>
 <li>原单词：”horse”</li>
@@ -242,7 +241,7 @@ e  [5,4,4,3]
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/16/algorithms/001-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB%EF%BC%88DP%EF%BC%89/" data-id="cmcae1sj9000ksssdgyq51ogi" data-title="001-编辑距离（DP）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/06/16/algorithms/001-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB%EF%BC%88DP%EF%BC%89/" data-id="cmcaettla0005w8sddmk5g5zg" data-title="001-编辑距离（DP）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       

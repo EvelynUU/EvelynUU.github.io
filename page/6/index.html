@@ -101,8 +101,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="PostgreSQL-深度解析：架构、特性与性能优化实战"><a href="#PostgreSQL-深度解析：架构、特性与性能优化实战" class="headerlink" title="PostgreSQL 深度解析：架构、特性与性能优化实战"></a>PostgreSQL 深度解析：架构、特性与性能优化实战</h2><p>PostgreSQL 作为功能最强大的开源关系数据库，以其扩展性、标准兼容性和企业级特性著称。本文将从架构设计到高阶应用进行全面剖析，并附性能优化实战指南。</p>
-<hr>
+        <h2 id="PostgreSQL-深度解析：架构、特性与性能优化实战"><a href="#PostgreSQL-深度解析：架构、特性与性能优化实战" class="headerlink" title="PostgreSQL 深度解析：架构、特性与性能优化实战"></a>PostgreSQL 深度解析：架构、特性与性能优化实战</h2><hr>
 <h3 id="一、PostgreSQL-核心架构"><a href="#一、PostgreSQL-核心架构" class="headerlink" title="一、PostgreSQL 核心架构"></a>一、PostgreSQL 核心架构</h3><h4 id="1-多进程架构"><a href="#1-多进程架构" class="headerlink" title="1. 多进程架构"></a>1. 多进程架构</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    A[Postmaster] --&gt; B[Backend Process 1]</span><br><span class="line">    A --&gt; C[Backend Process 2]</span><br><span class="line">    A --&gt; D[Background Processes]</span><br><span class="line">    D --&gt; D1[Writer]</span><br><span class="line">    D --&gt; D2[WalWriter]</span><br><span class="line">    D --&gt; D3[Checkpointer]</span><br><span class="line">    D --&gt; D4[Autovacuum]</span><br><span class="line">    D --&gt; D5[Logger]</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -486,7 +485,7 @@ DETAIL:  Process 123 waits for ShareLock on transaction 456;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/05/07/foundation/db/002-postgreSQL/" data-id="cmcae1sjn003ksssd74theruz" data-title="002-postgreSQL" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/05/07/foundation/db/002-postgreSQL/" data-id="cmcaettls003gw8sd6660fc3b" data-title="002-postgreSQL" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -651,7 +650,7 @@ DETAIL:  Process 123 waits for ShareLock on transaction 456;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/05/07/foundation/db/003-postgreSQL%E7%B4%A2%E5%BC%95/" data-id="cmcae1sjo003nsssdfawh0hm3" data-title="003-postgreSQL索引" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/05/07/foundation/db/003-postgreSQL%E7%B4%A2%E5%BC%95/" data-id="cmcaettlt003kw8sd6mv99nb6" data-title="003-postgreSQL索引" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       

@@ -6,15 +6,15 @@
   
   <title>016-岛屿数量(DFS or BFS) | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="岛屿数量问题 - JavaScript 解法及详细解读问题描述给定一个由 ‘1’（陆地）和 ‘0’（水）组成的二维网格，计算其中岛屿的数量。岛屿被水包围，并且通过水平或垂直方向上相邻的陆地连接形成。 解法思路在 JavaScript 中，我们可以使用 深度优先搜索 (DFS) 或 广度优先搜索 (BFS) 来解决这个问题。这里我们主要介绍 DFS 解法，因为它代码简洁且易于理解。 核心思想 遍历网">
+  <meta name="description" content="岛屿数量问题描述给定一个由 ‘1’（陆地）和 ‘0’（水）组成的二维网格，计算其中岛屿的数量。岛屿被水包围，并且通过水平或垂直方向上相邻的陆地连接形成。 解法思路在 JavaScript 中，我们可以使用 深度优先搜索 (DFS) 或 广度优先搜索 (BFS) 来解决这个问题。这里我们主要介绍 DFS 解法，因为它代码简洁且易于理解。 核心思想 遍历网格：逐个检查每个格子。 **发现陆地 (‘1’">
 <meta property="og:type" content="article">
 <meta property="og:title" content="016-岛屿数量(DFS or BFS)">
 <meta property="og:url" content="http://example.com/2025/06/16/algorithms/016-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F(DFS%20or%20BFS)/index.html">
 <meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
-<meta property="og:description" content="岛屿数量问题 - JavaScript 解法及详细解读问题描述给定一个由 ‘1’（陆地）和 ‘0’（水）组成的二维网格，计算其中岛屿的数量。岛屿被水包围，并且通过水平或垂直方向上相邻的陆地连接形成。 解法思路在 JavaScript 中，我们可以使用 深度优先搜索 (DFS) 或 广度优先搜索 (BFS) 来解决这个问题。这里我们主要介绍 DFS 解法，因为它代码简洁且易于理解。 核心思想 遍历网">
+<meta property="og:description" content="岛屿数量问题描述给定一个由 ‘1’（陆地）和 ‘0’（水）组成的二维网格，计算其中岛屿的数量。岛屿被水包围，并且通过水平或垂直方向上相邻的陆地连接形成。 解法思路在 JavaScript 中，我们可以使用 深度优先搜索 (DFS) 或 广度优先搜索 (BFS) 来解决这个问题。这里我们主要介绍 DFS 解法，因为它代码简洁且易于理解。 核心思想 遍历网格：逐个检查每个格子。 **发现陆地 (‘1’">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-06-16T15:59:28.000Z">
-<meta property="article:modified_time" content="2025-06-24T09:20:10.677Z">
+<meta property="article:modified_time" content="2025-06-24T10:41:53.934Z">
 <meta property="article:author" content="EvelynUU">
 <meta property="article:tag" content="algorithms">
 <meta name="twitter:card" content="summary">
@@ -104,7 +104,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="岛屿数量问题-JavaScript-解法及详细解读"><a href="#岛屿数量问题-JavaScript-解法及详细解读" class="headerlink" title="岛屿数量问题 - JavaScript 解法及详细解读"></a>岛屿数量问题 - JavaScript 解法及详细解读</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个由 ‘1’（陆地）和 ‘0’（水）组成的二维网格，计算其中岛屿的数量。岛屿被水包围，并且通过水平或垂直方向上相邻的陆地连接形成。</p>
+        <h1 id="岛屿数量"><a href="#岛屿数量" class="headerlink" title="岛屿数量"></a>岛屿数量</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个由 ‘1’（陆地）和 ‘0’（水）组成的二维网格，计算其中岛屿的数量。岛屿被水包围，并且通过水平或垂直方向上相邻的陆地连接形成。</p>
 <h2 id="解法思路"><a href="#解法思路" class="headerlink" title="解法思路"></a>解法思路</h2><p>在 JavaScript 中，我们可以使用 <strong>深度优先搜索 (DFS)</strong> 或 <strong>广度优先搜索 (BFS)</strong> 来解决这个问题。这里我们主要介绍 DFS 解法，因为它代码简洁且易于理解。</p>
 <h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><ol>
 <li><strong>遍历网格</strong>：逐个检查每个格子。</li>
@@ -277,7 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/16/algorithms/016-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F(DFS%20or%20BFS)/" data-id="cmcae1sjd0019sssd5f1jcubg" data-title="016-岛屿数量(DFS or BFS)" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/06/16/algorithms/016-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F(DFS%20or%20BFS)/" data-id="cmcaettli001cw8sd0llt0kkj" data-title="016-岛屿数量(DFS or BFS)" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       

@@ -101,7 +101,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="1-Cluster-Architecture"><a href="#1-Cluster-Architecture" class="headerlink" title="1 Cluster Architecture"></a>1 Cluster Architecture</h2><h3 id="1-1-Kubernetes-architecture"><a href="#1-1-Kubernetes-architecture" class="headerlink" title="1.1 Kubernetes architecture"></a><strong>1.1 Kubernetes architecture</strong></h3><p><strong>核心架构图</strong></p>
+        <h3 id="1-1-Kubernetes-architecture"><a href="#1-1-Kubernetes-architecture" class="headerlink" title="1.1 Kubernetes architecture"></a><strong>1.1 Kubernetes architecture</strong></h3><p><strong>核心架构图</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    A[Master Node] --&gt;|管理| B[Worker Nodes]</span><br><span class="line">    A --&gt;|存储集群状态| C[ETCD Cluster]</span><br><span class="line">    A --&gt;|调度决策| D[Kube-Scheduler]</span><br><span class="line">    A --&gt;|控制循环| E[Controller Manager]</span><br><span class="line">    E --&gt;|节点管理| F[Node-Controller]</span><br><span class="line">    E --&gt;|副本管理| G[Replication-Controller]</span><br><span class="line">    A --&gt;|API 入口| H[Kube-APIServer]</span><br><span class="line">    B --&gt;|运行容器| I[Container Runtime]</span><br><span class="line">    B --&gt;|代理网络| J[Kube-Proxy]</span><br><span class="line">    B --&gt;|节点代理| K[Kubelet]</span><br></pre></td></tr></table></figure>
 
 <hr>
@@ -229,11 +229,11 @@
 </li>
 </ul>
 <hr>
-<h3 id="1-6-Kube-Scheduler"><a href="#1-6-Kube-Scheduler" class="headerlink" title="1.6 Kube Scheduler"></a>1.6 Kube Scheduler</h3><h3 id="1-7-Kubelet"><a href="#1-7-Kubelet" class="headerlink" title="1.7 Kubelet"></a>1.7 Kubelet</h3><h3 id="1-8-Kube-Proxy"><a href="#1-8-Kube-Proxy" class="headerlink" title="1.8 Kube Proxy"></a>1.8 Kube Proxy</h3><h3 id="1-9-API-Primitives"><a href="#1-9-API-Primitives" class="headerlink" title="1.9 API Primitives"></a>1.9 API Primitives</h3><h3 id="1-10-Services-Other-Network-Primitibves"><a href="#1-10-Services-Other-Network-Primitibves" class="headerlink" title="1.10 Services &amp; Other Network Primitibves"></a>1.10 Services &amp; Other Network Primitibves</h3>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/20/devops/kubernetes/1%20core%20concepts/1.1%20Architecture/" data-id="cmcae1ski009ysssdffpq5wvg" data-title="1.1 Architecture" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/06/20/devops/kubernetes/1%20core%20concepts/1.1%20Architecture/" data-id="cmcaettmn00a2w8sd7min6hkd" data-title="1.1 Architecture" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -543,7 +543,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/20/devops/kubernetes/1%20core%20concepts/1.2&3%20ETCD/" data-id="cmcae1skh009rsssdgblz5i15" data-title="1.2&amp;1.3 ETCD" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/06/20/devops/kubernetes/1%20core%20concepts/1.2&3%20ETCD/" data-id="cmcaettmn00a5w8sd91e5cfur" data-title="1.2&amp;1.3 ETCD" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       

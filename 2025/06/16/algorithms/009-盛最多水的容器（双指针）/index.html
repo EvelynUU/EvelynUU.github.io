@@ -6,15 +6,15 @@
   
   <title>009-盛最多水的容器（双指针） | ✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="盛最多水的容器问题详解问题描述给定一个长度为 n 的非负整数数组 height，其中 height[i] 表示第 i 条垂直线的高度。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。 注意：你不能倾斜容器。 示例输入：[1,8,6,2,5,4,8,3,7]输出：49解释：图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水的最大值为 49（">
+  <meta name="description" content="盛最多水的容器问题描述给定一个长度为 n 的非负整数数组 height，其中 height[i] 表示第 i 条垂直线的高度。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。 注意：你不能倾斜容器。 示例输入：[1,8,6,2,5,4,8,3,7]输出：49解释：图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水的最大值为 49（即选择第">
 <meta property="og:type" content="article">
 <meta property="og:title" content="009-盛最多水的容器（双指针）">
 <meta property="og:url" content="http://example.com/2025/06/16/algorithms/009-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%EF%BC%88%E5%8F%8C%E6%8C%87%E9%92%88%EF%BC%89/index.html">
 <meta property="og:site_name" content="✨✨✨ WOW, recorded a lot😶‍🌫️ ✨✨✨">
-<meta property="og:description" content="盛最多水的容器问题详解问题描述给定一个长度为 n 的非负整数数组 height，其中 height[i] 表示第 i 条垂直线的高度。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。 注意：你不能倾斜容器。 示例输入：[1,8,6,2,5,4,8,3,7]输出：49解释：图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水的最大值为 49（">
+<meta property="og:description" content="盛最多水的容器问题描述给定一个长度为 n 的非负整数数组 height，其中 height[i] 表示第 i 条垂直线的高度。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。 注意：你不能倾斜容器。 示例输入：[1,8,6,2,5,4,8,3,7]输出：49解释：图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水的最大值为 49（即选择第">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-06-16T15:59:21.000Z">
-<meta property="article:modified_time" content="2025-06-24T09:17:17.938Z">
+<meta property="article:modified_time" content="2025-06-24T10:40:50.762Z">
 <meta property="article:author" content="EvelynUU">
 <meta property="article:tag" content="algorithms">
 <meta name="twitter:card" content="summary">
@@ -104,7 +104,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="盛最多水的容器问题详解"><a href="#盛最多水的容器问题详解" class="headerlink" title="盛最多水的容器问题详解"></a>盛最多水的容器问题详解</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个长度为 <code>n</code> 的非负整数数组 <code>height</code>，其中 <code>height[i]</code> 表示第 <code>i</code> 条垂直线的高度。找出其中的两条线，使得它们与 <code>x</code> 轴共同构成的容器可以容纳最多的水。</p>
+        <h1 id="盛最多水的容器"><a href="#盛最多水的容器" class="headerlink" title="盛最多水的容器"></a>盛最多水的容器</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个长度为 <code>n</code> 的非负整数数组 <code>height</code>，其中 <code>height[i]</code> 表示第 <code>i</code> 条垂直线的高度。找出其中的两条线，使得它们与 <code>x</code> 轴共同构成的容器可以容纳最多的水。</p>
 <p>注意：你不能倾斜容器。</p>
 <h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>输入：<code>[1,8,6,2,5,4,8,3,7]</code><br>输出：<code>49</code><br>解释：图中垂直线代表输入数组 <code>[1,8,6,2,5,4,8,3,7]</code>。在此情况下，容器能够容纳水的最大值为 <code>49</code>（即选择第2个和第9个柱子）。</p>
 <h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><h3 id="方法：双指针法"><a href="#方法：双指针法" class="headerlink" title="方法：双指针法"></a>方法：双指针法</h3><ol>
@@ -180,7 +180,7 @@ max保持49
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/16/algorithms/009-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%EF%BC%88%E5%8F%8C%E6%8C%87%E9%92%88%EF%BC%89/" data-id="cmcae1sj9000isssd59ug3yb2" data-title="009-盛最多水的容器（双指针）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2025/06/16/algorithms/009-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%EF%BC%88%E5%8F%8C%E6%8C%87%E9%92%88%EF%BC%89/" data-id="cmcaettlf000nw8sdfmx737rx" data-title="009-盛最多水的容器（双指针）" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
